@@ -316,8 +316,8 @@
       
         
   <h2 class="title">
-    <a href="/2019/03/11/aa_category/se/深入拆解 Java 虚拟机/06JVM是如何处理异常的/">
-      06JVM是如何处理异常的
+    <a href="/2019/03/11/se/深入拆解 Java 虚拟机/18即时编译器的中间表达形式/">
+      18即时编译器的中间表达形式
     </a>
   </h2>
 
@@ -381,10 +381,12 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h1 id="异常的基本概念"><a href="#异常的基本概念" class="headerlink" title="异常的基本概念"></a>异常的基本概念</h1><p><img src="http://liyong.ac.cn/pic/1546248609299.png" alt="1546248609299"></p>
+      <h1 id="中间表达形式（IR）"><a href="#中间表达形式（IR）" class="headerlink" title="中间表达形式（IR）"></a>中间表达形式（IR）</h1><p>如果不考虑解释执行的话，从 Java 源代码到最终的机器码实际上经过了两轮编译：Java 编译器将 Java 源代码编译成 Java 字节码，而即时编译器则将 Java 字节码编译成机器码。</p>
+<p> Java 字节码本身并不适合直接作为可供优化的 IR。这是因为现代编译器一般采用静态单赋值（Static Single Assignment，SSA）IR。这种 IR 的特点是每个变量只能被赋值一次，而且只有当变量被赋值之后才能使用。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">示例：</span><br><span class="line">x1=<span class="number">4</span>*<span class="number">1024</span> 经过常量折叠后变为 x1=<span class="number">4096</span></span><br><span class="line">x1=<span class="number">4</span>; y1=x1 经过常量传播后变为 x1=<span class="number">4</span>; y1=<span class="number">4</span></span><br><span class="line">y1=x1*<span class="number">3</span> 经过强度削减后变为 y1=(x1&lt;&lt;<span class="number">1</span>)+x1</span><br><span class="line"><span class="keyword">if</span>(<span class="number">2</span>&gt;<span class="number">1</span>)&#123;y1=<span class="number">1</span>;&#125;<span class="keyword">else</span>&#123;y2=<span class="number">1</span>;&#125;经过死代码删除后变为 y1=<span class="number">1</span></span><br></pre></td></tr></table></figure>
       
         <div class="readmore">
-          <a href="/2019/03/11/aa_category/se/深入拆解 Java 虚拟机/06JVM是如何处理异常的/" class="flat-box">
+          <a href="/2019/03/11/se/深入拆解 Java 虚拟机/18即时编译器的中间表达形式/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -419,7 +421,7 @@
       
         
   <h2 class="title">
-    <a href="/2018/08/31/aa_category/se/Resource/">
+    <a href="/2018/08/31/se/Resource/">
       Resource
     </a>
   </h2>
@@ -487,7 +489,7 @@
       
       
         <div class="readmore">
-          <a href="/2018/08/31/aa_category/se/Resource/" class="flat-box">
+          <a href="/2018/08/31/se/Resource/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -520,7 +522,7 @@
       
         
   <h2 class="title">
-    <a href="/2018/04/02/aa_category/se/gc&mem/javap-指令集/">
+    <a href="/2018/04/02/se/gc&mem/javap-指令集/">
       javap-指令集
     </a>
   </h2>
@@ -588,7 +590,7 @@
       <h1 id="栈和局部变量操作"><a href="#栈和局部变量操作" class="headerlink" title="栈和局部变量操作"></a>栈和局部变量操作</h1><h2 id="将常量压入栈的指令"><a href="#将常量压入栈的指令" class="headerlink" title="将常量压入栈的指令"></a>将常量压入栈的指令</h2><p>aconst_null 将null对象引用压入栈<br>iconst_m1 将int类型常量-1压入栈<br>iconst_0 将int类型常量0压入栈<br>iconst_1 将int类型常量1压入栈<br>iconst_2 将int类型常量2压入栈<br>iconst_3 将int类型常量3压入栈<br>iconst_4 将int类型常量4压入栈<br>iconst_5 将int类型常量5压入栈<br>lconst_0 将long类型常量0压入栈<br>lconst_1 将long类型常量1压入栈<br>fconst_0 将float类型常量0压入栈<br>fconst_1 将float类型常量1压入栈<br>dconst_0 将double类型常量0压入栈<br>dconst_1 将double类型常量1压入栈<br>bipush 将一个8位带符号整数压入栈<br>sipush 将16位带符号整数压入栈<br>ldc 把常量池中的项压入栈<br>ldc_w 把常量池中的项压入栈（使用宽索引）<br>ldc2_w 把常量池中long类型或者double类型的项压入栈（使用宽索引）</p>
       
         <div class="readmore">
-          <a href="/2018/04/02/aa_category/se/gc&mem/javap-指令集/" class="flat-box">
+          <a href="/2018/04/02/se/gc&mem/javap-指令集/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -623,7 +625,7 @@
       
         
   <h2 class="title">
-    <a href="/2018/03/23/aa_category/se/Object-源码分析/">
+    <a href="/2018/03/23/se/Object-源码分析/">
       Object
     </a>
   </h2>
@@ -692,7 +694,7 @@
 <p>static JNINativeMethod methods[] = {<br>    {“hashCode”,    “()I”,                    (void *)&amp;JVM_IHashCode},<br>    {“wait”,        “(J)V”,                   (void *)&amp;JVM_MonitorWait},<br>    {“notify”,      “()V”,                    (void *)&amp;JVM_MonitorNotify},<br>    {“notifyAll”,   “()V”,                    (void *)&amp;JVM_MonitorNotifyAll},<br>    {“clone”,       “()Ljava/lang/Object;”,   (void *)&amp;JVM_Clone},<br>};</p>
       
         <div class="readmore">
-          <a href="/2018/03/23/aa_category/se/Object-源码分析/" class="flat-box">
+          <a href="/2018/03/23/se/Object-源码分析/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -727,7 +729,7 @@
       
         
   <h2 class="title">
-    <a href="/2018/01/28/aa_category/se/gc&mem/内存间交互/">
+    <a href="/2018/01/28/se/gc&mem/内存间交互/">
       内存间交互
     </a>
   </h2>
@@ -795,7 +797,7 @@
       
       
         <div class="readmore">
-          <a href="/2018/01/28/aa_category/se/gc&mem/内存间交互/" class="flat-box">
+          <a href="/2018/01/28/se/gc&mem/内存间交互/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -830,7 +832,7 @@
       
         
   <h2 class="title">
-    <a href="/2018/01/21/aa_category/se/gc&mem/Java类加载/">
+    <a href="/2018/01/21/se/gc&mem/Java类加载/">
       Java类加载
     </a>
   </h2>
@@ -898,7 +900,7 @@
       
       
         <div class="readmore">
-          <a href="/2018/01/21/aa_category/se/gc&mem/Java类加载/" class="flat-box">
+          <a href="/2018/01/21/se/gc&mem/Java类加载/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -931,7 +933,7 @@
       
         
   <h2 class="title">
-    <a href="/2018/01/21/aa_category/se/thread/ThreadLocal-源码分析/">
+    <a href="/2018/01/21/se/thread/ThreadLocal-源码分析/">
       ThreadLocal:源码分析
     </a>
   </h2>
@@ -999,7 +1001,7 @@
       
       
         <div class="readmore">
-          <a href="/2018/01/21/aa_category/se/thread/ThreadLocal-源码分析/" class="flat-box">
+          <a href="/2018/01/21/se/thread/ThreadLocal-源码分析/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -1034,7 +1036,7 @@
       
         
   <h2 class="title">
-    <a href="/2018/01/19/aa_category/se/thread/ThreadPoolExecutor-源码分析/">
+    <a href="/2018/01/19/se/thread/ThreadPoolExecutor-源码分析/">
       ThreadPoolExecutor:源码分析
     </a>
   </h2>
@@ -1104,7 +1106,7 @@
 <p>RUNNING:接受任务，并处理队列中的任务<br>SHUTDOWN：关闭接收新任务，但是处理已有队列中的任务<br>STOP：不接收新的任务，不处理队列中已有的任务<br>TIDYING：所有任务已经处理完成，触发钩子方法terminated<br>TERMINATED：方法terminated调用完成时候的状态</p>
       
         <div class="readmore">
-          <a href="/2018/01/19/aa_category/se/thread/ThreadPoolExecutor-源码分析/" class="flat-box">
+          <a href="/2018/01/19/se/thread/ThreadPoolExecutor-源码分析/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -1139,7 +1141,7 @@
       
         
   <h2 class="title">
-    <a href="/2017/11/08/aa_category/se/reflect/reflect/">
+    <a href="/2017/11/08/se/reflect/reflect/">
       reflect
     </a>
   </h2>
@@ -1213,7 +1215,7 @@
 </ul>
       
         <div class="readmore">
-          <a href="/2017/11/08/aa_category/se/reflect/reflect/" class="flat-box">
+          <a href="/2017/11/08/se/reflect/reflect/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -1246,7 +1248,7 @@
       
         
   <h2 class="title">
-    <a href="/2017/05/30/aa_category/se/乱码总结/">
+    <a href="/2017/05/30/se/乱码总结/">
       乱码总结
     </a>
   </h2>
@@ -1314,7 +1316,7 @@
       
       
         <div class="readmore">
-          <a href="/2017/05/30/aa_category/se/乱码总结/" class="flat-box">
+          <a href="/2017/05/30/se/乱码总结/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -1347,7 +1349,7 @@
       
         
   <h2 class="title">
-    <a href="/2017/05/30/aa_category/se/常见编码格式/">
+    <a href="/2017/05/30/se/常见编码格式/">
       常见编码格式
     </a>
   </h2>
@@ -1415,7 +1417,7 @@
       <h2 id="为什么编码？"><a href="#为什么编码？" class="headerlink" title="为什么编码？"></a>为什么编码？</h2><p>1、计算机中最小存储单位为一个字节，即8个bit，所以能表示的范围为0-255<br>2、人类要表示的符号太多，无法用一个字节来完全表示<br>要解决这个矛盾就要新的数据结构char，从char到byte就需要编码</p>
       
         <div class="readmore">
-          <a href="/2017/05/30/aa_category/se/常见编码格式/" class="flat-box">
+          <a href="/2017/05/30/se/常见编码格式/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -1448,7 +1450,7 @@
       
         
   <h2 class="title">
-    <a href="/2017/05/30/aa_category/se/gc&mem/垃圾收集算法/">
+    <a href="/2017/05/30/se/gc&mem/垃圾收集算法/">
       垃圾收集算法
     </a>
   </h2>
@@ -1516,7 +1518,7 @@
       <p>垃圾收集器通常会假设大部分的对象的存活时间都非常短，只有少数对象的存活时间比较长。<br>垃圾收集算法在JVM中主要是复制算法（新生代GC）和标记/整理算法（老年代GC）。</p>
       
         <div class="readmore">
-          <a href="/2017/05/30/aa_category/se/gc&mem/垃圾收集算法/" class="flat-box">
+          <a href="/2017/05/30/se/gc&mem/垃圾收集算法/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -1551,7 +1553,7 @@
       
         
   <h2 class="title">
-    <a href="/2017/05/30/aa_category/se/gc&mem/对象已死吗/">
+    <a href="/2017/05/30/se/gc&mem/对象已死吗/">
       对象已死吗
     </a>
   </h2>
@@ -1619,7 +1621,7 @@
       <h2 id="引用计数算法"><a href="#引用计数算法" class="headerlink" title="引用计数算法"></a>引用计数算法</h2><p>给对象添加一个引用计数器，每当有一个地方引用它时，计数器值就加1；当引用失效时，计数器值就减1；任何时刻计数器为0的对象就是不可能再被使用的。<br>主流的java虚拟机里面没有选用这个算法来管理内存，主要原因是它很难解决对象之间相互循环引用的问题。</p>
       
         <div class="readmore">
-          <a href="/2017/05/30/aa_category/se/gc&mem/对象已死吗/" class="flat-box">
+          <a href="/2017/05/30/se/gc&mem/对象已死吗/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -1654,7 +1656,7 @@
       
         
   <h2 class="title">
-    <a href="/2017/05/29/aa_category/se/gc&mem/HotSpot虚拟机对象探秘/">
+    <a href="/2017/05/29/se/gc&mem/HotSpot虚拟机对象探秘/">
       HotSpot虚拟机对象探秘
     </a>
   </h2>
@@ -1722,7 +1724,7 @@
       <h2 id="对象的创建"><a href="#对象的创建" class="headerlink" title="对象的创建"></a>对象的创建</h2><p>虚拟机遇到一条new指令时，首先将去检查这个指令的参数是否能在常量池中定位到一个类的符号引用，并且检查这个符号引用代表的类是否已被加载、解析和初始化过的。如果没有，那必须先执行相应的类加载过程</p>
       
         <div class="readmore">
-          <a href="/2017/05/29/aa_category/se/gc&mem/HotSpot虚拟机对象探秘/" class="flat-box">
+          <a href="/2017/05/29/se/gc&mem/HotSpot虚拟机对象探秘/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -1755,7 +1757,7 @@
       
         
   <h2 class="title">
-    <a href="/2017/05/29/aa_category/se/gc&mem/运行时数据区域/">
+    <a href="/2017/05/29/se/gc&mem/运行时数据区域/">
       运行时数据区域
     </a>
   </h2>
@@ -1823,7 +1825,7 @@
       <p> <img src="1.jpg" alt="1"></p>
       
         <div class="readmore">
-          <a href="/2017/05/29/aa_category/se/gc&mem/运行时数据区域/" class="flat-box">
+          <a href="/2017/05/29/se/gc&mem/运行时数据区域/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -2070,6 +2072,8 @@
         
           <li><a class="flat-box" title="/categories/db/" href="/categories/db/"><div class='name'>db</div><div class='badge'>(26)</div></a></li>
         
+          <li><a class="flat-box child" title="/categories/db/mysql/" href="/categories/db/mysql/"><div class='name'>mysql</div><div class='badge'>(1)</div></a></li>
+        
           <li><a class="flat-box" title="/categories/ee/" href="/categories/ee/"><div class='name'>ee</div><div class='badge'>(1)</div></a></li>
         
           <li><a class="flat-box" title="/categories/javadoc/" href="/categories/javadoc/"><div class='name'>javadoc</div><div class='badge'>(1)</div></a></li>
@@ -2078,7 +2082,7 @@
         
           <li><a class="flat-box" title="/categories/log/" href="/categories/log/"><div class='name'>log</div><div class='badge'>(3)</div></a></li>
         
-          <li><a class="flat-box" title="/categories/maven/" href="/categories/maven/"><div class='name'>maven</div><div class='badge'>(4)</div></a></li>
+          <li><a class="flat-box" title="/categories/maven/" href="/categories/maven/"><div class='name'>maven</div><div class='badge'>(1)</div></a></li>
         
           <li><a class="flat-box" title="/categories/methodology/" href="/categories/methodology/"><div class='name'>methodology</div><div class='badge'>(3)</div></a></li>
         
@@ -2102,13 +2106,15 @@
         
           <li><a class="flat-box" title="/categories/thread/" href="/categories/thread/"><div class='name'>thread</div><div class='badge'>(3)</div></a></li>
         
-          <li><a class="flat-box" title="/categories/tool/" href="/categories/tool/"><div class='name'>tool</div><div class='badge'>(1)</div></a></li>
+          <li><a class="flat-box" title="/categories/tool/" href="/categories/tool/"><div class='name'>tool</div><div class='badge'>(6)</div></a></li>
         
-          <li><a class="flat-box" title="/categories/uml/" href="/categories/uml/"><div class='name'>uml</div><div class='badge'>(1)</div></a></li>
+          <li><a class="flat-box child" title="/categories/tool/mat/" href="/categories/tool/mat/"><div class='name'>mat</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box child" title="/categories/tool/maven/" href="/categories/tool/maven/"><div class='name'>maven</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box child" title="/categories/tool/uml/" href="/categories/tool/uml/"><div class='name'>uml</div><div class='badge'>(1)</div></a></li>
         
           <li><a class="flat-box" title="/categories/web/" href="/categories/web/"><div class='name'>web</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box" title="/categories/工具/" href="/categories/工具/"><div class='name'>工具</div><div class='badge'>(1)</div></a></li>
         
           <li><a class="flat-box" title="/categories/方法论/" href="/categories/方法论/"><div class='name'>方法论</div><div class='badge'>(2)</div></a></li>
         
@@ -2162,7 +2168,7 @@
 </header>
 
     <div class='content pure'>
-      <a href="/tags/Java资源大全/" style="font-size: 14px; color: #999">Java资源大全</a> <a href="/tags/algorithm/" style="font-size: 23.29px; color: #5a5a5a">algorithm</a> <a href="/tags/annotation/" style="font-size: 14px; color: #999">annotation</a> <a href="/tags/boot/" style="font-size: 14px; color: #999">boot</a> <a href="/tags/builder/" style="font-size: 14px; color: #999">builder</a> <a href="/tags/cache/" style="font-size: 14px; color: #999">cache</a> <a href="/tags/cloud/" style="font-size: 14px; color: #999">cloud</a> <a href="/tags/code/" style="font-size: 14px; color: #999">code</a> <a href="/tags/concurrent/" style="font-size: 20.43px; color: #6d6d6d">concurrent</a> <a href="/tags/db/" style="font-size: 22.57px; color: #5f5f5f">db</a> <a href="/tags/ee/" style="font-size: 14px; color: #999">ee</a> <a href="/tags/gc/" style="font-size: 15.43px; color: #8f8f8f">gc</a> <a href="/tags/git/" style="font-size: 14px; color: #999">git</a> <a href="/tags/id/" style="font-size: 14px; color: #999">id</a> <a href="/tags/jdbc/" style="font-size: 14px; color: #999">jdbc</a> <a href="/tags/jmm/" style="font-size: 14px; color: #999">jmm</a> <a href="/tags/jvm/" style="font-size: 21.86px; color: #646464">jvm</a> <a href="/tags/lifecycle/" style="font-size: 14.71px; color: #949494">lifecycle</a> <a href="/tags/linux/" style="font-size: 19px; color: #777">linux</a> <a href="/tags/lock/" style="font-size: 15.43px; color: #8f8f8f">lock</a> <a href="/tags/log/" style="font-size: 14px; color: #999">log</a> <a href="/tags/log4j2/" style="font-size: 14.71px; color: #949494">log4j2</a> <a href="/tags/mapper/" style="font-size: 14px; color: #999">mapper</a> <a href="/tags/maven/" style="font-size: 16.14px; color: #8a8a8a">maven</a> <a href="/tags/memory/" style="font-size: 17.57px; color: #818181">memory</a> <a href="/tags/methodology/" style="font-size: 15.43px; color: #8f8f8f">methodology</a> <a href="/tags/middleware/" style="font-size: 16.86px; color: #868686">middleware</a> <a href="/tags/mvc/" style="font-size: 14.71px; color: #949494">mvc</a> <a href="/tags/mybatis/" style="font-size: 19.71px; color: #727272">mybatis</a> <a href="/tags/mysql/" style="font-size: 21.14px; color: #686868">mysql</a> <a href="/tags/netty/" style="font-size: 15.43px; color: #8f8f8f">netty</a> <a href="/tags/nio/" style="font-size: 14.71px; color: #949494">nio</a> <a href="/tags/oracle/" style="font-size: 16.14px; color: #8a8a8a">oracle</a> <a href="/tags/other/" style="font-size: 14px; color: #999">other</a> <a href="/tags/plugin/" style="font-size: 15.43px; color: #8f8f8f">plugin</a> <a href="/tags/plugins/" style="font-size: 14px; color: #999">plugins</a> <a href="/tags/redis/" style="font-size: 16.14px; color: #8a8a8a">redis</a> <a href="/tags/reflect/" style="font-size: 14.71px; color: #949494">reflect</a> <a href="/tags/return/" style="font-size: 14px; color: #999">return</a> <a href="/tags/se/" style="font-size: 24px; color: #555">se</a> <a href="/tags/select/" style="font-size: 14px; color: #999">select</a> <a href="/tags/source/" style="font-size: 16.14px; color: #8a8a8a">source</a> <a href="/tags/spring/" style="font-size: 18.29px; color: #7c7c7c">spring</a> <a href="/tags/standard/" style="font-size: 16.86px; color: #868686">standard</a> <a href="/tags/storm/" style="font-size: 14px; color: #999">storm</a> <a href="/tags/thread/" style="font-size: 15.43px; color: #8f8f8f">thread</a> <a href="/tags/tool/" style="font-size: 14px; color: #999">tool</a> <a href="/tags/uml/" style="font-size: 14px; color: #999">uml</a> <a href="/tags/url/" style="font-size: 14px; color: #999">url</a> <a href="/tags/web/" style="font-size: 14px; color: #999">web</a> <a href="/tags/zk/" style="font-size: 14.71px; color: #949494">zk</a> <a href="/tags/工具/" style="font-size: 14px; color: #999">工具</a> <a href="/tags/性能调优/" style="font-size: 14.71px; color: #949494">性能调优</a> <a href="/tags/指令/" style="font-size: 14px; color: #999">指令</a> <a href="/tags/方法论/" style="font-size: 14.71px; color: #949494">方法论</a> <a href="/tags/源码分析/" style="font-size: 16.14px; color: #8a8a8a">源码分析</a> <a href="/tags/编码/" style="font-size: 15.43px; color: #8f8f8f">编码</a> <a href="/tags/虚拟机/" style="font-size: 14px; color: #999">虚拟机</a> <a href="/tags/设计模式/" style="font-size: 16.14px; color: #8a8a8a">设计模式</a>
+      <a href="/tags/Java资源大全/" style="font-size: 14px; color: #999">Java资源大全</a> <a href="/tags/algorithm/" style="font-size: 23.29px; color: #5a5a5a">algorithm</a> <a href="/tags/annotation/" style="font-size: 14px; color: #999">annotation</a> <a href="/tags/boot/" style="font-size: 14px; color: #999">boot</a> <a href="/tags/builder/" style="font-size: 14px; color: #999">builder</a> <a href="/tags/cache/" style="font-size: 14px; color: #999">cache</a> <a href="/tags/cloud/" style="font-size: 14px; color: #999">cloud</a> <a href="/tags/code/" style="font-size: 14px; color: #999">code</a> <a href="/tags/concurrent/" style="font-size: 20.43px; color: #6d6d6d">concurrent</a> <a href="/tags/db/" style="font-size: 22.57px; color: #5f5f5f">db</a> <a href="/tags/ee/" style="font-size: 14px; color: #999">ee</a> <a href="/tags/gc/" style="font-size: 15.43px; color: #8f8f8f">gc</a> <a href="/tags/git/" style="font-size: 14px; color: #999">git</a> <a href="/tags/id/" style="font-size: 14px; color: #999">id</a> <a href="/tags/jdbc/" style="font-size: 14px; color: #999">jdbc</a> <a href="/tags/jmm/" style="font-size: 14px; color: #999">jmm</a> <a href="/tags/jvm/" style="font-size: 21.86px; color: #646464">jvm</a> <a href="/tags/lifecycle/" style="font-size: 14.71px; color: #949494">lifecycle</a> <a href="/tags/linux/" style="font-size: 19px; color: #777">linux</a> <a href="/tags/lock/" style="font-size: 15.43px; color: #8f8f8f">lock</a> <a href="/tags/log/" style="font-size: 14px; color: #999">log</a> <a href="/tags/log4j2/" style="font-size: 14.71px; color: #949494">log4j2</a> <a href="/tags/mapper/" style="font-size: 14px; color: #999">mapper</a> <a href="/tags/maven/" style="font-size: 15.43px; color: #8f8f8f">maven</a> <a href="/tags/memory/" style="font-size: 17.57px; color: #818181">memory</a> <a href="/tags/methodology/" style="font-size: 15.43px; color: #8f8f8f">methodology</a> <a href="/tags/middleware/" style="font-size: 16.86px; color: #868686">middleware</a> <a href="/tags/mvc/" style="font-size: 14.71px; color: #949494">mvc</a> <a href="/tags/mybatis/" style="font-size: 19.71px; color: #727272">mybatis</a> <a href="/tags/mysql/" style="font-size: 21.14px; color: #686868">mysql</a> <a href="/tags/netty/" style="font-size: 15.43px; color: #8f8f8f">netty</a> <a href="/tags/nio/" style="font-size: 14.71px; color: #949494">nio</a> <a href="/tags/oracle/" style="font-size: 16.14px; color: #8a8a8a">oracle</a> <a href="/tags/other/" style="font-size: 14px; color: #999">other</a> <a href="/tags/plugin/" style="font-size: 14.71px; color: #949494">plugin</a> <a href="/tags/plugins/" style="font-size: 14px; color: #999">plugins</a> <a href="/tags/redis/" style="font-size: 16.14px; color: #8a8a8a">redis</a> <a href="/tags/reflect/" style="font-size: 14.71px; color: #949494">reflect</a> <a href="/tags/return/" style="font-size: 14px; color: #999">return</a> <a href="/tags/se/" style="font-size: 24px; color: #555">se</a> <a href="/tags/select/" style="font-size: 14px; color: #999">select</a> <a href="/tags/source/" style="font-size: 16.14px; color: #8a8a8a">source</a> <a href="/tags/spring/" style="font-size: 18.29px; color: #7c7c7c">spring</a> <a href="/tags/standard/" style="font-size: 16.86px; color: #868686">standard</a> <a href="/tags/storm/" style="font-size: 14px; color: #999">storm</a> <a href="/tags/thread/" style="font-size: 15.43px; color: #8f8f8f">thread</a> <a href="/tags/tool/" style="font-size: 15.43px; color: #8f8f8f">tool</a> <a href="/tags/uml/" style="font-size: 14px; color: #999">uml</a> <a href="/tags/url/" style="font-size: 14px; color: #999">url</a> <a href="/tags/web/" style="font-size: 14px; color: #999">web</a> <a href="/tags/zk/" style="font-size: 14.71px; color: #949494">zk</a> <a href="/tags/性能调优/" style="font-size: 14.71px; color: #949494">性能调优</a> <a href="/tags/指令/" style="font-size: 14px; color: #999">指令</a> <a href="/tags/方法论/" style="font-size: 14.71px; color: #949494">方法论</a> <a href="/tags/源码分析/" style="font-size: 16.14px; color: #8a8a8a">源码分析</a> <a href="/tags/编码/" style="font-size: 15.43px; color: #8f8f8f">编码</a> <a href="/tags/虚拟机/" style="font-size: 14px; color: #999">虚拟机</a> <a href="/tags/设计模式/" style="font-size: 16.14px; color: #8a8a8a">设计模式</a>
     </div>
   </section>
 

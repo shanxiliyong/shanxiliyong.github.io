@@ -1,0 +1,2443 @@
+<!DOCTYPE html>
+<!-- saved from url=(0043)https://segmentfault.com/a/1190000007309311 -->
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"><meta name="renderer" content="webkit"><meta property="qc:admins" content="15317273575564615446375"><meta property="og:image" content="https://static.segmentfault.com/v-5a742a0b/global/img/touch-icon.png"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"><meta name="alexaVerifyID" content="LkzCRJ7rPEUwt6fVey2vhxiw1vQ"><meta name="apple-itunes-app" content="app-id=958101793, app-argument="><title>Netty 源码分析之 二 贯穿Netty 的大动脉 ── ChannelPipeline (二) - 后台开发 - SegmentFault 思否</title><meta name="description" content="目录 源码之下无秘密 ── 做最好的 Netty 源码分析教程 Netty 源码分析之 番外篇 Java NIO 的前生今世 Java NIO 的前生今世 之一 简介 Java NIO 的前生今世 之二 NIO Channel 小结 Java NIO 的前生今世 之三 NIO B..."><meta name="keywords" content="java,netty,源码分析,源码,源码学习"><link rel="search" type="application/opensearchdescription+xml" href="https://segmentfault.com/opensearch.xml" title="SegmentFault"><link rel="shortcut icon" href="https://static.segmentfault.com/v-5a742a0b/global/img/favicon.ico"><link rel="apple-touch-icon" href="https://static.segmentfault.com/v-5a742a0b/global/img/touch-icon.png"><meta name="msapplication-TileColor" content="#009a61"><meta name="msapplication-square150x150logo" content="https://static.segmentfault.com/v-5a742a0b/global/img/touch-icon.png"><link rel="alternate" type="application/atom+xml" title="SegmentFault 最新问题" href="https://segmentfault.com/feeds/questions"><link rel="alternate" type="application/atom+xml" title="SegmentFault 最新文章" href="https://segmentfault.com/feeds/blogs"><link rel="stylesheet" href="./cpl03_files/global.css"><link rel="stylesheet" href="./cpl03_files/blog.css"><link rel="stylesheet" href="./cpl03_files/responsive.css"><script src="./cpl03_files/ca-pub-6330872677300335.js.下载"></script><script type="text/javascript" async="" id="ac_js86_$7639911091" src="./cpl03_files/r.js.下载"></script><link rel="preload" href="./cpl03_files/integrator.js.下载" as="script"><script type="text/javascript" src="./cpl03_files/integrator.js.下载"></script><meta name="chromesniffer" id="chromesniffer_meta" content="{&quot;百度统计&quot;:-1,&quot;Google Analytics&quot;:-1,&quot;jQuery&quot;:&quot;2.1.1&quot;,&quot;Raphael&quot;:&quot;2.1.0&quot;,&quot;SPDY&quot;:-1}"><script type="text/javascript" src="chrome-extension://fhhdlnnepfjhlhilgmeepgkhjmhhhjkh/js/detector.js"></script></head><body data-mod="blog" class="blog-post "><iframe src="./cpl03_files/acookie.html" style="width: 0px; height: 0px; display: none;"></iframe><!--[if lt IE 9]><div class="alert alert-danger topframe" role="alert">你的浏览器实在<strong>太太太太太太旧了</strong>，放学别走，升级完浏览器再说 <a target="_blank" class="alert-link" href="http://browsehappy.com">立即升级</a></div><![endif]--><img id="icon4weChat" style="height: 0;width: 0;" data-src="https://static.segmentfault.com/v-5a742a0b/global/img/touch-icon-512.png"><div class="global-nav sf-header sf-header--index"><nav class="container nav"><div class="visible-xs header-response"><a href="https://segmentfault.com/search" style="display:block"><i class="fa fa-search" aria-hidden="true"></i></a><div class="sf-header__logo sf-header__logo--response"><h1><a href="https://segmentfault.com/" style="height:24px; background-size: auto 24px;"></a></h1></div><a href="https://segmentfault.com/user/login" class="pull-right login-btn"><i class="fa fa-user" aria-hidden="true"></i></a><div class="bottom-nav hidden"><div class="opts"><a class="opts-group " href="https://segmentfault.com/"><i class="fa fa-home" aria-hidden="true"></i><span>首页</span></a><a class="opts-group " href="https://segmentfault.com/questions"><i class="fa fa-comments" aria-hidden="true"></i><span>问答</span></a><a class="opts-group active" href="https://segmentfault.com/blogs"><i class="fa fa-pencil-square" aria-hidden="true"></i><span>专栏</span></a><a class="opts-group " href="https://segmentfault.com/lives"><i class="fa fa-play-circle" aria-hidden="true"></i><span>讲堂</span></a><div class="opts-group"><div class="btn-group dropup"><i class="fa fa-bars dropdown hoverDropdown" data-toggle="dropdown" aria-hidden="true"><span>更多</span></i><ul class="dropdown-menu"><li><a href="https://segmentfault.com/jobs">职位</a></li><li><a href="https://segmentfault.com/events">活动</a></li><li><a href="https://segmentfault.com/tags">标签</a></li><li><a href="https://segmentfault.com/badges">徽章</a></li></ul></div></div></div></div></div><script src="./cpl03_files/hm.js.下载"></script><script async="" src="./cpl03_files/analytics.js.下载"></script><script>
+mobileScroll(
+    function(direction) { 
+        if (direction === 'down') {
+            document.querySelector('.bottom-nav').classList.add('hidden')
+        } else {
+            document.querySelector('.bottom-nav').classList.remove('hidden')
+        }
+    }
+);    
+function mobileScroll( fn ) {
+    var beforeScrollTop = document.documentElement.scrollTop || document.body.scrollTop,
+        fn = fn || function() {};
+    window.addEventListener("scroll", function() {
+        var afterScrollTop = document.documentElement.scrollTop || document.body.scrollTop,
+            delta = afterScrollTop - beforeScrollTop;
+        if( delta === 0 ) return false;
+        fn( delta > 0 ? "down" : "up" );
+        beforeScrollTop = afterScrollTop;
+    }, false);
+}
+</script><div class="row hidden-xs"><div class="col-sm-8 col-md-9 col-lg-9"><div class="sf-header__logo"><h1><a href="https://segmentfault.com/">SegmentFault</a></h1></div><div><ul class="menu list-inline pull-left hidden-xs"><li class="menu__item"><a href="https://segmentfault.com/" class="">首页</a></li><li class="menu__item"><a href="https://segmentfault.com/questions" class="">问答</a></li><li class="menu__item"><a href="https://segmentfault.com/blogs" class="active-nav">专栏</a></li><li class="menu__item"><a href="https://segmentfault.com/lives" class="">讲堂</a></li><li class="menu__item"><a href="https://segmentfault.com/tags" class="">标签</a></li><li class="menu__item menu__item--more dropdown"><a href="https://segmentfault.com/a/1190000007309311##" class="dropdown-toggle dropdownBtn" data-toggle="dropdown">
+                                        发现<i class="fa fa-caret-down" style="font-size: 14px;margin-left: 5px;" aria-hidden="true"></i></a><div class="dropdown-block hidden"><ul class="dropdown-content-menu"><li><a href="https://segmentfault.com/events">活动</a></li><li><a href="https://segmentfault.com/groups">技术圈<span class="notice notice-menu">hi</span></a></li><li><a href="https://segmentfault.com/jobs">找工作</a></li><li><a href="https://segmentfault.com/users">排行榜</a></li><li><a href="https://segmentfault.com/badges">徽章</a></li><li><a href="https://segmentfault.com/notes">笔记</a></li><li><a href="https://docs.segmentfault.com/" target="_blank">开发手册<i style="line-height: 20px;font-size: 12px;color: #F5A623;" class="ml10 fa fa-external-link-square"></i></a></li><li><a href="https://business.segmentfault.com/ads.html?utm_source=sf-header" target="_blank">广告投放<i style="line-height: 20px;font-size: 12px;color: #F5A623;" class="ml10 fa fa-external-link-square"></i></a></li></ul></div></li><li class="menu__item visible-sm-inline-block"><a href="https://segmentfault.com/search"><span class="glyphicon glyphicon-search" style="vertical-align: middle;"></span></a></li></ul><form action="https://segmentfault.com/search" class="header-search  hidden-sm hidden-xs pull-right"><button class="btn btn-link"><span class="sr-only">搜索</span><span class="glyphicon glyphicon-search"></span></button><input id="searchBox" name="q" type="text" placeholder="搜索问题或关键字" class="form-control" value=""></form></div></div><div class="col-sm-4 col-md-3 col-lg-3 text-right"><ul class="opts list-inline hidden-xs"><li class="opts__item"><a href="https://segmentfault.com/user/login" class="SFRegister btn-signin" style="margin-bottom:2px;">立即登录</a><a href="https://segmentfault.com/user/login" class="SFLogin ml10 btn-signup" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;Button&#39;, &#39;Click&#39;, &#39;Login&#39;]);">免费注册</a></li></ul></div></div></nav></div>
+    
+<input id="articleId" value="1190000007309311" class="hidden">
+<div class="wrap" data-blogid="1200000006726836">
+            <div id="loginBanner" class="hidden-sm hidden-xs loginBanner">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-7">
+                <h1 class="title">在 SegmentFault，学习技能、解决问题</h1>
+                <p class="desc">每个月，我们帮助 1000 万的开发者解决各种各样的技术问题。并助力他们在技术能力、职业生涯、影响力上获得提升。</p>
+            </div>
+            <div class="col-lg-3 col-lg-offset-3 col-md-4 col-md-offset-1">
+                <form class="register-form clearfix" action="https://segmentfault.com/api/user/phone/register">
+
+                    
+                    <a href="https://segmentfault.com/user/login" class="SFLogin btn btn-lg btn-primary mr15">免费注册</a>
+                    <a href="https://segmentfault.com/user/login" class="SFRegister btn btn-lg btn-primary">立即登录</a>
+                </form>
+            </div>
+        </div>
+    </div>
+        <i class="fa fa-times-circle" aria-hidden="true"></i>
+    </div>
+
+        <div class="post-topheader custom-">
+        <div class="container">
+            <div class="block-for-right-border">
+                <div class="row">
+                    <div class="col-md-9 col-sm-8 col-xs-12">
+                        <div class="post-topheader__info" data-username="永顺" data-userslug="yongshun" data-useravatar="https://sfault-avatar.b0.upaiyun.com/230/943/2309431397-58146bf50d551_big64">
+
+                            <h1 class="h3 post-topheader__info--title" id="articleTitle" data-id="1190000007309311">
+                                <a href="https://segmentfault.com/a/1190000007309311"> Netty 源码分析之 二 贯穿Netty 的大动脉 ── ChannelPipeline (二)</a>
+                            </h1>
+
+                            <div class="content__tech blog-type-common blog-type-0-before">
+                                <ul class="taglist--inline inline-block article__title--tag mr10">
+                                                                            <li class="tagPopup mb5">
+                                            <a class="tag" href="https://segmentfault.com/t/java/blogs" data-toggle="popover" data-img="https://sfault-avatar.b0.upaiyun.com/512/342/51234253-1040000000089449_huge256" data-placement="top" data-original-title="java" data-id="1040000000089449">
+                                                                                            <img src="./cpl03_files/868271510-54cb382abb7a1_small">
+                                                                                        java
+                                            </a>
+                                        </li>
+                                                                            <li class="tagPopup mb5">
+                                            <a class="tag" href="https://segmentfault.com/t/netty/blogs" data-toggle="popover" data-img="" data-placement="top" data-original-title="netty" data-id="1040000000089986">
+                                                                                        netty
+                                            </a>
+                                        </li>
+                                                                            <li class="tagPopup mb5">
+                                            <a class="tag" href="https://segmentfault.com/t/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/blogs" data-toggle="popover" data-img="" data-placement="top" data-original-title="源码分析" data-id="1040000002479741">
+                                                                                        源码分析
+                                            </a>
+                                        </li>
+                                                                            <li class="tagPopup mb5">
+                                            <a class="tag" href="https://segmentfault.com/t/%E6%BA%90%E7%A0%81/blogs" data-toggle="popover" data-img="" data-placement="top" data-original-title="源码" data-id="1040000000090545">
+                                                                                        源码
+                                            </a>
+                                        </li>
+                                                                            <li class="tagPopup mb5">
+                                            <a class="tag" href="https://segmentfault.com/t/%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/blogs" data-toggle="popover" data-img="" data-placement="top" data-original-title="源码学习" data-id="1040000000515397">
+                                                                                        源码学习
+                                            </a>
+                                        </li>
+                                                                    </ul>
+                                                                                                <div class="article__author">
+                                    <a href="https://segmentfault.com/u/yongshun" class="mr5 "><strong>永顺</strong></a>
+                                    2016年10月28日发布
+                                                                                                        </div>
+                            </div>
+
+                                                        <form class="form form__tech hidden" data-action="#">
+                                <span class="pull-right">
+                                    <button class="btn btn-default save-tags-btn" type="button">保存</button>
+                                </span>
+                                <div class="form-group" style="margin-right: 65px">
+                                    <label for="tags" class="sr-only">标签：至少1个，最多5个</label>
+                                    <input class="tagsInput form-control hidden" data-init="[{&quot;name&quot;:&quot;java&quot;,&quot;url&quot;:&quot;\/t\/java&quot;,&quot;id&quot;:&quot;1040000000089449&quot;,&quot;thumbnailUrl&quot;:&quot;https:\/\/sfault-avatar.b0.upaiyun.com\/512\/342\/51234253-1040000000089449_huge256&quot;,&quot;contentCount&quot;:24072,&quot;iconUrl&quot;:&quot;https:\/\/sfault-avatar.b0.upaiyun.com\/868\/271\/868271510-54cb382abb7a1_small&quot;},{&quot;name&quot;:&quot;netty&quot;,&quot;url&quot;:&quot;\/t\/netty&quot;,&quot;id&quot;:&quot;1040000000089986&quot;,&quot;thumbnailUrl&quot;:&quot;&quot;,&quot;contentCount&quot;:174,&quot;iconUrl&quot;:&quot;&quot;},{&quot;name&quot;:&quot;\u6e90\u7801\u5206\u6790&quot;,&quot;url&quot;:&quot;\/t\/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90&quot;,&quot;id&quot;:&quot;1040000002479741&quot;,&quot;thumbnailUrl&quot;:&quot;&quot;,&quot;contentCount&quot;:278,&quot;iconUrl&quot;:&quot;&quot;},{&quot;name&quot;:&quot;\u6e90\u7801&quot;,&quot;url&quot;:&quot;\/t\/%E6%BA%90%E7%A0%81&quot;,&quot;id&quot;:&quot;1040000000090545&quot;,&quot;thumbnailUrl&quot;:&quot;&quot;,&quot;contentCount&quot;:113,&quot;iconUrl&quot;:&quot;&quot;},{&quot;name&quot;:&quot;\u6e90\u7801\u5b66\u4e60&quot;,&quot;url&quot;:&quot;\/t\/%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0&quot;,&quot;id&quot;:&quot;1040000000515397&quot;,&quot;thumbnailUrl&quot;:&quot;&quot;,&quot;contentCount&quot;:93,&quot;iconUrl&quot;:&quot;&quot;}]" name="tags" type="text" placeholder="标签，如：php 可使用逗号,分号;分隔" data-role="tagsinput"><div class="sf-typeHelper sf-typeHelper--fortags"><span class="sf-typeHelper-item  "><img src="./cpl03_files/868271510-54cb382abb7a1_small">java<span data-role="remove">×</span></span><span class="sf-typeHelper-item  ">netty<span data-role="remove">×</span></span><span class="sf-typeHelper-item  ">源码分析<span data-role="remove">×</span></span><span class="sf-typeHelper-item  ">源码<span data-role="remove">×</span></span><span class="sf-typeHelper-item  ">源码学习<span data-role="remove">×</span></span><input type="text" data-role="sf_typeHelper-input" class="sf-typeHelper-input" placeholder="标签，如：php 可使用逗号,分号;分隔" style="width: 20em;"><ul class="sf-typeHelper-list dropdown-menu" style="display: none;"></ul></div>
+                                    <div role="tabpanel" class="techTags panel panel-default techTags-panel" data-tech="{&quot;\u5f00\u53d1\u8bed\u8a00&quot;:[{&quot;id&quot;:&quot;1040000000089436&quot;,&quot;name&quot;:&quot;javascript&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000089387&quot;,&quot;name&quot;:&quot;php&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000089571&quot;,&quot;name&quot;:&quot;html&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000089434&quot;,&quot;name&quot;:&quot;css&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000089449&quot;,&quot;name&quot;:&quot;java&quot;,&quot;iconUrl&quot;:&quot;https:\/\/sfault-avatar.b0.upaiyun.com\/868\/271\/868271510-54cb382abb7a1_small&quot;},{&quot;id&quot;:&quot;1040000000089409&quot;,&quot;name&quot;:&quot;html5&quot;,&quot;iconUrl&quot;:&quot;https:\/\/sfault-avatar.b0.upaiyun.com\/102\/500\/1025005915-54cb538538eea_small&quot;},{&quot;id&quot;:&quot;1040000000089534&quot;,&quot;name&quot;:&quot;python&quot;,&quot;iconUrl&quot;:&quot;https:\/\/sfault-avatar.b0.upaiyun.com\/252\/177\/2521771040-54cb53b372821_small&quot;},{&quot;id&quot;:&quot;1040000000089918&quot;,&quot;name&quot;:&quot;node.js&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000089741&quot;,&quot;name&quot;:&quot;c++&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000089457&quot;,&quot;name&quot;:&quot;c&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000090209&quot;,&quot;name&quot;:&quot;objective-c&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000090203&quot;,&quot;name&quot;:&quot;golang&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000089669&quot;,&quot;name&quot;:&quot;shell&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000531223&quot;,&quot;name&quot;:&quot;swift&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000089581&quot;,&quot;name&quot;:&quot;c#&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000089699&quot;,&quot;name&quot;:&quot;ruby&quot;,&quot;iconUrl&quot;:&quot;https:\/\/sfault-avatar.b0.upaiyun.com\/336\/760\/3367608758-54cb53ca5a132_small&quot;},{&quot;id&quot;:&quot;1040000000089686&quot;,&quot;name&quot;:&quot;bash&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000365394&quot;,&quot;name&quot;:&quot;typescript&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000091262&quot;,&quot;name&quot;:&quot;sass&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000090433&quot;,&quot;name&quot;:&quot;asp.net&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000090600&quot;,&quot;name&quot;:&quot;less&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000090208&quot;,&quot;name&quot;:&quot;lua&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000090228&quot;,&quot;name&quot;:&quot;scala&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000161068&quot;,&quot;name&quot;:&quot;coffeescript&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000090194&quot;,&quot;name&quot;:&quot;actionscript&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000090201&quot;,&quot;name&quot;:&quot;erlang&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000089698&quot;,&quot;name&quot;:&quot;perl&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000311191&quot;,&quot;name&quot;:&quot;rust&quot;,&quot;iconUrl&quot;:&quot;&quot;}],&quot;\u5e73\u53f0\u6846\u67b6&quot;:[{&quot;id&quot;:&quot;1040000000196640&quot;,&quot;name&quot;:&quot;laravel&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000090103&quot;,&quot;name&quot;:&quot;spring&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000089564&quot;,&quot;name&quot;:&quot;django&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000125263&quot;,&quot;name&quot;:&quot;flask&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000166256&quot;,&quot;name&quot;:&quot;express&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000089646&quot;,&quot;name&quot;:&quot;ruby-on-rails&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000090398&quot;,&quot;name&quot;:&quot;yii&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000116331&quot;,&quot;name&quot;:&quot;tornado&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000622042&quot;,&quot;name&quot;:&quot;koa&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000089638&quot;,&quot;name&quot;:&quot;struts&quot;,&quot;iconUrl&quot;:&quot;&quot;}],&quot;\u670d\u52a1\u5668&quot;:[{&quot;id&quot;:&quot;1040000000089392&quot;,&quot;name&quot;:&quot;linux&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000090145&quot;,&quot;name&quot;:&quot;nginx&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000089761&quot;,&quot;name&quot;:&quot;apache&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000366352&quot;,&quot;name&quot;:&quot;docker&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000090245&quot;,&quot;name&quot;:&quot;ubuntu&quot;,&quot;iconUrl&quot;:&quot;https:\/\/sfault-avatar.b0.upaiyun.com\/335\/109\/3351090335-569f0f26a2a86_small&quot;},{&quot;id&quot;:&quot;1040000000090249&quot;,&quot;name&quot;:&quot;centos&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000090117&quot;,&quot;name&quot;:&quot;tomcat&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000090401&quot;,&quot;name&quot;:&quot;\u7f13\u5b58&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000090107&quot;,&quot;name&quot;:&quot;\u8d1f\u8f7d\u5747\u8861&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000090646&quot;,&quot;name&quot;:&quot;unix&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000089648&quot;,&quot;name&quot;:&quot;hadoop&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000090609&quot;,&quot;name&quot;:&quot;windows-server&quot;,&quot;iconUrl&quot;:&quot;&quot;}],&quot;\u6570\u636e\u5e93\u548c\u7f13\u5b58&quot;:[{&quot;id&quot;:&quot;1040000000089439&quot;,&quot;name&quot;:&quot;mysql&quot;,&quot;iconUrl&quot;:&quot;https:\/\/sfault-avatar.b0.upaiyun.com\/949\/844\/9498447-54cb56e325a72_small&quot;},{&quot;id&quot;:&quot;1040000000090049&quot;,&quot;name&quot;:&quot;sql&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000089431&quot;,&quot;name&quot;:&quot;redis&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000089488&quot;,&quot;name&quot;:&quot;mongodb&quot;,&quot;iconUrl&quot;:&quot;https:\/\/sfault-avatar.b0.upaiyun.com\/183\/816\/1838168166-54cb5552ef5de_small&quot;},{&quot;id&quot;:&quot;1040000000090701&quot;,&quot;name&quot;:&quot;oracle&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000089432&quot;,&quot;name&quot;:&quot;nosql&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000089873&quot;,&quot;name&quot;:&quot;memcached&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000090424&quot;,&quot;name&quot;:&quot;sqlserver&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000090354&quot;,&quot;name&quot;:&quot;sqlite&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000090861&quot;,&quot;name&quot;:&quot;postgresql&quot;,&quot;iconUrl&quot;:&quot;&quot;}],&quot;\u5f00\u53d1\u5de5\u5177&quot;:[{&quot;id&quot;:&quot;1040000000089459&quot;,&quot;name&quot;:&quot;git&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000091226&quot;,&quot;name&quot;:&quot;github&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000089467&quot;,&quot;name&quot;:&quot;vim&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000089579&quot;,&quot;name&quot;:&quot;xcode&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000126097&quot;,&quot;name&quot;:&quot;sublime-text&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000002720957&quot;,&quot;name&quot;:&quot;visual-studio-code&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000089509&quot;,&quot;name&quot;:&quot;eclipse&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000090560&quot;,&quot;name&quot;:&quot;intellij-idea&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000090186&quot;,&quot;name&quot;:&quot;maven&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000089447&quot;,&quot;name&quot;:&quot;svn&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000090473&quot;,&quot;name&quot;:&quot;ide&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000090524&quot;,&quot;name&quot;:&quot;atom&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000090231&quot;,&quot;name&quot;:&quot;visual-studio&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000090216&quot;,&quot;name&quot;:&quot;emacs&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000183694&quot;,&quot;name&quot;:&quot;hg&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000089663&quot;,&quot;name&quot;:&quot;textmate&quot;,&quot;iconUrl&quot;:&quot;&quot;}],&quot;\u7cfb\u7edf\u8bbe\u5907&quot;:[{&quot;id&quot;:&quot;1040000000089658&quot;,&quot;name&quot;:&quot;android&quot;,&quot;iconUrl&quot;:&quot;https:\/\/sfault-avatar.b0.upaiyun.com\/287\/281\/287281599-5a263edae47e9_small&quot;},{&quot;id&quot;:&quot;1040000000089442&quot;,&quot;name&quot;:&quot;ios&quot;,&quot;iconUrl&quot;:&quot;https:\/\/sfault-avatar.b0.upaiyun.com\/300\/191\/3001919899-5488009eb028c_small&quot;},{&quot;id&quot;:&quot;1040000000089407&quot;,&quot;name&quot;:&quot;chrome&quot;,&quot;iconUrl&quot;:&quot;https:\/\/sfault-avatar.b0.upaiyun.com\/281\/209\/2812096638-54cb55083b2cc_small&quot;},{&quot;id&quot;:&quot;1040000000089709&quot;,&quot;name&quot;:&quot;windows&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000089498&quot;,&quot;name&quot;:&quot;iphone&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000090217&quot;,&quot;name&quot;:&quot;firefox&quot;,&quot;iconUrl&quot;:&quot;https:\/\/sfault-avatar.b0.upaiyun.com\/334\/705\/334705769-54cb552688a94_small&quot;},{&quot;id&quot;:&quot;1040000000125504&quot;,&quot;name&quot;:&quot;internet-explorer&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000089499&quot;,&quot;name&quot;:&quot;safari&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000090638&quot;,&quot;name&quot;:&quot;ipad&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000090218&quot;,&quot;name&quot;:&quot;opera&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000002871462&quot;,&quot;name&quot;:&quot;apple-watch&quot;,&quot;iconUrl&quot;:&quot;&quot;}],&quot;\u5176\u5b83&quot;:[{&quot;id&quot;:&quot;1040000000089409&quot;,&quot;name&quot;:&quot;html5&quot;,&quot;iconUrl&quot;:&quot;https:\/\/sfault-avatar.b0.upaiyun.com\/102\/500\/1025005915-54cb538538eea_small&quot;},{&quot;id&quot;:&quot;1040000002893277&quot;,&quot;name&quot;:&quot;react.js&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000090137&quot;,&quot;name&quot;:&quot;\u641c\u7d22\u5f15\u64ce&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000123810&quot;,&quot;name&quot;:&quot;virtualenv&quot;,&quot;iconUrl&quot;:&quot;&quot;},{&quot;id&quot;:&quot;1040000000090316&quot;,&quot;name&quot;:&quot;lucene&quot;,&quot;iconUrl&quot;:&quot;&quot;}]}" style="display: none;">
+    <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="https://segmentfault.com/a/1190000007309311#开发语言" aria-controls="type" role="tab" data-toggle="tab">开发语言</a>
+            </li>
+                    <li role="presentation" class=""><a href="https://segmentfault.com/a/1190000007309311#平台框架" aria-controls="type" role="tab" data-toggle="tab">平台框架</a>
+            </li>
+                    <li role="presentation" class=""><a href="https://segmentfault.com/a/1190000007309311#服务器" aria-controls="type" role="tab" data-toggle="tab">服务器</a>
+            </li>
+                    <li role="presentation" class=""><a href="https://segmentfault.com/a/1190000007309311#数据库和缓存" aria-controls="type" role="tab" data-toggle="tab">数据库和缓存</a>
+            </li>
+                    <li role="presentation" class=""><a href="https://segmentfault.com/a/1190000007309311#开发工具" aria-controls="type" role="tab" data-toggle="tab">开发工具</a>
+            </li>
+                    <li role="presentation" class=""><a href="https://segmentfault.com/a/1190000007309311#系统设备" aria-controls="type" role="tab" data-toggle="tab">系统设备</a>
+            </li>
+                    <li role="presentation" class=""><a href="https://segmentfault.com/a/1190000007309311#其它" aria-controls="type" role="tab" data-toggle="tab">其它</a>
+            </li>
+            </ul>
+    <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="开发语言">
+                <ul class="taglist--inline">
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000089436&quot;,&quot;name&quot;:&quot;javascript&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                javascript
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000089387&quot;,&quot;name&quot;:&quot;php&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                php
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000089571&quot;,&quot;name&quot;:&quot;html&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                html
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000089434&quot;,&quot;name&quot;:&quot;css&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                css
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000089449&quot;,&quot;name&quot;:&quot;java&quot;,&quot;iconUrl&quot;:&quot;https:\/\/sfault-avatar.b0.upaiyun.com\/868\/271\/868271510-54cb382abb7a1_small&quot;}" href="javascript: void(0);">
+                                                                    <img src="./cpl03_files/868271510-54cb382abb7a1_small">
+                                                                java
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000089409&quot;,&quot;name&quot;:&quot;html5&quot;,&quot;iconUrl&quot;:&quot;https:\/\/sfault-avatar.b0.upaiyun.com\/102\/500\/1025005915-54cb538538eea_small&quot;}" href="javascript: void(0);">
+                                                                    <img src="./cpl03_files/1025005915-54cb538538eea_small">
+                                                                html5
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000089534&quot;,&quot;name&quot;:&quot;python&quot;,&quot;iconUrl&quot;:&quot;https:\/\/sfault-avatar.b0.upaiyun.com\/252\/177\/2521771040-54cb53b372821_small&quot;}" href="javascript: void(0);">
+                                                                    <img src="./cpl03_files/2521771040-54cb53b372821_small">
+                                                                python
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000089918&quot;,&quot;name&quot;:&quot;node.js&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                node.js
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000089741&quot;,&quot;name&quot;:&quot;c++&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                c++
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000089457&quot;,&quot;name&quot;:&quot;c&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                c
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000090209&quot;,&quot;name&quot;:&quot;objective-c&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                objective-c
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000090203&quot;,&quot;name&quot;:&quot;golang&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                golang
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000089669&quot;,&quot;name&quot;:&quot;shell&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                shell
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000531223&quot;,&quot;name&quot;:&quot;swift&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                swift
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000089581&quot;,&quot;name&quot;:&quot;c#&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                c#
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000089699&quot;,&quot;name&quot;:&quot;ruby&quot;,&quot;iconUrl&quot;:&quot;https:\/\/sfault-avatar.b0.upaiyun.com\/336\/760\/3367608758-54cb53ca5a132_small&quot;}" href="javascript: void(0);">
+                                                                    <img src="./cpl03_files/3367608758-54cb53ca5a132_small">
+                                                                ruby
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000089686&quot;,&quot;name&quot;:&quot;bash&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                bash
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000365394&quot;,&quot;name&quot;:&quot;typescript&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                typescript
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000091262&quot;,&quot;name&quot;:&quot;sass&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                sass
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000090433&quot;,&quot;name&quot;:&quot;asp.net&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                asp.net
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000090600&quot;,&quot;name&quot;:&quot;less&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                less
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000090208&quot;,&quot;name&quot;:&quot;lua&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                lua
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000090228&quot;,&quot;name&quot;:&quot;scala&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                scala
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000161068&quot;,&quot;name&quot;:&quot;coffeescript&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                coffeescript
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000090194&quot;,&quot;name&quot;:&quot;actionscript&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                actionscript
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000090201&quot;,&quot;name&quot;:&quot;erlang&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                erlang
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000089698&quot;,&quot;name&quot;:&quot;perl&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                perl
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000311191&quot;,&quot;name&quot;:&quot;rust&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                rust
+                            </a>
+                        </li>
+                                    </ul>
+            </div>
+                    <div role="tabpanel" class="tab-pane " id="平台框架">
+                <ul class="taglist--inline">
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000196640&quot;,&quot;name&quot;:&quot;laravel&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                laravel
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000090103&quot;,&quot;name&quot;:&quot;spring&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                spring
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000089564&quot;,&quot;name&quot;:&quot;django&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                django
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000125263&quot;,&quot;name&quot;:&quot;flask&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                flask
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000166256&quot;,&quot;name&quot;:&quot;express&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                express
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000089646&quot;,&quot;name&quot;:&quot;ruby-on-rails&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                ruby-on-rails
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000090398&quot;,&quot;name&quot;:&quot;yii&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                yii
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000116331&quot;,&quot;name&quot;:&quot;tornado&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                tornado
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000622042&quot;,&quot;name&quot;:&quot;koa&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                koa
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000089638&quot;,&quot;name&quot;:&quot;struts&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                struts
+                            </a>
+                        </li>
+                                    </ul>
+            </div>
+                    <div role="tabpanel" class="tab-pane " id="服务器">
+                <ul class="taglist--inline">
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000089392&quot;,&quot;name&quot;:&quot;linux&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                linux
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000090145&quot;,&quot;name&quot;:&quot;nginx&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                nginx
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000089761&quot;,&quot;name&quot;:&quot;apache&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                apache
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000366352&quot;,&quot;name&quot;:&quot;docker&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                docker
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000090245&quot;,&quot;name&quot;:&quot;ubuntu&quot;,&quot;iconUrl&quot;:&quot;https:\/\/sfault-avatar.b0.upaiyun.com\/335\/109\/3351090335-569f0f26a2a86_small&quot;}" href="javascript: void(0);">
+                                                                    <img src="./cpl03_files/3351090335-569f0f26a2a86_small">
+                                                                ubuntu
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000090249&quot;,&quot;name&quot;:&quot;centos&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                centos
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000090117&quot;,&quot;name&quot;:&quot;tomcat&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                tomcat
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000090401&quot;,&quot;name&quot;:&quot;\u7f13\u5b58&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                缓存
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000090107&quot;,&quot;name&quot;:&quot;\u8d1f\u8f7d\u5747\u8861&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                负载均衡
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000090646&quot;,&quot;name&quot;:&quot;unix&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                unix
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000089648&quot;,&quot;name&quot;:&quot;hadoop&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                hadoop
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000090609&quot;,&quot;name&quot;:&quot;windows-server&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                windows-server
+                            </a>
+                        </li>
+                                    </ul>
+            </div>
+                    <div role="tabpanel" class="tab-pane " id="数据库和缓存">
+                <ul class="taglist--inline">
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000089439&quot;,&quot;name&quot;:&quot;mysql&quot;,&quot;iconUrl&quot;:&quot;https:\/\/sfault-avatar.b0.upaiyun.com\/949\/844\/9498447-54cb56e325a72_small&quot;}" href="javascript: void(0);">
+                                                                    <img src="./cpl03_files/9498447-54cb56e325a72_small">
+                                                                mysql
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000090049&quot;,&quot;name&quot;:&quot;sql&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                sql
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000089431&quot;,&quot;name&quot;:&quot;redis&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                redis
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000089488&quot;,&quot;name&quot;:&quot;mongodb&quot;,&quot;iconUrl&quot;:&quot;https:\/\/sfault-avatar.b0.upaiyun.com\/183\/816\/1838168166-54cb5552ef5de_small&quot;}" href="javascript: void(0);">
+                                                                    <img src="./cpl03_files/1838168166-54cb5552ef5de_small">
+                                                                mongodb
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000090701&quot;,&quot;name&quot;:&quot;oracle&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                oracle
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000089432&quot;,&quot;name&quot;:&quot;nosql&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                nosql
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000089873&quot;,&quot;name&quot;:&quot;memcached&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                memcached
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000090424&quot;,&quot;name&quot;:&quot;sqlserver&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                sqlserver
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000090354&quot;,&quot;name&quot;:&quot;sqlite&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                sqlite
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000090861&quot;,&quot;name&quot;:&quot;postgresql&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                postgresql
+                            </a>
+                        </li>
+                                    </ul>
+            </div>
+                    <div role="tabpanel" class="tab-pane " id="开发工具">
+                <ul class="taglist--inline">
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000089459&quot;,&quot;name&quot;:&quot;git&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                git
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000091226&quot;,&quot;name&quot;:&quot;github&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                github
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000089467&quot;,&quot;name&quot;:&quot;vim&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                vim
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000089579&quot;,&quot;name&quot;:&quot;xcode&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                xcode
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000126097&quot;,&quot;name&quot;:&quot;sublime-text&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                sublime-text
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000002720957&quot;,&quot;name&quot;:&quot;visual-studio-code&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                visual-studio-code
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000089509&quot;,&quot;name&quot;:&quot;eclipse&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                eclipse
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000090560&quot;,&quot;name&quot;:&quot;intellij-idea&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                intellij-idea
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000090186&quot;,&quot;name&quot;:&quot;maven&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                maven
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000089447&quot;,&quot;name&quot;:&quot;svn&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                svn
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000090473&quot;,&quot;name&quot;:&quot;ide&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                ide
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000090524&quot;,&quot;name&quot;:&quot;atom&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                atom
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000090231&quot;,&quot;name&quot;:&quot;visual-studio&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                visual-studio
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000090216&quot;,&quot;name&quot;:&quot;emacs&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                emacs
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000183694&quot;,&quot;name&quot;:&quot;hg&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                hg
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000089663&quot;,&quot;name&quot;:&quot;textmate&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                textmate
+                            </a>
+                        </li>
+                                    </ul>
+            </div>
+                    <div role="tabpanel" class="tab-pane " id="系统设备">
+                <ul class="taglist--inline">
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000089658&quot;,&quot;name&quot;:&quot;android&quot;,&quot;iconUrl&quot;:&quot;https:\/\/sfault-avatar.b0.upaiyun.com\/287\/281\/287281599-5a263edae47e9_small&quot;}" href="javascript: void(0);">
+                                                                    <img src="./cpl03_files/287281599-5a263edae47e9_small">
+                                                                android
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000089442&quot;,&quot;name&quot;:&quot;ios&quot;,&quot;iconUrl&quot;:&quot;https:\/\/sfault-avatar.b0.upaiyun.com\/300\/191\/3001919899-5488009eb028c_small&quot;}" href="javascript: void(0);">
+                                                                    <img src="./cpl03_files/3001919899-5488009eb028c_small">
+                                                                ios
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000089407&quot;,&quot;name&quot;:&quot;chrome&quot;,&quot;iconUrl&quot;:&quot;https:\/\/sfault-avatar.b0.upaiyun.com\/281\/209\/2812096638-54cb55083b2cc_small&quot;}" href="javascript: void(0);">
+                                                                    <img src="./cpl03_files/2812096638-54cb55083b2cc_small">
+                                                                chrome
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000089709&quot;,&quot;name&quot;:&quot;windows&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                windows
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000089498&quot;,&quot;name&quot;:&quot;iphone&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                iphone
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000090217&quot;,&quot;name&quot;:&quot;firefox&quot;,&quot;iconUrl&quot;:&quot;https:\/\/sfault-avatar.b0.upaiyun.com\/334\/705\/334705769-54cb552688a94_small&quot;}" href="javascript: void(0);">
+                                                                    <img src="./cpl03_files/334705769-54cb552688a94_small">
+                                                                firefox
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000125504&quot;,&quot;name&quot;:&quot;internet-explorer&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                internet-explorer
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000089499&quot;,&quot;name&quot;:&quot;safari&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                safari
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000090638&quot;,&quot;name&quot;:&quot;ipad&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                ipad
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000090218&quot;,&quot;name&quot;:&quot;opera&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                opera
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000002871462&quot;,&quot;name&quot;:&quot;apple-watch&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                apple-watch
+                            </a>
+                        </li>
+                                    </ul>
+            </div>
+                    <div role="tabpanel" class="tab-pane " id="其它">
+                <ul class="taglist--inline">
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000089409&quot;,&quot;name&quot;:&quot;html5&quot;,&quot;iconUrl&quot;:&quot;https:\/\/sfault-avatar.b0.upaiyun.com\/102\/500\/1025005915-54cb538538eea_small&quot;}" href="javascript: void(0);">
+                                                                    <img src="./cpl03_files/1025005915-54cb538538eea_small">
+                                                                html5
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000002893277&quot;,&quot;name&quot;:&quot;react.js&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                react.js
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000090137&quot;,&quot;name&quot;:&quot;\u641c\u7d22\u5f15\u64ce&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                搜索引擎
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000123810&quot;,&quot;name&quot;:&quot;virtualenv&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                virtualenv
+                            </a>
+                        </li>
+                                            <li class="mb5">
+                            <a class="tag" data-tag="{&quot;id&quot;:&quot;1040000000090316&quot;,&quot;name&quot;:&quot;lucene&quot;,&quot;iconUrl&quot;:&quot;&quot;}" href="javascript: void(0);">
+                                                                lucene
+                            </a>
+                        </li>
+                                    </ul>
+            </div>
+            </div>
+</div>
+
+                                </div>
+                               
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-4 hidden-xs">
+                        <ul class="post-topheader__side list-unstyled">
+                            <li>
+                                <button type="button" class="btn btn-success btn-sm " data-id="1190000007309311" id="sideLike"><span id="sideLikeText">赞</span>&nbsp;&nbsp;<span class="seprator">|</span>&nbsp;&nbsp;
+                                            <span id="sideLikeNum">7</span></button><button type="button" id="sideBookmark" class="btn btn-default btn-sm " data-id="1190000007309311" data-type="article"><span id="sideBookmarkText">收藏</span>&nbsp;&nbsp;<span class="seprator">|</span>&nbsp;&nbsp;<span id="sideBookmarkNum">8</span></button>                            </li>
+                            <li>
+                                <strong class="no-stress">3.9k</strong> 次浏览
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- end .post-topheader -->
+
+    <div class="container mt30">
+        <div class="row">
+            <div class="col-xs-12 col-md-9 main ">
+
+                
+                <div class="article fmt article__content" data-id="1190000007309311" data-license="cc">
+                    
+<h2 id="articleHeader0">目录</h2>
+<p><a href="https://segmentfault.com/a/1190000007282628">源码之下无秘密 ── 做最好的 Netty 源码分析教程</a></p>
+<ul>
+<li>
+<p><a href="https://segmentfault.com/a/1190000006824091" target="_blank">Netty 源码分析之 番外篇 Java NIO 的前生今世</a></p>
+<ul>
+<li><p><a href="https://segmentfault.com/a/1190000006824091">Java NIO 的前生今世 之一 简介</a></p></li>
+<li><p><a href="https://segmentfault.com/a/1190000006824107" target="_blank">Java NIO 的前生今世 之二 NIO Channel 小结</a></p></li>
+<li><p><a href="https://segmentfault.com/a/1190000006824155">Java NIO 的前生今世 之三 NIO Buffer 详解</a></p></li>
+<li><p><a href="https://segmentfault.com/a/1190000006824196" target="_blank">Java NIO 的前生今世 之四 NIO Selector 详解</a></p></li>
+</ul>
+</li>
+<li><p><a href="https://segmentfault.com/a/1190000007282597">Netty 源码分析之 零 磨刀不误砍柴工 源码分析环境搭建</a></p></li>
+<li>
+<p>Netty 源码分析之 一 揭开 Bootstrap 神秘的红盖头</p>
+<ul>
+<li><p><a href="https://segmentfault.com/a/1190000007282789" target="_blank">Netty 源码分析之 一 揭开 Bootstrap 神秘的红盖头 (客户端)</a></p></li>
+<li><p><a href="https://segmentfault.com/a/1190000007283053">Netty 源码分析之 一 揭开 Bootstrap 神秘的红盖头 (服务器端)</a></p></li>
+</ul>
+</li>
+<li><p><a href="https://segmentfault.com/a/1190000007308934" target="_blank">Netty 源码分析之 二 贯穿 Netty 的大动脉 ── ChannelPipeline (一)</a></p></li>
+<li><p><a href="https://segmentfault.com/a/1190000007309311">Netty 源码分析之 二 贯穿 Netty 的大动脉 ── ChannelPipeline (二)</a></p></li>
+</ul>
+<hr>
+<p>接上篇 <a href="https://segmentfault.com/a/1190000007308934" target="_blank">Netty 源码分析之 二 贯穿Netty 的大动脉 ── ChannelPipeline (一)</a></p>
+<h2 id="articleHeader1">ChannelHandler 的名字</h2>
+<p>我们注意到, pipeline.addXXX 都有一个重载的方法, 例如 addLast, 它有一个重载的版本是:</p>
+<div class="widget-codetool" style="display: none;">
+      <div class="widget-codetool--inner">
+      <span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="全选"></span>
+      <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="ChannelPipeline addLast(String name, ChannelHandler handler);" title="" data-original-title="复制"></span>
+      <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="放进笔记"></span>
+      </div>
+      </div><pre class="hljs aspectj"><code style="word-break: break-word; white-space: initial;"><span class="hljs-function">ChannelPipeline <span class="hljs-title">addLast</span><span class="hljs-params">(String name, ChannelHandler <span class="hljs-keyword">handler</span>)</span></span>;</code></pre>
+<p>第一个参数指定了所添加的 handler 的名字(更准确地说是 ChannelHandlerContext 的名字, 不过我们通常是以 handler 作为叙述的对象, 因此说成 handler 的名字便于理解). 那么 handler 的名字有什么用呢? 如果我们不设置name, 那么 handler 会有怎样的名字?<br>为了解答这些疑惑, 老规矩, 依然是从源码中找到答案.<br>我们还是以 addLast 方法为例:</p>
+<div class="widget-codetool" style="display: none;">
+      <div class="widget-codetool--inner">
+      <span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="全选"></span>
+      <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="@Override
+public ChannelPipeline addLast(String name, ChannelHandler handler) {
+    return addLast(null, name, handler);
+}" title="" data-original-title="复制"></span>
+      <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="放进笔记"></span>
+      </div>
+      </div><pre class="hljs aspectj"><code><span class="hljs-meta">@Override</span>
+<span class="hljs-keyword">public</span> <span class="hljs-function">ChannelPipeline <span class="hljs-title">addLast</span><span class="hljs-params">(String name, ChannelHandler <span class="hljs-keyword">handler</span>)</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">return</span> <span class="hljs-title">addLast</span><span class="hljs-params">(<span class="hljs-keyword">null</span>, name, <span class="hljs-keyword">handler</span>)</span></span>;
+}</code></pre>
+<p>这个方法会调用重载的 addLast 方法:</p>
+<div class="widget-codetool" style="display: none;">
+      <div class="widget-codetool--inner">
+      <span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="全选"></span>
+      <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="@Override
+public ChannelPipeline addLast(EventExecutorGroup group, final String name, ChannelHandler handler) {
+    synchronized (this) {
+        checkDuplicateName(name);
+
+        AbstractChannelHandlerContext newCtx = new DefaultChannelHandlerContext(this, group, name, handler);
+        addLast0(name, newCtx);
+    }
+
+    return this;
+}" title="" data-original-title="复制"></span>
+      <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="放进笔记"></span>
+      </div>
+      </div><pre class="hljs aspectj"><code><span class="hljs-meta">@Override</span>
+<span class="hljs-keyword">public</span> <span class="hljs-function">ChannelPipeline <span class="hljs-title">addLast</span><span class="hljs-params">(EventExecutorGroup group, <span class="hljs-keyword">final</span> String name, ChannelHandler <span class="hljs-keyword">handler</span>)</span> </span>{
+    <span class="hljs-keyword">synchronized</span> (<span class="hljs-keyword">this</span>) {
+        checkDuplicateName(name);
+
+        AbstractChannelHandlerContext newCtx = <span class="hljs-keyword">new</span> DefaultChannelHandlerContext(<span class="hljs-keyword">this</span>, group, name, <span class="hljs-keyword">handler</span>);
+        addLast0(name, newCtx);
+    }
+
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>;
+}</code></pre>
+<p>第一个参数被设置为 null, 我们不关心它. 第二参数就是这个 handler 的名字. 看代码可知, 在添加一个 handler 之前, 需要调用 <strong>checkDuplicateName</strong> 方法来确定此 handler 的名字是否和已添加的 handler 的名字重复. 而这个 checkDuplicateName 方法我们在前面已经有提到, 这里再回顾一下:</p>
+<div class="widget-codetool" style="display: none;">
+      <div class="widget-codetool--inner">
+      <span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="全选"></span>
+      <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="private void checkDuplicateName(String name) {
+    if (name2ctx.containsKey(name)) {
+        throw new IllegalArgumentException(&quot;Duplicate handler name: &quot; + name);
+    }
+}" title="" data-original-title="复制"></span>
+      <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="放进笔记"></span>
+      </div>
+      </div><pre class="hljs cpp"><code><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">checkDuplicateName</span><span class="hljs-params">(String name)</span> </span>{
+    <span class="hljs-keyword">if</span> (name2ctx.containsKey(name)) {
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> IllegalArgumentException(<span class="hljs-string">"Duplicate handler name: "</span> + name);
+    }
+}</code></pre>
+<p>Netty 判断一个 handler 的名字是否重复的依据很简单: DefaultChannelPipeline 中有一个 类型为 Map&lt;String, AbstractChannelHandlerContext&gt; 的 <strong>name2ctx</strong> 字段, 它的 key 是一个 handler 的名字, 而 value 则是这个 handler 所对应的 ChannelHandlerContext. 每当新添加一个 handler 时, 就会 put 到 name2ctx 中. 因此检查 name2ctx 中是否包含这个 name 即可.<br>当没有重名的 handler 时, 就为这个 handler 生成一个关联的 DefaultChannelHandlerContext 对象, 然后就将 name 和 newCtx 作为 key-value 对 放到 name2Ctx 中.</p>
+<h3 id="articleHeader2">自动生成 handler 的名字</h3>
+<p>如果我们调用的是如下的 addLast 方法</p>
+<div class="widget-codetool" style="display: none;">
+      <div class="widget-codetool--inner">
+      <span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="全选"></span>
+      <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="ChannelPipeline addLast(ChannelHandler... handlers);" title="" data-original-title="复制"></span>
+      <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="放进笔记"></span>
+      </div>
+      </div><pre class="hljs lisp"><code style="word-break: break-word; white-space: initial;">ChannelPipeline addLast(<span class="hljs-name">ChannelHandler</span>... handlers)<span class="hljs-comment">;</span></code></pre>
+<p>那么 Netty 会调用 generateName 为我们的 handler 自动生成一个名字:</p>
+<div class="widget-codetool" style="display: none;">
+      <div class="widget-codetool--inner">
+      <span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="全选"></span>
+      <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="private String generateName(ChannelHandler handler) {
+    WeakHashMap&lt;Class&lt;?&gt;, String&gt; cache = nameCaches[(int) (Thread.currentThread().getId() % nameCaches.length)];
+    Class&lt;?&gt; handlerType = handler.getClass();
+    String name;
+    synchronized (cache) {
+        name = cache.get(handlerType);
+        if (name == null) {
+            name = generateName0(handlerType);
+            cache.put(handlerType, name);
+        }
+    }
+
+    synchronized (this) {
+        // It&#39;s not very likely for a user to put more than one handler of the same type, but make sure to avoid
+        // any name conflicts.  Note that we don&#39;t cache the names generated here.
+        if (name2ctx.containsKey(name)) {
+            String baseName = name.substring(0, name.length() - 1); // Strip the trailing &#39;0&#39;.
+            for (int i = 1;; i ++) {
+                String newName = baseName + i;
+                if (!name2ctx.containsKey(newName)) {
+                    name = newName;
+                    break;
+                }
+            }
+        }
+    }
+
+    return name;
+}" title="" data-original-title="复制"></span>
+      <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="放进笔记"></span>
+      </div>
+      </div><pre class="hljs haxe"><code><span class="hljs-keyword">private</span> <span class="hljs-keyword">String</span> generateName(ChannelHandler handler) {
+    WeakHashMap&lt;Class&lt;?&gt;, <span class="hljs-keyword">String</span>&gt; cache = nameCaches[(int) (Thread.currentThread().getId() % nameCaches.length)];
+    Class&lt;?&gt; handlerType = handler.getClass();
+    <span class="hljs-keyword">String</span> name;
+    synchronized (cache) {
+        name = cache.<span class="hljs-keyword">get</span>(handlerType);
+        <span class="hljs-keyword">if</span> (name == <span class="hljs-literal">null</span>) {
+            name = generateName0(handlerType);
+            cache.put(handlerType, name);
+        }
+    }
+
+    synchronized (<span class="hljs-built_in">this</span>) {
+        <span class="hljs-comment">// It's not very likely for a user to put more than one handler of the same type, but make sure to avoid</span>
+        <span class="hljs-comment">// any name conflicts.  Note that we don't cache the names generated here.</span>
+        <span class="hljs-keyword">if</span> (name2ctx.containsKey(name)) {
+            <span class="hljs-keyword">String</span> baseName = name.substring(<span class="hljs-number">0</span>, name.length() - <span class="hljs-number">1</span>); <span class="hljs-comment">// Strip the trailing '0'.</span>
+            <span class="hljs-keyword">for</span> (int i = <span class="hljs-number">1</span>;; i ++) {
+                <span class="hljs-keyword">String</span> <span class="hljs-keyword">new</span><span class="hljs-type">Name</span> = baseName + i;
+                <span class="hljs-keyword">if</span> (!name2ctx.containsKey(<span class="hljs-keyword">new</span><span class="hljs-type">Name</span>)) {
+                    name = <span class="hljs-keyword">new</span><span class="hljs-type">Name</span>;
+                    <span class="hljs-keyword">break</span>;
+                }
+            }
+        }
+    }
+
+    <span class="hljs-keyword">return</span> name;
+}</code></pre>
+<p>而 generateName 会接着调用  <strong>generateName0</strong> 来实际产生一个 handler 的名字:</p>
+<div class="widget-codetool" style="display:none;">
+      <div class="widget-codetool--inner">
+      <span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="全选"></span>
+      <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="private static String generateName0(Class&lt;?&gt; handlerType) {
+    return StringUtil.simpleClassName(handlerType) + &quot;#0&quot;;
+}" title="" data-original-title="复制"></span>
+      <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="放进笔记"></span>
+      </div>
+      </div><pre class="hljs php"><code><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> String generateName0(<span class="hljs-class"><span class="hljs-keyword">Class</span>&lt;?&gt; <span class="hljs-title">handlerType</span>) </span>{
+    <span class="hljs-keyword">return</span> StringUtil.simpleClassName(handlerType) + <span class="hljs-string">"#0"</span>;
+}</code></pre>
+<p>自动生成的名字的规则很简单, 就是 handler 的简单类名加上 "#0", 因此我们的 EchoClientHandler 的名字就是 "EchoClientHandler#0", 这一点也可以通过调试窗口佐证:</p>
+<p><span class="img-wrap"><img data-src="/img/bVEPD6?w=1688&amp;h=390" src="./cpl03_files/bVEPD6" style="cursor: pointer; display: inline;"></span></p>
+<h2 id="articleHeader3">关于 Pipeline 的事件传输机制</h2>
+<p>前面章节中, 我们知道  AbstractChannelHandlerContext 中有 inbound 和 outbound 两个 boolean 变量, 分别用于标识 Context 所对应的 handler 的类型, 即:</p>
+<ul>
+<li><p>inbound 为真时, 表示对应的 ChannelHandler 实现了 ChannelInboundHandler 方法.</p></li>
+<li><p>outbound 为真时, 表示对应的 ChannelHandler 实现了 ChannelOutboundHandler 方法.</p></li>
+</ul>
+<p>读者朋友肯定很疑惑了吧: 那究竟这两个字段有什么作用呢? 其实这还要从 ChannelPipeline 的传输的事件类型说起.<br><strong>Netty 的事件可以分为 Inbound 和 Outbound 事件.</strong></p>
+<p>如下是从 Netty 官网上拷贝的一个图示:</p>
+<div class="widget-codetool" style="display: none;">
+      <div class="widget-codetool--inner">
+      <span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="全选"></span>
+      <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="                                             I/O Request
+                                        via Channel or
+                                    ChannelHandlerContext
+                                                  |
++---------------------------------------------------+---------------+
+|                           ChannelPipeline         |               |
+|                                                  \|/              |
+|    +---------------------+            +-----------+----------+    |
+|    | Inbound Handler  N  |            | Outbound Handler  1  |    |
+|    +----------+----------+            +-----------+----------+    |
+|              /|\                                  |               |
+|               |                                  \|/              |
+|    +----------+----------+            +-----------+----------+    |
+|    | Inbound Handler N-1 |            | Outbound Handler  2  |    |
+|    +----------+----------+            +-----------+----------+    |
+|              /|\                                  .               |
+|               .                                   .               |
+| ChannelHandlerContext.fireIN_EVT() ChannelHandlerContext.OUT_EVT()|
+|        [ method call]                       [method call]         |
+|               .                                   .               |
+|               .                                  \|/              |
+|    +----------+----------+            +-----------+----------+    |
+|    | Inbound Handler  2  |            | Outbound Handler M-1 |    |
+|    +----------+----------+            +-----------+----------+    |
+|              /|\                                  |               |
+|               |                                  \|/              |
+|    +----------+----------+            +-----------+----------+    |
+|    | Inbound Handler  1  |            | Outbound Handler  M  |    |
+|    +----------+----------+            +-----------+----------+    |
+|              /|\                                  |               |
++---------------+-----------------------------------+---------------+
+              |                                  \|/
++---------------+-----------------------------------+---------------+
+|               |                                   |               |
+|       [ Socket.read() ]                    [ Socket.write() ]     |
+|                                                                   |
+|  Netty Internal I/O Threads (Transport Implementation)            |
++-------------------------------------------------------------------+" title="" data-original-title="复制"></span>
+      <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="放进笔记"></span>
+      </div>
+      </div><pre class="hljs gherkin"><code>                                             I/O Request
+                                        via Channel or
+                                    ChannelHandlerContext
+                                                  |<span class="hljs-string">
++---------------------------------------------------+---------------+
+</span>|<span class="hljs-string">                           ChannelPipeline         </span>|<span class="hljs-string">               </span>|
+|<span class="hljs-string">                                                  \</span>|<span class="hljs-string">/              </span>|
+|<span class="hljs-string">    +---------------------+            +-----------+----------+    </span>|
+|<span class="hljs-string">    </span>|<span class="hljs-string"> Inbound Handler  N  </span>|<span class="hljs-string">            </span>|<span class="hljs-string"> Outbound Handler  1  </span>|<span class="hljs-string">    </span>|
+|<span class="hljs-string">    +----------+----------+            +-----------+----------+    </span>|
+|<span class="hljs-string">              /</span>|<span class="hljs-string">\                                  </span>|<span class="hljs-string">               </span>|
+|<span class="hljs-string">               </span>|<span class="hljs-string">                                  \</span>|<span class="hljs-string">/              </span>|
+|<span class="hljs-string">    +----------+----------+            +-----------+----------+    </span>|
+|<span class="hljs-string">    </span>|<span class="hljs-string"> Inbound Handler N-1 </span>|<span class="hljs-string">            </span>|<span class="hljs-string"> Outbound Handler  2  </span>|<span class="hljs-string">    </span>|
+|<span class="hljs-string">    +----------+----------+            +-----------+----------+    </span>|
+|<span class="hljs-string">              /</span>|<span class="hljs-string">\                                  .               </span>|
+|<span class="hljs-string">               .                                   .               </span>|
+|<span class="hljs-string"> ChannelHandlerContext.fireIN_EVT() ChannelHandlerContext.OUT_EVT()</span>|
+|<span class="hljs-string">        [ method call]                       [method call]         </span>|
+|<span class="hljs-string">               .                                   .               </span>|
+|<span class="hljs-string">               .                                  \</span>|<span class="hljs-string">/              </span>|
+|<span class="hljs-string">    +----------+----------+            +-----------+----------+    </span>|
+|<span class="hljs-string">    </span>|<span class="hljs-string"> Inbound Handler  2  </span>|<span class="hljs-string">            </span>|<span class="hljs-string"> Outbound Handler M-1 </span>|<span class="hljs-string">    </span>|
+|<span class="hljs-string">    +----------+----------+            +-----------+----------+    </span>|
+|<span class="hljs-string">              /</span>|<span class="hljs-string">\                                  </span>|<span class="hljs-string">               </span>|
+|<span class="hljs-string">               </span>|<span class="hljs-string">                                  \</span>|<span class="hljs-string">/              </span>|
+|<span class="hljs-string">    +----------+----------+            +-----------+----------+    </span>|
+|<span class="hljs-string">    </span>|<span class="hljs-string"> Inbound Handler  1  </span>|<span class="hljs-string">            </span>|<span class="hljs-string"> Outbound Handler  M  </span>|<span class="hljs-string">    </span>|
+|<span class="hljs-string">    +----------+----------+            +-----------+----------+    </span>|
+|<span class="hljs-string">              /</span>|<span class="hljs-string">\                                  </span>|<span class="hljs-string">               </span>|
++---------------+-----------------------------------+---------------+
+              |<span class="hljs-string">                                  \</span>|<span class="hljs-string">/
++---------------+-----------------------------------+---------------+
+</span>|<span class="hljs-string">               </span>|<span class="hljs-string">                                   </span>|<span class="hljs-string">               </span>|
+|<span class="hljs-string">       [ Socket.read() ]                    [ Socket.write() ]     </span>|
+|<span class="hljs-string">                                                                   </span>|
+|<span class="hljs-string">  Netty Internal I/O Threads (Transport Implementation)            </span>|
++-------------------------------------------------------------------+</code></pre>
+<p>从上图可以看出, inbound 事件和 outbound 事件的流向是不一样的, inbound 事件的流行是从下至上, 而 outbound 刚好相反, 是从上到下. 并且 inbound 的传递方式是通过调用相应的 <strong>ChannelHandlerContext.fireIN_EVT()</strong> 方法, 而 outbound 方法的的传递方式是通过调用 <strong>ChannelHandlerContext.OUT_EVT()</strong> 方法. 例如 <strong>ChannelHandlerContext.fireChannelRegistered()</strong> 调用会发送一个 <strong>ChannelRegistered</strong> 的 inbound 给下一个ChannelHandlerContext, 而 <strong>ChannelHandlerContext.bind</strong> 调用会发送一个 <strong>bind</strong> 的 outbound 事件给 下一个 ChannelHandlerContext.</p>
+<p>Inbound 事件传播方法有:</p>
+<div class="widget-codetool" style="display:none;">
+      <div class="widget-codetool--inner">
+      <span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="全选"></span>
+      <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="ChannelHandlerContext.fireChannelRegistered()
+ChannelHandlerContext.fireChannelActive()
+ChannelHandlerContext.fireChannelRead(Object)
+ChannelHandlerContext.fireChannelReadComplete()
+ChannelHandlerContext.fireExceptionCaught(Throwable)
+ChannelHandlerContext.fireUserEventTriggered(Object)
+ChannelHandlerContext.fireChannelWritabilityChanged()
+ChannelHandlerContext.fireChannelInactive()
+ChannelHandlerContext.fireChannelUnregistered()" title="" data-original-title="复制"></span>
+      <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="放进笔记"></span>
+      </div>
+      </div><pre class="hljs css"><code><span class="hljs-selector-tag">ChannelHandlerContext</span><span class="hljs-selector-class">.fireChannelRegistered</span>()
+<span class="hljs-selector-tag">ChannelHandlerContext</span><span class="hljs-selector-class">.fireChannelActive</span>()
+<span class="hljs-selector-tag">ChannelHandlerContext</span><span class="hljs-selector-class">.fireChannelRead</span>(<span class="hljs-selector-tag">Object</span>)
+<span class="hljs-selector-tag">ChannelHandlerContext</span><span class="hljs-selector-class">.fireChannelReadComplete</span>()
+<span class="hljs-selector-tag">ChannelHandlerContext</span><span class="hljs-selector-class">.fireExceptionCaught</span>(<span class="hljs-selector-tag">Throwable</span>)
+<span class="hljs-selector-tag">ChannelHandlerContext</span><span class="hljs-selector-class">.fireUserEventTriggered</span>(<span class="hljs-selector-tag">Object</span>)
+<span class="hljs-selector-tag">ChannelHandlerContext</span><span class="hljs-selector-class">.fireChannelWritabilityChanged</span>()
+<span class="hljs-selector-tag">ChannelHandlerContext</span><span class="hljs-selector-class">.fireChannelInactive</span>()
+<span class="hljs-selector-tag">ChannelHandlerContext</span><span class="hljs-selector-class">.fireChannelUnregistered</span>()</code></pre>
+<p>Oubound 事件传输方法有:</p>
+<div class="widget-codetool" style="display:none;">
+      <div class="widget-codetool--inner">
+      <span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="全选"></span>
+      <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="ChannelHandlerContext.bind(SocketAddress, ChannelPromise)
+ChannelHandlerContext.connect(SocketAddress, SocketAddress, ChannelPromise)
+ChannelHandlerContext.write(Object, ChannelPromise)
+ChannelHandlerContext.flush()
+ChannelHandlerContext.read()
+ChannelHandlerContext.disconnect(ChannelPromise)
+ChannelHandlerContext.close(ChannelPromise)" title="" data-original-title="复制"></span>
+      <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="放进笔记"></span>
+      </div>
+      </div><pre class="hljs css"><code><span class="hljs-selector-tag">ChannelHandlerContext</span><span class="hljs-selector-class">.bind</span>(<span class="hljs-selector-tag">SocketAddress</span>, <span class="hljs-selector-tag">ChannelPromise</span>)
+<span class="hljs-selector-tag">ChannelHandlerContext</span><span class="hljs-selector-class">.connect</span>(<span class="hljs-selector-tag">SocketAddress</span>, <span class="hljs-selector-tag">SocketAddress</span>, <span class="hljs-selector-tag">ChannelPromise</span>)
+<span class="hljs-selector-tag">ChannelHandlerContext</span><span class="hljs-selector-class">.write</span>(<span class="hljs-selector-tag">Object</span>, <span class="hljs-selector-tag">ChannelPromise</span>)
+<span class="hljs-selector-tag">ChannelHandlerContext</span><span class="hljs-selector-class">.flush</span>()
+<span class="hljs-selector-tag">ChannelHandlerContext</span><span class="hljs-selector-class">.read</span>()
+<span class="hljs-selector-tag">ChannelHandlerContext</span><span class="hljs-selector-class">.disconnect</span>(<span class="hljs-selector-tag">ChannelPromise</span>)
+<span class="hljs-selector-tag">ChannelHandlerContext</span><span class="hljs-selector-class">.close</span>(<span class="hljs-selector-tag">ChannelPromise</span>)</code></pre>
+<p><code>注意, 如果我们捕获了一个事件, 并且想让这个事件继续传递下去, 那么需要调用 Context 相应的传播方法.</code><br>例如:</p>
+<div class="widget-codetool" style="display:none;">
+      <div class="widget-codetool--inner">
+      <span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="全选"></span>
+      <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="public class MyInboundHandler extends ChannelInboundHandlerAdapter {
+    @Override
+    public void channelActive(ChannelHandlerContext ctx) {
+        System.out.println(&quot;Connected!&quot;);
+        ctx.fireChannelActive();
+    }
+}
+
+public clas MyOutboundHandler extends ChannelOutboundHandlerAdapter {
+    @Override
+    public void close(ChannelHandlerContext ctx, ChannelPromise promise) {
+        System.out.println(&quot;Closing ..&quot;);
+        ctx.close(promise);
+    }
+}" title="" data-original-title="复制"></span>
+      <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="放进笔记"></span>
+      </div>
+      </div><pre class="hljs scala"><code>public <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyInboundHandler</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">ChannelInboundHandlerAdapter</span> </span>{
+    <span class="hljs-meta">@Override</span>
+    public void channelActive(<span class="hljs-type">ChannelHandlerContext</span> ctx) {
+        <span class="hljs-type">System</span>.out.println(<span class="hljs-string">"Connected!"</span>);
+        ctx.fireChannelActive();
+    }
+}
+
+public clas <span class="hljs-type">MyOutboundHandler</span> <span class="hljs-keyword">extends</span> <span class="hljs-type">ChannelOutboundHandlerAdapter</span> {
+    <span class="hljs-meta">@Override</span>
+    public void close(<span class="hljs-type">ChannelHandlerContext</span> ctx, <span class="hljs-type">ChannelPromise</span> promise) {
+        <span class="hljs-type">System</span>.out.println(<span class="hljs-string">"Closing .."</span>);
+        ctx.close(promise);
+    }
+}</code></pre>
+<p>上面的例子中, MyInboundHandler 收到了一个 channelActive 事件, 它在处理后, 如果希望将事件继续传播下去, 那么需要接着调用 ctx.fireChannelActive().</p>
+<h3 id="articleHeader4">Outbound 操作(outbound operations of a channel)</h3>
+<p><code>Outbound 事件都是请求事件(request event)</code>, 即请求某件事情的发生, 然后通过 Outbound 事件进行通知.<br>Outbound 事件的传播方向是 tail -&gt; customContext -&gt; head.</p>
+<p>我们接下来以 connect 事件为例, 分析一下 Outbound 事件的传播机制.<br>首先, 当用户调用了 Bootstrap.connect 方法时, 就会触发一个 <strong>Connect 请求事件</strong>, 此调用会触发如下调用链:</p>
+<div class="widget-codetool" style="display:none;">
+      <div class="widget-codetool--inner">
+      <span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="全选"></span>
+      <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="Bootstrap.connect -&gt; Bootstrap.doConnect -&gt; Bootstrap.doConnect0 -&gt; AbstractChannel.connect" title="" data-original-title="复制"></span>
+      <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="放进笔记"></span>
+      </div>
+      </div><pre class="hljs stylus"><code style="word-break: break-word; white-space: initial;">Bootstrap<span class="hljs-selector-class">.connect</span> -&gt; Bootstrap<span class="hljs-selector-class">.doConnect</span> -&gt; Bootstrap<span class="hljs-selector-class">.doConnect0</span> -&gt; AbstractChannel.connect</code></pre>
+<p>继续跟踪的话, 我们就发现, AbstractChannel.connect 其实由调用了 DefaultChannelPipeline.connect 方法:</p>
+<div class="widget-codetool" style="display:none;">
+      <div class="widget-codetool--inner">
+      <span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="全选"></span>
+      <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="@Override
+public ChannelFuture connect(SocketAddress remoteAddress, ChannelPromise promise) {
+    return pipeline.connect(remoteAddress, promise);
+}" title="" data-original-title="复制"></span>
+      <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="放进笔记"></span>
+      </div>
+      </div><pre class="hljs aspectj"><code><span class="hljs-meta">@Override</span>
+<span class="hljs-keyword">public</span> <span class="hljs-function">ChannelFuture <span class="hljs-title">connect</span><span class="hljs-params">(SocketAddress remoteAddress, ChannelPromise promise)</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">return</span> pipeline.<span class="hljs-title">connect</span><span class="hljs-params">(remoteAddress, promise)</span></span>;
+}</code></pre>
+<p>而 pipeline.connect 的实现如下:</p>
+<div class="widget-codetool" style="display:none;">
+      <div class="widget-codetool--inner">
+      <span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="全选"></span>
+      <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="@Override
+public ChannelFuture connect(SocketAddress remoteAddress, ChannelPromise promise) {
+    return tail.connect(remoteAddress, promise);
+}" title="" data-original-title="复制"></span>
+      <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="放进笔记"></span>
+      </div>
+      </div><pre class="hljs aspectj"><code><span class="hljs-meta">@Override</span>
+<span class="hljs-keyword">public</span> <span class="hljs-function">ChannelFuture <span class="hljs-title">connect</span><span class="hljs-params">(SocketAddress remoteAddress, ChannelPromise promise)</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">return</span> tail.<span class="hljs-title">connect</span><span class="hljs-params">(remoteAddress, promise)</span></span>;
+}</code></pre>
+<p>可以看到, 当 outbound 事件(这里是 connect 事件)传递到 Pipeline 后, 它其实是以 tail 为起点开始传播的.<br>而 tail.connect 其实调用的是 AbstractChannelHandlerContext.connect 方法:</p>
+<div class="widget-codetool" style="display:none;">
+      <div class="widget-codetool--inner">
+      <span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="全选"></span>
+      <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="@Override
+public ChannelFuture connect(
+        final SocketAddress remoteAddress, final SocketAddress localAddress, final ChannelPromise promise) {
+    ...
+    final AbstractChannelHandlerContext next = findContextOutbound();
+    EventExecutor executor = next.executor();
+    ...
+    next.invokeConnect(remoteAddress, localAddress, promise);
+    ...
+    return promise;
+}" title="" data-original-title="复制"></span>
+      <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="放进笔记"></span>
+      </div>
+      </div><pre class="hljs gradle"><code>@Override
+<span class="hljs-keyword">public</span> ChannelFuture connect(
+        <span class="hljs-keyword">final</span> SocketAddress remoteAddress, <span class="hljs-keyword">final</span> SocketAddress localAddress, <span class="hljs-keyword">final</span> ChannelPromise promise) {
+    ...
+    <span class="hljs-keyword">final</span> AbstractChannelHandlerContext <span class="hljs-keyword">next</span> = findContextOutbound();
+    EventExecutor executor = <span class="hljs-keyword">next</span>.executor();
+    ...
+    <span class="hljs-keyword">next</span>.invokeConnect(remoteAddress, localAddress, promise);
+    ...
+    <span class="hljs-keyword">return</span> promise;
+}</code></pre>
+<p>findContextOutbound() 顾名思义, 它的作用是以当前 Context 为起点, 向 Pipeline 中的 Context 双向链表的前端寻找第一个 <strong>outbound</strong> 属性为真的 Context(即关联着 ChannelOutboundHandler 的 Context), 然后返回.<br>它的实现如下:</p>
+<div class="widget-codetool" style="display:none;">
+      <div class="widget-codetool--inner">
+      <span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="全选"></span>
+      <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="private AbstractChannelHandlerContext findContextOutbound() {
+    AbstractChannelHandlerContext ctx = this;
+    do {
+        ctx = ctx.prev;
+    } while (!ctx.outbound);
+    return ctx;
+}" title="" data-original-title="复制"></span>
+      <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="放进笔记"></span>
+      </div>
+      </div><pre class="hljs kotlin"><code><span class="hljs-keyword">private</span> AbstractChannelHandlerContext findContextOutbound() {
+    AbstractChannelHandlerContext ctx = <span class="hljs-keyword">this</span>;
+    <span class="hljs-keyword">do</span> {
+        ctx = ctx.prev;
+    } <span class="hljs-keyword">while</span> (!ctx.outbound);
+    <span class="hljs-keyword">return</span> ctx;
+}</code></pre>
+<p>当我们找到了一个 outbound 的 Context 后, 就调用它的 invokeConnect 方法, 这个方法中会调用 Context 所关联着的 ChannelHandler 的 connect 方法:</p>
+<div class="widget-codetool" style="display:none;">
+      <div class="widget-codetool--inner">
+      <span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="全选"></span>
+      <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="private void invokeConnect(SocketAddress remoteAddress, SocketAddress localAddress, ChannelPromise promise) {
+    try {
+        ((ChannelOutboundHandler) handler()).connect(this, remoteAddress, localAddress, promise);
+    } catch (Throwable t) {
+        notifyOutboundHandlerException(t, promise);
+    }
+}" title="" data-original-title="复制"></span>
+      <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="放进笔记"></span>
+      </div>
+      </div><pre class="hljs aspectj"><code><span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">invokeConnect</span><span class="hljs-params">(SocketAddress remoteAddress, SocketAddress localAddress, ChannelPromise promise)</span> </span>{
+    <span class="hljs-keyword">try</span> {
+        ((ChannelOutboundHandler) <span class="hljs-keyword">handler</span>()).connect(<span class="hljs-keyword">this</span>, remoteAddress, localAddress, promise);
+    } <span class="hljs-keyword">catch</span> (Throwable t) {
+        notifyOutboundHandlerException(t, promise);
+    }
+}</code></pre>
+<p>如果用户没有重写 ChannelHandler 的 connect 方法, 那么会调用 ChannelOutboundHandlerAdapter 所实现的方法:</p>
+<div class="widget-codetool" style="display:none;">
+      <div class="widget-codetool--inner">
+      <span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="全选"></span>
+      <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="@Override
+public void connect(ChannelHandlerContext ctx, SocketAddress remoteAddress,
+        SocketAddress localAddress, ChannelPromise promise) throws Exception {
+    ctx.connect(remoteAddress, localAddress, promise);
+}" title="" data-original-title="复制"></span>
+      <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="放进笔记"></span>
+      </div>
+      </div><pre class="hljs aspectj"><code><span class="hljs-meta">@Override</span>
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">connect</span><span class="hljs-params">(ChannelHandlerContext ctx, SocketAddress remoteAddress,
+        SocketAddress localAddress, ChannelPromise promise)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+    ctx.connect(remoteAddress, localAddress, promise);
+}</code></pre>
+<p>我们看到, ChannelOutboundHandlerAdapter.connect 仅仅调用了 ctx.connect, 而这个调用又回到了:</p>
+<div class="widget-codetool" style="display:none;">
+      <div class="widget-codetool--inner">
+      <span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="全选"></span>
+      <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="Context.connect -&gt; Connect.findContextOutbound -&gt; next.invokeConnect -&gt; handler.connect -&gt; Context.connect" title="" data-original-title="复制"></span>
+      <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="放进笔记"></span>
+      </div>
+      </div><pre class="hljs stylus"><code style="word-break: break-word; white-space: initial;">Context<span class="hljs-selector-class">.connect</span> -&gt; Connect<span class="hljs-selector-class">.findContextOutbound</span> -&gt; next<span class="hljs-selector-class">.invokeConnect</span> -&gt; handler<span class="hljs-selector-class">.connect</span> -&gt; Context.connect</code></pre>
+<p>这样的循环中, 直到 connect 事件传递到DefaultChannelPipeline 的双向链表的头节点, 即 head 中. 为什么会传递到 head 中呢? 回想一下, head 实现了 ChannelOutboundHandler, 因此它的 outbound 属性是 true.<br><code>因为 head 本身既是一个 ChannelHandlerContext, 又实现了 ChannelOutboundHandler 接口</code>, 因此当 connect 消息传递到 head 后, 会将消息转递到对应的 ChannelHandler 中处理, 而恰好, head 的 handler() 返回的就是 head 本身:</p>
+<div class="widget-codetool" style="display:none;">
+      <div class="widget-codetool--inner">
+      <span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="全选"></span>
+      <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="@Override
+public ChannelHandler handler() {
+    return this;
+}" title="" data-original-title="复制"></span>
+      <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="放进笔记"></span>
+      </div>
+      </div><pre class="hljs kotlin"><code><span class="hljs-meta">@Override</span>
+<span class="hljs-keyword">public</span> ChannelHandler handler() {
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>;
+}</code></pre>
+<p>因此最终 connect 事件是在 head 中处理的. head 的 connect 事件处理方法如下:</p>
+<div class="widget-codetool" style="display:none;">
+      <div class="widget-codetool--inner">
+      <span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="全选"></span>
+      <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="@Override
+public void connect(
+        ChannelHandlerContext ctx,
+        SocketAddress remoteAddress, SocketAddress localAddress,
+        ChannelPromise promise) throws Exception {
+    unsafe.connect(remoteAddress, localAddress, promise);
+}" title="" data-original-title="复制"></span>
+      <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="放进笔记"></span>
+      </div>
+      </div><pre class="hljs aspectj"><code><span class="hljs-meta">@Override</span>
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">connect</span><span class="hljs-params">(
+        ChannelHandlerContext ctx,
+        SocketAddress remoteAddress, SocketAddress localAddress,
+        ChannelPromise promise)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+    unsafe.connect(remoteAddress, localAddress, promise);
+}</code></pre>
+<p>到这里, 整个 Connect 请求事件就结束了.<br>下面以一幅图来描述一个整个 Connect 请求事件的处理过程:</p>
+<p><span class="img-wrap"><img data-src="/img/bVEPDJ?w=4000&amp;h=937" src="./cpl03_files/squares.svg" style="cursor: pointer;"></span><br>点此有无码高清<a href="https://github.com/yongshun/learn_netty_source_code/blob/master/Netty%20%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%E4%B9%8B%20%E4%BA%8C%20%E8%B4%AF%E7%A9%BFNetty%20%E7%9A%84%E5%A4%A7%E5%8A%A8%E8%84%89%20%E2%94%80%E2%94%80%20ChannelPipeline/Channel%20%E4%BA%8B%E4%BB%B6%E6%B5%81%20%E4%B9%8B%20Outbound%20%E4%BA%8B%E4%BB%B6.png" target="_blank">原图</a></p>
+<p>我们仅仅以 Connect 请求事件为例, 分析了 Outbound 事件的传播过程, 但是其实所有的 outbound 的事件传播都遵循着一样的传播规律, 读者可以试着分析一下其他的 outbound 事件, 体会一下它们的传播过程.</p>
+<h3 id="articleHeader5">Inbound 事件</h3>
+<p>Inbound 事件和 Outbound 事件的处理过程有点镜像.<br><code>Inbound 事件是一个通知事件</code>, 即某件事已经发生了, 然后通过 Inbound 事件进行通知. Inbound 通常发生在 Channel 的状态的改变或 IO 事件就绪.<br>Inbound 的特点是它传播方向是 head -&gt; customContext -&gt; tail.</p>
+<p>既然上面我们分析了 Connect 这个 Outbound 事件, 那么接着分析 Connect 事件后会发生什么 Inbound 事件, 并最终找到 Outbound 和 Inbound 事件之间的联系.</p>
+<p>当 Connect 这个 Outbound 传播到 unsafe 后, 其实是在 AbstractNioUnsafe.connect 方法中进行处理的:</p>
+<div class="widget-codetool" style="display:none;">
+      <div class="widget-codetool--inner">
+      <span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="全选"></span>
+      <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="@Override
+public final void connect(
+        final SocketAddress remoteAddress, final SocketAddress localAddress, final ChannelPromise promise) {
+    ...
+    if (doConnect(remoteAddress, localAddress)) {
+        fulfillConnectPromise(promise, wasActive);
+    } else {
+        ...
+    }
+    ...
+}" title="" data-original-title="复制"></span>
+      <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="放进笔记"></span>
+      </div>
+      </div><pre class="hljs aspectj"><code><span class="hljs-meta">@Override</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">connect</span><span class="hljs-params">(
+        <span class="hljs-keyword">final</span> SocketAddress remoteAddress, <span class="hljs-keyword">final</span> SocketAddress localAddress, <span class="hljs-keyword">final</span> ChannelPromise promise)</span> </span>{
+    ...
+    <span class="hljs-keyword">if</span> (doConnect(remoteAddress, localAddress)) {
+        fulfillConnectPromise(promise, wasActive);
+    } <span class="hljs-keyword">else</span> {
+        ...
+    }
+    ...
+}</code></pre>
+<p>在 AbstractNioUnsafe.connect 中, 首先调用 doConnect 方法进行实际上的 Socket 连接, 当连接上后, 会调用 fulfillConnectPromise 方法:</p>
+<div class="widget-codetool" style="display:none;">
+      <div class="widget-codetool--inner">
+      <span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="全选"></span>
+      <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="private void fulfillConnectPromise(ChannelPromise promise, boolean wasActive) {
+    ...
+    // Regardless if the connection attempt was cancelled, channelActive() event should be triggered,
+    // because what happened is what happened.
+    if (!wasActive &amp;&amp; isActive()) {
+        pipeline().fireChannelActive();
+    }
+    ...
+}" title="" data-original-title="复制"></span>
+      <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="放进笔记"></span>
+      </div>
+      </div><pre class="hljs lasso"><code><span class="hljs-keyword">private</span> <span class="hljs-literal">void</span> fulfillConnectPromise(ChannelPromise promise, <span class="hljs-built_in">boolean</span> wasActive) {
+    <span class="hljs-params">...</span>
+    <span class="hljs-comment">// Regardless if the connection attempt was cancelled, channelActive() event should be triggered,</span>
+    <span class="hljs-comment">// because what happened is what happened.</span>
+    <span class="hljs-keyword">if</span> (!wasActive &amp;&amp; isActive()) {
+        pipeline().fireChannelActive();
+    }
+    <span class="hljs-params">...</span>
+}</code></pre>
+<p>我们看到, 在 fulfillConnectPromise 中, 会通过调用 pipeline().fireChannelActive() 将通道激活的消息(即 Socket 连接成功)发送出去.<br><code>而这里, 当调用 pipeline.fireXXX 后, 就是 Inbound 事件的起点.</code><br>因此当调用了 pipeline().fireChannelActive() 后, 就产生了一个 ChannelActive Inbound 事件, 我们就从这里开始看看这个 Inbound 事件是怎么传播的吧.</p>
+<div class="widget-codetool" style="display:none;">
+      <div class="widget-codetool--inner">
+      <span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="全选"></span>
+      <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="@Override
+public ChannelPipeline fireChannelActive() {
+    head.fireChannelActive();
+
+    if (channel.config().isAutoRead()) {
+        channel.read();
+    }
+
+    return this;
+}" title="" data-original-title="复制"></span>
+      <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="放进笔记"></span>
+      </div>
+      </div><pre class="hljs kotlin"><code><span class="hljs-meta">@Override</span>
+<span class="hljs-keyword">public</span> ChannelPipeline fireChannelActive() {
+    head.fireChannelActive();
+
+    <span class="hljs-keyword">if</span> (channel.config().isAutoRead()) {
+        channel.read();
+    }
+
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>;
+}</code></pre>
+<p>哈哈, 果然, 在 fireChannelActive 方法中, 调用的是 head.fireChannelActive, <code>因此可以证明了, Inbound 事件在 Pipeline 中传输的起点是 head.</code><br>那么, 在 head.fireChannelActive() 中又做了什么呢?</p>
+<div class="widget-codetool" style="display:none;">
+      <div class="widget-codetool--inner">
+      <span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="全选"></span>
+      <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="@Override
+public ChannelHandlerContext fireChannelActive() {
+    final AbstractChannelHandlerContext next = findContextInbound();
+    EventExecutor executor = next.executor();
+    ...
+    next.invokeChannelActive();
+    ...
+    return this;
+}" title="" data-original-title="复制"></span>
+      <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="放进笔记"></span>
+      </div>
+      </div><pre class="hljs gradle"><code>@Override
+<span class="hljs-keyword">public</span> ChannelHandlerContext fireChannelActive() {
+    <span class="hljs-keyword">final</span> AbstractChannelHandlerContext <span class="hljs-keyword">next</span> = findContextInbound();
+    EventExecutor executor = <span class="hljs-keyword">next</span>.executor();
+    ...
+    <span class="hljs-keyword">next</span>.invokeChannelActive();
+    ...
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>;
+}</code></pre>
+<p>上面的代码应该很熟悉了吧. 回想一下在 Outbound 事件(例如 Connect 事件)的传输过程中时, 我们也有类似的操作:</p>
+<ul>
+<li><p>首先调用 findContextInbound, 从 Pipeline 的双向链表中中找到第一个属性 inbound 为真的 Context, 然后返回</p></li>
+<li><p>调用这个 Context 的 invokeChannelActive</p></li>
+</ul>
+<p>invokeChannelActive 方法如下:</p>
+<div class="widget-codetool" style="display:none;">
+      <div class="widget-codetool--inner">
+      <span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="全选"></span>
+      <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="private void invokeChannelActive() {
+    try {
+        ((ChannelInboundHandler) handler()).channelActive(this);
+    } catch (Throwable t) {
+        notifyHandlerException(t);
+    }
+}" title="" data-original-title="复制"></span>
+      <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="放进笔记"></span>
+      </div>
+      </div><pre class="hljs aspectj"><code><span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">invokeChannelActive</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">try</span> {
+        ((ChannelInboundHandler) <span class="hljs-keyword">handler</span>()).channelActive(<span class="hljs-keyword">this</span>);
+    } <span class="hljs-keyword">catch</span> (Throwable t) {
+        notifyHandlerException(t);
+    }
+}</code></pre>
+<p>这个方法和 Outbound 的对应方法(例如 invokeConnect) 如出一辙. 同 Outbound 一样, 如果用户没有重写 channelActive 方法, 那么会调用 ChannelInboundHandlerAdapter 的 channelActive 方法:</p>
+<div class="widget-codetool" style="display:none;">
+      <div class="widget-codetool--inner">
+      <span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="全选"></span>
+      <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="@Override
+public void channelActive(ChannelHandlerContext ctx) throws Exception {
+    ctx.fireChannelActive();
+}" title="" data-original-title="复制"></span>
+      <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="放进笔记"></span>
+      </div>
+      </div><pre class="hljs aspectj"><code><span class="hljs-meta">@Override</span>
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">channelActive</span><span class="hljs-params">(ChannelHandlerContext ctx)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+    ctx.fireChannelActive();
+}</code></pre>
+<p>同样地, 在 ChannelInboundHandlerAdapter.channelActive 中, 仅仅调用了 ctx.fireChannelActive 方法, 因此就会有如下循环:</p>
+<div class="widget-codetool" style="display:none;">
+      <div class="widget-codetool--inner">
+      <span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="全选"></span>
+      <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="Context.fireChannelActive -&gt; Connect.findContextInbound -&gt; nextContext.invokeChannelActive -&gt; nextHandler.channelActive -&gt; nextContext.fireChannelActive" title="" data-original-title="复制"></span>
+      <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="放进笔记"></span>
+      </div>
+      </div><pre class="hljs stylus"><code style="word-break: break-word; white-space: initial;">Context<span class="hljs-selector-class">.fireChannelActive</span> -&gt; Connect<span class="hljs-selector-class">.findContextInbound</span> -&gt; nextContext<span class="hljs-selector-class">.invokeChannelActive</span> -&gt; nextHandler<span class="hljs-selector-class">.channelActive</span> -&gt; nextContext.fireChannelActive</code></pre>
+<p>这样的循环中. 同理, tail 本身 既实现了 <strong>ChannelInboundHandler</strong> 接口, 又实现了 <strong>ChannelHandlerContext</strong> 接口, 因此当 channelActive 消息传递到 tail 后, 会将消息转递到对应的 ChannelHandler 中处理, 而恰好, tail 的 handler() 返回的就是 tail 本身:</p>
+<div class="widget-codetool" style="display:none;">
+      <div class="widget-codetool--inner">
+      <span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="全选"></span>
+      <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="@Override
+public ChannelHandler handler() {
+    return this;
+}" title="" data-original-title="复制"></span>
+      <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="放进笔记"></span>
+      </div>
+      </div><pre class="hljs kotlin"><code><span class="hljs-meta">@Override</span>
+<span class="hljs-keyword">public</span> ChannelHandler handler() {
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>;
+}</code></pre>
+<p>因此 channelActive Inbound 事件最终是在 tail 中处理的, 我们看一下它的处理方法:</p>
+<div class="widget-codetool" style="display:none;">
+      <div class="widget-codetool--inner">
+      <span class="selectCode code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="全选"></span>
+      <span type="button" class="copyCode code-tool" data-toggle="tooltip" data-placement="top" data-clipboard-text="@Override
+public void channelActive(ChannelHandlerContext ctx) throws Exception { }" title="" data-original-title="复制"></span>
+      <span type="button" class="saveToNote code-tool" data-toggle="tooltip" data-placement="top" title="" data-original-title="放进笔记"></span>
+      </div>
+      </div><pre class="hljs aspectj"><code><span class="hljs-meta">@Override</span>
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">channelActive</span><span class="hljs-params">(ChannelHandlerContext ctx)</span> <span class="hljs-keyword">throws</span> Exception </span>{ }</code></pre>
+<p>TailContext.channelActive 方法是空的. 如果读者自行查看 TailContext 的 Inbound 处理方法时, 会发现, 它们的实现都是空的. 可见, 如果是 Inbound, 当用户没有实现自定义的处理器时, 那么默认是不处理的.</p>
+<p>用一幅图来总结一下 Inbound 的传输过程吧:</p>
+<p><span class="img-wrap"><img data-src="/img/bVEPCM?w=4112&amp;h=764" src="./cpl03_files/squares.svg" style="cursor: pointer;"></span></p>
+<p>点击此可以看高清无码<a href="https://github.com/yongshun/learn_netty_source_code/blob/master/Netty%20%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%E4%B9%8B%20%E4%BA%8C%20%E8%B4%AF%E7%A9%BFNetty%20%E7%9A%84%E5%A4%A7%E5%8A%A8%E8%84%89%20%E2%94%80%E2%94%80%20ChannelPipeline/Channel%20%E4%BA%8B%E4%BB%B6%E6%B5%81%20%E4%B9%8B%20Inbound%20%E4%BA%8B%E4%BB%B6.png" target="_blank">原图</a></p>
+<h3 id="articleHeader6">总结</h3>
+<p>对于 Outbound事件:</p>
+<ul>
+<li><p>Outbound 事件是请求事件(由 Connect 发起一个请求, 并最终由 unsafe 处理这个请求)</p></li>
+<li><p>Outbound 事件的发起者是 Channel</p></li>
+<li><p>Outbound 事件的处理者是 unsafe</p></li>
+<li><p>Outbound 事件在 Pipeline 中的传输方向是 tail -&gt; head.</p></li>
+<li><p>在 ChannelHandler 中处理事件时, 如果这个 Handler 不是最后一个 Hnalder, 则需要调用 ctx.xxx (例如 ctx.connect) 将此事件继续传播下去. 如果不这样做, 那么此事件的传播会提前终止.</p></li>
+<li><p>Outbound 事件流: Context.OUT_EVT -&gt; Connect.findContextOutbound -&gt; nextContext.invokeOUT_EVT -&gt; nextHandler.OUT_EVT -&gt; nextContext.OUT_EVT</p></li>
+</ul>
+<p>对于 Inbound 事件:</p>
+<ul>
+<li><p>Inbound 事件是通知事件, 当某件事情已经就绪后, 通知上层.</p></li>
+<li><p>Inbound 事件发起者是 unsafe</p></li>
+<li><p>Inbound 事件的处理者是 Channel, 如果用户没有实现自定义的处理方法, 那么Inbound 事件默认的处理者是 TailContext, 并且其处理方法是空实现.</p></li>
+<li><p>Inbound  事件在 Pipeline 中传输方向是 head -&gt; tail</p></li>
+<li><p>在 ChannelHandler 中处理事件时, 如果这个 Handler 不是最后一个 Hnalder, 则需要调用 ctx.fireIN_EVT (例如 ctx.fireChannelActive) 将此事件继续传播下去. 如果不这样做, 那么此事件的传播会提前终止.</p></li>
+<li><p>Outbound 事件流: Context.fireIN_EVT -&gt; Connect.findContextInbound -&gt; nextContext.invokeIN_EVT -&gt; nextHandler.IN_EVT -&gt; nextContext.fireIN_EVT</p></li>
+</ul>
+<p>outbound 和 inbound 事件十分的镜像, 并且 Context 与 Handler 直接的调用关系是否容易混淆, 因此读者在阅读这里的源码时, 需要特别的注意.</p>
+<blockquote><p>本文由 yongshun 发表于个人博客, 采用 <a href="https://creativecommons.org/licenses/by/3.0/cn/" target="_blank">署名-相同方式共享 3.0 中国大陆许可协议</a>.<br>Email: yongshun1228@gmail.com<br>本文标题为: Netty 源码分析之 二 贯穿Netty 的大动脉 ── ChannelPipeline (二)<br>本文链接为: <a href="https://segmentfault.com/a/1190000007309311">https://segmentfault.com/a/1190000007309311</a></p></blockquote>
+
+                </div>
+                                                
+                <div class="clearfix mt10">
+                    <ul class="article-operation list-inline pull-left"><li><a href="https://segmentfault.com/a/1190000007309311">2016年10月28日发布</a></li><li class="dropdown js__content-ops" data-module="article" data-id="1190000007309311" data-typetext="文章"><a href="javascript:void(0);" class="dropdown-toggle text-muted" data-toggle="dropdown"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a><ul class="dropdown-menu dropdown-menu-left"><li><a href="https://segmentfault.com/a/1190000007309311#911" data-toggle="modal" data-target="#911" data-action="report">举报</a></li></ul></li></ul>
+                    <div class="pull-right">
+                        <div class="widget-share__full" data-text="Netty 源码分析之 二 贯穿Netty 的大动脉 ── ChannelPipeline (二)" data-url="https://segmentfault.com/a/1190000007309311" data-shorturl="http://sfau.lt/b5EPEh"><div class="widget-share-network sharer-0" style="display: block;"><ul class="sn-inline"><li data-network="weibo"><a href="javascript:void(0);" class="entypo-weibo icon-sn-weibo share-1" data-toggle="tooltip" data-placement="top" title="" data-original-title="分享至新浪微博">新浪微博</a></li><li data-network="wechart"><a href="javascript:void(0);" class="entypo-wechart icon-sn-weixin share-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="分享至微信">微信</a></li><li data-network="twitter"><a href="javascript:void(0);" class="entypo-twitter icon-sn-twitter share-3" data-toggle="tooltip" data-placement="top" title="" data-original-title="分享至 Twitter">Twitter</a></li><li data-network="facebook"><a href="javascript:void(0);" class="entypo-facebook icon-sn-facebook share-4" data-toggle="tooltip" data-placement="top" title="" data-original-title="分享至 Facebook">Facebook</a></li></ul></div><a type="button" class="btn btn-sm shareMore btn-sn-more" data-toggle="popover" data-placement="top" data-url="https://segmentfault.com/a/1190000007309311" data-shorturl="http://sfau.lt/b5EPEh"><span class="icon-sn-dotted" data-original-title="" title=""></span><strong class="visible-xs-inline">•••</strong></a></div>
+
+
+                    </div>
+                </div>
+                <div class="mt10 text-center"><button type="button" id="mainLike" data-id="1190000007309311" class="btn btn-success btn-lg mr15 "><span id="mainLikeText">赞</span>&nbsp;&nbsp;<span class="seprator">|</span>&nbsp;&nbsp;
+                                <span id="mainLikeNum">7 </span></button><button type="button" id="mainBookmark" data-type="article" data-id="1190000007309311" class="btn btn-default btn-lg "><span id="mainBookmarkText">收藏</span>&nbsp;&nbsp;<span class="seprator">|</span>&nbsp;&nbsp;<span id="mainBookmarkNum">8</span></button></div>
+                                                <div id="mm_124884735_33830642_143436142" class="mt20 ad-detail-mm hidden-xs"><div id="ac_wrap_mm_124884735_33830642_143436142" style="width:728px"><script async=""></script>
+<!-- 中部横幅广告位 -->
+<ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-6330872677300335" data-ad-slot="5598290435" data-adsbygoogle-status="done"><ins id="aswift_0_expand" style="display:inline-table;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visible;width:728px;background-color:transparent;"><ins id="aswift_0_anchor" style="display:block;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visible;width:728px;background-color:transparent;"><iframe width="728" height="90" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;width:728px;height:90px;" src="./cpl03_files/saved_resource.html"></iframe></ins></ins></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script><script type="text/javascript"></script><script type="text/javascript"></script><script type="text/javascript"></script><script type="text/javascript"></script><script type="text/javascript"></script></div></div>
+                <style>
+                    #mm_124884735_33830642_143436142 {
+                        display: flex;
+                        justify-content: center;
+                    }
+                </style>
+
+                                    <div class="recommend-post pt30 mt40 mb30 border-top">
+                        <div class="row">
+                            <div class="col-md-8">
+                                                                    <h4 class="mt0">你可能感兴趣的文章</h4>
+                                    <ul class="widget-links list-unstyled">
+                                                                                    <li class="widget-links__item">
+                                                <a href="https://segmentfault.com/a/1190000007282628" title="源码之下无秘密 ── 做最好的 Netty 源码分析教程">源码之下无秘密 ── 做最好的 Netty 源码分析教程</a>
+                                                <small class="text-muted">
+                                                    169 收藏，17.8k
+                                                    浏览
+                                                </small>
+                                            </li>
+                                                                                    <li class="widget-links__item">
+                                                <a href="https://segmentfault.com/a/1190000007282597" title="Netty 源码分析之 零 磨刀不误砍柴工 源码分析环境搭建">Netty 源码分析之 零 磨刀不误砍柴工 源码分析环境搭建</a>
+                                                <small class="text-muted">
+                                                    9 收藏，4.8k
+                                                    浏览
+                                                </small>
+                                            </li>
+                                                                                    <li class="widget-links__item">
+                                                <a href="https://segmentfault.com/a/1190000011290297" title="【自己读源码】Netty4.X系列(一) 启动类概览">【自己读源码】Netty4.X系列(一) 启动类概览</a>
+                                                <small class="text-muted">
+                                                    2 收藏，387
+                                                    浏览
+                                                </small>
+                                            </li>
+                                                                            </ul>
+                                                            </div>
+                            <div class="col-md-4">
+                                                                    <div class="article-license">
+                                                                                                                            <img class="mb5" src="./cpl03_files/creativecommons-cc.svg" height="24"><br>
+                                                                                                                        <div class="license-item text-muted">
+                                            本作品采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" class="alert-link">署名-非商业性使用-禁止演绎 4.0 国际许可协议</a> 进行许可
+                                            。
+                                        </div>
+                                        
+                                    </div>
+                                                            </div>
+                        </div>
+
+                    </div>
+                                <!-- <ul class="list-unstyled text-muted mt30">
+                                        <li>上一篇：<a href="/a/1190000007308934">Netty 源码分析之 二 贯穿Netty 的大动脉 ── ChannelPipeline (一)</a></li>
+                                                            <li class="mt5">下一篇：<a href="/a/1190000007355931">Unix 网络 IO 模型: 同步异步, 傻傻分不清楚?</a></li>
+                                    </ul> -->
+
+                <h2 class="h4 post-comment-title"></h2>
+                
+        <div class="comments--news comments--default comments--article 
+    " data-id="1190000007309311" data-user-id="" data-author-id="1030000006214955 " data-is-admin="null" id="goToReplyArea">
+                    <div class="mb10 clearfix">
+                <strong class="comments-stat pull-left mr10">5 条评论</strong>
+
+                                                    <div class="btn-group btn-group-xs pull-right comments-sort btn-group-menu" role="menu">
+                        <a href="javascript:;" class="btn btn-default active" data-sort="default">默认排序</a>
+                        <a href="javascript:;" class="btn btn-default" data-sort="desc">时间排序</a>
+                    </div>
+                            </div>
+                <div class="comments-container">
+                                <div class="comments-list">
+                <div class="comments-item" data-id="1050000008600864">
+            <div class="pull-left">
+                <a href="https://segmentfault.com/u/daydayup_58be6b34f2c44" target="_blank"><img class="avatar-32 " src="./cpl03_files/user-64.png" alt=""></a>
+            </div>
+            <div class="comments-content">
+                <div class="comment-trigger">
+                    <div class="pull-right comment-option">
+                                                <a href="https://segmentfault.com/a/1190000007309311#911" class="ml10" data-toggle="modal" data-target="#911" data-action="report" data-action-text="举报" data-module="comment" data-id="1050000008600864" data-typetext="评论" data-placement="top" title="举报"><span class="glyphicon glyphicon-flag" aria-hidden="true"></span></a>
+                                            </div>
+                    <strong><a target="_blank" href="https://segmentfault.com/u/daydayup_58be6b34f2c44">DayDayUp</a></strong>
+                    <span class="comments-isAuthor hide"></span>
+                    <span class="comments-date">  ·  2017年03月07日</span>
+                </div>
+
+                <div class="fmt mb10"><p>写的真不错，赶快出下个系列吧，迫不及待了。感谢分享。为了留言，专门注册了账号。</p></div>
+
+                <form action="https://segmentfault.com/api/comment/1050000008600864/edit">
+                    <div class="form-group">
+                        <textarea class="editTextarea mono form-control mb10 hidden" rows="1" name="text" style="height: 28px; overflow: hidden; word-wrap: break-word;">写的真不错，赶快出下个系列吧，迫不及待了。感谢分享。为了留言，专门注册了账号。</textarea>
+                    </div>
+                </form>
+
+                <p class="comment-ops not-reply">
+                    <span class="comments-zan ">
+                        <i class="fa fa-thumbs-up mr4" aria-hidden="true"></i>
+                        <span class="comments-zan-text">赞</span>
+                        <span class="comments-zan-value"></span>
+                    </span>
+                    
+                    <span class="ml15 comments-reply-btn">回复</span>
+
+                    <span class="pull-right editBtns hidden">
+                      <button class="btn btn-link btn-xs cancel" type="button">取消</button>
+                      <button class="btn btn-primary btn-xs edit ml10" type="button">保存</button>
+                    </span>
+                </p>
+
+                <div class="reply-list reply-list--empty">
+
+                    
+                    <div class="reply-item reply-item--ops" data-obj="obj">
+                        <a class="reply-inner-btn" href="javascript:;">添加回复</a>
+                        
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+                <div class="comments-item" data-id="1050000009920860">
+            <div class="pull-left">
+                <a href="https://segmentfault.com/u/huahua_594bb0163de4c" target="_blank"><img class="avatar-32 " src="./cpl03_files/user-64.png" alt=""></a>
+            </div>
+            <div class="comments-content">
+                <div class="comment-trigger">
+                    <div class="pull-right comment-option">
+                                                <a href="https://segmentfault.com/a/1190000007309311#911" class="ml10" data-toggle="modal" data-target="#911" data-action="report" data-action-text="举报" data-module="comment" data-id="1050000009920860" data-typetext="评论" data-placement="top" title="举报"><span class="glyphicon glyphicon-flag" aria-hidden="true"></span></a>
+                                            </div>
+                    <strong><a target="_blank" href="https://segmentfault.com/u/huahua_594bb0163de4c">华华</a></strong>
+                    <span class="comments-isAuthor hide"></span>
+                    <span class="comments-date">  ·  2017年06月25日</span>
+                </div>
+
+                <div class="fmt mb10"><p>好久没更新了，迫不及待，感谢</p></div>
+
+                <form action="https://segmentfault.com/api/comment/1050000009920860/edit">
+                    <div class="form-group">
+                        <textarea class="editTextarea mono form-control mb10 hidden" rows="1" name="text" style="height: 28px; overflow: hidden; word-wrap: break-word;">好久没更新了，迫不及待，感谢</textarea>
+                    </div>
+                </form>
+
+                <p class="comment-ops not-reply">
+                    <span class="comments-zan ">
+                        <i class="fa fa-thumbs-up mr4" aria-hidden="true"></i>
+                        <span class="comments-zan-text">赞</span>
+                        <span class="comments-zan-value"></span>
+                    </span>
+                    
+                    <span class="ml15 comments-reply-btn">回复</span>
+
+                    <span class="pull-right editBtns hidden">
+                      <button class="btn btn-link btn-xs cancel" type="button">取消</button>
+                      <button class="btn btn-primary btn-xs edit ml10" type="button">保存</button>
+                    </span>
+                </p>
+
+                <div class="reply-list reply-list--empty">
+
+                    
+                    <div class="reply-item reply-item--ops" data-obj="obj">
+                        <a class="reply-inner-btn" href="javascript:;">添加回复</a>
+                        
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+                <div class="comments-item" data-id="1050000010293755">
+            <div class="pull-left">
+                <a href="https://segmentfault.com/u/cc_bupt" target="_blank"><img class="avatar-32 " src="./cpl03_files/user-64.png" alt=""></a>
+            </div>
+            <div class="comments-content">
+                <div class="comment-trigger">
+                    <div class="pull-right comment-option">
+                                                <a href="https://segmentfault.com/a/1190000007309311#911" class="ml10" data-toggle="modal" data-target="#911" data-action="report" data-action-text="举报" data-module="comment" data-id="1050000010293755" data-typetext="评论" data-placement="top" title="举报"><span class="glyphicon glyphicon-flag" aria-hidden="true"></span></a>
+                                            </div>
+                    <strong><a target="_blank" href="https://segmentfault.com/u/cc_bupt">cc_bupt</a></strong>
+                    <span class="comments-isAuthor hide"></span>
+                    <span class="comments-date">  ·  2017年07月21日</span>
+                </div>
+
+                <div class="fmt mb10"><p>这一篇写的真挺好的，感觉让我对前边的很多看不懂的地方都有了一个了解了</p></div>
+
+                <form action="https://segmentfault.com/api/comment/1050000010293755/edit">
+                    <div class="form-group">
+                        <textarea class="editTextarea mono form-control mb10 hidden" rows="1" name="text" style="height: 28px; overflow: hidden; word-wrap: break-word;">这一篇写的真挺好的，感觉让我对前边的很多看不懂的地方都有了一个了解了</textarea>
+                    </div>
+                </form>
+
+                <p class="comment-ops not-reply">
+                    <span class="comments-zan ">
+                        <i class="fa fa-thumbs-up mr4" aria-hidden="true"></i>
+                        <span class="comments-zan-text">赞</span>
+                        <span class="comments-zan-value"></span>
+                    </span>
+                    
+                    <span class="ml15 comments-reply-btn">回复</span>
+
+                    <span class="pull-right editBtns hidden">
+                      <button class="btn btn-link btn-xs cancel" type="button">取消</button>
+                      <button class="btn btn-primary btn-xs edit ml10" type="button">保存</button>
+                    </span>
+                </p>
+
+                <div class="reply-list reply-list--empty">
+
+                    
+                    <div class="reply-item reply-item--ops" data-obj="obj">
+                        <a class="reply-inner-btn" href="javascript:;">添加回复</a>
+                        
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+                <div class="comments-item" data-id="1050000010971317">
+            <div class="pull-left">
+                <a href="https://segmentfault.com/u/yuweizhi" target="_blank"><img class="avatar-32 " src="./cpl03_files/user-64.png" alt=""></a>
+            </div>
+            <div class="comments-content">
+                <div class="comment-trigger">
+                    <div class="pull-right comment-option">
+                                                <a href="https://segmentfault.com/a/1190000007309311#911" class="ml10" data-toggle="modal" data-target="#911" data-action="report" data-action-text="举报" data-module="comment" data-id="1050000010971317" data-typetext="评论" data-placement="top" title="举报"><span class="glyphicon glyphicon-flag" aria-hidden="true"></span></a>
+                                            </div>
+                    <strong><a target="_blank" href="https://segmentfault.com/u/yuweizhi">余为知</a></strong>
+                    <span class="comments-isAuthor hide"></span>
+                    <span class="comments-date">  ·  2017年09月01日</span>
+                </div>
+
+                <div class="fmt mb10"><p>深入浅出，支持作者。</p></div>
+
+                <form action="https://segmentfault.com/api/comment/1050000010971317/edit">
+                    <div class="form-group">
+                        <textarea class="editTextarea mono form-control mb10 hidden" rows="1" name="text" style="height: 28px; overflow: hidden; word-wrap: break-word;">深入浅出，支持作者。</textarea>
+                    </div>
+                </form>
+
+                <p class="comment-ops not-reply">
+                    <span class="comments-zan ">
+                        <i class="fa fa-thumbs-up mr4" aria-hidden="true"></i>
+                        <span class="comments-zan-text">赞</span>
+                        <span class="comments-zan-value"></span>
+                    </span>
+                    
+                    <span class="ml15 comments-reply-btn">回复</span>
+
+                    <span class="pull-right editBtns hidden">
+                      <button class="btn btn-link btn-xs cancel" type="button">取消</button>
+                      <button class="btn btn-primary btn-xs edit ml10" type="button">保存</button>
+                    </span>
+                </p>
+
+                <div class="reply-list reply-list--empty">
+
+                    
+                    <div class="reply-item reply-item--ops" data-obj="obj">
+                        <a class="reply-inner-btn" href="javascript:;">添加回复</a>
+                        
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+                <div class="comments-item" data-id="1050000011466277">
+            <div class="pull-left">
+                <a href="https://segmentfault.com/u/wancheng" target="_blank"><img class="avatar-32 " src="./cpl03_files/352562661-56d653d24e173_big64" alt=""></a>
+            </div>
+            <div class="comments-content">
+                <div class="comment-trigger">
+                    <div class="pull-right comment-option">
+                                                <a href="https://segmentfault.com/a/1190000007309311#911" class="ml10" data-toggle="modal" data-target="#911" data-action="report" data-action-text="举报" data-module="comment" data-id="1050000011466277" data-typetext="评论" data-placement="top" title="举报"><span class="glyphicon glyphicon-flag" aria-hidden="true"></span></a>
+                                            </div>
+                    <strong><a target="_blank" href="https://segmentfault.com/u/wancheng">万成</a></strong>
+                    <span class="comments-isAuthor hide"></span>
+                    <span class="comments-date">  ·  2017年10月08日</span>
+                </div>
+
+                <div class="fmt mb10">
+<p>m</p>
+<p>a</p>
+<p>r</p>
+<p>k</p>
+</div>
+
+                <form action="https://segmentfault.com/api/comment/1050000011466277/edit">
+                    <div class="form-group">
+                        <textarea class="editTextarea mono form-control mb10 hidden" rows="1" name="text" style="height: 28px; overflow: hidden; word-wrap: break-word;">m
+
+
+
+a
+
+
+
+
+r
+
+
+
+
+
+
+
+
+
+
+
+
+k</textarea>
+                    </div>
+                </form>
+
+                <p class="comment-ops not-reply">
+                    <span class="comments-zan ">
+                        <i class="fa fa-thumbs-up mr4" aria-hidden="true"></i>
+                        <span class="comments-zan-text">赞</span>
+                        <span class="comments-zan-value"></span>
+                    </span>
+                    
+                    <span class="ml15 comments-reply-btn">回复</span>
+
+                    <span class="pull-right editBtns hidden">
+                      <button class="btn btn-link btn-xs cancel" type="button">取消</button>
+                      <button class="btn btn-primary btn-xs edit ml10" type="button">保存</button>
+                    </span>
+                </p>
+
+                <div class="reply-list reply-list--empty">
+
+                    
+                    <div class="reply-item reply-item--ops" data-obj="obj">
+                        <a class="reply-inner-btn" href="javascript:;">添加回复</a>
+                        
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+            </div>
+    <div class="comments-loading hide">载入中...</div>
+        <div class="comments-more hide"><a href="javascript:;">显示更多评论</a></div>
+    
+
+                                    <div class="comments-box" id="goToReplyEditor">
+                <div class="pull-left">
+                    <img class="avatar-32 " src="./cpl03_files/user-128.png" alt="">
+                </div>
+                <div class="comments-box-content">
+                    <form action="https://segmentfault.com/api/article/1190000007309311/comments/add">
+                        <div class="form-group mb0">
+                            <textarea name="text" rows="3" class="form-control" placeholder="文明社会，理性评论"></textarea>
+                            <div class="mt15 text-right">
+                                <button type="button" class="hide"></button>
+                                <button class=" btn btn-primary" type="button">发布评论</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+                                                        </div>
+    </div>
+
+
+                                    
+                
+            </div><!-- /.main -->
+
+
+            <div class="col-xs-12 col-md-3 side">
+                
+                <div class="widget-box widget_lives pt0 hidden" style="border-top: none" id="live-recommend-wrapper">
+                    <h2 class="widget-box__title">
+                        讲堂推荐
+                        <i class="fa fa-youtube-play fa-sm" aria-hidden="true"></i>
+                        <a href="https://segmentfault.com/lives" class="pull-right more">更多</a>
+                    </h2>
+                    <div id="live-recommend" class="mb20"></div>
+                </div>
+                
+                                
+                <div id="mm_124884735_33830642_120290173" class="mb25"><span style="overflow: visible; position: relative; display: block; width: 255px; height: 213px; background: none; border: 0px; text-align: left;"><span style="overflow: hidden; position: absolute; display: block; width: 255px; height: 213px; background: none; border: 0px; text-align: left;"><span style="overflow: hidden; position: absolute; display: block; width: 255px; height: 213px; background: none; border: 0px; text-align: left;"><a href="https://afptrack.alimama.com/clk?bid=0a671d6100015a757fab3b865d13d9cc&amp;pid=mm_124884735_33830642_120290173&amp;cid=264935&amp;mid=250254&amp;oid=34726&amp;productType=1&amp;qytInfoMTime=1517594565&amp;e=R0C71oUwMuyGJgTPtIvipov2AF8i9cmhB0jxu7BJGpj806KGAGuuwkCwjIg9DmLAyDBGxpwPU121rqk1GCrVl62TFmV%2Be%2FnPlQthTJtDdRo%3D&amp;k=109" target="_blank" style="position: absolute; display: block; top: 0px; left: 0px; margin: 0px; padding: 0px; width: 255px; height: 213px; text-decoration: none; opacity: 0; z-index: 1; cursor: pointer; background: rgb(255, 255, 255);"></a><img id="ac_cs_mm_124884735_33830642_120290173_1" border="0" src="./cpl03_files/4e375754c058d325efe6c3434e31b025.jpg" style="width: 255px; height: 213px;"></span></span></span></div>
+                
+                <div class="widget-box widget-box--blog-info">
+                    <div class="blog__sidebar-author ">
+                                                    <button type="button" class="btn btn-sm btn-success follow-user ml10 pull-right" data-do="follow" data-type="user" data-id="1030000006214955">关注作者
+                            </button>
+                        
+                        <div class="article__widget--author">
+                            <a href="https://segmentfault.com/u/yongshun" class="inline-block">
+                                <img class="avatar-40" src="./cpl03_files/2309431397-58146bf50d551_big64" alt="永顺">
+                            </a>
+                            <a class="article__widget-author-name inline-block" href="https://segmentfault.com/u/yongshun">
+                                <strong>永顺</strong>
+                            </a>
+                            <p class="article__widget-author-text-muted mb0">
+                                <span>2.4k 声望</span>
+
+                            </p>
+
+
+                        </div>
+
+
+                    </div>
+                                        <div class="blog__sidebar-blog-name">
+                        <p class="article__widget-author-text-muted mt15 mb5">发布于专栏</p>
+
+                        <h4 class="fz16"><a style="word-break: break-all;" href="https://segmentfault.com/blog/xys">后台开发</a></h4>
+                        <p class="article__widget-author-desc">后台开发</p>
+
+                        <p>
+                            <span class="article__widget-author-text-muted">107 人关注</span>
+                            
+                                                                    <button type="button mb20" class="btn btn-sm btn-default follow-article pull-right" data-do="follow" data-type="blog" data-id="1200000006726836">关注专栏
+                                    </button>
+                                
+                                                    </p>
+
+                    </div>
+                    
+
+                </div>
+                
+                
+                                <div id="mm_124884735_33830642_145440102" class="mb25 ad-should-be-fixed stuckMenu isStuck" style="display: block; position: fixed; top: 10px;"><div class="sfad-list"><div class="sfad-item"><a target="_blank" href="https://afptrack.alimama.com/clk?bid=0a671c9100015a757faa18a95d2b7d0d&amp;pid=mm_124884735_33830642_145440102&amp;cid=266154&amp;mid=251382&amp;oid=33116&amp;productType=1&amp;qytInfoMTime=1517594565&amp;e=k%2B%2BzU68q0LC0LVip4%2BMlAUIexOqiEPrX615gwMMtONHPItqqCmn%2FCPgp8WRNkqbzAhjPBX0ETqGOPHD6DHXZ%2FEjsD7Kvzk3KJedHdiw7AsEwe0RIJDrRyA%3D%3D&amp;k=121"><img src="./cpl03_files/1b47126b9af3342696de6ff049688cdd.png" alt="如何打造高可用系统"></a></div><div class="sfad-item"><a target="_blank" href="https://afptrack.alimama.com/clk?bid=0a671c9100015a757faa18a95d2b7d0d&amp;pid=mm_124884735_33830642_145440102&amp;cid=263505&amp;mid=248998&amp;oid=34478&amp;productType=1&amp;qytInfoMTime=1517594565&amp;e=MQzGrW4oX6e0LVip4%2BMlAUIexOqiEPrX615gwMMtONHPItqqCmn%2FCJeV5ISCjarSLuRratpqH3liODDozmX0cqbS5ou%2Bcrhd7gBlk0C%2B0TY8dj6cb4pSWefkEjqAj5Ew%2Bdapcbmg9EW7dGXvGiWb2H3dQH6KP1uGnmQXkC5wkBGdOzhlZ7GXI1GybHAZX3PbUg%2FMWta41VSdlvWYBxXdTYwiAtEG9BsfCYcDiNWYjoruFTFfsIjdKYbJjnFm%2BtyBsW0ZjoDy0jrOajw2sbQd5BE5O2%2B7Y8g62yPojJ01knaoHcedZvxHhcwnhCAgUe9LJZIvMj5CL7QZoaVli6%2BIxM%2BPEf2CwvpkbBBYZwBqsu%2BfDzJhEUxdLnmdXvdv9ua59DHk6QyuT%2FTXHrHZbee557ttxqdKoHOVg8BFJZUYI0LyPRRWffOS1W%2BhGMOMrr3s%2FON5atCicMmYhYiEuUlVG6Cyzvc0bwqdZRFipqotbMebIo8Do3kEnnJx%2BhAlJcDG0ubtyN6gUgs6vcaRH1dM7ch3tYmQnFptWud%2BJVrQ39C0plxO2yC7lDSxscK17BGe&amp;k=577"><img src="./cpl03_files/d45869ae934e5e5c87b3fe19e246eda4.jpg" alt="2017 京东年度 IT 图书榜"></a></div><div class="sfad-item"><a target="_blank" href="https://afptrack.alimama.com/clk?bid=0a671c9100015a757faa18a95d2b7d0d&amp;pid=mm_124884735_33830642_145440102&amp;cid=266153&amp;mid=251381&amp;oid=33116&amp;productType=1&amp;qytInfoMTime=1517594565&amp;e=MQEqdlKX9dm0LVip4%2BMlAUIexOqiEPrX615gwMMtONHPItqqCmn%2FCPgp8WRNkqbzAhjPBX0ETqGOPHD6DHXZ%2FEjsD7Kvzk3KJedHdiw7AsEbRTDzKpsTLw%3D%3D&amp;k=121"><img src="./cpl03_files/35da74ddb8f42e29fece338c35cddcb3.png" alt="双十一背后的故障演练"></a></div></div><div id="ac_wrap_mm_124884735_33830642_145440102" style="width:255px"><div id="ac_wrap_custommm_124884735_33830642_145440102" style="position:relative;"></div></div></div>
+ 
+                <div class="post-nav hidden-xs side-outline hidden-sm fixed" style="display: block; width: 213px; margin-top: 285px; top: 0px;">
+                    <div class="panel panel-default widget-outline">
+                        <div class="panel-heading">目录</div>
+                        <div class="panel-body">
+                            <div class="nav-body" style="top: 0px;">
+                                <div class="highlight-title" style="display: block; top: 100.286px; height: 47px;"></div>
+                                <ul class="articleIndex"><li class=""><a href="https://segmentfault.com/a/1190000007309311#articleHeader0">目录</a></li><li class=""><a href="https://segmentfault.com/a/1190000007309311#articleHeader1">ChannelHandler 的名字</a></li><li style="list-style:none;"><ul><li class=""><a href="https://segmentfault.com/a/1190000007309311#articleHeader2">自动生成 handler 的名字</a></li></ul></li><li class="active"><a href="https://segmentfault.com/a/1190000007309311#articleHeader3">关于 Pipeline 的事件传输机制</a></li><li style="list-style:none;"><ul><li><a href="https://segmentfault.com/a/1190000007309311#articleHeader4">Outbound 操作(outbound operations of a channel)</a></li><li><a href="https://segmentfault.com/a/1190000007309311#articleHeader5">Inbound 事件</a></li><li><a href="https://segmentfault.com/a/1190000007309311#articleHeader6">总结</a></li></ul></li></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+            </div><!-- /.side -->
+        </div>
+    </div>
+</div>
+
+<div id="shareToWeiboModal" class="modal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">×</span><span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title">分享</h4>
+            </div>
+            <div class="modal-body">
+                <p class="sfModal-content">
+                    分享到微博？
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default dont-likeweibo" data-dismiss="modal">取消</button>
+                <a href="https://segmentfault.com/a/1190000007309311" id="shareLink" class="btn btn-primary done-btn" target="_blank" onclick="$(&#39;#shareToWeiboModal&#39;).modal(&#39;hide&#39;)">分享</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal widget-911" id="911" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button class="close" data-dismiss="modal" type="button">
+          <span aria-hidden="true">×</span>
+          <span class="sr-only">Close</span>
+        </button>
+        <h4 class="modal-title"><span data-model="action"></span><span data-model="type"></span></h4>
+      </div>
+      <div class="modal-body">
+        <form id="reportForm">
+          <!-- 后台返回信息 -->
+          <p class="alert alert-warning" data-model="returnMsg"></p>
+          <div data-role="base">
+            <p>
+              <strong class="required">我要<span data-model="action"></span>该<span data-model="type"></span>，理由是：</strong>
+            </p>
+            <ul class="list-unstyled" data-model="list"></ul>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-default pull-left" type="button" data-role="back" style="display:none">返回重选</button>
+                <button class="btn btn-default" data-dismiss="modal" type="button">取消</button>
+        <button class="btn btn-primary" data-role="submit" type="button">提交</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+    <div id="loginBanner" class="hidden-sm hidden-xs loginBanner">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-7">
+                <h1 class="title">在 SegmentFault，学习技能、解决问题</h1>
+                <p class="desc">每个月，我们帮助 1000 万的开发者解决各种各样的技术问题。并助力他们在技术能力、职业生涯、影响力上获得提升。</p>
+            </div>
+            <div class="col-lg-3 col-lg-offset-3 col-md-4 col-md-offset-1">
+                <form class="register-form clearfix" action="https://segmentfault.com/api/user/phone/register">
+
+                    
+                    <a href="https://segmentfault.com/user/login" class="SFLogin btn btn-lg btn-primary mr15">免费注册</a>
+                    <a href="https://segmentfault.com/user/login" class="SFRegister btn btn-lg btn-primary">立即登录</a>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+
+
+
+
+
+<footer id="footer">
+    <div class="container">
+        <div class="row hidden-xs">
+            <dl class="col-sm-2 site-link">
+                <dt>产品</dt>
+                
+                <dd><a href="https://segmentfault.com/questions/hottest?utm_source=sf-footer&amp;utm_medium=footer-nav&amp;utm_campaign=product&amp;utm_content=footer-links-hottest-questions&amp;utm_term=%E7%83%AD%E9%97%A8%E9%97%AE%E7%AD%94">热门问答</a></dd>
+                <dd><a href="https://segmentfault.com/blogs/hottest?utm_source=sf-footer&amp;utm_medium=footer-nav&amp;utm_campaign=product&amp;utm_content=footer-links-hottest-questions&amp;utm_term=%E7%83%AD%E9%97%A8%E4%B8%93%E6%A0%8F">热门专栏</a></dd>
+                <dd><a href="https://segmentfault.com/lives?utm_source=sf-footer&amp;utm_medium=footer-nav&amp;utm_campaign=product&amp;utm_content=footer-links-hottest-questions&amp;utm_term=%E7%83%AD%E9%97%A8%E8%AE%B2%E5%A0%82">热门讲堂</a></dd>
+                <dd><a href="https://segmentfault.com/events?utm_source=sf-footer&amp;utm_medium=footer-nav&amp;utm_campaign=product&amp;utm_content=footer-links-hottest-questions&amp;utm_term=%E6%9C%80%E6%96%B0%E6%B4%BB%E5%8A%A8">最新活动</a></dd>
+                <dd><a href="https://segmentfault.com/groups?utm_source=sf-footer&amp;utm_medium=footer-nav&amp;utm_campaign=product&amp;utm_content=footer-links-hottest-questions&amp;utm_term=%E6%8A%80%E6%9C%AF%E5%9C%88">技术圈</a></dd>
+                <dd><a href="https://segmentfault.com/jobs?utm_source=sf-footer&amp;utm_medium=footer-nav&amp;utm_campaign=product&amp;utm_content=footer-links-hottest-questions&amp;utm_term=%E6%89%BE%E5%B7%A5%E4%BD%9C">找工作</a></dd>
+                <dd><a href="https://segmentfault.com/app?utm_source=sf-footer&amp;utm_medium=footer-nav&amp;utm_campaign=product&amp;utm_content=footer-links-hottest-questions&amp;utm_term=app">移动客户端</a></dd>
+                
+            </dl>
+            
+            <dl class="col-sm-2 site-link">
+                <dt>资源</dt>
+                <dd><a href="https://segmentfault.com/weekly?utm_source=sf-footer&amp;utm_medium=footer-nav&amp;utm_campaign=resource&amp;utm_content=footer-links-weekly&amp;utm_term=%E6%AF%8F%E5%91%A8%E7%B2%BE%E9%80%89">每周精选</a></dd>
+                <dd><a href="https://segmentfault.com/users?utm_source=sf-footer&amp;utm_medium=footer-nav&amp;utm_campaign=resource&amp;utm_content=footer-links-users&amp;utm_term=%E7%94%A8%E6%88%B7%E6%8E%92%E8%A1%8C%E6%A6%9C">用户排行榜</a></dd>
+                <dd><a href="https://segmentfault.com/badges?utm_source=sf-footer&amp;utm_medium=footer-nav&amp;utm_campaign=resource&amp;utm_content=footer-links-badges&amp;utm_term=%E5%BE%BD%E7%AB%A0">徽章</a></dd>
+                <dd><a href="https://segmentfault.com/faq?utm_source=sf-footer&amp;utm_medium=footer-nav&amp;utm_campaign=resource&amp;utm_content=footer-links-faq&amp;utm_term=%E5%B8%AE%E5%8A%A9%E4%B8%AD%E5%BF%83">帮助中心</a></dd>
+                <dd><a href="https://segmentfault.com/repu?utm_source=sf-footer&amp;utm_medium=footer-nav&amp;utm_campaign=resource&amp;utm_content=footer-links-repu&amp;utm_term=%E5%A3%B0%E6%9C%9B%E4%B8%8E%E6%9D%83%E9%99%90">声望与权限</a></dd>
+                <dd><a href="https://segmentfault.com/community?utm_source=sf-footer&amp;utm_medium=footer-nav&amp;utm_campaign=resource&amp;utm_content=footer-links-community&amp;utm_term=%E7%A4%BE%E5%8C%BA%E6%9C%8D%E5%8A%A1%E4%B8%AD%E5%BF%83">社区服务中心</a></dd>
+                <dd><a href="https://docs.segmentfault.com/?utm_source=sf-footer&amp;utm_medium=footer-nav&amp;utm_campaign=resource&amp;utm_content=footer-links-docs&amp;utm_term=%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C">开发手册</a></dd>
+
+   
+            </dl>
+
+            <dl class="col-sm-2 site-link">
+                <dt>商务</dt>
+                <dd><a href="https://business.segmentfault.com/services.html?utm_source=sf-footer&amp;utm_medium=footer-nav&amp;utm_campaign=business&amp;utm_content=footer-links-services-rencai&amp;utm_term=%E4%BA%BA%E6%89%8D%E6%9C%8D%E5%8A%A1" target="_blank">人才服务</a></dd>
+                <dd><a href="https://business.segmentfault.com/services.html?utm_source=sf-footer&amp;utm_medium=footer-nav&amp;utm_campaign=business&amp;utm_content=footer-links-services-qiyeneixun&amp;utm_term=%E4%BC%81%E4%B8%9A%E6%9C%8D%E5%8A%A1" target="_blank">企业培训</a></dd>
+                <dd><a href="https://business.segmentfault.com/services.html?utm_source=sf-footer&amp;utm_medium=footer-nav&amp;utm_campaign=business&amp;utm_content=footer-links-services-huodongcehua&amp;utm_term=%E6%B4%BB%E5%8A%A8%E7%AD%96%E5%88%92" target="_blank">活动策划</a></dd>
+                <dd><a href="https://business.segmentfault.com/ads.html?utm_source=sf-footer&amp;utm_medium=footer-nav&amp;utm_campaign=business&amp;utm_content=footer-links-ads&amp;utm_term=%E5%B9%BF%E5%91%8A%E6%8A%95%E6%94%BE" target="_blank">广告投放</a></dd>
+                <dd><a href="https://business.segmentfault.com/contact.html?utm_source=sf-footer&amp;utm_medium=footer-nav&amp;utm_campaign=business&amp;utm_content=footer-links-contact&amp;utm_term=%E5%90%88%E4%BD%9C%E8%81%94%E7%B3%BB" target="_blank">合作联系</a></dd>
+               
+            </dl>
+            
+            <dl class="col-sm-2 site-link">
+                <dt>关于</dt>
+                <dd><a href="https://about.segmentfault.com/?utm_source=sf-footer&amp;utm_medium=footer-nav&amp;utm_campaign=about&amp;utm_content=about-index&amp;utm_term=%E5%85%B3%E4%BA%8E%E6%88%91%E4%BB%AC">关于我们</a></dd>
+                <dd><a href="https://about.segmentfault.com/careers.html?utm_source=sf-footer&amp;utm_medium=footer-nav&amp;utm_campaign=about&amp;utm_content=about-careers&amp;utm_term=%E5%8A%A0%E5%85%A5%E6%88%91%E4%BB%AC">加入我们</a></dd>
+                <dd><a href="https://about.segmentfault.com/contact.html?utm_source=sf-footer&amp;utm_medium=footer-nav&amp;utm_campaign=about&amp;utm_content=about-contact&amp;utm_term=%E8%81%94%E7%B3%BB%E6%88%91%E4%BB%AC">联系我们</a></dd>
+            </dl>
+
+            <dl class="col-sm-2 site-link">
+                <dt>关注</dt>
+                                <dd><a href="https://segmentfault.com/blog/segmentfault" target="_blank">产品技术日志</a></dd>
+                                <dd><a href="https://segmentfault.com/blog/community_admin" target="_blank">社区运营日志</a></dd>
+                                <dd><a href="https://segmentfault.com/blog/segmentfault_news" target="_blank">市场运营日志</a></dd>
+                                <dd><a href="https://segmentfault.com/blog/segmentfault_team" target="_blank">团队日志</a></dd>
+                                <dd><a href="https://segmentfault.com/blog/interview" target="_blank">社区访谈</a></dd>
+                                <dd>
+                    <ul class="sn-inline">
+                        <li>
+                            <a class="entypo-wechart icon-sn-weixin weixin-popover-qrcode" data-toggle="popover" data-placement="top" data-content="" data-original-title="" title="">微信</a>
+                        </li>
+                        <li>
+                            <a href="http://weibo.com/segmentfault" target="_blank" class="entypo-weibo icon-sn-weibo">新浪微博</a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/SegmentFault" target="_blank" class="entypo-facebook icon-sn-github">Github</a>
+                        </li>
+                        <li>
+                            <a href="https://twitter.com/segment_fault" target="_blank" class="entypo-twitter icon-sn-twitter">Twitter</a>
+                        </li>
+                    </ul>
+                </dd>
+            </dl>
+
+            <dl class="col-sm-2 site-link" id="license">
+                <dt>条款</dt>
+                <dd><a href="https://segmentfault.com/tos">服务条款</a></dd>
+                <dd><a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">内容许可</a></dd>
+                <dd>
+                    <a href="https://segmentfault.com/app" class="clearfix mt10 block"><img src="./cpl03_files/appQrcode.png" class="app-qrcode"></a>
+                    <div class="app-download-desc">
+                        <p>扫一扫下载 App</p>
+                    </div>
+                    
+                </dd>
+            </dl>
+        </div>
+        <div class="copyright">
+            Copyright © 2011-2018 SegmentFault. 当前呈现版本 17.06.16<br>
+            <a href="http://www.miibeian.gov.cn/" rel="nofollow">浙ICP备 15005796号-2</a> &nbsp;
+            <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010602002000" rel="nofollow">浙公网安备 33010602002000号</a>
+            <span class="ml5">杭州堆栈科技有限公司版权所有</span>
+            <p class="mt30">CDN 存储服务由 <a target="_blank" href="https://www.upyun.com/?utm_source=segmentfault&amp;utm_medium=link&amp;utm_campaign=upyun&amp;md=segmentfault">又拍云</a> 赞助提供 </p>
+        </div>
+        <p class="text-center">
+            <a class="js__view--selector hidden-sm hidden-md hidden-lg" data-action="mobile" href="javascript:;">移动版</a>
+            <a class="js__view--selector hidden-sm hidden-md hidden-lg" data-action="desktop" href="javascript:;">桌面版</a>
+        </p>
+    </div>
+</footer>
+
+<div id="fixedTools" class="hidden-xs hidden-sm">
+    <a id="backtop" class="border-bottom" href="https://segmentfault.com/a/1190000007309311#">回顶部</a>
+</div>
+
+<script id="loginModal" type="text/template">
+    <div class="row bg-white login-modal">
+        <div class="col-md-12 login-wrap">
+            <form action="/api/user/login" method="POST" role="form" class="mt15">
+                <div class="form-group">
+                    <label for="username" class="control-label">手机号 或 Email</label>
+                    <input type="text" class="form-control" name="username" required placeholder="11 位手机号 或 Email"
+                           autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label class="control-label">密码</label><span class="pull-right"><a
+                                href="/user/forgot">忘记密码</a></span>
+                    <input type="password" class="form-control" name="password" required placeholder="请输入密码">
+                </div>
+                <div class="form-group clearfix">
+                    <button type="submit" class="btn-block btn btn-primary pull-right pl20 pr20"
+                            onclick='ga("send", "event", "email login button", "clicked", "login modal");'>登录
+                    </button>
+                </div>
+            </form>
+            <div class="text-muted text-center more-login-area">
+    <span class="more-login-words">更多登录方式</span>
+</div>
+<div class="widget-login mb15 text-center">
+    <a href="/user/oauth/google" class=""
+       onclick='ga("send", "event", "3rd login button", "clicked", "login modal", {media: "google"});'><span
+                class="icon-sn-google"></span></a>
+    <a href="/user/oauth/github" class=""
+       onclick='ga("send", "event", "3rd login button", "clicked", "login modal", {media: "github"});");'><span
+                class="icon-sn-github"></span></a>
+    <a href="/user/oauth/weibo" class=""
+       onclick='ga("send", "event", "3rd login button", "clicked", "login modal", {media: "weibo"});'><span
+                class="icon-sn-weibo"></span></a>
+    <a href="/user/oauth/qq" class=""
+       onclick='ga("send", "event", "3rd login button", "clicked", "login modal", {media: "qq"});'><span
+                class="icon-sn-qq"></span></a>
+    <a href="/user/oauth/weixin" class=""
+       onclick='ga("send", "event", "3rd login button", "clicked", "login modal", {media: "qq"});'><span
+                class="icon-sn-weixin"></span></a>
+    <a href="/user/oauth/linkedin" class=""
+       onclick='ga("send", "event", "3rd login button", "clicked", "login modal", {media: "linkedin"});'><span
+                class="icon-sn-linkedin"></span></a>
+    <span id="loginShowMore" style="cursor: pointer" class="mb5"><span class="icon-sn-dotted"></span></span>
+    <a href="/user/oauth/twitter" class=" hidden"
+       onclick='ga("send", "event", "3rd login button", "clicked", "login modal", {media: "twitter"});'><span
+                class="icon-sn-twitter"></span></a>
+    <a href="/user/oauth/facebook" class=" hidden"
+       onclick='ga("send", "event", "3rd login button", "clicked", "login modal", {media: "facebook"});'><span
+                class="icon-sn-facebook"></span></a>
+    <a href="/user/oauth/douban" class=" hidden"
+       onclick='ga("send", "event", "3rd login button", "clicked", "login modal", {media: "douban"});'><span
+                class="icon-sn-douban"></span></a>
+</div>
+<div class="form-group clearfix">
+    <a class="btn-block btn btn-default pull-right pl20 pr20 
+                        SFLogin
+             "
+
+            
+        onclick='ga("send", "event", "email login button", "clicked", "login modal");'>
+                    注册新账号
+            </a>
+</div>
+<p class="text-muted text-center mb15">登录即表示你同意网站的<a href="/tos" target="_blank">《服务条款》</a></p>        </div>
+    </div>
+</script>
+<script id="registerModal" type="text/template">
+    <div class="row bg-white login-modal">
+        <div class="col-md-12 login-wrap">
+            
+            <form action="/api/user/register" method="POST" role="form" class="mt15">
+                <div class="form-group">
+                    <label for="name" class="control-label">你的名字</label>
+                    <input type="text" class="form-control" name="name" required placeholder="真实姓名或常用昵称">
+                </div>
+                
+                <div class="form-group">
+                    <label for="mail" class="control-label">手机号 或 Email</label>
+                    <input type="text" class="form-control" id="login-name" name="mail" required placeholder="11 位手机号 或 Email">
+                </div>
+                
+                <input type="text" class="hidden" name="register_type" value="mail">
+
+                <div class="form-group">
+                    <div class="phone-register-only hidden">
+                        <div class="captchaInput mb10">
+                            <input type="text" class="form-control" name="cap" placeholder="右侧的验证码" style="width:50%; display: inline; margin-right: 15px;">
+                            <span class="mt10">
+                                <a id="loginReloadCaptcha" href="javascript:void(0)">
+                                <img src="/user/captcha?w=135&h=34" class="cap" width="135" height="34"/></a>
+                            </span>
+                        </div>
+                        <div class="input-group">
+                            <input name="code" type="text" class="form-control js-user-login__phone-code-value" placeholder="短信验证码">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default js-user-login__phone-vaild-btn" style="width:96px;" type="button">
+                                获取验证码</button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password" class="control-label">密码</label>
+                    <input type="password" class="form-control" name="password" required placeholder="不少于 6 位的密码">
+                </div>
+                <div class="form-group clearfix">
+                    <button type="submit" class="btn-block btn btn-primary pl20 pr20 pull-right"
+                            onclick='ga("send", "event", "email register button", "clicked", "login modal");'>注册
+                    </button>
+                </div>
+                                <div class="text-muted text-center more-login-area">
+    <span class="more-login-words">更多登录方式</span>
+</div>
+<div class="widget-login mb15 text-center">
+    <a href="/user/oauth/google" class=""
+       onclick='ga("send", "event", "3rd login button", "clicked", "login modal", {media: "google"});'><span
+                class="icon-sn-google"></span></a>
+    <a href="/user/oauth/github" class=""
+       onclick='ga("send", "event", "3rd login button", "clicked", "login modal", {media: "github"});");'><span
+                class="icon-sn-github"></span></a>
+    <a href="/user/oauth/weibo" class=""
+       onclick='ga("send", "event", "3rd login button", "clicked", "login modal", {media: "weibo"});'><span
+                class="icon-sn-weibo"></span></a>
+    <a href="/user/oauth/qq" class=""
+       onclick='ga("send", "event", "3rd login button", "clicked", "login modal", {media: "qq"});'><span
+                class="icon-sn-qq"></span></a>
+    <a href="/user/oauth/weixin" class=""
+       onclick='ga("send", "event", "3rd login button", "clicked", "login modal", {media: "qq"});'><span
+                class="icon-sn-weixin"></span></a>
+    <a href="/user/oauth/linkedin" class=""
+       onclick='ga("send", "event", "3rd login button", "clicked", "login modal", {media: "linkedin"});'><span
+                class="icon-sn-linkedin"></span></a>
+    <span id="loginShowMore" style="cursor: pointer" class="mb5"><span class="icon-sn-dotted"></span></span>
+    <a href="/user/oauth/twitter" class=" hidden"
+       onclick='ga("send", "event", "3rd login button", "clicked", "login modal", {media: "twitter"});'><span
+                class="icon-sn-twitter"></span></a>
+    <a href="/user/oauth/facebook" class=" hidden"
+       onclick='ga("send", "event", "3rd login button", "clicked", "login modal", {media: "facebook"});'><span
+                class="icon-sn-facebook"></span></a>
+    <a href="/user/oauth/douban" class=" hidden"
+       onclick='ga("send", "event", "3rd login button", "clicked", "login modal", {media: "douban"});'><span
+                class="icon-sn-douban"></span></a>
+</div>
+<div class="form-group clearfix">
+    <a class="btn-block btn btn-default pull-right pl20 pr20 
+                        SFRegister
+             "
+
+            
+        onclick='ga("send", "event", "email login button", "clicked", "login modal");'>
+                    已有账号登录
+            </a>
+</div>
+<p class="text-muted text-center mb15">登录即表示你同意网站的<a href="/tos" target="_blank">《服务条款》</a></p>            </form>
+        </div>
+    </div>
+</script>
+<script id="bindPhoneModal" type="text/template">
+    <div class="bg-white bindphone-model">
+        <div class="alert alert-warning" role="alert">
+            为了保证账号安全，请先绑定手机
+        </div>
+        <div>
+            <form class="form-horizontal form__bindphone-apply" style="background-color:#fff;padding:0;">
+                <div class="form-group ">
+                    <label for="phoneNumber" class="col-sm-3 control-label required" >手机号码</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control bindphone--phone" id="phoneNumber" name="phone" placeholder="仅只支持大陆手机号">
+                    </div>
+                    <div class="col-sm-3"></div>
+                </div>
+                <div class="form-group">
+                    <label for="authCode" class="col-sm-3 control-label required">验证码</label>
+                    <div class="col-sm-6">
+                        <div class="input-group">
+                            <input type="text" class="form-control bindphone--code" name="code" placeholder="短信验证码">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default user-bind__phone-vaild-btn" type="button">获取验证码</button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-sm-3"></div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</script>
+
+
+<script>
+    window.serverTime = 1517649832000;
+</script>
+
+<script>
+    </script>
+<script id="taskFollowList" type="x-template">
+    null
+</script>
+<script>
+    try {
+        window.taskFollowList = JSON.parse(document.getElementById('taskFollowList').innerHTML)
+    } catch(err) {}
+</script>
+
+<script>
+    (function (w) {
+        w.SF = {
+            staticUrl: "https://static.segmentfault.com/v-5a742a0b"
+        };
+        w.SF.token = (function () {
+    var _Z2H = '0e'//'Bn'
++'2'//'Hx'
++//'I'
+'69'+//'V3'
+'ada'+//'Idn'
+'f'+'1'//'d'
++//'h0'
+'72'+'93'//'EZ'
++'7'//'4u'
++//'ZE'
+'2'+//'MM'
+'d32'+'xG'//'xG'
++'a16'//'M2'
++//'e'
+'3'+'j'//'j'
++'h8F'//'h8F'
++//'Z'
+'4'+'sJ'//'sJ'
++'3'//'di'
++//'tOK'
+'tOK'+'e'//'X8V'
++//'0jt'
+'2'+'88'//'sL'
++//'b'
+'4'+'4'//'Rw'
++//'2s'
+'e', _Dm11x2T = [[19,21],[23,24],[23,26],[24,26],[25,28]];
+
+    for (var i = 0; i < _Dm11x2T.length; i ++) {
+        _Z2H = _Z2H.substring(0, _Dm11x2T[i][0]) + _Z2H.substring(_Dm11x2T[i][1]);
+    }
+
+    return _Z2H;
+})();;
+    })(window);
+
+                var lock = {
+        type: "",
+        text: '',
+        table: {"ban_post":[1,"\u4f60\u5df2\u7ecf\u88ab\u7981\u8a00, \u65e0\u6cd5\u8fdb\u884c\u6b64\u64cd\u4f5c, \u5982\u6709\u7591\u4e49\u8bf7\u63d0\u4ea4\u7533\u8bc9, \u6216\u8005\u53d1\u90ae\u4ef6\u5230pr@segmentfault.com"]}
+    };
+
+        var ddosMode = false;
+    
+    (function (currentUrl) {
+        if (typeof URL != 'undefined') {
+            // 测试环境
+            if ('https://segmentfault.com' === '//localhost:3000') return
+
+            var baseUrl = new URL('https://segmentfault.com');
+
+            if (baseUrl.protocol != currentUrl.protocol
+                || baseUrl.host != currentUrl.host) {
+                window.location.href = baseUrl.protocol + '//' + baseUrl.host
+                    + currentUrl.pathname + currentUrl.search + currentUrl.hash;
+            }
+        }
+    })(window.location);
+</script>
+             <script crossorigin="" src="./cpl03_files/assets.js.下载"></script>
+                 
+        <script crossorigin="" src="./cpl03_files/post.min.js.下载"></script>
+            
+
+<script>
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-918487-8']);
+    _gaq.push(['_trackPageview']);
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+                
+        
+
+            
+
+    ga('create', 'UA-918487-8', 'auto', {
+        'userID'
+    : 0,
+        'createdTime'
+    : 0,
+        'now'
+    : 1517649833,
+        'allowLinker'
+    : true });
+    ga('require', 'linker');
+    ga('linker:autoLink', ['docs.segmentfault.com'] );
+    ga('set', 'dimension1', 'guest');
+    ga('send', 'pageview');
+
+</script>
+
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?e23800c454aa573c0ccb16b52665ac26";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+        <script type="text/javascript" src="./cpl03_files/k.js.下载"></script>
+            <ins id="ac_js86_mm_124884735_33830642_145440102" style="display: none;"></ins><script>
+                    ac_keywords_targeting = "java";
+                _acM({
+            aid: "mm_124884735_33830642_145440102",
+            format: 1,
+            mode: 1,
+            gid: 1,
+            destid: "mm_124884735_33830642_145440102",
+            sendkeywords: 1,
+            serverbaseurl: "afpeng.alimama.com/"
+        });
+        </script><script type="text/javascript" src="./cpl03_files/ex" id="ac_js86_$9805436035"></script><div id="noteWidget" class="noteWidget hidden hidden-xs">
+    <div class="noteWidget-header clearfix">
+        <h2 class="h4 pull-left">记笔记</h2>
+        <ul class="list-inline pull-right mb0">
+            <li id="noteWidgetMinimize"><span class="icon-minimize"></span></li><li id="noteWidgetZoom"><span class="icon-zoom"></span></li><li id="noteWidgetClose"><span class="icon-close"></span></li>
+        </ul>
+    </div>
+    <form method="POST" action="https://segmentfault.com/api/notes/add" role="form">
+        <div class="form-group">
+            <label for="title" class="sr-only">标题</label>
+            <input type="hidden" value="" id="draftId">
+            <input type="text" name="title" data-error="" autocomplete="off" class="form-control" placeholder="笔记描述" value="">
+        </div>
+        <div class="editor-config clearfix">
+            <select name="lang" class="form-control pull-left input-sm">
+                <optgroup label="文本语法">
+                    <option value="text" data-mode="text">纯文本</option>
+                    <option value="markdown" data-mode="markdown">Markdown</option>
+                    <option value="javascript" data-mode="javascript">Javascript</option>
+                    <option value="css" data-mode="css">CSS</option>
+                    <option value="html5" data-mode="htmlmixed">HTML</option>
+                    <option value="php" data-mode="php">PHP</option>
+                    <option value="python" data-mode="python">Python</option>
+                    <option value="ruby" data-mode="ruby">Ruby</option>
+                    <option value="go" data-mode="go">Go</option>
+                    <option value="c" data-mode="clike">C/C++</option>
+                    <option value="java" data-mode="java">Java</option>
+                    <option value="bash" data-mode="shell">Shell/Bash</option>
+                </optgroup>
+            </select>
+            <div class="pull-right hidden-xs">
+                <select name="indentWithTabs" class="form-control inline-block input-sm">
+                    <optgroup label="缩进模式">
+                        <option value="false">空格缩进</option>
+                        <option value="true">Tabs 缩进</option>
+                    </optgroup>
+                </select>
+                <select name="tabSize" class="form-control inline-block input-sm">
+                    <optgroup label="缩进大小">
+                        <option value="2">2</option>
+                        <option value="4" selected="">4</option>
+                    </optgroup>
+                </select>
+                <select name="lineWrap" class="form-control inline-block input-sm">
+                    <optgroup label="换行方式">
+                        <option value="true">自动换行</option>
+                        <option value="false">不换行</option>
+                    </optgroup>
+                </select>
+            </div>
+        </div>
+        <textarea id="codeMirror" class="form-control" style="display: none;"></textarea><div class="CodeMirror cm-s-default CodeMirror-wrap"><div style="overflow: hidden; position: relative; width: 3px; height: 0px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" style="position: absolute; padding: 0px; width: 1000px; height: 1em; outline: none;" tabindex="0"></textarea></div><div class="CodeMirror-hscrollbar" style="left: 0px;"><div style="height: 100%; min-height: 1px;"></div></div><div class="CodeMirror-vscrollbar"><div style="min-width: 1px;"></div></div><div class="CodeMirror-scrollbar-filler"></div><div class="CodeMirror-gutter-filler"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px;"><div style="position: relative;"><div class="CodeMirror-lines"><div style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-cursors"></div><div class="CodeMirror-code"></div></div></div></div></div><div style="position: absolute; height: 30px; width: 1px;"></div><div class="CodeMirror-gutters"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 1px;"></div></div></div></div>
+        <div class="mt20 clearfix">
+            <div class="pull-right">
+                <span class="text-muted hidden" id="editorStatus">已保存</span>
+                <a id="dropIt" href="javascript:void(0);" class="mr10 hidden">[舍弃]</a>
+                <button data-type="note" id="publishIt2" class="btn btn-default ml10" data-id="" data-do="add" data-url="" data-text="保存私密笔记" data-name="">保存私密笔记</button>
+                <button data-type="note" id="publishIt" class="btn btn-primary ml10" data-id="" data-do="add" data-url="" data-text="保存公开笔记" data-name="">保存公开笔记</button>
+                </div>
+            </div>
+        </form></div>
+    
+<div id="atwho-container"><div id="atwho-ground-706f93d61517649835794"><div class="atwho-view" id="at-view-64"><ul class="atwho-view-ul"></ul></div></div></div>
+            <ins id="ac_js86_mm_124884735_33830642_120290173" style="display: none;"></ins><script>
+                    ac_keywords_targeting = "java";
+                _acM({
+            aid: "mm_124884735_33830642_120290173",
+            format: 1,
+            mode: 1,
+            gid: 1,
+            destid: "mm_124884735_33830642_120290173",
+            sendkeywords: 1,
+            serverbaseurl: "afpeng.alimama.com/"
+        });
+        </script><script></script><script type="text/javascript" src="./cpl03_files/ex(1)" id="ac_js86_$9802752046"></script>
+     
+
+        <script type="text/javascript" src="./cpl03_files/k.js.下载"></script>
+            <ins id="ac_js86_mm_124884735_33830642_143436142" style="display: none;"></ins><script>
+                    ac_keywords_targeting = "java";
+                _acM({
+            aid: "mm_124884735_33830642_143436142",
+            format: 1,
+            mode: 1,
+            gid: 1,
+            destid: "mm_124884735_33830642_143436142",
+            sendkeywords: 1,
+            serverbaseurl: "afpeng.alimama.com/"
+        });
+        </script><script></script><script type="text/javascript" src="./cpl03_files/ex(2)" id="ac_js86_$1760386151"></script>
+     
+
+
+
+
+<iframe id="p_analyse_iframe" src="./cpl03_files/saved_resource(1).html" style="display: none;"></iframe></body></html>
