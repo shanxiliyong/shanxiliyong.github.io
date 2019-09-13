@@ -31,7 +31,7 @@
   
 
   
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.9.9/css/style.css">
+    <link rel="stylesheet" href="/style.css">
   
 
   <script>
@@ -302,8 +302,8 @@
       
         
   <h2 class="title">
-    <a href="/2019/03/11/aa_category/se/深入拆解 Java 虚拟机/18即时编译器的中间表达形式/">
-      18即时编译器的中间表达形式
+    <a href="/2019/03/11/aa_category/db/mysql/锁/">
+      锁
     </a>
   </h2>
 
@@ -319,7 +319,7 @@
     
       <a href="https://liyong.ac.cn" rel="nofollow">
         
-          <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/avatar/avatar.png">
+          <img src="https://liyong.ac.cn/img/me.png">
         
         <p>李永</p>
       </a>
@@ -343,9 +343,9 @@
             
   
   <div class='new-meta-item category'>
-    <a href='/categories/se/' rel="nofollow">
+    <a href='/categories/db/' rel="nofollow">
       <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>se</p>
+      <p>db</p>
     </a>
   </div>
 
@@ -367,12 +367,10 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h1 id="中间表达形式（IR）"><a href="#中间表达形式（IR）" class="headerlink" title="中间表达形式（IR）"></a>中间表达形式（IR）</h1><p>如果不考虑解释执行的话，从 Java 源代码到最终的机器码实际上经过了两轮编译：Java 编译器将 Java 源代码编译成 Java 字节码，而即时编译器则将 Java 字节码编译成机器码。</p>
-<p> Java 字节码本身并不适合直接作为可供优化的 IR。这是因为现代编译器一般采用静态单赋值（Static Single Assignment，SSA）IR。这种 IR 的特点是每个变量只能被赋值一次，而且只有当变量被赋值之后才能使用。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">示例：</span><br><span class="line">x1=<span class="number">4</span>*<span class="number">1024</span> 经过常量折叠后变为 x1=<span class="number">4096</span></span><br><span class="line">x1=<span class="number">4</span>; y1=x1 经过常量传播后变为 x1=<span class="number">4</span>; y1=<span class="number">4</span></span><br><span class="line">y1=x1*<span class="number">3</span> 经过强度削减后变为 y1=(x1&lt;&lt;<span class="number">1</span>)+x1</span><br><span class="line"><span class="keyword">if</span>(<span class="number">2</span>&gt;<span class="number">1</span>)&#123;y1=<span class="number">1</span>;&#125;<span class="keyword">else</span>&#123;y2=<span class="number">1</span>;&#125;经过死代码删除后变为 y1=<span class="number">1</span></span><br></pre></td></tr></table></figure>
+      
       
         <div class="readmore">
-          <a href="/2019/03/11/aa_category/se/深入拆解 Java 虚拟机/18即时编译器的中间表达形式/" class="flat-box">
+          <a href="/2019/03/11/aa_category/db/mysql/锁/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -382,9 +380,9 @@
     
       <div class="full-width auto-padding tags">
         
-          <a href="/tags/se/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> se</a>
+          <a href="/tags/mysql/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> mysql</a>
         
-          <a href="/tags/jvm/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> jvm</a>
+          <a href="/tags/db/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> db</a>
         
       </div>
     
@@ -407,8 +405,8 @@
       
         
   <h2 class="title">
-    <a href="/2019/03/11/aa_category/se/深入拆解 Java 虚拟机/16-17即时编译/">
-      16-17即时编译
+    <a href="/2019/03/11/aa_category/se/深入拆解 Java 虚拟机/15Java语法糖与Java编译器/">
+      15Java语法糖与Java编译器
     </a>
   </h2>
 
@@ -424,7 +422,7 @@
     
       <a href="https://liyong.ac.cn" rel="nofollow">
         
-          <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/avatar/avatar.png">
+          <img src="https://liyong.ac.cn/img/me.png">
         
         <p>李永</p>
       </a>
@@ -472,16 +470,10 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h1 id="分层编译将-Java-虚拟机的执行状态分为了五个层次"><a href="#分层编译将-Java-虚拟机的执行状态分为了五个层次" class="headerlink" title="分层编译将 Java 虚拟机的执行状态分为了五个层次"></a>分层编译将 Java 虚拟机的执行状态分为了五个层次</h1><ol>
-<li>解释执行；</li>
-<li>执行不带 profiling 的 C1 代码；</li>
-<li>执行仅带方法调用次数以及循环回边执行次数 profiling 的 C1 代码；</li>
-<li>执行带所有 profiling 的 C1 代码；</li>
-<li>执行 C2 代码。</li>
-</ol>
+      <h1 id="自动装箱与自动拆箱"><a href="#自动装箱与自动拆箱" class="headerlink" title="自动装箱与自动拆箱"></a>自动装箱与自动拆箱</h1><p>也就是说，我们可以通过配置该参数，扩大 Integer 缓存的范围。Java 虚拟机参数 -XX:+AggressiveOpts 也会将 IntegerCache.high 调整至 20000。</p>
       
         <div class="readmore">
-          <a href="/2019/03/11/aa_category/se/深入拆解 Java 虚拟机/16-17即时编译/" class="flat-box">
+          <a href="/2019/03/11/aa_category/se/深入拆解 Java 虚拟机/15Java语法糖与Java编译器/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -548,7 +540,7 @@
   <div class='content pure'>
     
       <div class='avatar'>
-        <img class='avatar' src='https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/avatar/avatar.png'/>
+        <img class='avatar' src='https://liyiong.a.cn/img/me.png'/>
       </div>
     
     
@@ -631,12 +623,12 @@
           博文
         </a></li>
       
-        <li><a class="flat-box" title="/blog/archives/" href="/blog/archives/"
+        <li><a class="flat-box" title="/archives/" href="/archives/"
           
             rel="nofollow"
           
           
-          id="blogarchives">
+          id="archives">
           
             <i class="fas fa-archive fa-fw" aria-hidden="true"></i>
           
@@ -705,8 +697,8 @@
       rel="nofollow"
     
     
-    href="/blog/categories/"
-    title="blog/categories/">
+    href="/categories/"
+    title="categories/">
     <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
   
 </header>
@@ -815,8 +807,8 @@
       rel="nofollow"
     
     
-    href="/blog/tags/"
-    title="blog/tags/">
+    href="/tags/"
+    title="tags/">
     <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
   
 </header>
@@ -928,14 +920,14 @@
       $(function(){
         if ('.cover') {
           $('.cover').backstretch(
-          ["https://img.vim-cn.com/29/91197b04c13f512f734a76d4ac422d89dbe229.jpg"],
+          ["https://liyong.ac.cn/img/backgroud.jpg"],
           {
             duration: "6000",
             fade: "2500"
           });
         } else {
           $.backstretch(
-          ["https://img.vim-cn.com/29/91197b04c13f512f734a76d4ac422d89dbe229.jpg"],
+          ["https://liyong.ac.cn/img/backgroud.jpg"],
           {
             duration: "6000",
             fade: "2500"
@@ -955,10 +947,10 @@
 
 
 
-  <script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.9/js/app.js"></script>
+  <script src="/js/app.js"></script>
 
 
-  <script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.9/js/search.js"></script>
+  <script src="/js/search.js"></script>
 
 
 
