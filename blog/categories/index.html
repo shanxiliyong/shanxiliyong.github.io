@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   
-  <title>1一条SQL查询语句是如何执行的 | 李永的博客</title>
+  <title>所有分类 | 李永的博客</title>
   
   <meta name="keywords" content="李永">
   
@@ -48,7 +48,7 @@
   
   
   <div class="cover-wrapper">
-    <cover class='cover post half'>
+    <cover class='cover category half'>
       
         
   <h1 class='title'>LEE</h1>
@@ -282,303 +282,248 @@
 
   <div class="l_body">
     <div class='body-wrapper'>
-      <div class='l_main'>
+      
+<div class='l_main'>
   
-
-  <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
     
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  
-    <h1 class="title">
-      <a href="/2019/03/11/aa_category/db/mysql/mysql实战/1一条SQL查询语句是如何执行的/">
-        1一条SQL查询语句是如何执行的
-      </a>
-    </h1>
-  
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://liyong.ac.cn" rel="nofollow">
-        
-          <img src="https://liyong.ac.cn/img/me.png">
-        
-        <p>李永</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-03-11</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/db/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>db</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-  
-    <div class="new-meta-item browse busuanzi">
-      <a class='notlink'>
-        <i class="fas fa-eye" aria-hidden="true"></i>
-        <p>
-          <span id="busuanzi_value_page_pv">
-            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
-          </span>
-        </p>
-      </a>
-    </div>
-  
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-    <section class="article typo">
-      <div class="article-entry" itemprop="articleBody">
-        <h1 id="summarize"><a href="#summarize" class="headerlink" title="summarize"></a>summarize</h1><p><img src="http://liyong.ac.cn/pic/1546866826086.png" alt="1546866826086"></p>
-<ul>
-<li>server层包括连接器、查询缓存、分析器、优化器、执行器以及所有的内置函数（如日期、时间、数学函数）</li>
-</ul>
-<a id="more"></a>
-
-<h1 id="连接器"><a href="#连接器" class="headerlink" title="连接器"></a>连接器</h1><ul>
-<li><p>修改用户权限，不影响已经建立的连接</p>
-</li>
-<li><p>show processlist 查看连接的客户端</p>
-</li>
-<li><p>wait_timeout  默认值  8</p>
-</li>
-<li><p>建立连接比较麻烦，建议使用长连接</p>
-</li>
-</ul>
-<h1 id="查询缓存"><a href="#查询缓存" class="headerlink" title="查询缓存"></a>查询缓存</h1><ul>
-<li><p>query_cache_type  设置成DEMAND</p>
-</li>
-<li><p>select SQL_CACHE * from T where ID=10     使用SQL_CACHE 显示的使用缓存</p>
-</li>
-</ul>
-<h1 id="分析器"><a href="#分析器" class="headerlink" title="分析器"></a>分析器</h1><ul>
-<li>词法分析</li>
-<li>语法分析</li>
-</ul>
-<h1 id="优化器"><a href="#优化器" class="headerlink" title="优化器"></a>优化器</h1><ul>
-<li>决定索引</li>
-<li>决定各个表的连接顺序</li>
-</ul>
-<h1 id="执行器"><a href="#执行器" class="headerlink" title="执行器"></a>执行器</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> T <span class="keyword">where</span> <span class="keyword">ID</span>=<span class="number">10</span>;</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>取这个表的第一行判断ID值是否等于10，如果不是则跳过，如果是则将结果保存到结果中</li>
-<li>取下一行，重复相同的逻辑判断，直至最后一行</li>
-<li>将满足条件的记录返回给客户端</li>
-</ol>
-
-      </div>
-      
-        <br>
-        
-
-
-  <section class='meta' id="footer-meta">
-    <div class='new-meta-box'>
-      
-        
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-09-10T19:57:17+08:00">
-  <a class='notlink'>
-    <i class="fas fa-clock" aria-hidden="true"></i>
-    <p>更新于 2019年9月10日</p>
-  </a>
-</div>
-
-        
-      
-        
-          
-  
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/mysql/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>mysql</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/db/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>db</p></a></div>
-
-
-        
-      
-        
-          
-  <div class="new-meta-item share -mob-share-list">
-  <div class="-mob-share-list share-body">
-    
-      
-        <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer"
-          
-          href="http://connect.qq.com/widget/shareqq/index.html?url=https://liyong.ac.cn/2019/03/11/aa_category/db/mysql/mysql实战/1一条SQL查询语句是如何执行的/&title=1一条SQL查询语句是如何执行的 | 李永的博客&pics=https://liyong.ac.cn/img/me.png&summary=summarize
-
-server层包括连接器、查询缓存、分析器、优化器、执行器以及所有的内置函数（如日期、时间、数学函数）
-"
-          
-          >
-          
-            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qq.png">
-          
-        </a>
-      
-    
-      
-        <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer"
-          
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://liyong.ac.cn/2019/03/11/aa_category/db/mysql/mysql实战/1一条SQL查询语句是如何执行的/&title=1一条SQL查询语句是如何执行的 | 李永的博客&pics=https://liyong.ac.cn/img/me.png&summary=summarize
-
-server层包括连接器、查询缓存、分析器、优化器、执行器以及所有的内置函数（如日期、时间、数学函数）
-"
-          
-          >
-          
-            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qzone.png">
-          
-        </a>
-      
-    
-      
-        <a class="-mob-share-weibo" title="微博" rel="external nofollow noopener noreferrer"
-          
-          href="http://service.weibo.com/share/share.php?url=https://liyong.ac.cn/2019/03/11/aa_category/db/mysql/mysql实战/1一条SQL查询语句是如何执行的/&title=1一条SQL查询语句是如何执行的 | 李永的博客&pics=https://liyong.ac.cn/img/me.png&summary=summarize
-
-server层包括连接器、查询缓存、分析器、优化器、执行器以及所有的内置函数（如日期、时间、数学函数）
-"
-          
-          >
-          
-            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/weibo.png">
-          
-        </a>
-      
-    
-  </div>
-</div>
-
-
-
-        
-      
-    </div>
-  </section>
-
-
-      
-      
-          <div class="prev-next">
-              
-                  <section class="prev">
-                      <span class="art-item-left">
-                          <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
-                          <h4>
-                              <a href="/2019/03/11/aa_category/middleware/zookeeper/zookeeper入门/" rel="prev" title="zookeeper入门">
-                                
-                                    zookeeper入门
-                                
-                              </a>
-                          </h4>
-                          
-                              
-                              <h6 class="tags">
-                                  <a class="tag" href="/tags/middleware/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> middleware</a> <a class="tag" href="/tags/zk/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> zk</a>
-                              </h6>
-                          
+      <section class="post-list">
+        <div class='post-wrapper'>
+          <article id="archive-page" class="post article white-box">
+            <section class="archive">
+              <div class="archive-item archive-year mark">
+                <h2>所有分类</h2>
+                <hr>
+              </div>
+              <div class="archive-item archive-post mark">
+                
+                  
+                    <a class="" href="/categories/Java资源大全/">
+                      <time><i class='fas fa-folder-open fa-fw' aria-hidden="true"></i>&nbsp;&nbsp;Java资源大全</time>
+                      <span class="title">
+                        (1)
                       </span>
-                  </section>
-              
-              
-                  <section class="next">
-                      <span class="art-item-right" aria-hidden="true">
-                          <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
-                          <h4>
-                              <a href="/2019/03/11/aa_category/middleware/zookeeper/zk使用场景/" rel="prev" title="zk使用场景">
-                                  
-                                      zk使用场景
-                                  
-                              </a>
-                          </h4>
-                          
-                              
-                              <h6 class="tags">
-                                  <a class="tag" href="/tags/middleware/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> middleware</a> <a class="tag" href="/tags/zk/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> zk</a>
-                              </h6>
-                          
+                    </a>
+                  
+                    <a class="" href="/categories/algorithm/">
+                      <time><i class='fas fa-folder-open fa-fw' aria-hidden="true"></i>&nbsp;&nbsp;algorithm</time>
+                      <span class="title">
+                        (30)
                       </span>
-                  </section>
+                    </a>
+                  
+                    <a class="" href="/categories/db/">
+                      <time><i class='fas fa-folder-open fa-fw' aria-hidden="true"></i>&nbsp;&nbsp;db</time>
+                      <span class="title">
+                        (27)
+                      </span>
+                    </a>
+                  
+                    <a class="" href="/categories/docker/">
+                      <time><i class='fas fa-folder-open fa-fw' aria-hidden="true"></i>&nbsp;&nbsp;docker</time>
+                      <span class="title">
+                        (1)
+                      </span>
+                    </a>
+                  
+                    <a class="" href="/categories/ee/">
+                      <time><i class='fas fa-folder-open fa-fw' aria-hidden="true"></i>&nbsp;&nbsp;ee</time>
+                      <span class="title">
+                        (1)
+                      </span>
+                    </a>
+                  
+                    <a class="" href="/categories/git/">
+                      <time><i class='fas fa-folder-open fa-fw' aria-hidden="true"></i>&nbsp;&nbsp;git</time>
+                      <span class="title">
+                        (1)
+                      </span>
+                    </a>
+                  
+                    <a class="" href="/categories/idea/">
+                      <time><i class='fas fa-folder-open fa-fw' aria-hidden="true"></i>&nbsp;&nbsp;idea</time>
+                      <span class="title">
+                        (1)
+                      </span>
+                    </a>
+                  
+                    <a class="" href="/categories/javadoc/">
+                      <time><i class='fas fa-folder-open fa-fw' aria-hidden="true"></i>&nbsp;&nbsp;javadoc</time>
+                      <span class="title">
+                        (1)
+                      </span>
+                    </a>
+                  
+                    <a class="" href="/categories/linux/">
+                      <time><i class='fas fa-folder-open fa-fw' aria-hidden="true"></i>&nbsp;&nbsp;linux</time>
+                      <span class="title">
+                        (11)
+                      </span>
+                    </a>
+                  
+                    <a class="" href="/categories/log/">
+                      <time><i class='fas fa-folder-open fa-fw' aria-hidden="true"></i>&nbsp;&nbsp;log</time>
+                      <span class="title">
+                        (3)
+                      </span>
+                    </a>
+                  
+                    <a class="" href="/categories/maven/">
+                      <time><i class='fas fa-folder-open fa-fw' aria-hidden="true"></i>&nbsp;&nbsp;maven</time>
+                      <span class="title">
+                        (4)
+                      </span>
+                    </a>
+                  
+                    <a class="" href="/categories/methodology/">
+                      <time><i class='fas fa-folder-open fa-fw' aria-hidden="true"></i>&nbsp;&nbsp;methodology</time>
+                      <span class="title">
+                        (3)
+                      </span>
+                    </a>
+                  
+                    <a class="" href="/categories/middleware/">
+                      <time><i class='fas fa-folder-open fa-fw' aria-hidden="true"></i>&nbsp;&nbsp;middleware</time>
+                      <span class="title">
+                        (5)
+                      </span>
+                    </a>
+                  
+                    <a class="" href="/categories/ms/">
+                      <time><i class='fas fa-folder-open fa-fw' aria-hidden="true"></i>&nbsp;&nbsp;ms</time>
+                      <span class="title">
+                        (1)
+                      </span>
+                    </a>
+                  
+                    <a class="" href="/categories/mybatis/">
+                      <time><i class='fas fa-folder-open fa-fw' aria-hidden="true"></i>&nbsp;&nbsp;mybatis</time>
+                      <span class="title">
+                        (11)
+                      </span>
+                    </a>
+                  
+                    <a class="" href="/categories/netty/">
+                      <time><i class='fas fa-folder-open fa-fw' aria-hidden="true"></i>&nbsp;&nbsp;netty</time>
+                      <span class="title">
+                        (3)
+                      </span>
+                    </a>
+                  
+                    <a class="" href="/categories/nio/">
+                      <time><i class='fas fa-folder-open fa-fw' aria-hidden="true"></i>&nbsp;&nbsp;nio</time>
+                      <span class="title">
+                        (2)
+                      </span>
+                    </a>
+                  
+                    <a class="" href="/categories/other/">
+                      <time><i class='fas fa-folder-open fa-fw' aria-hidden="true"></i>&nbsp;&nbsp;other</time>
+                      <span class="title">
+                        (1)
+                      </span>
+                    </a>
+                  
+                    <a class="" href="/categories/se/">
+                      <time><i class='fas fa-folder-open fa-fw' aria-hidden="true"></i>&nbsp;&nbsp;se</time>
+                      <span class="title">
+                        (67)
+                      </span>
+                    </a>
+                  
+                    <a class="" href="/categories/spring/">
+                      <time><i class='fas fa-folder-open fa-fw' aria-hidden="true"></i>&nbsp;&nbsp;spring</time>
+                      <span class="title">
+                        (14)
+                      </span>
+                    </a>
+                  
+                    <a class="" href="/categories/standard/">
+                      <time><i class='fas fa-folder-open fa-fw' aria-hidden="true"></i>&nbsp;&nbsp;standard</time>
+                      <span class="title">
+                        (5)
+                      </span>
+                    </a>
+                  
+                    <a class="" href="/categories/storm/">
+                      <time><i class='fas fa-folder-open fa-fw' aria-hidden="true"></i>&nbsp;&nbsp;storm</time>
+                      <span class="title">
+                        (1)
+                      </span>
+                    </a>
+                  
+                    <a class="" href="/categories/thread/">
+                      <time><i class='fas fa-folder-open fa-fw' aria-hidden="true"></i>&nbsp;&nbsp;thread</time>
+                      <span class="title">
+                        (3)
+                      </span>
+                    </a>
+                  
+                    <a class="" href="/categories/tool/">
+                      <time><i class='fas fa-folder-open fa-fw' aria-hidden="true"></i>&nbsp;&nbsp;tool</time>
+                      <span class="title">
+                        (1)
+                      </span>
+                    </a>
+                  
+                    <a class="" href="/categories/uml/">
+                      <time><i class='fas fa-folder-open fa-fw' aria-hidden="true"></i>&nbsp;&nbsp;uml</time>
+                      <span class="title">
+                        (1)
+                      </span>
+                    </a>
+                  
+                    <a class="" href="/categories/web/">
+                      <time><i class='fas fa-folder-open fa-fw' aria-hidden="true"></i>&nbsp;&nbsp;web</time>
+                      <span class="title">
+                        (2)
+                      </span>
+                    </a>
+                  
+                    <a class="" href="/categories/工具/">
+                      <time><i class='fas fa-folder-open fa-fw' aria-hidden="true"></i>&nbsp;&nbsp;工具</time>
+                      <span class="title">
+                        (1)
+                      </span>
+                    </a>
+                  
+                    <a class="" href="/categories/方法论/">
+                      <time><i class='fas fa-folder-open fa-fw' aria-hidden="true"></i>&nbsp;&nbsp;方法论</time>
+                      <span class="title">
+                        (2)
+                      </span>
+                    </a>
+                  
+                    <a class="" href="/categories/死磕/">
+                      <time><i class='fas fa-folder-open fa-fw' aria-hidden="true"></i>&nbsp;&nbsp;死磕</time>
+                      <span class="title">
+                        (1)
+                      </span>
+                    </a>
+                  
+                    <a class="" href="/categories/设计模式/">
+                      <time><i class='fas fa-folder-open fa-fw' aria-hidden="true"></i>&nbsp;&nbsp;设计模式</time>
+                      <span class="title">
+                        (2)
+                      </span>
+                    </a>
+                  
+                    <a class="" href="/categories/项目管理/">
+                      <time><i class='fas fa-folder-open fa-fw' aria-hidden="true"></i>&nbsp;&nbsp;项目管理</time>
+                      <span class="title">
+                        (1)
+                      </span>
+                    </a>
+                  
+                
+              </div>
+              <br>
               
-          </div>
-      
-    </section>
-  </article>
-
-
-
-  <!-- 显示推荐文章和评论 -->
-
-
-
+            </section>
+          </article>
+        </div>
+      </section>
+    
   
-
-
-
-
-
-
-<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
-
-
-
-  <script>
-    window.subData = {
-      title: '1一条SQL查询语句是如何执行的',
-      tools: true
-    }
-  </script>
-
 
 </div>
 <aside class='l_side'>
@@ -639,20 +584,6 @@ server层包括连接器、查询缓存、分析器、优化器、执行器以�
           
             
               
-  <section class='widget toc-wrapper'>
-    
-<header class='pure'>
-  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;本文目录</div>
-  
-    <!-- <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div> -->
-  
-</header>
-
-    <div class='content pure'>
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#summarize"><span class="toc-text">summarize</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#连接器"><span class="toc-text">连接器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#查询缓存"><span class="toc-text">查询缓存</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#分析器"><span class="toc-text">分析器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#优化器"><span class="toc-text">优化器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#执行器"><span class="toc-text">执行器</span></a></li></ol>
-    </div>
-  </section>
-
 
             
           

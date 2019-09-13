@@ -348,8 +348,8 @@
       
         
   <h2 class="title">
-    <a href="/2019/03/11/aa_category/db/mysql/mysql实战/1一条SQL查询语句是如何执行的/">
-      1一条SQL查询语句是如何执行的
+    <a href="/2019/03/11/aa_category/db/mysql/mysql实战/2一条SQL更新语句是如何执行的/">
+      2一条SQL更新语句是如何执行的
     </a>
   </h2>
 
@@ -413,13 +413,17 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h1 id="summarize"><a href="#summarize" class="headerlink" title="summarize"></a>summarize</h1><p><img src="http://liyong.ac.cn/pic/1546866826086.png" alt="1546866826086"></p>
-<ul>
-<li>server层包括连接器、查询缓存、分析器、优化器、执行器以及所有的内置函数（如日期、时间、数学函数）</li>
+      <h1 id="summarize"><a href="#summarize" class="headerlink" title="summarize"></a>summarize</h1><h1 id="redo-log"><a href="#redo-log" class="headerlink" title="redo log"></a>redo log</h1><ul>
+<li>Write-Ahead Logging，先写日志，再写磁盘</li>
+<li>先写日志，更新内存，当系统比较清闲的时候，写入磁盘</li>
+<li>write pos 是当前记录的位置</li>
+<li>chekpoint 是当前要擦出的位置</li>
+<li>write pos 到chekpoint 之间的位置是可以记录的空间</li>
+<li>crash-safe</li>
 </ul>
       
         <div class="readmore">
-          <a href="/2019/03/11/aa_category/db/mysql/mysql实战/1一条SQL查询语句是如何执行的/" class="flat-box">
+          <a href="/2019/03/11/aa_category/db/mysql/mysql实战/2一条SQL更新语句是如何执行的/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -1013,109 +1017,6 @@
       
         
   <h2 class="title">
-    <a href="/2019/03/11/aa_category/db/mysql/mysql实战/11怎么给字符串字段加索引/">
-      11怎么给字符串字段加索引
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://liyong.ac.cn" rel="nofollow">
-        
-          <img src="https://liyong.ac.cn/img/me.png">
-        
-        <p>李永</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-03-11</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/db/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>db</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">create</span> <span class="keyword">table</span> SUser(</span><br><span class="line"><span class="keyword">ID</span> <span class="built_in">bigint</span> <span class="keyword">unsigned</span> primary <span class="keyword">key</span>,</span><br><span class="line">email <span class="built_in">varchar</span>(<span class="number">64</span>) </span><br><span class="line">) ;</span><br><span class="line"></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> SUser <span class="keyword">add</span> <span class="keyword">index</span> index1(email);</span><br><span class="line"></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> SUser <span class="keyword">add</span> <span class="keyword">index</span> index2(email(<span class="number">6</span>));</span><br></pre></td></tr></table></figure>
-      
-        <div class="readmore">
-          <a href="/2019/03/11/aa_category/db/mysql/mysql实战/11怎么给字符串字段加索引/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/mysql/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> mysql</a>
-        
-          <a href="/tags/db/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> db</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
     <a href="/2019/03/11/aa_category/db/mysql/mysql实战/10MySQL为什么有时候会选错索引/">
       10MySQL为什么有时候会选错索引
     </a>
@@ -1185,6 +1086,212 @@
       
         <div class="readmore">
           <a href="/2019/03/11/aa_category/db/mysql/mysql实战/10MySQL为什么有时候会选错索引/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/mysql/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> mysql</a>
+        
+          <a href="/tags/db/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> db</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2019/03/11/aa_category/db/mysql/mysql实战/12为什么我的MySQL会“抖”一下/">
+      12为什么我的MySQL会“抖”一下
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://liyong.ac.cn" rel="nofollow">
+        
+          <img src="https://liyong.ac.cn/img/me.png">
+        
+        <p>李永</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-03-11</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/db/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>db</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <p>当内存数据页跟磁盘数据页内容不一致的时候，我们称这个内存页为“脏页”。内存数据写入到磁盘后，内存和磁盘上的数据页的内容就一致了，称为“干净页”</p>
+      
+        <div class="readmore">
+          <a href="/2019/03/11/aa_category/db/mysql/mysql实战/12为什么我的MySQL会“抖”一下/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/mysql/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> mysql</a>
+        
+          <a href="/tags/db/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> db</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2019/03/11/aa_category/db/mysql/mysql实战/11怎么给字符串字段加索引/">
+      11怎么给字符串字段加索引
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://liyong.ac.cn" rel="nofollow">
+        
+          <img src="https://liyong.ac.cn/img/me.png">
+        
+        <p>李永</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-03-11</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/db/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>db</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">create</span> <span class="keyword">table</span> SUser(</span><br><span class="line"><span class="keyword">ID</span> <span class="built_in">bigint</span> <span class="keyword">unsigned</span> primary <span class="keyword">key</span>,</span><br><span class="line">email <span class="built_in">varchar</span>(<span class="number">64</span>) </span><br><span class="line">) ;</span><br><span class="line"></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> SUser <span class="keyword">add</span> <span class="keyword">index</span> index1(email);</span><br><span class="line"></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> SUser <span class="keyword">add</span> <span class="keyword">index</span> index2(email(<span class="number">6</span>));</span><br></pre></td></tr></table></figure>
+      
+        <div class="readmore">
+          <a href="/2019/03/11/aa_category/db/mysql/mysql实战/11怎么给字符串字段加索引/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -1325,8 +1432,8 @@
       
         
   <h2 class="title">
-    <a href="/2019/03/11/aa_category/db/mysql/mysql实战/12为什么我的MySQL会“抖”一下/">
-      12为什么我的MySQL会“抖”一下
+    <a href="/2019/03/11/aa_category/db/mysql/mysql实战/7行锁功过：怎么减少行锁对性能的影响/">
+      7行锁功过：怎么减少行锁对性能的影响
     </a>
   </h2>
 
@@ -1390,114 +1497,10 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <p>当内存数据页跟磁盘数据页内容不一致的时候，我们称这个内存页为“脏页”。内存数据写入到磁盘后，内存和磁盘上的数据页的内容就一致了，称为“干净页”</p>
+      <p>在 InnoDB 事务中，行锁是在需要的时候才加上的，但并不是不需要了就立刻释放，而是要等到事务结束时才释放。 </p>
       
         <div class="readmore">
-          <a href="/2019/03/11/aa_category/db/mysql/mysql实战/12为什么我的MySQL会“抖”一下/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/mysql/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> mysql</a>
-        
-          <a href="/tags/db/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> db</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2019/03/11/aa_category/db/mysql/mysql实战/8事务到底是隔离的还是不隔离的/">
-      8事务到底是隔离的还是不隔离的
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://liyong.ac.cn" rel="nofollow">
-        
-          <img src="https://liyong.ac.cn/img/me.png">
-        
-        <p>李永</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-03-11</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/db/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>db</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <p><img src="http://liyong.ac.cn/pic/C1550281789388.png" alt="1550281789388"></p>
-<p>begin/start transaction 命令并不是一个事务的起点，在执行到它们之后的第一个操作 InnoDB 表的语句（第一个快照读语句），事务才真正启动。如果你想要马上启动一个事务，可以使用 start transaction with consistent snapshot 这个命令。    </p>
-      
-        <div class="readmore">
-          <a href="/2019/03/11/aa_category/db/mysql/mysql实战/8事务到底是隔离的还是不隔离的/" class="flat-box">
+          <a href="/2019/03/11/aa_category/db/mysql/mysql实战/7行锁功过：怎么减少行锁对性能的影响/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -1635,8 +1638,8 @@
       
         
   <h2 class="title">
-    <a href="/2019/03/11/aa_category/db/mysql/mysql实战/2一条SQL更新语句是如何执行的/">
-      2一条SQL更新语句是如何执行的
+    <a href="/2019/03/11/aa_category/db/mysql/mysql实战/1一条SQL查询语句是如何执行的/">
+      1一条SQL查询语句是如何执行的
     </a>
   </h2>
 
@@ -1700,17 +1703,13 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h1 id="summarize"><a href="#summarize" class="headerlink" title="summarize"></a>summarize</h1><h1 id="redo-log"><a href="#redo-log" class="headerlink" title="redo log"></a>redo log</h1><ul>
-<li>Write-Ahead Logging，先写日志，再写磁盘</li>
-<li>先写日志，更新内存，当系统比较清闲的时候，写入磁盘</li>
-<li>write pos 是当前记录的位置</li>
-<li>chekpoint 是当前要擦出的位置</li>
-<li>write pos 到chekpoint 之间的位置是可以记录的空间</li>
-<li>crash-safe</li>
+      <h1 id="summarize"><a href="#summarize" class="headerlink" title="summarize"></a>summarize</h1><p><img src="http://liyong.ac.cn/pic/1546866826086.png" alt="1546866826086"></p>
+<ul>
+<li>server层包括连接器、查询缓存、分析器、优化器、执行器以及所有的内置函数（如日期、时间、数学函数）</li>
 </ul>
       
         <div class="readmore">
-          <a href="/2019/03/11/aa_category/db/mysql/mysql实战/2一条SQL更新语句是如何执行的/" class="flat-box">
+          <a href="/2019/03/11/aa_category/db/mysql/mysql实战/1一条SQL查询语句是如何执行的/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -2181,8 +2180,8 @@
       
         
   <h2 class="title">
-    <a href="/2019/03/11/aa_category/db/mysql/mysql实战/7行锁功过：怎么减少行锁对性能的影响/">
-      7行锁功过：怎么减少行锁对性能的影响
+    <a href="/2019/03/11/aa_category/db/mysql/mysql实战/8事务到底是隔离的还是不隔离的/">
+      8事务到底是隔离的还是不隔离的
     </a>
   </h2>
 
@@ -2246,10 +2245,11 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <p>在 InnoDB 事务中，行锁是在需要的时候才加上的，但并不是不需要了就立刻释放，而是要等到事务结束时才释放。 </p>
+      <p><img src="http://liyong.ac.cn/pic/C1550281789388.png" alt="1550281789388"></p>
+<p>begin/start transaction 命令并不是一个事务的起点，在执行到它们之后的第一个操作 InnoDB 表的语句（第一个快照读语句），事务才真正启动。如果你想要马上启动一个事务，可以使用 start transaction with consistent snapshot 这个命令。    </p>
       
         <div class="readmore">
-          <a href="/2019/03/11/aa_category/db/mysql/mysql实战/7行锁功过：怎么减少行锁对性能的影响/" class="flat-box">
+          <a href="/2019/03/11/aa_category/db/mysql/mysql实战/8事务到底是隔离的还是不隔离的/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
