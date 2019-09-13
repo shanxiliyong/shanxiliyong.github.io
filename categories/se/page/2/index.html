@@ -515,8 +515,8 @@
       
         
   <h2 class="title">
-    <a href="/2019/03/11/aa_category/se/深入拆解 Java 虚拟机/07JVM是如何实现反射的/">
-      07JVM是如何实现反射的
+    <a href="/2019/03/11/aa_category/se/深入拆解 Java 虚拟机/08-09JVM是怎么实现invokedynamic的/">
+      08-09JVM是怎么实现invokedynamic的
     </a>
   </h2>
 
@@ -580,15 +580,13 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h1 id="反射调用的实现"><a href="#反射调用的实现" class="headerlink" title="反射调用的实现"></a>反射调用的实现</h1><ul>
-<li>-Dsun.reflect.inflationThreshold 设置本地调用的阀值</li>
-<li>-verbose:class</li>
-<li>-XX:+PrintGC 打印GC</li>
-<li>在实践中需要保存反射得到的结果</li>
+      <h1 id="方法句柄的概念"><a href="#方法句柄的概念" class="headerlink" title="方法句柄的概念"></a>方法句柄的概念</h1><ul>
+<li>方法句柄的权限取决于Lookup对象的创建位置</li>
+<li>方法句柄的类型（MethodType）是由所指向方法的参数类型以及返回类型组成的</li>
 </ul>
       
         <div class="readmore">
-          <a href="/2019/03/11/aa_category/se/深入拆解 Java 虚拟机/07JVM是如何实现反射的/" class="flat-box">
+          <a href="/2019/03/11/aa_category/se/深入拆解 Java 虚拟机/08-09JVM是怎么实现invokedynamic的/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -837,8 +835,8 @@
       
         
   <h2 class="title">
-    <a href="/2019/03/11/aa_category/se/深入拆解 Java 虚拟机/06JVM是如何处理异常的/">
-      06JVM是如何处理异常的
+    <a href="/2019/03/11/aa_category/se/深入拆解 Java 虚拟机/07JVM是如何实现反射的/">
+      07JVM是如何实现反射的
     </a>
   </h2>
 
@@ -902,10 +900,15 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h1 id="异常的基本概念"><a href="#异常的基本概念" class="headerlink" title="异常的基本概念"></a>异常的基本概念</h1><p><img src="http://liyong.ac.cn/pic/1546248609299.png" alt="1546248609299"></p>
+      <h1 id="反射调用的实现"><a href="#反射调用的实现" class="headerlink" title="反射调用的实现"></a>反射调用的实现</h1><ul>
+<li>-Dsun.reflect.inflationThreshold 设置本地调用的阀值</li>
+<li>-verbose:class</li>
+<li>-XX:+PrintGC 打印GC</li>
+<li>在实践中需要保存反射得到的结果</li>
+</ul>
       
         <div class="readmore">
-          <a href="/2019/03/11/aa_category/se/深入拆解 Java 虚拟机/06JVM是如何处理异常的/" class="flat-box">
+          <a href="/2019/03/11/aa_category/se/深入拆解 Java 虚拟机/07JVM是如何实现反射的/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -1253,8 +1256,8 @@
       
         
   <h2 class="title">
-    <a href="/2019/03/11/aa_category/se/深入拆解 Java 虚拟机/08-09JVM是怎么实现invokedynamic的/">
-      08-09JVM是怎么实现invokedynamic的
+    <a href="/2019/03/11/aa_category/se/深入拆解 Java 虚拟机/06JVM是如何处理异常的/">
+      06JVM是如何处理异常的
     </a>
   </h2>
 
@@ -1318,13 +1321,10 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h1 id="方法句柄的概念"><a href="#方法句柄的概念" class="headerlink" title="方法句柄的概念"></a>方法句柄的概念</h1><ul>
-<li>方法句柄的权限取决于Lookup对象的创建位置</li>
-<li>方法句柄的类型（MethodType）是由所指向方法的参数类型以及返回类型组成的</li>
-</ul>
+      <h1 id="异常的基本概念"><a href="#异常的基本概念" class="headerlink" title="异常的基本概念"></a>异常的基本概念</h1><p><img src="http://liyong.ac.cn/pic/1546248609299.png" alt="1546248609299"></p>
       
         <div class="readmore">
-          <a href="/2019/03/11/aa_category/se/深入拆解 Java 虚拟机/08-09JVM是怎么实现invokedynamic的/" class="flat-box">
+          <a href="/2019/03/11/aa_category/se/深入拆解 Java 虚拟机/06JVM是如何处理异常的/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -2432,7 +2432,7 @@
   <div class='content pure'>
     
       <div class='avatar'>
-        <img class='avatar' src='https://liyiong.a.cn/img/me.png'/>
+        <img class='avatar' src='https://liyong.ac.cn/img/me.png'/>
       </div>
     
     
@@ -2804,14 +2804,14 @@
       $(function(){
         if ('.cover') {
           $('.cover').backstretch(
-          ["https://liyong.ac.cn/img/backgroud.jpg"],
+          ["https://img.vim-cn.com/29/91197b04c13f512f734a76d4ac422d89dbe229.jpg"],
           {
             duration: "6000",
             fade: "2500"
           });
         } else {
           $.backstretch(
-          ["https://liyong.ac.cn/img/backgroud.jpg"],
+          ["https://img.vim-cn.com/29/91197b04c13f512f734a76d4ac422d89dbe229.jpg"],
           {
             duration: "6000",
             fade: "2500"
