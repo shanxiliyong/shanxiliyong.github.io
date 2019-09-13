@@ -84,23 +84,23 @@
 							</li>
       			
   						<li>
-								<a class="nav flat-box" href="/tags"
+								<a class="nav flat-box" href="/blog/tags"
                   
                     rel="nofollow"
                   
                   
-                  id="tags">
+                  id="blogtags">
 									<i class='fas fa-hashtag fa-fw'></i>&nbsp;标签
 								</a>
 							</li>
       			
   						<li>
-								<a class="nav flat-box" href="/archives/"
+								<a class="nav flat-box" href="/blog/archives/"
                   
                     rel="nofollow"
                   
                   
-                  id="archives">
+                  id="blogarchives">
 									<i class='fas fa-archive fa-fw'></i>&nbsp;归档
 								</a>
 							</li>
@@ -163,34 +163,34 @@
             </li>
           
             <li>
-							<a class="nav flat-box" href="/categories"
+							<a class="nav flat-box" href="/blog/categories"
                 
                   rel="nofollow"
                 
                 
-                id="categories">
+                id="blogcategories">
 								<i class='fas fa-folder-open fa-fw'></i>&nbsp;分类
 							</a>
             </li>
           
             <li>
-							<a class="nav flat-box" href="/tags"
+							<a class="nav flat-box" href="/blog/tags"
                 
                   rel="nofollow"
                 
                 
-                id="tags">
+                id="blogtags">
 								<i class='fas fa-hashtag fa-fw'></i>&nbsp;标签
 							</a>
             </li>
           
             <li>
-							<a class="nav flat-box" href="/archives"
+							<a class="nav flat-box" href="/blog/archives"
                 
                   rel="nofollow"
                 
                 
-                id="archives">
+                id="blogarchives">
 								<i class='fas fa-archive fa-fw'></i>&nbsp;归档
 							</a>
             </li>
@@ -1945,6 +1945,112 @@
       
         
   <h2 class="title">
+    <a href="/2017/07/12/OAuth2的SSO分析/">
+      OAuth2的SSO分析
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://liyong.ac.cn" rel="nofollow">
+        
+          <img src="https://liyong.ac.cn/img/me.png">
+        
+        <p>李永</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2017-07-12</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/spring/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>spring</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h2 id="EnableAuthorizationServer"><a href="#EnableAuthorizationServer" class="headerlink" title="@EnableAuthorizationServer"></a>@EnableAuthorizationServer</h2><p>1、@EnableAuthorizationServer：声明一个认证服务器，当用此注解后，应用启动后将自动生成几个Endpoint：（注：其实实现一个认证服务器就是这么简单，加一个注解就搞定，当然真正用到生产环境还是要进行一些配置和复写工作的。）<br>/oauth/authorize：验证<br>/oauth/token：获取token<br>/oauth/confirm_access：用户授权<br>/oauth/error：认证失败<br>/oauth/check_token：资源服务器用来校验token<br>/oauth/token_key：如果jwt模式则可以用此来从认证服务器获取公钥</p>
+<p>AuthorizationEndpoint:进行授权的服务，Default URL: /oauth/authorize<br>TokenEndpoint：获取token的服务，Default URL: /oauth/token</p>
+<p>Resource Server:<br>OAuth2AuthenticationProcessingFilter：给带有访问令牌的请求加载认证</p>
+<p>从哪来到哪里去</p>
+      
+        <div class="readmore">
+          <a href="/2017/07/12/OAuth2的SSO分析/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/OAuth2/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> OAuth2</a>
+        
+          <a href="/tags/sso/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> sso</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
     <a href="/2017/07/12/springboot/">
       springboot
     </a>
@@ -2063,112 +2169,6 @@
       <div class="full-width auto-padding tags">
         
           <a href="/tags/boot/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> boot</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2017/07/12/OAuth2的SSO分析/">
-      OAuth2的SSO分析
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://liyong.ac.cn" rel="nofollow">
-        
-          <img src="https://liyong.ac.cn/img/me.png">
-        
-        <p>李永</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2017-07-12</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/spring/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>spring</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h2 id="EnableAuthorizationServer"><a href="#EnableAuthorizationServer" class="headerlink" title="@EnableAuthorizationServer"></a>@EnableAuthorizationServer</h2><p>1、@EnableAuthorizationServer：声明一个认证服务器，当用此注解后，应用启动后将自动生成几个Endpoint：（注：其实实现一个认证服务器就是这么简单，加一个注解就搞定，当然真正用到生产环境还是要进行一些配置和复写工作的。）<br>/oauth/authorize：验证<br>/oauth/token：获取token<br>/oauth/confirm_access：用户授权<br>/oauth/error：认证失败<br>/oauth/check_token：资源服务器用来校验token<br>/oauth/token_key：如果jwt模式则可以用此来从认证服务器获取公钥</p>
-<p>AuthorizationEndpoint:进行授权的服务，Default URL: /oauth/authorize<br>TokenEndpoint：获取token的服务，Default URL: /oauth/token</p>
-<p>Resource Server:<br>OAuth2AuthenticationProcessingFilter：给带有访问令牌的请求加载认证</p>
-<p>从哪来到哪里去</p>
-      
-        <div class="readmore">
-          <a href="/2017/07/12/OAuth2的SSO分析/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/OAuth2/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> OAuth2</a>
-        
-          <a href="/tags/sso/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> sso</a>
         
       </div>
     
@@ -2513,12 +2513,12 @@
           博文
         </a></li>
       
-        <li><a class="flat-box" title="/archives/" href="/archives/"
+        <li><a class="flat-box" title="/blog/archives" href="/blog/archives"
           
             rel="nofollow"
           
           
-          id="archives">
+          id="blogarchives">
           
             <i class="fas fa-archive fa-fw" aria-hidden="true"></i>
           

@@ -84,23 +84,23 @@
 							</li>
       			
   						<li>
-								<a class="nav flat-box" href="/tags"
+								<a class="nav flat-box" href="/blog/tags"
                   
                     rel="nofollow"
                   
                   
-                  id="tags">
+                  id="blogtags">
 									<i class='fas fa-hashtag fa-fw'></i>&nbsp;标签
 								</a>
 							</li>
       			
   						<li>
-								<a class="nav flat-box" href="/archives/"
+								<a class="nav flat-box" href="/blog/archives/"
                   
                     rel="nofollow"
                   
                   
-                  id="archives">
+                  id="blogarchives">
 									<i class='fas fa-archive fa-fw'></i>&nbsp;归档
 								</a>
 							</li>
@@ -163,34 +163,34 @@
             </li>
           
             <li>
-							<a class="nav flat-box" href="/categories"
+							<a class="nav flat-box" href="/blog/categories"
                 
                   rel="nofollow"
                 
                 
-                id="categories">
+                id="blogcategories">
 								<i class='fas fa-folder-open fa-fw'></i>&nbsp;分类
 							</a>
             </li>
           
             <li>
-							<a class="nav flat-box" href="/tags"
+							<a class="nav flat-box" href="/blog/tags"
                 
                   rel="nofollow"
                 
                 
-                id="tags">
+                id="blogtags">
 								<i class='fas fa-hashtag fa-fw'></i>&nbsp;标签
 							</a>
             </li>
           
             <li>
-							<a class="nav flat-box" href="/archives"
+							<a class="nav flat-box" href="/blog/archives"
                 
                   rel="nofollow"
                 
                 
-                id="archives">
+                id="blogarchives">
 								<i class='fas fa-archive fa-fw'></i>&nbsp;归档
 							</a>
             </li>
@@ -236,8 +236,8 @@
       
         
   <h2 class="title">
-    <a href="/2019/01/24/aa_category/algorithm/数据结构与算法之美/17跳表：为什么Redis一定要用跳表来实现有序集合/">
-      17跳表：为什么Redis一定要用跳表来实现有序集合
+    <a href="/2019/01/24/aa_category/algorithm/数据结构与算法之美/20散列表：为什么散列表和链表经常会一起使用/">
+      20散列表（下）：为什么散列表和链表经常会一起使用
     </a>
   </h2>
 
@@ -301,11 +301,10 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h1 id="理解调表"><a href="#理解调表" class="headerlink" title="理解调表"></a>理解调表</h1><p><strong>种链表加多级索引的结构，就是跳表</strong></p>
-<p><img src="http://liyong.ac.cn/pic/e18303fcedc068e5a168de04df956f6d.jpg" alt></p>
+      <p>散列表这种数据结构虽然支持非常高效的数据插入、删除、查找操作，但是散列表中的数据都是通过散列函数打乱之后无规律存储的。也就说，它无法支持按照某种顺序快速地遍历数据。如果希望按照顺序遍历散列表中的数据，那我们需要将散列表中的数据拷贝到数组中，然后排序，再遍历</p>
       
         <div class="readmore">
-          <a href="/2019/01/24/aa_category/algorithm/数据结构与算法之美/17跳表：为什么Redis一定要用跳表来实现有序集合/" class="flat-box">
+          <a href="/2019/01/24/aa_category/algorithm/数据结构与算法之美/20散列表：为什么散列表和链表经常会一起使用/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -340,8 +339,8 @@
       
         
   <h2 class="title">
-    <a href="/2019/01/24/aa_category/algorithm/数据结构与算法之美/21-22哈希算法/">
-      21-22哈希算法
+    <a href="/2019/01/24/aa_category/algorithm/数据结构与算法之美/13线性排序：如何根据年龄给100万用户数据排序/">
+      13线性排序：如何根据年龄给100万用户数据排序
     </a>
   </h2>
 
@@ -405,117 +404,10 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h1 id="什么是哈希算法"><a href="#什么是哈希算法" class="headerlink" title="什么是哈希算法"></a>什么是哈希算法</h1><ul>
-<li>从哈希值不能反向推导出原始数据（所以哈希算法也叫单向哈希算法）</li>
-<li>对输入数据非常敏感，哪怕原始数据只修改了一个 Bit，最后得到的哈希值也大不相同</li>
-<li>散列冲突的概率要很小，对于不同的原始数据，哈希值相同的概率非常小</li>
-</ul>
+      <h1 id="桶排序（Bucket-sort）"><a href="#桶排序（Bucket-sort）" class="headerlink" title="桶排序（Bucket sort）"></a>桶排序（Bucket sort）</h1><p>首先，我们来看桶排序。桶排序，顾名思义，会用到“桶”，核心思想是将要排序的数据分到几个有序的桶里，每个桶里的数据再单独进行排序。桶内排完序之后，再把每个桶里的数据按照顺序依次取出，组成的序列就是有序的了</p>
       
         <div class="readmore">
-          <a href="/2019/01/24/aa_category/algorithm/数据结构与算法之美/21-22哈希算法/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/se/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> se</a>
-        
-          <a href="/tags/algorithm/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> algorithm</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2019/01/24/aa_category/algorithm/数据结构与算法之美/16二分查找：如何快速定位IP对应的省份地址/">
-      16二分查找：如何快速定位IP对应的省份地址
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://liyong.ac.cn" rel="nofollow">
-        
-          <img src="https://liyong.ac.cn/img/me.png">
-        
-        <p>李永</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-01-24</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/algorithm/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>algorithm</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h1 id="查找第一个值等于给定值的元素"><a href="#查找第一个值等于给定值的元素" class="headerlink" title="查找第一个值等于给定值的元素"></a>查找第一个值等于给定值的元素</h1><p><img src="http://liyong.ac.cn/pic/503c572dd0f9d734b55f1bd12765c4f8.jpg" alt></p>
-      
-        <div class="readmore">
-          <a href="/2019/01/24/aa_category/algorithm/数据结构与算法之美/16二分查找：如何快速定位IP对应的省份地址/" class="flat-box">
+          <a href="/2019/01/24/aa_category/algorithm/数据结构与算法之美/13线性排序：如何根据年龄给100万用户数据排序/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -656,6 +548,109 @@
       
         
   <h2 class="title">
+    <a href="/2019/01/24/aa_category/algorithm/数据结构与算法之美/10递归：如何用三行代码找到最终推荐人/">
+      10递归：如何用三行代码找到“最终推荐人”
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://liyong.ac.cn" rel="nofollow">
+        
+          <img src="https://liyong.ac.cn/img/me.png">
+        
+        <p>李永</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-01-24</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/algorithm/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>algorithm</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h1 id="如何理解“递归”？"><a href="#如何理解“递归”？" class="headerlink" title="如何理解“递归”？"></a>如何理解“递归”？</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f(n)=f(n-1)+1 其中，f(1)=1</span><br></pre></td></tr></table></figure>
+      
+        <div class="readmore">
+          <a href="/2019/01/24/aa_category/algorithm/数据结构与算法之美/10递归：如何用三行代码找到最终推荐人/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/se/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> se</a>
+        
+          <a href="/tags/algorithm/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> algorithm</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
     <a href="/2019/01/24/aa_category/algorithm/数据结构与算法之美/19散列表：如何打造一个工业级水平的散列表/">
       19散列表：如何打造一个工业级水平的散列表
     </a>
@@ -762,7 +757,7 @@
       
         
   <h2 class="title">
-    <a href="/2019/01/01/aa_category/middleware/redis/index/">
+    <a href="/2019/01/01/aa_category/middleware/redis/redis数据类型/">
       redis数据类型
     </a>
   </h2>
@@ -827,10 +822,10 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      
+      <p>string、hash、list、set、sorted set</p>
       
         <div class="readmore">
-          <a href="/2019/01/01/aa_category/middleware/redis/index/" class="flat-box">
+          <a href="/2019/01/01/aa_category/middleware/redis/redis数据类型/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -865,8 +860,124 @@
       
         
   <h2 class="title">
-    <a href="/2019/01/01/aa_category/methodology/设计一个高并发系统/">
-      设计一个高并发系统
+    <a href="/2019/01/01/aa_category/methodology/standard/编码规范/">
+      编码规范
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://liyong.ac.cn" rel="nofollow">
+        
+          <img src="https://liyong.ac.cn/img/me.png">
+        
+        <p>李永</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-01-01</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/standard/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>standard</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h1 id="命名风格"><a href="#命名风格" class="headerlink" title="命名风格"></a>命名风格</h1><ol>
+<li>不能以下划线和美元符号作为开始结束符号</li>
+<li>禁止中英文形式</li>
+<li>类名使用UpperCamelCase</li>
+<li>方法名、参数名、成员变量、局部变量统一使用LowerCamelCase</li>
+<li>常量大写，单词间下划线隔开，力求语义完成</li>
+<li>抽象类用Abstract或者Base开头，异常类以Exception结尾，测试类以要测试类的名称开始，以Test结尾</li>
+<li>中括号是数组定义的一部分</li>
+<li>布尔类型的变量的命名不要添加is</li>
+<li>包名使用小写，点分隔符之间只有一个英语单词。包名必须是单数形式，类名可以有复数形式(  MessageUtils)。</li>
+<li>避免不规范的缩写</li>
+<li>为了达到代码自解释的目的，使用尽量完整的单词组合来命名</li>
+<li>如果使用了设计模式，命名时体现具体模式</li>
+</ol>
+      
+        <div class="readmore">
+          <a href="/2019/01/01/aa_category/methodology/standard/编码规范/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/standard/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> standard</a>
+        
+          <a href="/tags/code/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> code</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2019/01/01/aa_category/methodology/学习的正确姿势/">
+      学习的正确姿势
     </a>
   </h2>
 
@@ -930,18 +1041,127 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <ul>
-<li>系统拆分</li>
-<li>缓存</li>
-<li>MQ</li>
-<li>分库分表</li>
-<li>读写分离</li>
-<li>ElasticSearch</li>
+      <p>目标</p>
+<ul>
+<li>linux</li>
+<li>jvm</li>
+<li>线程池</li>
+<li>juc</li>
+<li>nio、io</li>
+<li>网络</li>
+<li>缓存  redis  </li>
+<li>消息</li>
+<li>搜索</li>
+<li>javaee规范</li>
+<li>设计模式</li>
+<li>spring </li>
+<li>规范</li>
 </ul>
-<p><img src="D:%5Cgithub%5Chexo%5Csource%5Cpic%5Cmethodology%5Chigh-concurrency-system-design.png" alt></p>
       
         <div class="readmore">
-          <a href="/2019/01/01/aa_category/methodology/设计一个高并发系统/" class="flat-box">
+          <a href="/2019/01/01/aa_category/methodology/学习的正确姿势/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/methodology/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> methodology</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2019/01/01/aa_category/methodology/数据库设计/">
+      数据库设计
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://liyong.ac.cn" rel="nofollow">
+        
+          <img src="https://liyong.ac.cn/img/me.png">
+        
+        <p>李永</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-01-01</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/methodology/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>methodology</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h1 id="字段"><a href="#字段" class="headerlink" title="字段"></a>字段</h1><h2 id="version"><a href="#version" class="headerlink" title="version"></a>version</h2><p>用于乐观锁</p>
+<h2 id="status"><a href="#status" class="headerlink" title="status"></a>status</h2><p>逻辑删除 0删除，1正常</p>
+      
+        <div class="readmore">
+          <a href="/2019/01/01/aa_category/methodology/数据库设计/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -1180,108 +1400,6 @@
       
         
   <h2 class="title">
-    <a href="/2019/01/01/aa_category/methodology/数据库设计/">
-      数据库设计
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://liyong.ac.cn" rel="nofollow">
-        
-          <img src="https://liyong.ac.cn/img/me.png">
-        
-        <p>李永</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-01-01</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/methodology/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>methodology</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h1 id="字段"><a href="#字段" class="headerlink" title="字段"></a>字段</h1><h2 id="version"><a href="#version" class="headerlink" title="version"></a>version</h2><p>用于乐观锁</p>
-<h2 id="status"><a href="#status" class="headerlink" title="status"></a>status</h2><p>逻辑删除 0删除，1正常</p>
-      
-        <div class="readmore">
-          <a href="/2019/01/01/aa_category/methodology/数据库设计/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/methodology/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> methodology</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
     <a href="/2019/01/01/aa_category/methodology/源码阅读/">
       源码阅读
     </a>
@@ -1485,7 +1603,116 @@
       
         
   <h2 class="title">
-    <a href="/2019/01/01/aa_category/middleware/redis/redis数据类型/">
+    <a href="/2019/01/01/aa_category/methodology/设计一个高并发系统/">
+      设计一个高并发系统
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://liyong.ac.cn" rel="nofollow">
+        
+          <img src="https://liyong.ac.cn/img/me.png">
+        
+        <p>李永</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-01-01</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/methodology/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>methodology</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <ul>
+<li>系统拆分</li>
+<li>缓存</li>
+<li>MQ</li>
+<li>分库分表</li>
+<li>读写分离</li>
+<li>ElasticSearch</li>
+</ul>
+<p><img src="D:%5Cgithub%5Chexo%5Csource%5Cpic%5Cmethodology%5Chigh-concurrency-system-design.png" alt></p>
+      
+        <div class="readmore">
+          <a href="/2019/01/01/aa_category/methodology/设计一个高并发系统/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/methodology/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> methodology</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2019/01/01/aa_category/middleware/redis/index/">
       redis数据类型
     </a>
   </h2>
@@ -1550,10 +1777,10 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <p>string、hash、list、set、sorted set</p>
+      
       
         <div class="readmore">
-          <a href="/2019/01/01/aa_category/middleware/redis/redis数据类型/" class="flat-box">
+          <a href="/2019/01/01/aa_category/middleware/redis/index/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -1566,238 +1793,6 @@
           <a href="/tags/redis/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> redis</a>
         
           <a href="/tags/middleware/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> middleware</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2019/01/01/aa_category/methodology/学习的正确姿势/">
-      学习的正确姿势
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://liyong.ac.cn" rel="nofollow">
-        
-          <img src="https://liyong.ac.cn/img/me.png">
-        
-        <p>李永</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-01-01</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/methodology/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>methodology</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <p>目标</p>
-<ul>
-<li>linux</li>
-<li>jvm</li>
-<li>线程池</li>
-<li>juc</li>
-<li>nio、io</li>
-<li>网络</li>
-<li>缓存  redis  </li>
-<li>消息</li>
-<li>搜索</li>
-<li>javaee规范</li>
-<li>设计模式</li>
-<li>spring </li>
-<li>规范</li>
-</ul>
-      
-        <div class="readmore">
-          <a href="/2019/01/01/aa_category/methodology/学习的正确姿势/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/methodology/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> methodology</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2019/01/01/aa_category/methodology/standard/编码规范/">
-      编码规范
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://liyong.ac.cn" rel="nofollow">
-        
-          <img src="https://liyong.ac.cn/img/me.png">
-        
-        <p>李永</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-01-01</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/standard/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>standard</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h1 id="命名风格"><a href="#命名风格" class="headerlink" title="命名风格"></a>命名风格</h1><ol>
-<li>不能以下划线和美元符号作为开始结束符号</li>
-<li>禁止中英文形式</li>
-<li>类名使用UpperCamelCase</li>
-<li>方法名、参数名、成员变量、局部变量统一使用LowerCamelCase</li>
-<li>常量大写，单词间下划线隔开，力求语义完成</li>
-<li>抽象类用Abstract或者Base开头，异常类以Exception结尾，测试类以要测试类的名称开始，以Test结尾</li>
-<li>中括号是数组定义的一部分</li>
-<li>布尔类型的变量的命名不要添加is</li>
-<li>包名使用小写，点分隔符之间只有一个英语单词。包名必须是单数形式，类名可以有复数形式(  MessageUtils)。</li>
-<li>避免不规范的缩写</li>
-<li>为了达到代码自解释的目的，使用尽量完整的单词组合来命名</li>
-<li>如果使用了设计模式，命名时体现具体模式</li>
-</ol>
-      
-        <div class="readmore">
-          <a href="/2019/01/01/aa_category/methodology/standard/编码规范/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/standard/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> standard</a>
-        
-          <a href="/tags/code/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> code</a>
         
       </div>
     
@@ -1889,6 +1884,109 @@
       
         <div class="readmore">
           <a href="/2018/10/12/aa_category/tool/maven/常用jar/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/plugin/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> plugin</a>
+        
+          <a href="/tags/maven/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> maven</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2018/10/12/aa_category/tool/maven/plugin/">
+      maven插件
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://liyong.ac.cn" rel="nofollow">
+        
+          <img src="https://liyong.ac.cn/img/me.png">
+        
+        <p>李永</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2018-10-12</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/maven/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>maven</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h1 id="maven-resources-plugin"><a href="#maven-resources-plugin" class="headerlink" title="maven-resources-plugin"></a>maven-resources-plugin</h1><p>复制资源到输出目录</p>
+      
+        <div class="readmore">
+          <a href="/2018/10/12/aa_category/tool/maven/plugin/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -2103,109 +2201,6 @@
       <div class="full-width auto-padding tags">
         
           <a href="/tags/log4j2/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> log4j2</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2018/10/12/aa_category/tool/maven/plugin/">
-      maven插件
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://liyong.ac.cn" rel="nofollow">
-        
-          <img src="https://liyong.ac.cn/img/me.png">
-        
-        <p>李永</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2018-10-12</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/maven/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>maven</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h1 id="maven-resources-plugin"><a href="#maven-resources-plugin" class="headerlink" title="maven-resources-plugin"></a>maven-resources-plugin</h1><p>复制资源到输出目录</p>
-      
-        <div class="readmore">
-          <a href="/2018/10/12/aa_category/tool/maven/plugin/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/plugin/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> plugin</a>
-        
-          <a href="/tags/maven/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> maven</a>
         
       </div>
     
@@ -2449,12 +2444,12 @@
           博文
         </a></li>
       
-        <li><a class="flat-box" title="/archives/" href="/archives/"
+        <li><a class="flat-box" title="/blog/archives" href="/blog/archives"
           
             rel="nofollow"
           
           
-          id="archives">
+          id="blogarchives">
           
             <i class="fas fa-archive fa-fw" aria-hidden="true"></i>
           

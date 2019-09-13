@@ -148,23 +148,23 @@
 							</li>
       			
   						<li>
-								<a class="nav flat-box" href="/tags"
+								<a class="nav flat-box" href="/blog/tags"
                   
                     rel="nofollow"
                   
                   
-                  id="tags">
+                  id="blogtags">
 									<i class='fas fa-hashtag fa-fw'></i>&nbsp;标签
 								</a>
 							</li>
       			
   						<li>
-								<a class="nav flat-box" href="/archives/"
+								<a class="nav flat-box" href="/blog/archives/"
                   
                     rel="nofollow"
                   
                   
-                  id="archives">
+                  id="blogarchives">
 									<i class='fas fa-archive fa-fw'></i>&nbsp;归档
 								</a>
 							</li>
@@ -227,34 +227,34 @@
             </li>
           
             <li>
-							<a class="nav flat-box" href="/categories"
+							<a class="nav flat-box" href="/blog/categories"
                 
                   rel="nofollow"
                 
                 
-                id="categories">
+                id="blogcategories">
 								<i class='fas fa-folder-open fa-fw'></i>&nbsp;分类
 							</a>
             </li>
           
             <li>
-							<a class="nav flat-box" href="/tags"
+							<a class="nav flat-box" href="/blog/tags"
                 
                   rel="nofollow"
                 
                 
-                id="tags">
+                id="blogtags">
 								<i class='fas fa-hashtag fa-fw'></i>&nbsp;标签
 							</a>
             </li>
           
             <li>
-							<a class="nav flat-box" href="/archives"
+							<a class="nav flat-box" href="/blog/archives"
                 
                   rel="nofollow"
                 
                 
-                id="archives">
+                id="blogarchives">
 								<i class='fas fa-archive fa-fw'></i>&nbsp;归档
 							</a>
             </li>
@@ -304,8 +304,8 @@
       
         
   <h2 class="title">
-    <a href="/2019/03/11/aa_category/se/深入拆解 Java 虚拟机/28-29基准测试框架JMH/">
-      28-29基准测试框架JMH
+    <a href="/2019/03/11/aa_category/se/深入拆解 Java 虚拟机/30-31Java虚拟机的监控及诊断工具/">
+      30Java虚拟机的监控及诊断工具
     </a>
   </h2>
 
@@ -369,10 +369,10 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      
+      <h1 id="jps"><a href="#jps" class="headerlink" title="jps"></a>jps</h1><p><a href="https://docs.oracle.com/javase/8/docs/technotes/tools/unix/jps.html#CHDCGECD" target="_blank" rel="noopener">https://docs.oracle.com/javase/8/docs/technotes/tools/unix/jps.html#CHDCGECD</a></p>
       
         <div class="readmore">
-          <a href="/2019/03/11/aa_category/se/深入拆解 Java 虚拟机/28-29基准测试框架JMH/" class="flat-box">
+          <a href="/2019/03/11/aa_category/se/深入拆解 Java 虚拟机/30-31Java虚拟机的监控及诊断工具/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -515,8 +515,8 @@
       
         
   <h2 class="title">
-    <a href="/2019/03/11/aa_category/se/深入拆解 Java 虚拟机/08-09JVM是怎么实现invokedynamic的/">
-      08-09JVM是怎么实现invokedynamic的
+    <a href="/2019/03/11/aa_category/se/深入拆解 Java 虚拟机/07JVM是如何实现反射的/">
+      07JVM是如何实现反射的
     </a>
   </h2>
 
@@ -580,13 +580,15 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h1 id="方法句柄的概念"><a href="#方法句柄的概念" class="headerlink" title="方法句柄的概念"></a>方法句柄的概念</h1><ul>
-<li>方法句柄的权限取决于Lookup对象的创建位置</li>
-<li>方法句柄的类型（MethodType）是由所指向方法的参数类型以及返回类型组成的</li>
+      <h1 id="反射调用的实现"><a href="#反射调用的实现" class="headerlink" title="反射调用的实现"></a>反射调用的实现</h1><ul>
+<li>-Dsun.reflect.inflationThreshold 设置本地调用的阀值</li>
+<li>-verbose:class</li>
+<li>-XX:+PrintGC 打印GC</li>
+<li>在实践中需要保存反射得到的结果</li>
 </ul>
       
         <div class="readmore">
-          <a href="/2019/03/11/aa_category/se/深入拆解 Java 虚拟机/08-09JVM是怎么实现invokedynamic的/" class="flat-box">
+          <a href="/2019/03/11/aa_category/se/深入拆解 Java 虚拟机/07JVM是如何实现反射的/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -835,8 +837,8 @@
       
         
   <h2 class="title">
-    <a href="/2019/03/11/aa_category/se/深入拆解 Java 虚拟机/07JVM是如何实现反射的/">
-      07JVM是如何实现反射的
+    <a href="/2019/03/11/aa_category/se/深入拆解 Java 虚拟机/08-09JVM是怎么实现invokedynamic的/">
+      08-09JVM是怎么实现invokedynamic的
     </a>
   </h2>
 
@@ -900,15 +902,13 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h1 id="反射调用的实现"><a href="#反射调用的实现" class="headerlink" title="反射调用的实现"></a>反射调用的实现</h1><ul>
-<li>-Dsun.reflect.inflationThreshold 设置本地调用的阀值</li>
-<li>-verbose:class</li>
-<li>-XX:+PrintGC 打印GC</li>
-<li>在实践中需要保存反射得到的结果</li>
+      <h1 id="方法句柄的概念"><a href="#方法句柄的概念" class="headerlink" title="方法句柄的概念"></a>方法句柄的概念</h1><ul>
+<li>方法句柄的权限取决于Lookup对象的创建位置</li>
+<li>方法句柄的类型（MethodType）是由所指向方法的参数类型以及返回类型组成的</li>
 </ul>
       
         <div class="readmore">
-          <a href="/2019/03/11/aa_category/se/深入拆解 Java 虚拟机/07JVM是如何实现反射的/" class="flat-box">
+          <a href="/2019/03/11/aa_category/se/深入拆解 Java 虚拟机/08-09JVM是怎么实现invokedynamic的/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -1153,8 +1153,8 @@
       
         
   <h2 class="title">
-    <a href="/2019/03/11/aa_category/se/深入拆解 Java 虚拟机/19Java字节码/">
-      19Java字节码
+    <a href="/2019/03/11/aa_category/se/深入拆解 Java 虚拟机/18即时编译器的中间表达形式/">
+      18即时编译器的中间表达形式
     </a>
   </h2>
 
@@ -1218,10 +1218,12 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h1 id="常用指令"><a href="#常用指令" class="headerlink" title="常用指令"></a>常用指令</h1><h2 id="dup"><a href="#dup" class="headerlink" title="dup"></a>dup</h2><p>通常用于复制 new 指令生成的未初始化的引用</p>
+      <h1 id="中间表达形式（IR）"><a href="#中间表达形式（IR）" class="headerlink" title="中间表达形式（IR）"></a>中间表达形式（IR）</h1><p>如果不考虑解释执行的话，从 Java 源代码到最终的机器码实际上经过了两轮编译：Java 编译器将 Java 源代码编译成 Java 字节码，而即时编译器则将 Java 字节码编译成机器码。</p>
+<p> Java 字节码本身并不适合直接作为可供优化的 IR。这是因为现代编译器一般采用静态单赋值（Static Single Assignment，SSA）IR。这种 IR 的特点是每个变量只能被赋值一次，而且只有当变量被赋值之后才能使用。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">示例：</span><br><span class="line">x1=<span class="number">4</span>*<span class="number">1024</span> 经过常量折叠后变为 x1=<span class="number">4096</span></span><br><span class="line">x1=<span class="number">4</span>; y1=x1 经过常量传播后变为 x1=<span class="number">4</span>; y1=<span class="number">4</span></span><br><span class="line">y1=x1*<span class="number">3</span> 经过强度削减后变为 y1=(x1&lt;&lt;<span class="number">1</span>)+x1</span><br><span class="line"><span class="keyword">if</span>(<span class="number">2</span>&gt;<span class="number">1</span>)&#123;y1=<span class="number">1</span>;&#125;<span class="keyword">else</span>&#123;y2=<span class="number">1</span>;&#125;经过死代码删除后变为 y1=<span class="number">1</span></span><br></pre></td></tr></table></figure>
       
         <div class="readmore">
-          <a href="/2019/03/11/aa_category/se/深入拆解 Java 虚拟机/19Java字节码/" class="flat-box">
+          <a href="/2019/03/11/aa_category/se/深入拆解 Java 虚拟机/18即时编译器的中间表达形式/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -1359,8 +1361,8 @@
       
         
   <h2 class="title">
-    <a href="/2019/03/11/aa_category/se/深入拆解 Java 虚拟机/18即时编译器的中间表达形式/">
-      18即时编译器的中间表达形式
+    <a href="/2019/03/11/aa_category/se/深入拆解 Java 虚拟机/19Java字节码/">
+      19Java字节码
     </a>
   </h2>
 
@@ -1424,12 +1426,10 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h1 id="中间表达形式（IR）"><a href="#中间表达形式（IR）" class="headerlink" title="中间表达形式（IR）"></a>中间表达形式（IR）</h1><p>如果不考虑解释执行的话，从 Java 源代码到最终的机器码实际上经过了两轮编译：Java 编译器将 Java 源代码编译成 Java 字节码，而即时编译器则将 Java 字节码编译成机器码。</p>
-<p> Java 字节码本身并不适合直接作为可供优化的 IR。这是因为现代编译器一般采用静态单赋值（Static Single Assignment，SSA）IR。这种 IR 的特点是每个变量只能被赋值一次，而且只有当变量被赋值之后才能使用。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">示例：</span><br><span class="line">x1=<span class="number">4</span>*<span class="number">1024</span> 经过常量折叠后变为 x1=<span class="number">4096</span></span><br><span class="line">x1=<span class="number">4</span>; y1=x1 经过常量传播后变为 x1=<span class="number">4</span>; y1=<span class="number">4</span></span><br><span class="line">y1=x1*<span class="number">3</span> 经过强度削减后变为 y1=(x1&lt;&lt;<span class="number">1</span>)+x1</span><br><span class="line"><span class="keyword">if</span>(<span class="number">2</span>&gt;<span class="number">1</span>)&#123;y1=<span class="number">1</span>;&#125;<span class="keyword">else</span>&#123;y2=<span class="number">1</span>;&#125;经过死代码删除后变为 y1=<span class="number">1</span></span><br></pre></td></tr></table></figure>
+      <h1 id="常用指令"><a href="#常用指令" class="headerlink" title="常用指令"></a>常用指令</h1><h2 id="dup"><a href="#dup" class="headerlink" title="dup"></a>dup</h2><p>通常用于复制 new 指令生成的未初始化的引用</p>
       
         <div class="readmore">
-          <a href="/2019/03/11/aa_category/se/深入拆解 Java 虚拟机/18即时编译器的中间表达形式/" class="flat-box">
+          <a href="/2019/03/11/aa_category/se/深入拆解 Java 虚拟机/19Java字节码/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -2515,12 +2515,12 @@
           博文
         </a></li>
       
-        <li><a class="flat-box" title="/archives/" href="/archives/"
+        <li><a class="flat-box" title="/blog/archives" href="/blog/archives"
           
             rel="nofollow"
           
           
-          id="archives">
+          id="blogarchives">
           
             <i class="fas fa-archive fa-fw" aria-hidden="true"></i>
           

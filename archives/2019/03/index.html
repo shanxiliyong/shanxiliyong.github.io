@@ -148,23 +148,23 @@
 							</li>
       			
   						<li>
-								<a class="nav flat-box" href="/tags"
+								<a class="nav flat-box" href="/blog/tags"
                   
                     rel="nofollow"
                   
                   
-                  id="tags">
+                  id="blogtags">
 									<i class='fas fa-hashtag fa-fw'></i>&nbsp;标签
 								</a>
 							</li>
       			
   						<li>
-								<a class="nav flat-box" href="/archives/"
+								<a class="nav flat-box" href="/blog/archives/"
                   
                     rel="nofollow"
                   
                   
-                  id="archives">
+                  id="blogarchives">
 									<i class='fas fa-archive fa-fw'></i>&nbsp;归档
 								</a>
 							</li>
@@ -227,34 +227,34 @@
             </li>
           
             <li>
-							<a class="nav flat-box" href="/categories"
+							<a class="nav flat-box" href="/blog/categories"
                 
                   rel="nofollow"
                 
                 
-                id="categories">
+                id="blogcategories">
 								<i class='fas fa-folder-open fa-fw'></i>&nbsp;分类
 							</a>
             </li>
           
             <li>
-							<a class="nav flat-box" href="/tags"
+							<a class="nav flat-box" href="/blog/tags"
                 
                   rel="nofollow"
                 
                 
-                id="tags">
+                id="blogtags">
 								<i class='fas fa-hashtag fa-fw'></i>&nbsp;标签
 							</a>
             </li>
           
             <li>
-							<a class="nav flat-box" href="/archives"
+							<a class="nav flat-box" href="/blog/archives"
                 
                   rel="nofollow"
                 
                 
-                id="archives">
+                id="blogarchives">
 								<i class='fas fa-archive fa-fw'></i>&nbsp;归档
 							</a>
             </li>
@@ -346,111 +346,8 @@
       
         
   <h2 class="title">
-    <a href="/2019/03/11/aa_category/se/深入拆解 Java 虚拟机/15Java语法糖与Java编译器/">
-      15Java语法糖与Java编译器
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://liyong.ac.cn" rel="nofollow">
-        
-          <img src="https://liyong.ac.cn/img/me.png">
-        
-        <p>李永</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-03-11</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/se/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>se</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h1 id="自动装箱与自动拆箱"><a href="#自动装箱与自动拆箱" class="headerlink" title="自动装箱与自动拆箱"></a>自动装箱与自动拆箱</h1><p>也就是说，我们可以通过配置该参数，扩大 Integer 缓存的范围。Java 虚拟机参数 -XX:+AggressiveOpts 也会将 IntegerCache.high 调整至 20000。</p>
-      
-        <div class="readmore">
-          <a href="/2019/03/11/aa_category/se/深入拆解 Java 虚拟机/15Java语法糖与Java编译器/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/se/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> se</a>
-        
-          <a href="/tags/jvm/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> jvm</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2019/03/11/aa_category/db/mysql/mysql实战/5深入浅出索引/">
-      5深入浅出索引
+    <a href="/2019/03/11/aa_category/db/mysql/mysql实战/4深入浅出索引/">
+      4深入浅出索引
     </a>
   </h2>
 
@@ -514,10 +411,15 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> T (</span><br><span class="line"><span class="keyword">ID</span> <span class="built_in">int</span> primary <span class="keyword">key</span>,</span><br><span class="line">k <span class="built_in">int</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="number">0</span>, </span><br><span class="line">s <span class="built_in">varchar</span>(<span class="number">16</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">''</span>,</span><br><span class="line"><span class="keyword">index</span> k(k))</span><br><span class="line"><span class="keyword">engine</span>=<span class="keyword">InnoDB</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> T <span class="keyword">values</span>(<span class="number">100</span>,<span class="number">1</span>, <span class="string">'aa'</span>),(<span class="number">200</span>,<span class="number">2</span>,<span class="string">'bb'</span>),(<span class="number">300</span>,<span class="number">3</span>,<span class="string">'cc'</span>),(<span class="number">500</span>,<span class="number">5</span>,<span class="string">'ee'</span>),(<span class="number">600</span>,<span class="number">6</span>,<span class="string">'ff'</span>),(<span class="number">700</span>,<span class="number">7</span>,<span class="string">'gg'</span>);</span><br></pre></td></tr></table></figure>
+      <h1 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a>哈希表</h1><ul>
+<li>和hashmap的思路一样</li>
+<li>区间查询比较慢</li>
+<li>适用于等值查询的场景</li>
+</ul>
+<p><img src="http://liyong.ac.cn/pic/20190215_01.png" alt="1550194991315"></p>
       
         <div class="readmore">
-          <a href="/2019/03/11/aa_category/db/mysql/mysql实战/5深入浅出索引/" class="flat-box">
+          <a href="/2019/03/11/aa_category/db/mysql/mysql实战/4深入浅出索引/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -621,6 +523,115 @@
       
         <div class="readmore">
           <a href="/2019/03/11/aa_category/se/深入拆解 Java 虚拟机/13Java内存模型/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/se/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> se</a>
+        
+          <a href="/tags/jvm/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> jvm</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2019/03/11/aa_category/se/深入拆解 Java 虚拟机/11-12垃圾回收/">
+      11-12垃圾回收
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://liyong.ac.cn" rel="nofollow">
+        
+          <img src="https://liyong.ac.cn/img/me.png">
+        
+        <p>李永</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-03-11</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/se/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>se</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h1 id="引用计数法和可达性分析"><a href="#引用计数法和可达性分析" class="headerlink" title="引用计数法和可达性分析"></a>引用计数法和可达性分析</h1><h2 id="引用计数"><a href="#引用计数" class="headerlink" title="引用计数"></a>引用计数</h2><p>循环引用的问题</p>
+<h2 id="可达性分析"><a href="#可达性分析" class="headerlink" title="可达性分析"></a>可达性分析</h2><ul>
+<li>方法栈桢中的局部变量</li>
+<li>已加载类的静态变量</li>
+<li>JNI handles</li>
+<li>已启动未停止的java线程</li>
+</ul>
+      
+        <div class="readmore">
+          <a href="/2019/03/11/aa_category/se/深入拆解 Java 虚拟机/11-12垃圾回收/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -770,8 +781,8 @@
       
         
   <h2 class="title">
-    <a href="/2019/03/11/aa_category/se/深入拆解 Java 虚拟机/11-12垃圾回收/">
-      11-12垃圾回收
+    <a href="/2019/03/11/aa_category/se/深入拆解 Java 虚拟机/07JVM是如何实现反射的/">
+      07JVM是如何实现反射的
     </a>
   </h2>
 
@@ -835,16 +846,15 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h1 id="引用计数法和可达性分析"><a href="#引用计数法和可达性分析" class="headerlink" title="引用计数法和可达性分析"></a>引用计数法和可达性分析</h1><h2 id="引用计数"><a href="#引用计数" class="headerlink" title="引用计数"></a>引用计数</h2><p>循环引用的问题</p>
-<h2 id="可达性分析"><a href="#可达性分析" class="headerlink" title="可达性分析"></a>可达性分析</h2><ul>
-<li>方法栈桢中的局部变量</li>
-<li>已加载类的静态变量</li>
-<li>JNI handles</li>
-<li>已启动未停止的java线程</li>
+      <h1 id="反射调用的实现"><a href="#反射调用的实现" class="headerlink" title="反射调用的实现"></a>反射调用的实现</h1><ul>
+<li>-Dsun.reflect.inflationThreshold 设置本地调用的阀值</li>
+<li>-verbose:class</li>
+<li>-XX:+PrintGC 打印GC</li>
+<li>在实践中需要保存反射得到的结果</li>
 </ul>
       
         <div class="readmore">
-          <a href="/2019/03/11/aa_category/se/深入拆解 Java 虚拟机/11-12垃圾回收/" class="flat-box">
+          <a href="/2019/03/11/aa_category/se/深入拆解 Java 虚拟机/07JVM是如何实现反射的/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -951,114 +961,6 @@
       
         <div class="readmore">
           <a href="/2019/03/11/aa_category/se/深入拆解 Java 虚拟机/08-09JVM是怎么实现invokedynamic的/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/se/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> se</a>
-        
-          <a href="/tags/jvm/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> jvm</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2019/03/11/aa_category/se/深入拆解 Java 虚拟机/07JVM是如何实现反射的/">
-      07JVM是如何实现反射的
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://liyong.ac.cn" rel="nofollow">
-        
-          <img src="https://liyong.ac.cn/img/me.png">
-        
-        <p>李永</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-03-11</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/se/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>se</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h1 id="反射调用的实现"><a href="#反射调用的实现" class="headerlink" title="反射调用的实现"></a>反射调用的实现</h1><ul>
-<li>-Dsun.reflect.inflationThreshold 设置本地调用的阀值</li>
-<li>-verbose:class</li>
-<li>-XX:+PrintGC 打印GC</li>
-<li>在实践中需要保存反射得到的结果</li>
-</ul>
-      
-        <div class="readmore">
-          <a href="/2019/03/11/aa_category/se/深入拆解 Java 虚拟机/07JVM是如何实现反射的/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -1408,111 +1310,6 @@
       
         
   <h2 class="title">
-    <a href="/2019/03/11/aa_category/se/深入拆解 Java 虚拟机/01Java代码是怎么运行的/">
-      01Java代码是怎么运行的
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://liyong.ac.cn" rel="nofollow">
-        
-          <img src="https://liyong.ac.cn/img/me.png">
-        
-        <p>李永</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-03-11</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/se/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>se</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h1 id="虚拟机"><a href="#虚拟机" class="headerlink" title="虚拟机"></a>虚拟机</h1><p>从虚拟机视角来看，执行 Java 代码首先需要将它编译而成的 class 文件加载到 Java 虚拟机中。加载后的 Java 类会被存放于方法区（Method Area）中。实际运行时，虚拟机会执行方法区内的代码。</p>
-<p>在运行过程中，每当调用进入一个 Java 方法，Java 虚拟机会在当前线程的 Java 方法栈中生成一个栈帧，用以存放局部变量以及字节码的操作数。这个栈帧的大小是提前计算好的，而且 Java 虚拟机不要求栈帧在内存空间里连续分布。</p>
-<h1 id="硬件"><a href="#硬件" class="headerlink" title="硬件"></a>硬件</h1><p>从硬件视角来看，Java 字节码无法直接执行。因此，Java 虚拟机需要将字节码翻译成机器码。</p>
-      
-        <div class="readmore">
-          <a href="/2019/03/11/aa_category/se/深入拆解 Java 虚拟机/01Java代码是怎么运行的/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/se/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> se</a>
-        
-          <a href="/tags/jvm/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> jvm</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
     <a href="/2019/03/11/aa_category/se/深入拆解 Java 虚拟机/02Java的基本类型/">
       02Java的基本类型
     </a>
@@ -1621,8 +1418,8 @@
       
         
   <h2 class="title">
-    <a href="/2019/03/11/aa_category/db/mysql/mysql实战/4深入浅出索引/">
-      4深入浅出索引
+    <a href="/2019/03/11/aa_category/se/深入拆解 Java 虚拟机/01Java代码是怎么运行的/">
+      01Java代码是怎么运行的
     </a>
   </h2>
 
@@ -1662,9 +1459,9 @@
             
   
   <div class='new-meta-item category'>
-    <a href='/categories/db/' rel="nofollow">
+    <a href='/categories/se/' rel="nofollow">
       <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>db</p>
+      <p>se</p>
     </a>
   </div>
 
@@ -1686,15 +1483,12 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h1 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a>哈希表</h1><ul>
-<li>和hashmap的思路一样</li>
-<li>区间查询比较慢</li>
-<li>适用于等值查询的场景</li>
-</ul>
-<p><img src="http://liyong.ac.cn/pic/20190215_01.png" alt="1550194991315"></p>
+      <h1 id="虚拟机"><a href="#虚拟机" class="headerlink" title="虚拟机"></a>虚拟机</h1><p>从虚拟机视角来看，执行 Java 代码首先需要将它编译而成的 class 文件加载到 Java 虚拟机中。加载后的 Java 类会被存放于方法区（Method Area）中。实际运行时，虚拟机会执行方法区内的代码。</p>
+<p>在运行过程中，每当调用进入一个 Java 方法，Java 虚拟机会在当前线程的 Java 方法栈中生成一个栈帧，用以存放局部变量以及字节码的操作数。这个栈帧的大小是提前计算好的，而且 Java 虚拟机不要求栈帧在内存空间里连续分布。</p>
+<h1 id="硬件"><a href="#硬件" class="headerlink" title="硬件"></a>硬件</h1><p>从硬件视角来看，Java 字节码无法直接执行。因此，Java 虚拟机需要将字节码翻译成机器码。</p>
       
         <div class="readmore">
-          <a href="/2019/03/11/aa_category/db/mysql/mysql实战/4深入浅出索引/" class="flat-box">
+          <a href="/2019/03/11/aa_category/se/深入拆解 Java 虚拟机/01Java代码是怎么运行的/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -1704,9 +1498,9 @@
     
       <div class="full-width auto-padding tags">
         
-          <a href="/tags/mysql/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> mysql</a>
+          <a href="/tags/se/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> se</a>
         
-          <a href="/tags/db/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> db</a>
+          <a href="/tags/jvm/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> jvm</a>
         
       </div>
     
@@ -1847,6 +1641,116 @@
       
         
   <h2 class="title">
+    <a href="/2019/03/11/aa_category/db/mysql/mysql实战/2一条SQL更新语句是如何执行的/">
+      2一条SQL更新语句是如何执行的
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://liyong.ac.cn" rel="nofollow">
+        
+          <img src="https://liyong.ac.cn/img/me.png">
+        
+        <p>李永</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-03-11</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/db/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>db</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h1 id="summarize"><a href="#summarize" class="headerlink" title="summarize"></a>summarize</h1><h1 id="redo-log"><a href="#redo-log" class="headerlink" title="redo log"></a>redo log</h1><ul>
+<li>Write-Ahead Logging，先写日志，再写磁盘</li>
+<li>先写日志，更新内存，当系统比较清闲的时候，写入磁盘</li>
+<li>write pos 是当前记录的位置</li>
+<li>chekpoint 是当前要擦出的位置</li>
+<li>write pos 到chekpoint 之间的位置是可以记录的空间</li>
+<li>crash-safe</li>
+</ul>
+      
+        <div class="readmore">
+          <a href="/2019/03/11/aa_category/db/mysql/mysql实战/2一条SQL更新语句是如何执行的/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/mysql/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> mysql</a>
+        
+          <a href="/tags/db/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> db</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
     <a href="/2019/03/11/aa_category/middleware/zookeeper/zookeeper入门/">
       zookeeper入门
     </a>
@@ -1928,112 +1832,6 @@
           <a href="/tags/middleware/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> middleware</a>
         
           <a href="/tags/zk/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> zk</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2019/03/11/aa_category/db/mysql/mysql实战/1一条SQL查询语句是如何执行的/">
-      1一条SQL查询语句是如何执行的
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://liyong.ac.cn" rel="nofollow">
-        
-          <img src="https://liyong.ac.cn/img/me.png">
-        
-        <p>李永</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-03-11</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/db/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>db</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h1 id="summarize"><a href="#summarize" class="headerlink" title="summarize"></a>summarize</h1><p><img src="http://liyong.ac.cn/pic/1546866826086.png" alt="1546866826086"></p>
-<ul>
-<li>server层包括连接器、查询缓存、分析器、优化器、执行器以及所有的内置函数（如日期、时间、数学函数）</li>
-</ul>
-      
-        <div class="readmore">
-          <a href="/2019/03/11/aa_category/db/mysql/mysql实战/1一条SQL查询语句是如何执行的/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/mysql/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> mysql</a>
-        
-          <a href="/tags/db/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> db</a>
         
       </div>
     
@@ -2267,8 +2065,8 @@
       
         
   <h2 class="title">
-    <a href="/2019/03/11/aa_category/db/mysql/mysql实战/2一条SQL更新语句是如何执行的/">
-      2一条SQL更新语句是如何执行的
+    <a href="/2019/03/11/aa_category/db/mysql/mysql实战/1一条SQL查询语句是如何执行的/">
+      1一条SQL查询语句是如何执行的
     </a>
   </h2>
 
@@ -2332,17 +2130,13 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h1 id="summarize"><a href="#summarize" class="headerlink" title="summarize"></a>summarize</h1><h1 id="redo-log"><a href="#redo-log" class="headerlink" title="redo log"></a>redo log</h1><ul>
-<li>Write-Ahead Logging，先写日志，再写磁盘</li>
-<li>先写日志，更新内存，当系统比较清闲的时候，写入磁盘</li>
-<li>write pos 是当前记录的位置</li>
-<li>chekpoint 是当前要擦出的位置</li>
-<li>write pos 到chekpoint 之间的位置是可以记录的空间</li>
-<li>crash-safe</li>
+      <h1 id="summarize"><a href="#summarize" class="headerlink" title="summarize"></a>summarize</h1><p><img src="http://liyong.ac.cn/pic/1546866826086.png" alt="1546866826086"></p>
+<ul>
+<li>server层包括连接器、查询缓存、分析器、优化器、执行器以及所有的内置函数（如日期、时间、数学函数）</li>
 </ul>
       
         <div class="readmore">
-          <a href="/2019/03/11/aa_category/db/mysql/mysql实战/2一条SQL更新语句是如何执行的/" class="flat-box">
+          <a href="/2019/03/11/aa_category/db/mysql/mysql实战/1一条SQL查询语句是如何执行的/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -2449,6 +2243,212 @@
       
         <div class="readmore">
           <a href="/2019/03/11/aa_category/db/mysql/mysql实战/13为什么表数据删掉一半,表文件大小不变/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/mysql/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> mysql</a>
+        
+          <a href="/tags/db/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> db</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2019/03/11/aa_category/db/mysql/mysql实战/12为什么我的MySQL会“抖”一下/">
+      12为什么我的MySQL会“抖”一下
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://liyong.ac.cn" rel="nofollow">
+        
+          <img src="https://liyong.ac.cn/img/me.png">
+        
+        <p>李永</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-03-11</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/db/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>db</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <p>当内存数据页跟磁盘数据页内容不一致的时候，我们称这个内存页为“脏页”。内存数据写入到磁盘后，内存和磁盘上的数据页的内容就一致了，称为“干净页”</p>
+      
+        <div class="readmore">
+          <a href="/2019/03/11/aa_category/db/mysql/mysql实战/12为什么我的MySQL会“抖”一下/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/mysql/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> mysql</a>
+        
+          <a href="/tags/db/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> db</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2019/03/11/aa_category/db/mysql/mysql实战/11怎么给字符串字段加索引/">
+      11怎么给字符串字段加索引
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://liyong.ac.cn" rel="nofollow">
+        
+          <img src="https://liyong.ac.cn/img/me.png">
+        
+        <p>李永</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-03-11</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/db/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>db</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">create</span> <span class="keyword">table</span> SUser(</span><br><span class="line"><span class="keyword">ID</span> <span class="built_in">bigint</span> <span class="keyword">unsigned</span> primary <span class="keyword">key</span>,</span><br><span class="line">email <span class="built_in">varchar</span>(<span class="number">64</span>) </span><br><span class="line">) ;</span><br><span class="line"></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> SUser <span class="keyword">add</span> <span class="keyword">index</span> index1(email);</span><br><span class="line"></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> SUser <span class="keyword">add</span> <span class="keyword">index</span> index2(email(<span class="number">6</span>));</span><br></pre></td></tr></table></figure>
+      
+        <div class="readmore">
+          <a href="/2019/03/11/aa_category/db/mysql/mysql实战/11怎么给字符串字段加索引/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -2598,12 +2598,12 @@
           博文
         </a></li>
       
-        <li><a class="flat-box" title="/archives/" href="/archives/"
+        <li><a class="flat-box" title="/blog/archives" href="/blog/archives"
           
             rel="nofollow"
           
           
-          id="archives">
+          id="blogarchives">
           
             <i class="fas fa-archive fa-fw" aria-hidden="true"></i>
           
