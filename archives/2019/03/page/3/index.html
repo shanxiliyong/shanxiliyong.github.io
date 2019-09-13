@@ -137,12 +137,12 @@
 							</li>
       			
   						<li>
-								<a class="nav flat-box" href="/categories"
+								<a class="nav flat-box" href="/blog/categories"
                   
                     rel="nofollow"
                   
                   
-                  id="categories">
+                  id="blogcategories">
 									<i class='fas fa-folder-open fa-fw'></i>&nbsp;分类
 								</a>
 							</li>
@@ -405,8 +405,8 @@
       
         
   <h2 class="title">
-    <a href="/2019/03/11/aa_category/se/深入拆解 Java 虚拟机/15Java语法糖与Java编译器/">
-      15Java语法糖与Java编译器
+    <a href="/2019/03/11/aa_category/se/深入拆解 Java 虚拟机/16-17即时编译/">
+      16-17即时编译
     </a>
   </h2>
 
@@ -470,10 +470,16 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h1 id="自动装箱与自动拆箱"><a href="#自动装箱与自动拆箱" class="headerlink" title="自动装箱与自动拆箱"></a>自动装箱与自动拆箱</h1><p>也就是说，我们可以通过配置该参数，扩大 Integer 缓存的范围。Java 虚拟机参数 -XX:+AggressiveOpts 也会将 IntegerCache.high 调整至 20000。</p>
+      <h1 id="分层编译将-Java-虚拟机的执行状态分为了五个层次"><a href="#分层编译将-Java-虚拟机的执行状态分为了五个层次" class="headerlink" title="分层编译将 Java 虚拟机的执行状态分为了五个层次"></a>分层编译将 Java 虚拟机的执行状态分为了五个层次</h1><ol>
+<li>解释执行；</li>
+<li>执行不带 profiling 的 C1 代码；</li>
+<li>执行仅带方法调用次数以及循环回边执行次数 profiling 的 C1 代码；</li>
+<li>执行带所有 profiling 的 C1 代码；</li>
+<li>执行 C2 代码。</li>
+</ol>
       
         <div class="readmore">
-          <a href="/2019/03/11/aa_category/se/深入拆解 Java 虚拟机/15Java语法糖与Java编译器/" class="flat-box">
+          <a href="/2019/03/11/aa_category/se/深入拆解 Java 虚拟机/16-17即时编译/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>

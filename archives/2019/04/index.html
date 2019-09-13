@@ -137,12 +137,12 @@
 							</li>
       			
   						<li>
-								<a class="nav flat-box" href="/categories"
+								<a class="nav flat-box" href="/blog/categories"
                   
                     rel="nofollow"
                   
                   
-                  id="categories">
+                  id="blogcategories">
 									<i class='fas fa-folder-open fa-fw'></i>&nbsp;分类
 								</a>
 							</li>
@@ -328,8 +328,8 @@
       
         
   <h2 class="title">
-    <a href="/2019/04/12/aa_category/linux/Linux性能优化实战/05基础篇：某个应用的CPU使用率居然达到100%，我该怎么办/">
-      05基础篇：某个应用的CPU使用率居然达到100%我该怎么办
+    <a href="/2019/04/12/aa_category/linux/Linux性能优化实战/03-04基础篇：经常说的 CPU 上下文切换是什么意思/">
+      03-04基础篇：经常说的 CPU 上下文切换是什么意思
     </a>
   </h2>
 
@@ -393,12 +393,11 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h1 id="CPU-使用率"><a href="#CPU-使用率" class="headerlink" title="CPU 使用率"></a>CPU 使用率</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">grep <span class="string">'CONFIG_HZ='</span> /boot/config-$(uname -r)</span><br><span class="line">CONFIG_HZ=250</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 只保留各个 CPU 的数据</span></span><br><span class="line">$ cat /proc/<span class="built_in">stat</span> | grep ^cpu</span><br><span class="line">cpu  280580 7407 286084 172900810 83602 0 583 0 0 0</span><br><span class="line">cpu0 144745 4181 176701 86423902 52076 0 301 0 0 0</span><br><span class="line">cpu1 135834 3226 109383 86476907 31525 0 282 0 0 0</span><br></pre></td></tr></table></figure>
+      <p>CPU 寄存器，是 CPU 内置的容量小、但速度极快的内存。而程序计数器，则是用来存储 CPU 正在执行的指令位置、或者即将执行的下一条指令位置。它们都是 CPU 在运行任何任务前，必须的依赖环境，因此也被叫做 cpu上下文</p>
+<p><img src="http://liyong.ac.cn/pic/98ac9df2593a193d6a7f1767cd68eb5f.png" alt="1"></p>
       
         <div class="readmore">
-          <a href="/2019/04/12/aa_category/linux/Linux性能优化实战/05基础篇：某个应用的CPU使用率居然达到100%，我该怎么办/" class="flat-box">
+          <a href="/2019/04/12/aa_category/linux/Linux性能优化实战/03-04基础篇：经常说的 CPU 上下文切换是什么意思/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -533,8 +532,8 @@
       
         
   <h2 class="title">
-    <a href="/2019/04/12/aa_category/linux/Linux性能优化实战/24-25基础篇：Linux 磁盘IO是怎么工作的/">
-      24-25基础篇：Linux 磁盘IO是怎么工作的
+    <a href="/2019/04/12/aa_category/linux/Linux性能优化实战/23基础篇：Linux 文件系统是怎么工作的/">
+      23基础篇：Linux 文件系统是怎么工作的
     </a>
   </h2>
 
@@ -598,13 +597,10 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h1 id="磁盘"><a href="#磁盘" class="headerlink" title="磁盘"></a>磁盘</h1><ul>
-<li>第一类，机械磁盘，也称为硬盘驱动器（Hard Disk Driver），通常缩写为 HDD。机械磁盘主要由盘片和读写磁头组成，数据就存储在盘片的环状磁道中。在读写数据前，需要移动读写磁头，定位到数据所在的磁道，然后才能访问数据。</li>
-<li>第二类，固态磁盘（Solid State Disk），通常缩写为 SSD，由固态电子元器件组成。固态磁盘不需要磁道寻址，所以，不管是连续 I/O，还是随机 I/O 的性能，都比机械磁盘要好得多。</li>
-</ul>
+      <h1 id="索引节点和目录项"><a href="#索引节点和目录项" class="headerlink" title="索引节点和目录项"></a>索引节点和目录项</h1><p>在 Linux 中一切皆文件。不仅普通的文件和目录，就连块设备、套接字、管道等，也都要通过统一的文件系统来管理。</p>
       
         <div class="readmore">
-          <a href="/2019/04/12/aa_category/linux/Linux性能优化实战/24-25基础篇：Linux 磁盘IO是怎么工作的/" class="flat-box">
+          <a href="/2019/04/12/aa_category/linux/Linux性能优化实战/23基础篇：Linux 文件系统是怎么工作的/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -842,8 +838,8 @@
       
         
   <h2 class="title">
-    <a href="/2019/04/12/aa_category/linux/Linux性能优化实战/23基础篇：Linux 文件系统是怎么工作的/">
-      23基础篇：Linux 文件系统是怎么工作的
+    <a href="/2019/04/12/aa_category/linux/Linux性能优化实战/24-25基础篇：Linux 磁盘IO是怎么工作的/">
+      24-25基础篇：Linux 磁盘IO是怎么工作的
     </a>
   </h2>
 
@@ -907,10 +903,13 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h1 id="索引节点和目录项"><a href="#索引节点和目录项" class="headerlink" title="索引节点和目录项"></a>索引节点和目录项</h1><p>在 Linux 中一切皆文件。不仅普通的文件和目录，就连块设备、套接字、管道等，也都要通过统一的文件系统来管理。</p>
+      <h1 id="磁盘"><a href="#磁盘" class="headerlink" title="磁盘"></a>磁盘</h1><ul>
+<li>第一类，机械磁盘，也称为硬盘驱动器（Hard Disk Driver），通常缩写为 HDD。机械磁盘主要由盘片和读写磁头组成，数据就存储在盘片的环状磁道中。在读写数据前，需要移动读写磁头，定位到数据所在的磁道，然后才能访问数据。</li>
+<li>第二类，固态磁盘（Solid State Disk），通常缩写为 SSD，由固态电子元器件组成。固态磁盘不需要磁道寻址，所以，不管是连续 I/O，还是随机 I/O 的性能，都比机械磁盘要好得多。</li>
+</ul>
       
         <div class="readmore">
-          <a href="/2019/04/12/aa_category/linux/Linux性能优化实战/23基础篇：Linux 文件系统是怎么工作的/" class="flat-box">
+          <a href="/2019/04/12/aa_category/linux/Linux性能优化实战/24-25基础篇：Linux 磁盘IO是怎么工作的/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -1363,8 +1362,8 @@
       
         
   <h2 class="title">
-    <a href="/2019/04/12/aa_category/linux/Linux性能优化实战/03-04基础篇：经常说的 CPU 上下文切换是什么意思/">
-      03-04基础篇：经常说的 CPU 上下文切换是什么意思
+    <a href="/2019/04/12/aa_category/linux/Linux性能优化实战/05基础篇：某个应用的CPU使用率居然达到100%，我该怎么办/">
+      05基础篇：某个应用的CPU使用率居然达到100%我该怎么办
     </a>
   </h2>
 
@@ -1428,11 +1427,12 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <p>CPU 寄存器，是 CPU 内置的容量小、但速度极快的内存。而程序计数器，则是用来存储 CPU 正在执行的指令位置、或者即将执行的下一条指令位置。它们都是 CPU 在运行任何任务前，必须的依赖环境，因此也被叫做 cpu上下文</p>
-<p><img src="http://liyong.ac.cn/pic/98ac9df2593a193d6a7f1767cd68eb5f.png" alt="1"></p>
+      <h1 id="CPU-使用率"><a href="#CPU-使用率" class="headerlink" title="CPU 使用率"></a>CPU 使用率</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">grep <span class="string">'CONFIG_HZ='</span> /boot/config-$(uname -r)</span><br><span class="line">CONFIG_HZ=250</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 只保留各个 CPU 的数据</span></span><br><span class="line">$ cat /proc/<span class="built_in">stat</span> | grep ^cpu</span><br><span class="line">cpu  280580 7407 286084 172900810 83602 0 583 0 0 0</span><br><span class="line">cpu0 144745 4181 176701 86423902 52076 0 301 0 0 0</span><br><span class="line">cpu1 135834 3226 109383 86476907 31525 0 282 0 0 0</span><br></pre></td></tr></table></figure>
       
         <div class="readmore">
-          <a href="/2019/04/12/aa_category/linux/Linux性能优化实战/03-04基础篇：经常说的 CPU 上下文切换是什么意思/" class="flat-box">
+          <a href="/2019/04/12/aa_category/linux/Linux性能优化实战/05基础篇：某个应用的CPU使用率居然达到100%，我该怎么办/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
