@@ -17,6 +17,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <!-- meta -->
   
+  
+  <meta name="theme-color" content="#FFFFFF">
+  <meta name="msapplication-TileColor" content="#1BC3FB">
+  <meta name="msapplication-config" content="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-favicon@19.9.6/browserconfig.xml">
+  
 
   <!-- link -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
@@ -24,6 +29,13 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
   
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.10.1/css/all.min.css">
+  
+  
+  <link rel="shortcut icon" type="image/x-icon" href="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-favicon@19.9.6/favicon.ico">
+  <link rel="icon" type="image/x-icon" sizes="32x32" href="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-favicon@19.9.6/favicon-32x32.png">
+  <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-favicon@19.9.6/apple-touch-icon.png">
+  <link rel="mask-icon" color="#1BC3FB" href="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-favicon@19.9.6/safari-pinned-tab.svg">
+  <link rel="manifest" href="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-favicon@19.9.6/site.webmanifest">
   
 
   
@@ -304,8 +316,1219 @@
       
         
   <h2 class="title">
-    <a href="/2017/04/15/aa_category/se/thread/ReentrantLock/">
-      ReentrantLock
+    <a href="/2017/05/29/aa_category/se/gc&mem/JVM中锁优化/">
+      JVM中锁优化，偏向锁、自旋锁、锁消除、锁粗化
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://liyong.ac.cn" rel="nofollow">
+        
+          <img src="https://liyong.ac.cn/img/me.png">
+        
+        <p>李永</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2017-05-29</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/se/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>se</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h2 id="锁消除"><a href="#锁消除" class="headerlink" title="锁消除"></a>锁消除</h2><p>锁削除是指虚拟机即时编译器在运行时，对一些代码上要求同步，但是被检测到不可能存在共享数据竞争的锁进行削除（主要判定依据来源于逃逸分析的数据支持，如果判断到一段代码中，在堆上的所有数据都不会逃逸出去被其他线程访问到，那就可以把它们当作栈上数据对待，认为它们是线程私有的，同步加锁自然就无须进行）</p>
+      
+        <div class="readmore">
+          <a href="/2017/05/29/aa_category/se/gc&mem/JVM中锁优化/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/concurrent/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> concurrent</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2017/05/14/aa_category/se/thread/Future模式/">
+      Future模式
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://liyong.ac.cn" rel="nofollow">
+        
+          <img src="https://liyong.ac.cn/img/me.png">
+        
+        <p>李永</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2017-05-14</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/se/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>se</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> concurrent.future;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Data</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> T <span class="title">getResult</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+        <div class="readmore">
+          <a href="/2017/05/14/aa_category/se/thread/Future模式/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/concurrent/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> concurrent</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2017/05/14/aa_category/se/Se小众语法/">
+      Se小众语法
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://liyong.ac.cn" rel="nofollow">
+        
+          <img src="https://liyong.ac.cn/img/me.png">
+        
+        <p>李永</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2017-05-14</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/se/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>se</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <p>介绍不常用，可能用得着的语法</p>
+      
+        <div class="readmore">
+          <a href="/2017/05/14/aa_category/se/Se小众语法/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2017/05/14/aa_category/se/thread/ConcurrentLinkedQueue/">
+      ConcurrentLinkedQueue
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://liyong.ac.cn" rel="nofollow">
+        
+          <img src="https://liyong.ac.cn/img/me.png">
+        
+        <p>李永</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2017-05-14</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/se/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>se</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <p> ConcurrentLinkedQueue由head节点和tail节点组成，每个节点（Node）由节点元素（item）和指向下一个节点的引用(next)<br> 组成，节点与节点之间就是通过这个next关联起来，从而组成一张链表结构的队列。默认情况下head节点存储的元素为空，tail节点等于head节点</p>
+      
+        <div class="readmore">
+          <a href="/2017/05/14/aa_category/se/thread/ConcurrentLinkedQueue/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/concurrent/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> concurrent</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2017/05/14/aa_category/se/thread/线程安全的Map/">
+      线程安全的Map
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://liyong.ac.cn" rel="nofollow">
+        
+          <img src="https://liyong.ac.cn/img/me.png">
+        
+        <p>李永</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2017-05-14</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/se/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>se</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+        <div class="readmore">
+          <a href="/2017/05/14/aa_category/se/thread/线程安全的Map/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/concurrent/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> concurrent</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2017/05/07/aa_category/se/reflect/线程池/">
+      线程池
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://liyong.ac.cn" rel="nofollow">
+        
+          <img src="https://liyong.ac.cn/img/me.png">
+        
+        <p>李永</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2017-05-07</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/se/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>se</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h2 id="为什么使用线程池？"><a href="#为什么使用线程池？" class="headerlink" title="为什么使用线程池？"></a>为什么使用线程池？</h2><p>1、虽然线程是一个轻量级工具，但是创建和销毁线程依然需要花费时间，如果为小任务创建线程，很有可能创建线程的时间都大于执行任务的时间<br>2、线程本身也占有内存空间，大量的线程会抢占宝贵的内存资源。</p>
+      
+        <div class="readmore">
+          <a href="/2017/05/07/aa_category/se/reflect/线程池/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/concurrent/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> concurrent</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2017/04/16/aa_category/se/thread/CyclicBarrier/">
+      CyclicBarrier
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://liyong.ac.cn" rel="nofollow">
+        
+          <img src="https://liyong.ac.cn/img/me.png">
+        
+        <p>李永</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2017-04-16</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/se/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>se</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <p>一个同步辅助类，它允许一组线程互相等待，直到到达某个公共屏障点 (common barrier point)。在涉及一组固定大小的线程的程序中，这些线程必须不时地互相等待，此时 CyclicBarrier 很有用。因为该 barrier 在释放等待线程后可以重用，所以称它为循环 的 barrier。</p>
+      
+        <div class="readmore">
+          <a href="/2017/04/16/aa_category/se/thread/CyclicBarrier/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/concurrent/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> concurrent</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2017/04/16/aa_category/se/thread/ReadWriteLock/">
+      ReadWriteLock
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://liyong.ac.cn" rel="nofollow">
+        
+          <img src="https://liyong.ac.cn/img/me.png">
+        
+        <p>李永</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2017-04-16</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/se/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>se</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <p>ReadWriteLock和ReentrantLock相比，在读多写少的场景下，性能有很多的提升</p>
+<p>1、读读不互斥<br>2、读写互斥<br>3、写写互斥</p>
+      
+        <div class="readmore">
+          <a href="/2017/04/16/aa_category/se/thread/ReadWriteLock/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/concurrent/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> concurrent</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2017/04/16/aa_category/se/thread/CountDownLatch/">
+      CountDownLatch
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://liyong.ac.cn" rel="nofollow">
+        
+          <img src="https://liyong.ac.cn/img/me.png">
+        
+        <p>李永</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2017-04-16</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/se/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>se</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <p>一个同步辅助类，在完成一组正在其他线程中执行的操作之前，它允许一个或多个线程一直等待。用给定的计数 初始化 CountDownLatch。由于调用了 countDown() 方法，所以在当前计数到达零之前，await 方法会一直受阻塞。之后，会释放所有等待的线程，await 的所有后续调用都将立即返回。这种现象只出现一次——计数无法被重置</p>
+      
+        <div class="readmore">
+          <a href="/2017/04/16/aa_category/se/thread/CountDownLatch/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/concurrent/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> concurrent</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2017/04/16/aa_category/se/thread/Semaphore/">
+      Semaphore
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://liyong.ac.cn" rel="nofollow">
+        
+          <img src="https://liyong.ac.cn/img/me.png">
+        
+        <p>李永</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2017-04-16</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/se/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>se</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <p>Semaphore实现的功能就类似厕所有5个坑，假如有10个人要上厕所，那么同时只能有多少个人去上厕所呢？同时只能有5个人能够占用，当5个人中 的任何一个人让开后，其中等待的另外5个人中又有一个人可以占用了。另外等待的5个人中可以是随机获得优先机会，也可以是按照先来后到的顺序获得机会，这取决于构造Semaphore对象时传入的参数选项。</p>
+      
+        <div class="readmore">
+          <a href="/2017/04/16/aa_category/se/thread/Semaphore/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/concurrent/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> concurrent</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2017/04/16/aa_category/se/thread/Condition/">
+      Condition
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://liyong.ac.cn" rel="nofollow">
+        
+          <img src="https://liyong.ac.cn/img/me.png">
+        
+        <p>李永</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2017-04-16</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/se/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>se</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <p>1、Condition 重入锁的好搭档<br>2、调用方法 await 和  signal 之前必须获持有相关的锁，调用之后必须释放锁。</p>
+      
+        <div class="readmore">
+          <a href="/2017/04/16/aa_category/se/thread/Condition/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/concurrent/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> concurrent</a>
+        
+          <a href="/tags/lock/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> lock</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2017/04/16/aa_category/se/thread/LockSupport/">
+      LockSupport
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://liyong.ac.cn" rel="nofollow">
+        
+          <img src="https://liyong.ac.cn/img/me.png">
+        
+        <p>李永</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2017-04-16</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/se/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>se</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <p>1、先执行unpark，后执行park不会导致线程永久挂起<br>2、可以响应中断<br>3、LockSupport采用类似信号量的机制，它为每个线程准备一个许可，执行park的时候，如果许可可用，则立即返回，如果许可不可用，则会阻塞线程。执行unpark则可让许可可用，多次执行upark不能累加(一个线程只能有一个许可)</p>
+      
+        <div class="readmore">
+          <a href="/2017/04/16/aa_category/se/thread/LockSupport/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/concurrent/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> concurrent</a>
+        
+          <a href="/tags/lock/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> lock</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2017/04/15/aa_category/se/thread/指令重排序/">
+      指令重排序
     </a>
   </h2>
 
@@ -369,14 +1592,10 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h2 id="ReentrantLock比-synchronized的优势"><a href="#ReentrantLock比-synchronized的优势" class="headerlink" title="ReentrantLock比 synchronized的优势"></a>ReentrantLock比 synchronized的优势</h2><p>1、RenntrantLock性能远远好于synchronized，但从JDK 1.6 开始，JDK在synchronized做了大量的优化，使得两者性能差距并不大<br>2、RenntrantLock支持中断响应<br>3、ReentrantLock支持指定限时等待锁<br>4、ReenTrantLock支持公平锁</p>
-<h2 id="ReentrantLock实现三要素"><a href="#ReentrantLock实现三要素" class="headerlink" title="ReentrantLock实现三要素"></a>ReentrantLock实现三要素</h2><ol>
-<li>原子性，使用cas保证原子性</li>
-<li>等待队列，没有请求道锁的线程会进入等待队列，如果某个线程释放锁，则从等待队列中唤醒一个线程，继续工作</li>
-<li>阻塞 park,恢复unpark
+      <p>1、对于一个线程来说，它看到的指令执行顺序是一致的。<br>2、线程writer的指令执行顺序在现场reader看来是没有保证的<br>3、下面的例子可能会出现flag=true的时候a=2还未执行，至于是否发生了指令重排序，如何重排序我们是无法预测的。</p>
       
         <div class="readmore">
-          <a href="/2017/04/15/aa_category/se/thread/ReentrantLock/" class="flat-box">
+          <a href="/2017/04/15/aa_category/se/thread/指令重排序/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -388,7 +1607,7 @@
         
           <a href="/tags/concurrent/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> concurrent</a>
         
-          <a href="/tags/lock/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> lock</a>
+          <a href="/tags/性能调优/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> 性能调优</a>
         
       </div>
     
@@ -411,8 +1630,8 @@
       
         
   <h2 class="title">
-    <a href="/2017/03/10/设计模式总结/">
-      设计模式总结
+    <a href="/2017/04/15/aa_category/se/gc&mem/jstack/">
+      jstack
     </a>
   </h2>
 
@@ -442,7 +1661,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2017-03-10</p>
+    <p>2017-04-15</p>
   </a>
 </div>
 
@@ -476,11 +1695,16 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <p>先看如下两幅图片</p>
-<p>设计模式之间的关系：<br><img src="1.png" alt="设计模式总结"></p>
+      <p>jstack主要用来查看某个Java进程内的线程堆栈信息。语法格式如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">jstack [option] pid</span><br><span class="line">jstack [option] executable core</span><br><span class="line">jstack [option] [server-id@]remote-hostname-or-ip</span><br></pre></td></tr></table></figure>
+
+<p> 命令行参数选项说明如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-l long listings，会打印出额外的锁信息，在发生死锁时可以用jstack -l pid来观察锁</span><br></pre></td></tr></table></figure>
+
+<p>1、jstack定位到堆栈信息<br>2、根据堆栈信息可以堆栈信息可以定位到具体代码，所以在JVM性能调优中使用的的相当多</p>
       
         <div class="readmore">
-          <a href="/2017/03/10/设计模式总结/" class="flat-box">
+          <a href="/2017/04/15/aa_category/se/gc&mem/jstack/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -490,7 +1714,7 @@
     
       <div class="full-width auto-padding tags">
         
-          <a href="/tags/设计模式/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> 设计模式</a>
+          <a href="/tags/性能调优/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> 性能调优</a>
         
       </div>
     
@@ -513,8 +1737,8 @@
       
         
   <h2 class="title">
-    <a href="/2017/03/10/aa_category/se/thread/如何提高Java并行程序性能/">
-      如何提高Java并行程序性能
+    <a href="/2017/04/15/aa_category/se/thread/ThreadGoup/">
+      ThreadGoup
     </a>
   </h2>
 
@@ -544,7 +1768,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2017-03-10</p>
+    <p>2017-04-15</p>
   </a>
 </div>
 
@@ -578,10 +1802,10 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <p>在Java程序中，多线程几乎已经无处不在。与单线程相比，多线程程序的设计和实现略微困难，但通过多线程，我们却可以获得多核CPU带来的性能飞跃，从这个角度说，多线程是一种值得尝试的技术。那么如何写出高效的多线程程序呢？</p>
+      <p>分门别类的管理，线程组</p>
       
         <div class="readmore">
-          <a href="/2017/03/10/aa_category/se/thread/如何提高Java并行程序性能/" class="flat-box">
+          <a href="/2017/04/15/aa_category/se/thread/ThreadGoup/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -592,414 +1816,6 @@
       <div class="full-width auto-padding tags">
         
           <a href="/tags/concurrent/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> concurrent</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2017/03/09/Java中字符串内存位置浅析/">
-      Java中字符串内存位置浅析
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://liyong.ac.cn" rel="nofollow">
-        
-          <img src="https://liyong.ac.cn/img/me.png">
-        
-        <p>李永</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2017-03-09</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/se/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>se</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>之前面试被问，Java里面String存放的位置，之前只记得String是一个不变的量，应该是要存放在常量池里面的，但是后来问到new一个String出来应该是放到哪里的，这个应该是放到堆里面的，后来又问到String的引用是放在什么地方的，当时傻逼的说也是放在堆里面的，现在总结一下：基本类型的变量数据和对象的引用都是放在栈里面的，对象本身放在堆里面，显式的String常量放在常量池，String对象放在堆中。</p>
-      
-        <div class="readmore">
-          <a href="/2017/03/09/Java中字符串内存位置浅析/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/memory/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> memory</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2017/03/09/JVM内存区域划分/">
-      JVM内存区域划分
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://liyong.ac.cn" rel="nofollow">
-        
-          <img src="https://liyong.ac.cn/img/me.png">
-        
-        <p>李永</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2017-03-09</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/se/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>se</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <p>学习Java不可避免的要学习Java虚拟机，也就是JVM，Java虚拟机规范里面规定了程序运行期间会使用到的运行时数据区，这也是JVM的内存区域划分的模型，应该可以这么理解吧。</p>
-<p>这其中有一些是随着虚拟机的启动和退出而创建和销毁的，这些区域是线程共享的，另外有一些是跟各个线程绑定的，随着线程的开始和结束而创建和销毁，我们可以称这些区域是线程私有的。</p>
-<p>根据《Java虚拟机规范Java SE 7版》和《Java虚拟机规范Java SE 8版》的规定，我们可以划分出如下几个运行时数据区，如下图所示：</p>
-<p><img src="1.png" alt="JVM内存区域划分"></p>
-      
-        <div class="readmore">
-          <a href="/2017/03/09/JVM内存区域划分/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/memory/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> memory</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2017/03/03/工厂方法模式/">
-      工厂方法模式
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://liyong.ac.cn" rel="nofollow">
-        
-          <img src="https://liyong.ac.cn/img/me.png">
-        
-        <p>李永</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2017-03-03</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/se/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>se</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h2 id="普通工厂模式"><a href="#普通工厂模式" class="headerlink" title="普通工厂模式"></a>普通工厂模式</h2><p>  就是建立一个工厂类，对实现了同一接口的一些类进行实例的创建。首先看下关系图：</p>
-<p><img src="1.jpg" alt="工厂方法模式"></p>
-      
-        <div class="readmore">
-          <a href="/2017/03/03/工厂方法模式/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/设计模式/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> 设计模式</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2017/03/01/KeyTool/">
-      KeyTool
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://liyong.ac.cn" rel="nofollow">
-        
-          <img src="https://liyong.ac.cn/img/me.png">
-        
-        <p>李永</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2017-03-01</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/se/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>se</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      jdk生成keytool.
-      
-        <div class="readmore">
-          <a href="/2017/03/01/KeyTool/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/plugins/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> plugins</a>
         
       </div>
     
@@ -1024,8 +1840,14 @@
             </a>
           
           <p class="current">
-            4 / 4
+            4 / 5
           </p>
+          
+            <a class="next" rel="next" href="/categories/se/page/5/">
+              <section class="post next">
+                &nbsp;下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i>
+              </section>
+            </a>
           
         </div>
       </div>
@@ -1226,15 +2048,9 @@
         
           <li><a class="flat-box" title="/categories/algorithm/" href="/categories/algorithm/"><div class='name'>algorithm</div><div class='badge'>(30)</div></a></li>
         
-          <li><a class="flat-box" title="/categories/db/" href="/categories/db/"><div class='name'>db</div><div class='badge'>(27)</div></a></li>
-        
-          <li><a class="flat-box" title="/categories/docker/" href="/categories/docker/"><div class='name'>docker</div><div class='badge'>(1)</div></a></li>
+          <li><a class="flat-box" title="/categories/db/" href="/categories/db/"><div class='name'>db</div><div class='badge'>(26)</div></a></li>
         
           <li><a class="flat-box" title="/categories/ee/" href="/categories/ee/"><div class='name'>ee</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box" title="/categories/git/" href="/categories/git/"><div class='name'>git</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box" title="/categories/idea/" href="/categories/idea/"><div class='name'>idea</div><div class='badge'>(1)</div></a></li>
         
           <li><a class="flat-box" title="/categories/javadoc/" href="/categories/javadoc/"><div class='name'>javadoc</div><div class='badge'>(1)</div></a></li>
         
@@ -1248,8 +2064,6 @@
         
           <li><a class="flat-box" title="/categories/middleware/" href="/categories/middleware/"><div class='name'>middleware</div><div class='badge'>(5)</div></a></li>
         
-          <li><a class="flat-box" title="/categories/ms/" href="/categories/ms/"><div class='name'>ms</div><div class='badge'>(1)</div></a></li>
-        
           <li><a class="flat-box" title="/categories/mybatis/" href="/categories/mybatis/"><div class='name'>mybatis</div><div class='badge'>(11)</div></a></li>
         
           <li><a class="flat-box" title="/categories/netty/" href="/categories/netty/"><div class='name'>netty</div><div class='badge'>(3)</div></a></li>
@@ -1260,7 +2074,7 @@
         
           <li><a class="flat-box" title="/categories/se/" href="/categories/se/"><div class='name'>se</div><div class='badge'>(67)</div></a></li>
         
-          <li><a class="flat-box" title="/categories/spring/" href="/categories/spring/"><div class='name'>spring</div><div class='badge'>(14)</div></a></li>
+          <li><a class="flat-box" title="/categories/spring/" href="/categories/spring/"><div class='name'>spring</div><div class='badge'>(8)</div></a></li>
         
           <li><a class="flat-box" title="/categories/standard/" href="/categories/standard/"><div class='name'>standard</div><div class='badge'>(5)</div></a></li>
         
@@ -1270,9 +2084,7 @@
         
           <li><a class="flat-box" title="/categories/tool/" href="/categories/tool/"><div class='name'>tool</div><div class='badge'>(1)</div></a></li>
         
-          <li><a class="flat-box" title="/categories/uml/" href="/categories/uml/"><div class='name'>uml</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box" title="/categories/web/" href="/categories/web/"><div class='name'>web</div><div class='badge'>(2)</div></a></li>
+          <li><a class="flat-box" title="/categories/web/" href="/categories/web/"><div class='name'>web</div><div class='badge'>(1)</div></a></li>
         
           <li><a class="flat-box" title="/categories/工具/" href="/categories/工具/"><div class='name'>工具</div><div class='badge'>(1)</div></a></li>
         
@@ -1281,8 +2093,6 @@
           <li><a class="flat-box" title="/categories/死磕/" href="/categories/死磕/"><div class='name'>死磕</div><div class='badge'>(1)</div></a></li>
         
           <li><a class="flat-box" title="/categories/设计模式/" href="/categories/设计模式/"><div class='name'>设计模式</div><div class='badge'>(2)</div></a></li>
-        
-          <li><a class="flat-box" title="/categories/项目管理/" href="/categories/项目管理/"><div class='name'>项目管理</div><div class='badge'>(1)</div></a></li>
         
       </ul>
     </div>
@@ -1330,7 +2140,7 @@
 </header>
 
     <div class='content pure'>
-      <a href="/tags/Java资源大全/" style="font-size: 14px; color: #999">Java资源大全</a> <a href="/tags/OAuth2/" style="font-size: 14.77px; color: #949494">OAuth2</a> <a href="/tags/algorithm/" style="font-size: 23.23px; color: #5a5a5a">algorithm</a> <a href="/tags/annotation/" style="font-size: 14px; color: #999">annotation</a> <a href="/tags/boot/" style="font-size: 14px; color: #999">boot</a> <a href="/tags/builder/" style="font-size: 14px; color: #999">builder</a> <a href="/tags/cache/" style="font-size: 14px; color: #999">cache</a> <a href="/tags/cloud/" style="font-size: 14px; color: #999">cloud</a> <a href="/tags/code/" style="font-size: 14px; color: #999">code</a> <a href="/tags/concurrent/" style="font-size: 20.15px; color: #6f6f6f">concurrent</a> <a href="/tags/db/" style="font-size: 22.46px; color: #5f5f5f">db</a> <a href="/tags/docker/" style="font-size: 14px; color: #999">docker</a> <a href="/tags/ee/" style="font-size: 14px; color: #999">ee</a> <a href="/tags/gc/" style="font-size: 15.54px; color: #8f8f8f">gc</a> <a href="/tags/git/" style="font-size: 14px; color: #999">git</a> <a href="/tags/id/" style="font-size: 14px; color: #999">id</a> <a href="/tags/idea/" style="font-size: 14px; color: #999">idea</a> <a href="/tags/jdbc/" style="font-size: 14px; color: #999">jdbc</a> <a href="/tags/jmm/" style="font-size: 14px; color: #999">jmm</a> <a href="/tags/jvm/" style="font-size: 21.69px; color: #656565">jvm</a> <a href="/tags/lifecycle/" style="font-size: 14.77px; color: #949494">lifecycle</a> <a href="/tags/linux/" style="font-size: 18.62px; color: #7a7a7a">linux</a> <a href="/tags/lock/" style="font-size: 15.54px; color: #8f8f8f">lock</a> <a href="/tags/log/" style="font-size: 14px; color: #999">log</a> <a href="/tags/log4j2/" style="font-size: 14.77px; color: #949494">log4j2</a> <a href="/tags/mapper/" style="font-size: 14px; color: #999">mapper</a> <a href="/tags/maven/" style="font-size: 16.31px; color: #898989">maven</a> <a href="/tags/memory/" style="font-size: 17.85px; color: #7f7f7f">memory</a> <a href="/tags/methodology/" style="font-size: 15.54px; color: #8f8f8f">methodology</a> <a href="/tags/middleware/" style="font-size: 17.08px; color: #848484">middleware</a> <a href="/tags/mvc/" style="font-size: 14.77px; color: #949494">mvc</a> <a href="/tags/mybatis/" style="font-size: 19.38px; color: #747474">mybatis</a> <a href="/tags/mysql/" style="font-size: 20.92px; color: #6a6a6a">mysql</a> <a href="/tags/netty/" style="font-size: 15.54px; color: #8f8f8f">netty</a> <a href="/tags/nio/" style="font-size: 14.77px; color: #949494">nio</a> <a href="/tags/oracle/" style="font-size: 17.08px; color: #848484">oracle</a> <a href="/tags/other/" style="font-size: 14px; color: #999">other</a> <a href="/tags/plugin/" style="font-size: 15.54px; color: #8f8f8f">plugin</a> <a href="/tags/plugins/" style="font-size: 14px; color: #999">plugins</a> <a href="/tags/redis/" style="font-size: 16.31px; color: #898989">redis</a> <a href="/tags/reflect/" style="font-size: 14.77px; color: #949494">reflect</a> <a href="/tags/return/" style="font-size: 14px; color: #999">return</a> <a href="/tags/se/" style="font-size: 24px; color: #555">se</a> <a href="/tags/select/" style="font-size: 14px; color: #999">select</a> <a href="/tags/source/" style="font-size: 16.31px; color: #898989">source</a> <a href="/tags/spring/" style="font-size: 18.62px; color: #7a7a7a">spring</a> <a href="/tags/sso/" style="font-size: 14.77px; color: #949494">sso</a> <a href="/tags/standard/" style="font-size: 17.08px; color: #848484">standard</a> <a href="/tags/storm/" style="font-size: 14px; color: #999">storm</a> <a href="/tags/thread/" style="font-size: 15.54px; color: #8f8f8f">thread</a> <a href="/tags/tool/" style="font-size: 14px; color: #999">tool</a> <a href="/tags/uml/" style="font-size: 14px; color: #999">uml</a> <a href="/tags/url/" style="font-size: 14px; color: #999">url</a> <a href="/tags/web/" style="font-size: 14px; color: #999">web</a> <a href="/tags/zk/" style="font-size: 14.77px; color: #949494">zk</a> <a href="/tags/域名解析/" style="font-size: 14px; color: #999">域名解析</a> <a href="/tags/工具/" style="font-size: 14px; color: #999">工具</a> <a href="/tags/性能调优/" style="font-size: 14.77px; color: #949494">性能调优</a> <a href="/tags/指令/" style="font-size: 14px; color: #999">指令</a> <a href="/tags/方法论/" style="font-size: 14.77px; color: #949494">方法论</a> <a href="/tags/源码分析/" style="font-size: 16.31px; color: #898989">源码分析</a> <a href="/tags/笔记/" style="font-size: 14px; color: #999">笔记</a> <a href="/tags/编码/" style="font-size: 15.54px; color: #8f8f8f">编码</a> <a href="/tags/虚拟机/" style="font-size: 14px; color: #999">虚拟机</a> <a href="/tags/设计模式/" style="font-size: 16.31px; color: #898989">设计模式</a> <a href="/tags/项目管理/" style="font-size: 14px; color: #999">项目管理</a>
+      <a href="/tags/Java资源大全/" style="font-size: 14px; color: #999">Java资源大全</a> <a href="/tags/algorithm/" style="font-size: 23.29px; color: #5a5a5a">algorithm</a> <a href="/tags/annotation/" style="font-size: 14px; color: #999">annotation</a> <a href="/tags/boot/" style="font-size: 14px; color: #999">boot</a> <a href="/tags/builder/" style="font-size: 14px; color: #999">builder</a> <a href="/tags/cache/" style="font-size: 14px; color: #999">cache</a> <a href="/tags/cloud/" style="font-size: 14px; color: #999">cloud</a> <a href="/tags/code/" style="font-size: 14px; color: #999">code</a> <a href="/tags/concurrent/" style="font-size: 20.43px; color: #6d6d6d">concurrent</a> <a href="/tags/db/" style="font-size: 22.57px; color: #5f5f5f">db</a> <a href="/tags/ee/" style="font-size: 14px; color: #999">ee</a> <a href="/tags/gc/" style="font-size: 15.43px; color: #8f8f8f">gc</a> <a href="/tags/git/" style="font-size: 14px; color: #999">git</a> <a href="/tags/id/" style="font-size: 14px; color: #999">id</a> <a href="/tags/jdbc/" style="font-size: 14px; color: #999">jdbc</a> <a href="/tags/jmm/" style="font-size: 14px; color: #999">jmm</a> <a href="/tags/jvm/" style="font-size: 21.86px; color: #646464">jvm</a> <a href="/tags/lifecycle/" style="font-size: 14.71px; color: #949494">lifecycle</a> <a href="/tags/linux/" style="font-size: 19px; color: #777">linux</a> <a href="/tags/lock/" style="font-size: 15.43px; color: #8f8f8f">lock</a> <a href="/tags/log/" style="font-size: 14px; color: #999">log</a> <a href="/tags/log4j2/" style="font-size: 14.71px; color: #949494">log4j2</a> <a href="/tags/mapper/" style="font-size: 14px; color: #999">mapper</a> <a href="/tags/maven/" style="font-size: 16.14px; color: #8a8a8a">maven</a> <a href="/tags/memory/" style="font-size: 17.57px; color: #818181">memory</a> <a href="/tags/methodology/" style="font-size: 15.43px; color: #8f8f8f">methodology</a> <a href="/tags/middleware/" style="font-size: 16.86px; color: #868686">middleware</a> <a href="/tags/mvc/" style="font-size: 14.71px; color: #949494">mvc</a> <a href="/tags/mybatis/" style="font-size: 19.71px; color: #727272">mybatis</a> <a href="/tags/mysql/" style="font-size: 21.14px; color: #686868">mysql</a> <a href="/tags/netty/" style="font-size: 15.43px; color: #8f8f8f">netty</a> <a href="/tags/nio/" style="font-size: 14.71px; color: #949494">nio</a> <a href="/tags/oracle/" style="font-size: 16.14px; color: #8a8a8a">oracle</a> <a href="/tags/other/" style="font-size: 14px; color: #999">other</a> <a href="/tags/plugin/" style="font-size: 15.43px; color: #8f8f8f">plugin</a> <a href="/tags/plugins/" style="font-size: 14px; color: #999">plugins</a> <a href="/tags/redis/" style="font-size: 16.14px; color: #8a8a8a">redis</a> <a href="/tags/reflect/" style="font-size: 14.71px; color: #949494">reflect</a> <a href="/tags/return/" style="font-size: 14px; color: #999">return</a> <a href="/tags/se/" style="font-size: 24px; color: #555">se</a> <a href="/tags/select/" style="font-size: 14px; color: #999">select</a> <a href="/tags/source/" style="font-size: 16.14px; color: #8a8a8a">source</a> <a href="/tags/spring/" style="font-size: 18.29px; color: #7c7c7c">spring</a> <a href="/tags/standard/" style="font-size: 16.86px; color: #868686">standard</a> <a href="/tags/storm/" style="font-size: 14px; color: #999">storm</a> <a href="/tags/thread/" style="font-size: 15.43px; color: #8f8f8f">thread</a> <a href="/tags/tool/" style="font-size: 14px; color: #999">tool</a> <a href="/tags/url/" style="font-size: 14px; color: #999">url</a> <a href="/tags/web/" style="font-size: 14px; color: #999">web</a> <a href="/tags/zk/" style="font-size: 14.71px; color: #949494">zk</a> <a href="/tags/工具/" style="font-size: 14px; color: #999">工具</a> <a href="/tags/性能调优/" style="font-size: 14.71px; color: #949494">性能调优</a> <a href="/tags/指令/" style="font-size: 14px; color: #999">指令</a> <a href="/tags/方法论/" style="font-size: 14.71px; color: #949494">方法论</a> <a href="/tags/源码分析/" style="font-size: 16.14px; color: #8a8a8a">源码分析</a> <a href="/tags/编码/" style="font-size: 15.43px; color: #8f8f8f">编码</a> <a href="/tags/虚拟机/" style="font-size: 14px; color: #999">虚拟机</a> <a href="/tags/设计模式/" style="font-size: 16.14px; color: #8a8a8a">设计模式</a>
     </div>
   </section>
 

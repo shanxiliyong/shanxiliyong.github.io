@@ -17,6 +17,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <!-- meta -->
   
+  
+  <meta name="theme-color" content="#FFFFFF">
+  <meta name="msapplication-TileColor" content="#1BC3FB">
+  <meta name="msapplication-config" content="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-favicon@19.9.6/browserconfig.xml">
+  
 
   <!-- link -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
@@ -24,6 +29,13 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
   
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.10.1/css/all.min.css">
+  
+  
+  <link rel="shortcut icon" type="image/x-icon" href="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-favicon@19.9.6/favicon.ico">
+  <link rel="icon" type="image/x-icon" sizes="32x32" href="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-favicon@19.9.6/favicon-32x32.png">
+  <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-favicon@19.9.6/apple-touch-icon.png">
+  <link rel="mask-icon" color="#1BC3FB" href="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-favicon@19.9.6/safari-pinned-tab.svg">
+  <link rel="manifest" href="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-favicon@19.9.6/site.webmanifest">
   
 
   
@@ -236,8 +248,8 @@
       
         
   <h2 class="title">
-    <a href="/2019/01/24/aa_category/algorithm/数据结构与算法之美/37贪心算法/">
-      37贪心算法
+    <a href="/2019/03/11/aa_category/db/mysql/mysql实战/5深入浅出索引/">
+      5深入浅出索引
     </a>
   </h2>
 
@@ -267,7 +279,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-01-24</p>
+    <p>2019-03-11</p>
   </a>
 </div>
 
@@ -277,9 +289,9 @@
             
   
   <div class='new-meta-item category'>
-    <a href='/categories/algorithm/' rel="nofollow">
+    <a href='/categories/db/' rel="nofollow">
       <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>algorithm</p>
+      <p>db</p>
     </a>
   </div>
 
@@ -301,12 +313,10 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h1 id="如何理解“贪心算法”"><a href="#如何理解“贪心算法”" class="headerlink" title="如何理解“贪心算法”"></a>如何理解“贪心算法”</h1><p>贪心算法（英语：greedy algorithm），又称贪婪算法，是一种在每一步选择中都采取在当前状态下最好或最优（即最有利）的选择，从而希望导致结果是最好或最优的算法</p>
-<p>A greedy algorithm is an algorithmic paradigm that follows the problem solving heuristic of making the locally optimal choice at each stage[1] with the intent of finding a global optimum</p>
-<p>用贪心算法解决问题的思路，并不总能给出最优解</p>
+      <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> T (</span><br><span class="line"><span class="keyword">ID</span> <span class="built_in">int</span> primary <span class="keyword">key</span>,</span><br><span class="line">k <span class="built_in">int</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="number">0</span>, </span><br><span class="line">s <span class="built_in">varchar</span>(<span class="number">16</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">''</span>,</span><br><span class="line"><span class="keyword">index</span> k(k))</span><br><span class="line"><span class="keyword">engine</span>=<span class="keyword">InnoDB</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> T <span class="keyword">values</span>(<span class="number">100</span>,<span class="number">1</span>, <span class="string">'aa'</span>),(<span class="number">200</span>,<span class="number">2</span>,<span class="string">'bb'</span>),(<span class="number">300</span>,<span class="number">3</span>,<span class="string">'cc'</span>),(<span class="number">500</span>,<span class="number">5</span>,<span class="string">'ee'</span>),(<span class="number">600</span>,<span class="number">6</span>,<span class="string">'ff'</span>),(<span class="number">700</span>,<span class="number">7</span>,<span class="string">'gg'</span>);</span><br></pre></td></tr></table></figure>
       
         <div class="readmore">
-          <a href="/2019/01/24/aa_category/algorithm/数据结构与算法之美/37贪心算法/" class="flat-box">
+          <a href="/2019/03/11/aa_category/db/mysql/mysql实战/5深入浅出索引/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -316,9 +326,9 @@
     
       <div class="full-width auto-padding tags">
         
-          <a href="/tags/se/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> se</a>
+          <a href="/tags/db/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> db</a>
         
-          <a href="/tags/algorithm/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> algorithm</a>
+          <a href="/tags/mysql/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> mysql</a>
         
       </div>
     
@@ -341,8 +351,8 @@
       
         
   <h2 class="title">
-    <a href="/2019/01/24/aa_category/algorithm/数据结构与算法之美/14排序优化：如何实现一个通用的、高性能的排序函数/">
-      14序优化：如何实现一个通用的、高性能的排序函数
+    <a href="/2019/03/11/aa_category/db/mysql/mysql实战/21为什么我只改一行的语句，锁这么多/">
+      21为什么我只改一行的语句，锁这么多
     </a>
   </h2>
 
@@ -372,7 +382,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-01-24</p>
+    <p>2019-03-11</p>
   </a>
 </div>
 
@@ -382,9 +392,9 @@
             
   
   <div class='new-meta-item category'>
-    <a href='/categories/algorithm/' rel="nofollow">
+    <a href='/categories/db/' rel="nofollow">
       <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>algorithm</p>
+      <p>db</p>
     </a>
   </div>
 
@@ -406,1061 +416,21 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h1 id="如何选择合适的排序算法？"><a href="#如何选择合适的排序算法？" class="headerlink" title="如何选择合适的排序算法？"></a>如何选择合适的排序算法？</h1><p><img src="http://liyong.ac.cn/pic/1f6ef7e0a5365d6e9d68f0ccc71755fd.jpg" alt></p>
-      
-        <div class="readmore">
-          <a href="/2019/01/24/aa_category/algorithm/数据结构与算法之美/14排序优化：如何实现一个通用的、高性能的排序函数/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/se/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> se</a>
-        
-          <a href="/tags/algorithm/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> algorithm</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2019/01/24/aa_category/algorithm/数据结构与算法之美/35Trie树/">
-      学习指导手册
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://liyong.ac.cn" rel="nofollow">
-        
-          <img src="https://liyong.ac.cn/img/me.png">
-        
-        <p>李永</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-01-24</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/algorithm/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>algorithm</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h1 id="什么是“Trie-树"><a href="#什么是“Trie-树" class="headerlink" title="什么是“Trie 树"></a>什么是“Trie 树</h1><ul>
-<li>Trie 树，也叫“字典树”。它是一种专门处理字符串匹配的数据结构，用来解决在一组字符串集合中快速查找某个字符串的问题</li>
-<li>Trie 树比较适合的是查找前缀匹配的字符串</li>
-</ul>
-      
-        <div class="readmore">
-          <a href="/2019/01/24/aa_category/algorithm/数据结构与算法之美/35Trie树/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/se/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> se</a>
-        
-          <a href="/tags/algorithm/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> algorithm</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2019/01/24/aa_category/algorithm/数据结构与算法之美/30-31图/">
-      30-31图
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://liyong.ac.cn" rel="nofollow">
-        
-          <img src="https://liyong.ac.cn/img/me.png">
-        
-        <p>李永</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-01-24</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/algorithm/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>algorithm</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h1 id="如何理解“图”"><a href="#如何理解“图”" class="headerlink" title="如何理解“图”"></a>如何理解“图”</h1><h2 id="无向图"><a href="#无向图" class="headerlink" title="无向图"></a>无向图</h2><ul>
-<li>图中的元素我们就叫作<strong>顶点</strong>（vertex）</li>
-<li>图中的一个顶点可以与任意其他顶点建立连接关系,这种关系叫边</li>
-<li><strong>度</strong>（degree），跟顶点相连接的边的条数。</li>
-</ul>
-      
-        <div class="readmore">
-          <a href="/2019/01/24/aa_category/algorithm/数据结构与算法之美/30-31图/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/se/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> se</a>
-        
-          <a href="/tags/algorithm/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> algorithm</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2019/01/24/aa_category/algorithm/数据结构与算法之美/32-33-34字符串匹配/">
-      32-33-34字符串匹配
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://liyong.ac.cn" rel="nofollow">
-        
-          <img src="https://liyong.ac.cn/img/me.png">
-        
-        <p>李永</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-01-24</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/algorithm/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>algorithm</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-        <div class="readmore">
-          <a href="/2019/01/24/aa_category/algorithm/数据结构与算法之美/32-33-34字符串匹配/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/se/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> se</a>
-        
-          <a href="/tags/algorithm/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> algorithm</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2019/01/24/aa_category/algorithm/数据结构与算法之美/28-29堆和堆排序/">
-      28-29堆和堆排序
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://liyong.ac.cn" rel="nofollow">
-        
-          <img src="https://liyong.ac.cn/img/me.png">
-        
-        <p>李永</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-01-24</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/algorithm/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>algorithm</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h1 id="如何理解“堆”"><a href="#如何理解“堆”" class="headerlink" title="如何理解“堆”"></a>如何理解“堆”</h1><ul>
-<li>堆是一个完全二叉树；</li>
-<li>堆中每一个节点的值都必须大于等于（或小于等于）其子树中每个节点的值。</li>
-<li>每个节点的值都大于等于子树中每个节点值的堆，我们叫作“大顶堆”</li>
-<li>对于每个节点的值都小于等于子树中每个节点值的堆，我们叫作“小顶堆</li>
-</ul>
-      
-        <div class="readmore">
-          <a href="/2019/01/24/aa_category/algorithm/数据结构与算法之美/28-29堆和堆排序/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/se/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> se</a>
-        
-          <a href="/tags/algorithm/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> algorithm</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2019/01/24/aa_category/algorithm/数据结构与算法之美/27递归树：如何借助树来求解递归算法的时间复杂度/">
-      27递归树：如何借助树来求解递归算法的时间复杂度
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://liyong.ac.cn" rel="nofollow">
-        
-          <img src="https://liyong.ac.cn/img/me.png">
-        
-        <p>李永</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-01-24</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/algorithm/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>algorithm</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-        <div class="readmore">
-          <a href="/2019/01/24/aa_category/algorithm/数据结构与算法之美/27递归树：如何借助树来求解递归算法的时间复杂度/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/se/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> se</a>
-        
-          <a href="/tags/algorithm/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> algorithm</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2019/01/24/aa_category/algorithm/数据结构与算法之美/25-26红黑树/">
-      25-26红黑树
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://liyong.ac.cn" rel="nofollow">
-        
-          <img src="https://liyong.ac.cn/img/me.png">
-        
-        <p>李永</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-01-24</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/algorithm/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>algorithm</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h1 id="什么是“平衡二叉查找树”"><a href="#什么是“平衡二叉查找树”" class="headerlink" title="什么是“平衡二叉查找树”"></a>什么是“平衡二叉查找树”</h1><p>二叉树中任意一个节点的左右子树的高度相差不能大于 1。从这个定义来看，上一节我们讲的完全二叉树、满二叉树其实都是平衡二叉树，但是非完全二叉树也有可能是平衡二叉树。</p>
-      
-        <div class="readmore">
-          <a href="/2019/01/24/aa_category/algorithm/数据结构与算法之美/25-26红黑树/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/se/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> se</a>
-        
-          <a href="/tags/algorithm/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> algorithm</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2019/01/24/aa_category/algorithm/数据结构与算法之美/24二叉树基础：有了如此高效的散列表，为什么还需要二叉树/">
-      24二叉树基础：有了如此高效的散列表，为什么还需要二叉树
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://liyong.ac.cn" rel="nofollow">
-        
-          <img src="https://liyong.ac.cn/img/me.png">
-        
-        <p>李永</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-01-24</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/algorithm/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>algorithm</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h1 id="二叉查找树（Binary-Search-Tree）"><a href="#二叉查找树（Binary-Search-Tree）" class="headerlink" title="二叉查找树（Binary Search Tree）"></a>二叉查找树（Binary Search Tree）</h1><p> 二叉查找树要求，在树中的任意一个节点，其左子树中的每个节点的值，都要小于这个节点的值，而右子树节点的值都大于这个节点的值</p>
-      
-        <div class="readmore">
-          <a href="/2019/01/24/aa_category/algorithm/数据结构与算法之美/24二叉树基础：有了如此高效的散列表，为什么还需要二叉树/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/se/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> se</a>
-        
-          <a href="/tags/algorithm/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> algorithm</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2019/01/24/aa_category/algorithm/数据结构与算法之美/23 二叉树基础：什么样的二叉树适合用数组来存储/">
-      23 二叉树基础：什么样的二叉树适合用数组来存储
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://liyong.ac.cn" rel="nofollow">
-        
-          <img src="https://liyong.ac.cn/img/me.png">
-        
-        <p>李永</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-01-24</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/algorithm/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>algorithm</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h1 id="树（Tree）"><a href="#树（Tree）" class="headerlink" title="树（Tree）"></a>树（Tree）</h1><p><img src="http://liyong.ac.cn/pic/b7043bf29a253bb36221eaec62b2e129.jpg" alt></p>
-      
-        <div class="readmore">
-          <a href="/2019/01/24/aa_category/algorithm/数据结构与算法之美/23 二叉树基础：什么样的二叉树适合用数组来存储/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/se/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> se</a>
-        
-          <a href="/tags/algorithm/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> algorithm</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2019/01/24/aa_category/algorithm/数据结构与算法之美/21-22哈希算法/">
-      21-22哈希算法
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://liyong.ac.cn" rel="nofollow">
-        
-          <img src="https://liyong.ac.cn/img/me.png">
-        
-        <p>李永</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-01-24</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/algorithm/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>algorithm</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h1 id="什么是哈希算法"><a href="#什么是哈希算法" class="headerlink" title="什么是哈希算法"></a>什么是哈希算法</h1><ul>
-<li>从哈希值不能反向推导出原始数据（所以哈希算法也叫单向哈希算法）</li>
-<li>对输入数据非常敏感，哪怕原始数据只修改了一个 Bit，最后得到的哈希值也大不相同</li>
-<li>散列冲突的概率要很小，对于不同的原始数据，哈希值相同的概率非常小</li>
-</ul>
-      
-        <div class="readmore">
-          <a href="/2019/01/24/aa_category/algorithm/数据结构与算法之美/21-22哈希算法/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/se/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> se</a>
-        
-          <a href="/tags/algorithm/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> algorithm</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2019/01/24/aa_category/algorithm/数据结构与算法之美/09队列：队列在线程池等有限资源池中的应用/">
-      09队列：队列在线程池等有限资源池中的应用
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://liyong.ac.cn" rel="nofollow">
-        
-          <img src="https://liyong.ac.cn/img/me.png">
-        
-        <p>李永</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-01-24</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/algorithm/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>algorithm</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h1 id="如何理解“队列”？"><a href="#如何理解“队列”？" class="headerlink" title="如何理解“队列”？"></a>如何理解“队列”？</h1><ul>
-<li><p>先进者先出，这就是典型的“队列”</p>
+      <h1 id="两个“原则”、两个“优化”和一个“bug"><a href="#两个“原则”、两个“优化”和一个“bug" class="headerlink" title="两个“原则”、两个“优化”和一个“bug"></a>两个“原则”、两个“优化”和一个“bug</h1><ul>
+<li><p>原则 1：加锁的基本单位是 next-key lock。</p>
 </li>
-<li><p>入队 enqueue()，放一个数据到队列尾部；出队 dequeue()，从队列头部取一个元素。</p>
+<li><p>原则 2：查找过程中访问到的对象才会加锁。</p>
+</li>
+<li><p>优化 1：索引上的等值查询，给唯一索引加锁的时候，next-key lock 退化为行锁。</p>
+</li>
+<li><p>优化 2：索引上的等值查询，向右遍历时且最后一个值不满足等值条件的时候，next-key lock 退化为间隙锁。</p>
+</li>
+<li><p>一个 bug：唯一索引上的范围查询会访问到不满足条件的第一个值为止</p>
 </li>
 </ul>
       
         <div class="readmore">
-          <a href="/2019/01/24/aa_category/algorithm/数据结构与算法之美/09队列：队列在线程池等有限资源池中的应用/" class="flat-box">
+          <a href="/2019/03/11/aa_category/db/mysql/mysql实战/21为什么我只改一行的语句，锁这么多/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -1470,9 +440,9 @@
     
       <div class="full-width auto-padding tags">
         
-          <a href="/tags/se/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> se</a>
+          <a href="/tags/db/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> db</a>
         
-          <a href="/tags/algorithm/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> algorithm</a>
+          <a href="/tags/mysql/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> mysql</a>
         
       </div>
     
@@ -1495,8 +465,8 @@
       
         
   <h2 class="title">
-    <a href="/2019/01/24/aa_category/algorithm/数据结构与算法之美/08栈：如何实现浏览器的前进和后退功能/">
-      08栈：如何实现浏览器的前进和后退功能
+    <a href="/2019/03/11/aa_category/se/深入拆解 Java 虚拟机/【工具篇】常用工具/">
+      【工具篇】常用工具
     </a>
   </h2>
 
@@ -1526,7 +496,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-01-24</p>
+    <p>2019-03-11</p>
   </a>
 </div>
 
@@ -1536,9 +506,9 @@
             
   
   <div class='new-meta-item category'>
-    <a href='/categories/algorithm/' rel="nofollow">
+    <a href='/categories/se/' rel="nofollow">
       <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>algorithm</p>
+      <p>se</p>
     </a>
   </div>
 
@@ -1560,323 +530,16 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h2 id="如何理解“栈”？"><a href="#如何理解“栈”？" class="headerlink" title="如何理解“栈”？"></a>如何理解“栈”？</h2><p>当某个数据集合只涉及在一端插入和删除数据，并且满足后进先出、先进后出的特性，我们就应该首选“栈”这种数据结构</p>
-      
-        <div class="readmore">
-          <a href="/2019/01/24/aa_category/algorithm/数据结构与算法之美/08栈：如何实现浏览器的前进和后退功能/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/se/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> se</a>
-        
-          <a href="/tags/algorithm/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> algorithm</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2019/01/24/aa_category/algorithm/数据结构与算法之美/06-07链表/">
-      06-07链表
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://liyong.ac.cn" rel="nofollow">
-        
-          <img src="https://liyong.ac.cn/img/me.png">
-        
-        <p>李永</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-01-24</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/algorithm/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>algorithm</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h1 id="理解指针或引用的含义"><a href="#理解指针或引用的含义" class="headerlink" title="理解指针或引用的含义"></a>理解指针或引用的含义</h1><p>不管是“指针”还是“引用”，实际上，它们的意思都是一样的，都是存储所指对象的内存地址。</p>
-      
-        <div class="readmore">
-          <a href="/2019/01/24/aa_category/algorithm/数据结构与算法之美/06-07链表/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/se/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> se</a>
-        
-          <a href="/tags/algorithm/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> algorithm</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2019/01/24/aa_category/algorithm/数据结构与算法之美/02如何抓住重点，系统高效地学习数据结构与算法/">
-      02如何抓住重点，系统高效地学习数据结构与算法
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://liyong.ac.cn" rel="nofollow">
-        
-          <img src="https://liyong.ac.cn/img/me.png">
-        
-        <p>李永</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-01-24</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/algorithm/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>algorithm</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h1 id="学习的重点在什么地方？"><a href="#学习的重点在什么地方？" class="headerlink" title="学习的重点在什么地方？"></a>学习的重点在什么地方？</h1><p><img src="http://liyong.ac.cn/pic/913e0ababe43a2d57267df5c5f0832a7.jpg" alt></p>
-      
-        <div class="readmore">
-          <a href="/2019/01/24/aa_category/algorithm/数据结构与算法之美/02如何抓住重点，系统高效地学习数据结构与算法/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/se/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> se</a>
-        
-          <a href="/tags/algorithm/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> algorithm</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2019/01/24/aa_category/algorithm/数据结构与算法之美/03-04复杂度分析（上）：如何分析、统计算法的执行效率和资源消耗/">
-      03-04如何分析、统计算法的执行效率和资源消耗
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://liyong.ac.cn" rel="nofollow">
-        
-          <img src="https://liyong.ac.cn/img/me.png">
-        
-        <p>李永</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-01-24</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/algorithm/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>algorithm</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h1 id="时间复杂度分析"><a href="#时间复杂度分析" class="headerlink" title="时间复杂度分析"></a>时间复杂度分析</h1><ul>
-<li>只关注循环执行次数最多的一段代码</li>
-<li>加法法则：总复杂度等于量级最大的那段代码的复杂度</li>
-<li>乘法法则：嵌套代码的复杂度等于嵌套内外代码复杂度的乘积</li>
+      <h1 id="javap"><a href="#javap" class="headerlink" title="javap"></a>javap</h1><p><a href="https://docs.oracle.com/javase/8/docs/technotes/tools/unix/javap.html" target="_blank" rel="noopener">https://docs.oracle.com/javase/8/docs/technotes/tools/unix/javap.html</a></p>
+<h2 id="v-选项"><a href="#v-选项" class="headerlink" title="-v 选项"></a>-v 选项</h2><ul>
+<li>基本信息，涵盖了class文件的相关信息。</li>
+<li>常量池，存放各种产量以及符号引用</li>
+<li>字段区域，用来列举该类中的各个字段。</li>
+<li>方法区域</li>
 </ul>
       
         <div class="readmore">
-          <a href="/2019/01/24/aa_category/algorithm/数据结构与算法之美/03-04复杂度分析（上）：如何分析、统计算法的执行效率和资源消耗/" class="flat-box">
+          <a href="/2019/03/11/aa_category/se/深入拆解 Java 虚拟机/【工具篇】常用工具/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -1888,7 +551,1213 @@
         
           <a href="/tags/se/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> se</a>
         
-          <a href="/tags/algorithm/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> algorithm</a>
+          <a href="/tags/jvm/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> jvm</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2019/03/11/aa_category/db/mysql/mysql实战/8事务到底是隔离的还是不隔离的/">
+      8事务到底是隔离的还是不隔离的
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://liyong.ac.cn" rel="nofollow">
+        
+          <img src="https://liyong.ac.cn/img/me.png">
+        
+        <p>李永</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-03-11</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/db/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>db</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <p><img src="http://liyong.ac.cn/pic/C1550281789388.png" alt="1550281789388"></p>
+<p>begin/start transaction 命令并不是一个事务的起点，在执行到它们之后的第一个操作 InnoDB 表的语句（第一个快照读语句），事务才真正启动。如果你想要马上启动一个事务，可以使用 start transaction with consistent snapshot 这个命令。    </p>
+      
+        <div class="readmore">
+          <a href="/2019/03/11/aa_category/db/mysql/mysql实战/8事务到底是隔离的还是不隔离的/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/db/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> db</a>
+        
+          <a href="/tags/mysql/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> mysql</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2019/03/11/aa_category/se/深入拆解 Java 虚拟机/jvm资源/">
+      jvm资源
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://liyong.ac.cn" rel="nofollow">
+        
+          <img src="https://liyong.ac.cn/img/me.png">
+        
+        <p>李永</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-03-11</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/se/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>se</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h3 id="虚拟机牛人"><a href="#虚拟机牛人" class="headerlink" title="虚拟机牛人"></a>虚拟机牛人</h3><ul>
+<li>RednaxelaFX  <a href="https://www.zhihu.com/people/rednaxelafx/activities" target="_blank" rel="noopener">https://www.zhihu.com/people/rednaxelafx/activities</a></li>
+<li>你假苯  <a href="http://xxfox.perfma.com/" target="_blank" rel="noopener">http://xxfox.perfma.com/</a></li>
+<li>江南白衣</li>
+<li>占小狼</li>
+<li>杨晓峰</li>
+<li><a href="https://medium.com/graalvm" target="_blank" rel="noopener">https://medium.com/graalvm</a></li>
+<li><a href="http://cliffc.org/blog/" target="_blank" rel="noopener">http://cliffc.org/blog/</a></li>
+<li><a href="https://shipilev.net/jvm/anatomy-quarks/" target="_blank" rel="noopener">https://shipilev.net/jvm/anatomy-quarks/</a></li>
+<li><a href="https://shipilev.net/" target="_blank" rel="noopener">https://shipilev.net/</a></li>
+<li><a href="http://psy-lob-saw.blogspot.com/" target="_blank" rel="noopener">http://psy-lob-saw.blogspot.com/</a></li>
+<li><a href="http://openjdk.java.net/projects/mlvm/jvmlangsummit/" target="_blank" rel="noopener">http://openjdk.java.net/projects/mlvm/jvmlangsummit/</a></li>
+<li><a href="https://www.oracle.com/code-one/" target="_blank" rel="noopener">https://www.oracle.com/code-one/</a></li>
+<li><a href="https://github.com/deephacks/awesome-jvm" target="_blank" rel="noopener">https://github.com/deephacks/awesome-jvm</a></li>
+</ul>
+      
+        <div class="readmore">
+          <a href="/2019/03/11/aa_category/se/深入拆解 Java 虚拟机/jvm资源/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/se/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> se</a>
+        
+          <a href="/tags/jvm/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> jvm</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2019/03/11/aa_category/db/mysql/mysql实战/3为什么你改了我还看不见/">
+      3为什么你改了我还看不见
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://liyong.ac.cn" rel="nofollow">
+        
+          <img src="https://liyong.ac.cn/img/me.png">
+        
+        <p>李永</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-03-11</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/db/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>db</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h1 id="隔离性与隔离级别"><a href="#隔离性与隔离级别" class="headerlink" title="隔离性与隔离级别"></a>隔离性与隔离级别</h1><ul>
+<li><p>Atomicity、Consistency、Isolation、Durability</p>
+</li>
+<li><p>脏读（dirty read）、不可重复读(non-repeatable read)、幻读(phantom read)</p>
+</li>
+<li><p>读未提交（read uncommitted）,一个事务还没有提交，就能被其它事务看到</p>
+</li>
+<li><p>读提交（read committed），一个事务提交才能被其它事务看到</p>
+</li>
+<li><p>可重复读（repeatable read），一个事务执行过程中看到的数据和启动时看到的数据一致</p>
+</li>
+<li><p>串行化（serializable ），对于同一行记录，写会加写锁，读会加读锁，当出现读写锁冲突的时候，必须等待前一个事务结束，才能继续</p>
+</li>
+<li><p>查看隔离级别  show variables like ‘transaction_isolation’;  SELECT @@tx_isolation</p>
+</li>
+</ul>
+      
+        <div class="readmore">
+          <a href="/2019/03/11/aa_category/db/mysql/mysql实战/3为什么你改了我还看不见/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/db/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> db</a>
+        
+          <a href="/tags/mysql/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> mysql</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2019/03/11/aa_category/db/mysql/mysql实战/4深入浅出索引/">
+      4深入浅出索引
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://liyong.ac.cn" rel="nofollow">
+        
+          <img src="https://liyong.ac.cn/img/me.png">
+        
+        <p>李永</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-03-11</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/db/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>db</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h1 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a>哈希表</h1><ul>
+<li>和hashmap的思路一样</li>
+<li>区间查询比较慢</li>
+<li>适用于等值查询的场景</li>
+</ul>
+<p><img src="http://liyong.ac.cn/pic/20190215_01.png" alt="1550194991315"></p>
+      
+        <div class="readmore">
+          <a href="/2019/03/11/aa_category/db/mysql/mysql实战/4深入浅出索引/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/db/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> db</a>
+        
+          <a href="/tags/mysql/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> mysql</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2019/03/11/aa_category/db/mysql/mysql实战/2一条SQL更新语句是如何执行的/">
+      2一条SQL更新语句是如何执行的
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://liyong.ac.cn" rel="nofollow">
+        
+          <img src="https://liyong.ac.cn/img/me.png">
+        
+        <p>李永</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-03-11</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/db/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>db</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h1 id="summarize"><a href="#summarize" class="headerlink" title="summarize"></a>summarize</h1><h1 id="redo-log"><a href="#redo-log" class="headerlink" title="redo log"></a>redo log</h1><ul>
+<li>Write-Ahead Logging，先写日志，再写磁盘</li>
+<li>先写日志，更新内存，当系统比较清闲的时候，写入磁盘</li>
+<li>write pos 是当前记录的位置</li>
+<li>chekpoint 是当前要擦出的位置</li>
+<li>write pos 到chekpoint 之间的位置是可以记录的空间</li>
+<li>crash-safe</li>
+</ul>
+      
+        <div class="readmore">
+          <a href="/2019/03/11/aa_category/db/mysql/mysql实战/2一条SQL更新语句是如何执行的/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/db/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> db</a>
+        
+          <a href="/tags/mysql/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> mysql</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2019/03/11/aa_category/db/mysql/mysql实战/9普通索引和唯一索引，应该怎么选择/">
+      9普通索引和唯一索引，应该怎么选择
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://liyong.ac.cn" rel="nofollow">
+        
+          <img src="https://liyong.ac.cn/img/me.png">
+        
+        <p>李永</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-03-11</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/db/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>db</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h1 id="查询过程"><a href="#查询过程" class="headerlink" title="查询过程"></a>查询过程</h1><ul>
+<li><p>InnoDB 的数据是按数据页为单位来读写的</p>
+</li>
+<li><p>每个数据页的大小默认是 16KB</p>
+</li>
+</ul>
+<h1 id="更新过程"><a href="#更新过程" class="headerlink" title="更新过程"></a>更新过程</h1><ul>
+<li>如果数据页在内存中就直接更新</li>
+<li>如果这个数据页还没有在内存中的话，在不影响数据一致性的前提下，InooDB 会将这些更新操作缓存在 change buffer 中，这样就不需要从磁盘中读入这个数据页了。在下次查询需要访问这个数据页的时候，将数据页读入内存，然后执行 change buffer 中与这个页有关的操作</li>
+<li>唯一索引的更新就不能使用 change buffer，实际上也只有普通索引可以使用。</li>
+</ul>
+      
+        <div class="readmore">
+          <a href="/2019/03/11/aa_category/db/mysql/mysql实战/9普通索引和唯一索引，应该怎么选择/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/db/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> db</a>
+        
+          <a href="/tags/mysql/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> mysql</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2019/03/11/aa_category/db/mysql/mysql-explain/">
+      mysql-explain
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://liyong.ac.cn" rel="nofollow">
+        
+          <img src="https://liyong.ac.cn/img/me.png">
+        
+        <p>李永</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-03-11</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/db/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>db</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h1 id="select-type"><a href="#select-type" class="headerlink" title="select_type"></a>select_type</h1><h2 id="SIMPLE"><a href="#SIMPLE" class="headerlink" title="SIMPLE"></a>SIMPLE</h2><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SIMPLE</td>
+<td>简单表，不使用表连接或子查询</td>
+</tr>
+<tr>
+<td>PRIMARY</td>
+<td>主查询，即外层的查询</td>
+</tr>
+<tr>
+<td>UNION</td>
+<td></td>
+</tr>
+<tr>
+<td>SUBQUERY</td>
+<td></td>
+</tr>
+</tbody></table>
+      
+        <div class="readmore">
+          <a href="/2019/03/11/aa_category/db/mysql/mysql-explain/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/db/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> db</a>
+        
+          <a href="/tags/mysql/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> mysql</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2019/03/11/aa_category/db/mysql/锁/">
+      锁
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://liyong.ac.cn" rel="nofollow">
+        
+          <img src="https://liyong.ac.cn/img/me.png">
+        
+        <p>李永</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-03-11</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/db/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>db</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+        <div class="readmore">
+          <a href="/2019/03/11/aa_category/db/mysql/锁/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/db/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> db</a>
+        
+          <a href="/tags/mysql/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> mysql</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2019/03/11/aa_category/db/mysql/常用sql/">
+      常用sql
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://liyong.ac.cn" rel="nofollow">
+        
+          <img src="https://liyong.ac.cn/img/me.png">
+        
+        <p>李永</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-03-11</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/db/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>db</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h1 id="查看搜索引擎"><a href="#查看搜索引擎" class="headerlink" title="查看搜索引擎"></a>查看搜索引擎</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> <span class="keyword">ENGINES</span></span><br></pre></td></tr></table></figure>
+      
+        <div class="readmore">
+          <a href="/2019/03/11/aa_category/db/mysql/常用sql/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/db/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> db</a>
+        
+          <a href="/tags/mysql/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> mysql</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2019/03/11/aa_category/se/深入拆解 Java 虚拟机/30-31Java虚拟机的监控及诊断工具/">
+      30Java虚拟机的监控及诊断工具
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://liyong.ac.cn" rel="nofollow">
+        
+          <img src="https://liyong.ac.cn/img/me.png">
+        
+        <p>李永</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-03-11</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/se/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>se</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h1 id="jps"><a href="#jps" class="headerlink" title="jps"></a>jps</h1><p><a href="https://docs.oracle.com/javase/8/docs/technotes/tools/unix/jps.html#CHDCGECD" target="_blank" rel="noopener">https://docs.oracle.com/javase/8/docs/technotes/tools/unix/jps.html#CHDCGECD</a></p>
+      
+        <div class="readmore">
+          <a href="/2019/03/11/aa_category/se/深入拆解 Java 虚拟机/30-31Java虚拟机的监控及诊断工具/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/se/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> se</a>
+        
+          <a href="/tags/jvm/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> jvm</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2019/02/01/aa_category/methodology/公开课/架构演进之路-网关/">
+      架构演进之路-网关
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://liyong.ac.cn" rel="nofollow">
+        
+          <img src="https://liyong.ac.cn/img/me.png">
+        
+        <p>李永</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-02-01</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/standard/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>standard</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+        <div class="readmore">
+          <a href="/2019/02/01/aa_category/methodology/公开课/架构演进之路-网关/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/standard/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> standard</a>
         
       </div>
     
@@ -2001,316 +1870,6 @@
           </div>
         
       
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2019/01/24/aa_category/algorithm/数据结构与算法之美/17跳表：为什么Redis一定要用跳表来实现有序集合/">
-      17跳表：为什么Redis一定要用跳表来实现有序集合
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://liyong.ac.cn" rel="nofollow">
-        
-          <img src="https://liyong.ac.cn/img/me.png">
-        
-        <p>李永</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-01-24</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/algorithm/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>algorithm</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h1 id="理解调表"><a href="#理解调表" class="headerlink" title="理解调表"></a>理解调表</h1><p><strong>种链表加多级索引的结构，就是跳表</strong></p>
-<p><img src="http://liyong.ac.cn/pic/e18303fcedc068e5a168de04df956f6d.jpg" alt></p>
-      
-        <div class="readmore">
-          <a href="/2019/01/24/aa_category/algorithm/数据结构与算法之美/17跳表：为什么Redis一定要用跳表来实现有序集合/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/se/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> se</a>
-        
-          <a href="/tags/algorithm/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> algorithm</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2019/01/24/aa_category/algorithm/数据结构与算法之美/12排序：如何用快排思想在O(n)内查找第K大元素/">
-      12排序：如何用快排思想在O(n)内查找第K大元素
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://liyong.ac.cn" rel="nofollow">
-        
-          <img src="https://liyong.ac.cn/img/me.png">
-        
-        <p>李永</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-01-24</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/algorithm/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>algorithm</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h1 id="归并排序（Merge-Sort）"><a href="#归并排序（Merge-Sort）" class="headerlink" title="归并排序（Merge Sort）"></a>归并排序（Merge Sort）</h1><p> 归并排序的核心思想还是蛮简单的。如果要排序一个数组，我们先把数组从中间分成前后两部分，然后对前后两部分分别排序，再将排好序的两部分合并在一起，这样整个数组就都有序了。</p>
-      
-        <div class="readmore">
-          <a href="/2019/01/24/aa_category/algorithm/数据结构与算法之美/12排序：如何用快排思想在O(n)内查找第K大元素/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/se/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> se</a>
-        
-          <a href="/tags/algorithm/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> algorithm</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2019/01/24/aa_category/algorithm/数据结构与算法之美/学习指导手册/">
-      学习指导手册
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://liyong.ac.cn" rel="nofollow">
-        
-          <img src="https://liyong.ac.cn/img/me.png">
-        
-        <p>李永</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-01-24</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/algorithm/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>algorithm</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h1 id="学习路线"><a href="#学习路线" class="headerlink" title="学习路线"></a>学习路线</h1><p><img src="http://liyong.ac.cn/pic/54163f16e152f71b8f91d3fba652cf48.jpg" alt="img"></p>
-      
-        <div class="readmore">
-          <a href="/2019/01/24/aa_category/algorithm/数据结构与算法之美/学习指导手册/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/se/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> se</a>
-        
-          <a href="/tags/algorithm/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> algorithm</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
     
   </section>
   
@@ -2326,7 +1885,7 @@
             </a>
           
           <p class="current">
-            5 / 12
+            5 / 15
           </p>
           
             <a class="next" rel="next" href="/page/6/">
@@ -2531,15 +2090,9 @@
         
           <li><a class="flat-box" title="/categories/algorithm/" href="/categories/algorithm/"><div class='name'>algorithm</div><div class='badge'>(30)</div></a></li>
         
-          <li><a class="flat-box" title="/categories/db/" href="/categories/db/"><div class='name'>db</div><div class='badge'>(27)</div></a></li>
-        
-          <li><a class="flat-box" title="/categories/docker/" href="/categories/docker/"><div class='name'>docker</div><div class='badge'>(1)</div></a></li>
+          <li><a class="flat-box" title="/categories/db/" href="/categories/db/"><div class='name'>db</div><div class='badge'>(26)</div></a></li>
         
           <li><a class="flat-box" title="/categories/ee/" href="/categories/ee/"><div class='name'>ee</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box" title="/categories/git/" href="/categories/git/"><div class='name'>git</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box" title="/categories/idea/" href="/categories/idea/"><div class='name'>idea</div><div class='badge'>(1)</div></a></li>
         
           <li><a class="flat-box" title="/categories/javadoc/" href="/categories/javadoc/"><div class='name'>javadoc</div><div class='badge'>(1)</div></a></li>
         
@@ -2553,8 +2106,6 @@
         
           <li><a class="flat-box" title="/categories/middleware/" href="/categories/middleware/"><div class='name'>middleware</div><div class='badge'>(5)</div></a></li>
         
-          <li><a class="flat-box" title="/categories/ms/" href="/categories/ms/"><div class='name'>ms</div><div class='badge'>(1)</div></a></li>
-        
           <li><a class="flat-box" title="/categories/mybatis/" href="/categories/mybatis/"><div class='name'>mybatis</div><div class='badge'>(11)</div></a></li>
         
           <li><a class="flat-box" title="/categories/netty/" href="/categories/netty/"><div class='name'>netty</div><div class='badge'>(3)</div></a></li>
@@ -2565,7 +2116,7 @@
         
           <li><a class="flat-box" title="/categories/se/" href="/categories/se/"><div class='name'>se</div><div class='badge'>(67)</div></a></li>
         
-          <li><a class="flat-box" title="/categories/spring/" href="/categories/spring/"><div class='name'>spring</div><div class='badge'>(14)</div></a></li>
+          <li><a class="flat-box" title="/categories/spring/" href="/categories/spring/"><div class='name'>spring</div><div class='badge'>(8)</div></a></li>
         
           <li><a class="flat-box" title="/categories/standard/" href="/categories/standard/"><div class='name'>standard</div><div class='badge'>(5)</div></a></li>
         
@@ -2575,9 +2126,7 @@
         
           <li><a class="flat-box" title="/categories/tool/" href="/categories/tool/"><div class='name'>tool</div><div class='badge'>(1)</div></a></li>
         
-          <li><a class="flat-box" title="/categories/uml/" href="/categories/uml/"><div class='name'>uml</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box" title="/categories/web/" href="/categories/web/"><div class='name'>web</div><div class='badge'>(2)</div></a></li>
+          <li><a class="flat-box" title="/categories/web/" href="/categories/web/"><div class='name'>web</div><div class='badge'>(1)</div></a></li>
         
           <li><a class="flat-box" title="/categories/工具/" href="/categories/工具/"><div class='name'>工具</div><div class='badge'>(1)</div></a></li>
         
@@ -2586,8 +2135,6 @@
           <li><a class="flat-box" title="/categories/死磕/" href="/categories/死磕/"><div class='name'>死磕</div><div class='badge'>(1)</div></a></li>
         
           <li><a class="flat-box" title="/categories/设计模式/" href="/categories/设计模式/"><div class='name'>设计模式</div><div class='badge'>(2)</div></a></li>
-        
-          <li><a class="flat-box" title="/categories/项目管理/" href="/categories/项目管理/"><div class='name'>项目管理</div><div class='badge'>(1)</div></a></li>
         
       </ul>
     </div>
@@ -2635,7 +2182,7 @@
 </header>
 
     <div class='content pure'>
-      <a href="/tags/Java资源大全/" style="font-size: 14px; color: #999">Java资源大全</a> <a href="/tags/OAuth2/" style="font-size: 14.77px; color: #949494">OAuth2</a> <a href="/tags/algorithm/" style="font-size: 23.23px; color: #5a5a5a">algorithm</a> <a href="/tags/annotation/" style="font-size: 14px; color: #999">annotation</a> <a href="/tags/boot/" style="font-size: 14px; color: #999">boot</a> <a href="/tags/builder/" style="font-size: 14px; color: #999">builder</a> <a href="/tags/cache/" style="font-size: 14px; color: #999">cache</a> <a href="/tags/cloud/" style="font-size: 14px; color: #999">cloud</a> <a href="/tags/code/" style="font-size: 14px; color: #999">code</a> <a href="/tags/concurrent/" style="font-size: 20.15px; color: #6f6f6f">concurrent</a> <a href="/tags/db/" style="font-size: 22.46px; color: #5f5f5f">db</a> <a href="/tags/docker/" style="font-size: 14px; color: #999">docker</a> <a href="/tags/ee/" style="font-size: 14px; color: #999">ee</a> <a href="/tags/gc/" style="font-size: 15.54px; color: #8f8f8f">gc</a> <a href="/tags/git/" style="font-size: 14px; color: #999">git</a> <a href="/tags/id/" style="font-size: 14px; color: #999">id</a> <a href="/tags/idea/" style="font-size: 14px; color: #999">idea</a> <a href="/tags/jdbc/" style="font-size: 14px; color: #999">jdbc</a> <a href="/tags/jmm/" style="font-size: 14px; color: #999">jmm</a> <a href="/tags/jvm/" style="font-size: 21.69px; color: #656565">jvm</a> <a href="/tags/lifecycle/" style="font-size: 14.77px; color: #949494">lifecycle</a> <a href="/tags/linux/" style="font-size: 18.62px; color: #7a7a7a">linux</a> <a href="/tags/lock/" style="font-size: 15.54px; color: #8f8f8f">lock</a> <a href="/tags/log/" style="font-size: 14px; color: #999">log</a> <a href="/tags/log4j2/" style="font-size: 14.77px; color: #949494">log4j2</a> <a href="/tags/mapper/" style="font-size: 14px; color: #999">mapper</a> <a href="/tags/maven/" style="font-size: 16.31px; color: #898989">maven</a> <a href="/tags/memory/" style="font-size: 17.85px; color: #7f7f7f">memory</a> <a href="/tags/methodology/" style="font-size: 15.54px; color: #8f8f8f">methodology</a> <a href="/tags/middleware/" style="font-size: 17.08px; color: #848484">middleware</a> <a href="/tags/mvc/" style="font-size: 14.77px; color: #949494">mvc</a> <a href="/tags/mybatis/" style="font-size: 19.38px; color: #747474">mybatis</a> <a href="/tags/mysql/" style="font-size: 20.92px; color: #6a6a6a">mysql</a> <a href="/tags/netty/" style="font-size: 15.54px; color: #8f8f8f">netty</a> <a href="/tags/nio/" style="font-size: 14.77px; color: #949494">nio</a> <a href="/tags/oracle/" style="font-size: 17.08px; color: #848484">oracle</a> <a href="/tags/other/" style="font-size: 14px; color: #999">other</a> <a href="/tags/plugin/" style="font-size: 15.54px; color: #8f8f8f">plugin</a> <a href="/tags/plugins/" style="font-size: 14px; color: #999">plugins</a> <a href="/tags/redis/" style="font-size: 16.31px; color: #898989">redis</a> <a href="/tags/reflect/" style="font-size: 14.77px; color: #949494">reflect</a> <a href="/tags/return/" style="font-size: 14px; color: #999">return</a> <a href="/tags/se/" style="font-size: 24px; color: #555">se</a> <a href="/tags/select/" style="font-size: 14px; color: #999">select</a> <a href="/tags/source/" style="font-size: 16.31px; color: #898989">source</a> <a href="/tags/spring/" style="font-size: 18.62px; color: #7a7a7a">spring</a> <a href="/tags/sso/" style="font-size: 14.77px; color: #949494">sso</a> <a href="/tags/standard/" style="font-size: 17.08px; color: #848484">standard</a> <a href="/tags/storm/" style="font-size: 14px; color: #999">storm</a> <a href="/tags/thread/" style="font-size: 15.54px; color: #8f8f8f">thread</a> <a href="/tags/tool/" style="font-size: 14px; color: #999">tool</a> <a href="/tags/uml/" style="font-size: 14px; color: #999">uml</a> <a href="/tags/url/" style="font-size: 14px; color: #999">url</a> <a href="/tags/web/" style="font-size: 14px; color: #999">web</a> <a href="/tags/zk/" style="font-size: 14.77px; color: #949494">zk</a> <a href="/tags/域名解析/" style="font-size: 14px; color: #999">域名解析</a> <a href="/tags/工具/" style="font-size: 14px; color: #999">工具</a> <a href="/tags/性能调优/" style="font-size: 14.77px; color: #949494">性能调优</a> <a href="/tags/指令/" style="font-size: 14px; color: #999">指令</a> <a href="/tags/方法论/" style="font-size: 14.77px; color: #949494">方法论</a> <a href="/tags/源码分析/" style="font-size: 16.31px; color: #898989">源码分析</a> <a href="/tags/笔记/" style="font-size: 14px; color: #999">笔记</a> <a href="/tags/编码/" style="font-size: 15.54px; color: #8f8f8f">编码</a> <a href="/tags/虚拟机/" style="font-size: 14px; color: #999">虚拟机</a> <a href="/tags/设计模式/" style="font-size: 16.31px; color: #898989">设计模式</a> <a href="/tags/项目管理/" style="font-size: 14px; color: #999">项目管理</a>
+      <a href="/tags/Java资源大全/" style="font-size: 14px; color: #999">Java资源大全</a> <a href="/tags/algorithm/" style="font-size: 23.29px; color: #5a5a5a">algorithm</a> <a href="/tags/annotation/" style="font-size: 14px; color: #999">annotation</a> <a href="/tags/boot/" style="font-size: 14px; color: #999">boot</a> <a href="/tags/builder/" style="font-size: 14px; color: #999">builder</a> <a href="/tags/cache/" style="font-size: 14px; color: #999">cache</a> <a href="/tags/cloud/" style="font-size: 14px; color: #999">cloud</a> <a href="/tags/code/" style="font-size: 14px; color: #999">code</a> <a href="/tags/concurrent/" style="font-size: 20.43px; color: #6d6d6d">concurrent</a> <a href="/tags/db/" style="font-size: 22.57px; color: #5f5f5f">db</a> <a href="/tags/ee/" style="font-size: 14px; color: #999">ee</a> <a href="/tags/gc/" style="font-size: 15.43px; color: #8f8f8f">gc</a> <a href="/tags/git/" style="font-size: 14px; color: #999">git</a> <a href="/tags/id/" style="font-size: 14px; color: #999">id</a> <a href="/tags/jdbc/" style="font-size: 14px; color: #999">jdbc</a> <a href="/tags/jmm/" style="font-size: 14px; color: #999">jmm</a> <a href="/tags/jvm/" style="font-size: 21.86px; color: #646464">jvm</a> <a href="/tags/lifecycle/" style="font-size: 14.71px; color: #949494">lifecycle</a> <a href="/tags/linux/" style="font-size: 19px; color: #777">linux</a> <a href="/tags/lock/" style="font-size: 15.43px; color: #8f8f8f">lock</a> <a href="/tags/log/" style="font-size: 14px; color: #999">log</a> <a href="/tags/log4j2/" style="font-size: 14.71px; color: #949494">log4j2</a> <a href="/tags/mapper/" style="font-size: 14px; color: #999">mapper</a> <a href="/tags/maven/" style="font-size: 16.14px; color: #8a8a8a">maven</a> <a href="/tags/memory/" style="font-size: 17.57px; color: #818181">memory</a> <a href="/tags/methodology/" style="font-size: 15.43px; color: #8f8f8f">methodology</a> <a href="/tags/middleware/" style="font-size: 16.86px; color: #868686">middleware</a> <a href="/tags/mvc/" style="font-size: 14.71px; color: #949494">mvc</a> <a href="/tags/mybatis/" style="font-size: 19.71px; color: #727272">mybatis</a> <a href="/tags/mysql/" style="font-size: 21.14px; color: #686868">mysql</a> <a href="/tags/netty/" style="font-size: 15.43px; color: #8f8f8f">netty</a> <a href="/tags/nio/" style="font-size: 14.71px; color: #949494">nio</a> <a href="/tags/oracle/" style="font-size: 16.14px; color: #8a8a8a">oracle</a> <a href="/tags/other/" style="font-size: 14px; color: #999">other</a> <a href="/tags/plugin/" style="font-size: 15.43px; color: #8f8f8f">plugin</a> <a href="/tags/plugins/" style="font-size: 14px; color: #999">plugins</a> <a href="/tags/redis/" style="font-size: 16.14px; color: #8a8a8a">redis</a> <a href="/tags/reflect/" style="font-size: 14.71px; color: #949494">reflect</a> <a href="/tags/return/" style="font-size: 14px; color: #999">return</a> <a href="/tags/se/" style="font-size: 24px; color: #555">se</a> <a href="/tags/select/" style="font-size: 14px; color: #999">select</a> <a href="/tags/source/" style="font-size: 16.14px; color: #8a8a8a">source</a> <a href="/tags/spring/" style="font-size: 18.29px; color: #7c7c7c">spring</a> <a href="/tags/standard/" style="font-size: 16.86px; color: #868686">standard</a> <a href="/tags/storm/" style="font-size: 14px; color: #999">storm</a> <a href="/tags/thread/" style="font-size: 15.43px; color: #8f8f8f">thread</a> <a href="/tags/tool/" style="font-size: 14px; color: #999">tool</a> <a href="/tags/url/" style="font-size: 14px; color: #999">url</a> <a href="/tags/web/" style="font-size: 14px; color: #999">web</a> <a href="/tags/zk/" style="font-size: 14.71px; color: #949494">zk</a> <a href="/tags/工具/" style="font-size: 14px; color: #999">工具</a> <a href="/tags/性能调优/" style="font-size: 14.71px; color: #949494">性能调优</a> <a href="/tags/指令/" style="font-size: 14px; color: #999">指令</a> <a href="/tags/方法论/" style="font-size: 14.71px; color: #949494">方法论</a> <a href="/tags/源码分析/" style="font-size: 16.14px; color: #8a8a8a">源码分析</a> <a href="/tags/编码/" style="font-size: 15.43px; color: #8f8f8f">编码</a> <a href="/tags/虚拟机/" style="font-size: 14px; color: #999">虚拟机</a> <a href="/tags/设计模式/" style="font-size: 16.14px; color: #8a8a8a">设计模式</a>
     </div>
   </section>
 

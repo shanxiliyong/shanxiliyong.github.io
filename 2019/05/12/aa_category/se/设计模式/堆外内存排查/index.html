@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>堆外内存排查 | 李永的博客</title>
+  
+  <meta name="keywords" content="李永">
+  
+  
+
+  
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- meta -->
+  
+  
+  <meta name="theme-color" content="#FFFFFF">
+  <meta name="msapplication-TileColor" content="#1BC3FB">
+  <meta name="msapplication-config" content="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-favicon@19.9.6/browserconfig.xml">
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.10.1/css/all.min.css">
+  
+  
+  <link rel="shortcut icon" type="image/x-icon" href="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-favicon@19.9.6/favicon.ico">
+  <link rel="icon" type="image/x-icon" sizes="32x32" href="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-favicon@19.9.6/favicon-32x32.png">
+  <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-favicon@19.9.6/apple-touch-icon.png">
+  <link rel="mask-icon" color="#1BC3FB" href="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-favicon@19.9.6/safari-pinned-tab.svg">
+  <link rel="manifest" href="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-favicon@19.9.6/site.webmanifest">
+  
+
+  
+  <link rel="shortcut icon" type="image/x-icon" href="https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicon.ico">
+  
+
+  
+    <link rel="stylesheet" href="/style.css">
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post half'>
+      
+        
+  <h1 class='title'>LEE</h1>
+
+
+  <div class="m_search">
+    <form name="searchform" class="form u-search-form">
+      <input type="text" class="input u-search-input" placeholder="" />
+      <i class="icon fas fa-search fa-fw"></i>
+    </form>
+  </div>
+
+<div class='menu navgation'>
+  <ul class='h-list'>
+    
+      
+        <li>
+          <a class="nav home" href="/"
+            
+            
+            id="home">
+            <i class='fas fa-rss fa-fw'></i>&nbsp;博文
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/it123/"
+            
+            
+            id="it123">
+            <i class='fas fa-link fa-fw'></i>&nbsp;IT123
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/projects/"
+            
+              rel="nofollow"
+            
+            
+            id="projects">
+            <i class='fas fa-code-branch fa-fw'></i>&nbsp;项目
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/about/"
+            
+              rel="nofollow"
+            
+            
+            id="about">
+            <i class='fas fa-info-circle fa-fw'></i>&nbsp;关于
+          </a>
+        </li>
+      
+    
+  </ul>
+</div>
+
+      
+    </cover>
+    <header class="l_header pure">
+  <div id="loading-bar-wrapper">
+    <div id="loading-bar" class="pure"></div>
+  </div>
+
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+      <a class="logo flat-box" href='/' >
+        
+          李永的博客
+        
+      </a>
+			<div class='menu navgation'>
+				<ul class='h-list'>
+          
+  					
+  						<li>
+								<a class="nav flat-box" href="/it123"
+                  
+                  
+                  id="it123">
+									<i class='fas fa-grin fa-fw'></i>&nbsp;IT123
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/blog/categories"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="blogcategories">
+									<i class='fas fa-folder-open fa-fw'></i>&nbsp;分类
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/blog/tags"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="blogtags">
+									<i class='fas fa-hashtag fa-fw'></i>&nbsp;标签
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/blog/archives/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="blogarchives">
+									<i class='fas fa-archive fa-fw'></i>&nbsp;归档
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/about/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="about">
+									<i class='fas fa-info-circle fa-fw'></i>&nbsp;关于
+								</a>
+							</li>
+      			
+      		
+				</ul>
+			</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="搜索" />
+						<i class="icon fas fa-search fa-fw"></i>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fas fa-search fa-fw" href='javascript:void(0)'></a></li>
+				
+				<li class='s-menu'><a class="fas fa-bars fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo flat-box"></a>
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a class="flat-btn fas fa-comments fa-fw" href='javascript:void(0)'></a></li>
+        
+          <li class='s-toc'><a class="flat-btn fas fa-list fa-fw" href='javascript:void(0)'></a></li>
+        
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+    <header>
+		<nav class="menu navgation">
+      <ul>
+        
+          
+            <li>
+							<a class="nav flat-box" href="/it123"
+                
+                
+                id="it123">
+								<i class='fas fa-grin fa-fw'></i>&nbsp;IT123
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/blog/categories"
+                
+                  rel="nofollow"
+                
+                
+                id="blogcategories">
+								<i class='fas fa-folder-open fa-fw'></i>&nbsp;分类
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/blog/tags"
+                
+                  rel="nofollow"
+                
+                
+                id="blogtags">
+								<i class='fas fa-hashtag fa-fw'></i>&nbsp;标签
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/blog/archives"
+                
+                  rel="nofollow"
+                
+                
+                id="blogarchives">
+								<i class='fas fa-archive fa-fw'></i>&nbsp;归档
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/about"
+                
+                  rel="nofollow"
+                
+                
+                id="about">
+								<i class='fas fa-info-circle fa-fw'></i>&nbsp;关于
+							</a>
+            </li>
+          
+       
+      </ul>
+		</nav>
+    </header>
+	</aside>
+<script>setLoadingBarProgress(40);</script>
+
+  </div>
+
+
+  <div class="l_body">
+    <div class='body-wrapper'>
+      <div class='l_main'>
+  
+
+  <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/2019/05/12/aa_category/se/设计模式/堆外内存排查/">
+        堆外内存排查
+      </a>
+    </h1>
+  
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://liyong.ac.cn" rel="nofollow">
+        
+          <img src="https://liyong.ac.cn/img/me.png">
+        
+        <p>李永</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-05-12</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/se/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>se</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class='notlink'>
+        <i class="fas fa-eye" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv">
+            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+          </span>
+        </p>
+      </a>
+    </div>
+  
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+    <section class="article typo">
+      <div class="article-entry" itemprop="articleBody">
+        <h1 id="现象"><a href="#现象" class="headerlink" title="现象"></a>现象</h1><p>有人反应线上服务端有一个进程的占用内存特别高，具体如下。</p>
+<p>top命令如下：</p>
+<p>PID USER PR NI VIRT <strong>RES</strong> SHR S %CPU %MEM TIME+ COMMAND<br>33801 admin 20 0 <strong>41.4g</strong> <strong>14g</strong> 10m S 5.0 5.8 4015:27 java</p>
+<p>可以看到这个java进程占用的资源特别高。</p>
+<a id="more"></a>
+
+<h1 id="分析内存分布"><a href="#分析内存分布" class="headerlink" title="分析内存分布"></a>分析内存分布</h1><p>启动命令为：-server -Xms4096m -Xmx4096m -XX:MaxPermSize=256m </p>
+<p>1.jmap -heap查看JVM占用内存大小</p>
+<figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`[admin@host-xxxx ~]$ jmap -heap <span class="number">33801</span>``Attaching to process ID <span class="number">33801</span>, please wait...``Debugger attached successfully.``Server compiler detected.``JVM version is <span class="number">20.0</span>-b11``using <span class="keyword">thread</span>-``local` `object allocation.``Parallel GC with <span class="number">43</span> <span class="keyword">thread</span>(s)``Heap Configuration:``   ``MinHeapFreeRatio = <span class="number">40</span>``   ``MaxHeapFreeRatio = <span class="number">70</span>``   ``MaxHeapSize      = <span class="number">4294967296</span> (<span class="number">4096.0</span>MB)``   ``NewSize          = <span class="number">1310720</span> (<span class="number">1.25</span>MB)``   ``MaxNewSize       = <span class="number">17592186044415</span> MB``   ``OldSize          = <span class="number">5439488</span> (<span class="number">5.1875</span>MB)``   ``NewRatio         = <span class="number">2</span>``   ``SurvivorRatio    = <span class="number">8</span>``   ``PermSize         = <span class="number">21757952</span> (<span class="number">20.75</span>MB)``   ``MaxPermSize      = <span class="number">268435456</span> (<span class="number">256.0</span>MB)``Heap Usage:``PS Young Generation``Eden Space:``   ``capacity = <span class="number">1402273792</span> (<span class="number">1337.3125</span>MB)``   ``used     = <span class="number">1305741520</span> (<span class="number">1245.2521514892578</span>MB)``   ``free`     `= <span class="number">96532272</span> (<span class="number">92.06034851074219</span>MB)``   ``<span class="number">93.11601824474518</span>% used``From Space:``   ``capacity = <span class="number">14680064</span> (<span class="number">14.0</span>MB)``   ``used     = <span class="number">0</span> (<span class="number">0.0</span>MB)``   ``free`     `= <span class="number">14680064</span> (<span class="number">14.0</span>MB)``   ``<span class="number">0.0</span>% used``To Space:``   ``capacity = <span class="number">14155776</span> (<span class="number">13.5</span>MB)``   ``used     = <span class="number">0</span> (<span class="number">0.0</span>MB)``   ``free`     `= <span class="number">14155776</span> (<span class="number">13.5</span>MB)``   ``<span class="number">0.0</span>% used``PS Old Generation``   ``capacity = <span class="number">2863333376</span> (<span class="number">2730.6875</span>MB)``   ``used     = <span class="number">78102656</span> (<span class="number">74.4844970703125</span>MB)``   ``free`     `= <span class="number">2785230720</span> (<span class="number">2656.2030029296875</span>MB)``   ``<span class="number">2.7276829395642124</span>% used``PS Perm Generation``   ``capacity = <span class="number">63176704</span> (<span class="number">60.25</span>MB)``   ``used     = <span class="number">62522104</span> (<span class="number">59.62572479248047</span>MB)``   ``free`     `= <span class="number">654600</span> (<span class="number">0.6242752075195312</span>MB)``   ``<span class="number">98.96385857673107</span>% used`</span><br></pre></td></tr></table></figure>
+
+<p>可以看到堆内内存正常，没有超过4G，说明大部分内存都是堆外内存。</p>
+<ol start="2">
+<li>查看堆外内存情况</li>
+</ol>
+<p>网上都推荐使用google-perftools来跟踪，但是需要重启应用。我们先不重启，直接dump内存分析下。</p>
+<p>执行 pmap </p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`[<span class="symbol">admin@</span>host-xxx~]$ pmap <span class="number">33801</span> &gt; <span class="number">33801.</span>txt``[<span class="symbol">admin@</span>host-xxx~]$ ``cat` `<span class="number">33801</span> | ``more``Address           Kbytes     RSS   Dirty Mode   Mapping``<span class="number">0000000040000000</span>      <span class="number">36</span>      <span class="number">36</span>       <span class="number">0</span> r-x--  java``<span class="number">0000000040108000</span>       <span class="number">8</span>       <span class="number">8</span>       <span class="number">8</span> rwx--  java``<span class="number">0000000040</span>b6d000     <span class="number">132</span>       <span class="number">8</span>       <span class="number">8</span> rwx--    [ anon ]``……``<span class="number">00007f</span>2c74000000  <span class="number">131072</span>  <span class="number">131072</span>  <span class="number">131072</span> rwx--    [ anon ]``<span class="number">00007f</span>2c7c000000  <span class="number">131072</span>  <span class="number">131072</span>  <span class="number">131072</span> rwx--    [ anon ]``<span class="number">00007f</span>2c84000000  <span class="number">131072</span>  <span class="number">131072</span>  <span class="number">131072</span> rwx--    [ anon ]``<span class="number">00007f</span>2c8c000000  <span class="number">131072</span>  <span class="number">131072</span>  <span class="number">131072</span> rwx--    [ anon ]``<span class="number">00007f</span>2c94000000  <span class="number">131072</span>  <span class="number">131072</span>  <span class="number">131072</span> rwx--    [ anon ]``……``……`</span><br></pre></td></tr></table></figure>
+
+<p>其中看见不少 128M的内存块。  比较可疑</p>
+<ol start="3">
+<li>dump内存块</li>
+</ol>
+<p>使用 gdb进行内存dump。如果没有，则需要安装 yum install gdb。</p>
+<figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`[admin@host-xxx ~]$ gdb --pid <span class="number">33801</span>``……``Reading symbols from ``/export/Domains/follow``.soa.jd.com``/server1/temp/libnetty-transport-native-epoll4107761723280840577``.so...(no debugging symbols found)...``done``.``Loaded symbols ``for` `/export/Domains/follow``.soa.jd.com``/server1/temp/libnetty-transport-native-epoll4107761723280840577``.so``<span class="number">0</span>x00007f3206fa522d ``in` `pthread_join () from ``/lib64/libpthread``.so.<span class="number">0</span>``Missing separate debuginfos, use: debuginfo-``install` `glibc-<span class="number">2.12</span>-<span class="number">1.149</span>.el6.x86_64``(gdb) ``看到这个代表可以进行调试``然后外面找刚才的一段地址（前面加上<span class="number">0</span>x）进行dump``(gdb) dump binary memory .``/<span class="number">33801</span>_1``.dat <span class="number">0</span>x00007f2c74000000 <span class="number">0</span>x00007f2c7c000000`  `dump完 按q 退出``(gdb) q``A debugging session is active.``    ``Inferior <span class="number">1</span> [process <span class="number">33801</span>] will be detached.``Quit anyway? (y <span class="literal">or</span> n) y`</span><br></pre></td></tr></table></figure>
+
+<p>这样我们就拿到了一个内存dump文件。可以通过16进制大概看看里面的内容。</p>
+<ol start="4">
+<li>分析内存块。</li>
+</ol>
+<p>使用hexdump或者 下载下来拿UltraEdit EditPlus都可以看16进制文件。</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`[<span class="symbol">admin@</span>host-xxxx ~]$ hexdump -e ``<span class="string">'16/1 "%02X " " | "'</span>` `-e ``<span class="string">'16/1 "%_p" "\n"'</span>` `.``/<span class="number">33801</span>_1``.dat  | ``more``<span class="number">20</span> <span class="number">00</span> <span class="number">00</span> <span class="number">98</span> <span class="number">2</span>D <span class="number">7</span>F <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">80</span> <span class="number">2</span>C <span class="number">7</span>F <span class="number">00</span> <span class="number">00</span> |  ...-.......,...``<span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">04</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">04</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> | ................``<span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">45</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> | ........E.......``<span class="number">45</span> <span class="number">72</span> <span class="number">72</span> <span class="number">6</span>F <span class="number">72</span> <span class="number">20</span> <span class="number">77</span> <span class="number">68</span> <span class="number">69</span> <span class="number">6</span>C <span class="number">65</span> <span class="number">20</span> <span class="number">72</span> <span class="number">65</span> <span class="number">61</span> <span class="number">64</span> | Error ``<span class="keyword">while</span>` `read``<span class="number">28</span> <span class="number">2</span>E <span class="number">2</span>E <span class="number">2</span>E <span class="number">29</span> <span class="number">3</span>A <span class="number">20</span> <span class="number">43</span> <span class="number">6</span>F <span class="number">6</span>E <span class="number">6</span>E <span class="number">65</span> <span class="number">63</span> <span class="number">74</span> <span class="number">69</span> <span class="number">6</span>F | (...): Connectio``<span class="number">6</span>E <span class="number">20</span> <span class="number">72</span> <span class="number">65</span> <span class="number">73</span> <span class="number">65</span> <span class="number">74</span> <span class="number">20</span> <span class="number">62</span> <span class="number">79</span> <span class="number">20</span> <span class="number">70</span> <span class="number">65</span> <span class="number">65</span> <span class="number">72</span> <span class="number">00</span> | n reset by peer.``<span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">45</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> | ........E.......``<span class="number">45</span> <span class="number">72</span> <span class="number">72</span> <span class="number">6</span>F <span class="number">72</span> <span class="number">20</span> <span class="number">77</span> <span class="number">68</span> <span class="number">69</span> <span class="number">6</span>C <span class="number">65</span> <span class="number">20</span> <span class="number">72</span> <span class="number">65</span> <span class="number">61</span> <span class="number">64</span> | Error ``<span class="keyword">while</span>` `read``<span class="number">28</span> <span class="number">2</span>E <span class="number">2</span>E <span class="number">2</span>E <span class="number">29</span> <span class="number">3</span>A <span class="number">20</span> <span class="number">43</span> <span class="number">6</span>F <span class="number">6</span>E <span class="number">6</span>E <span class="number">65</span> <span class="number">63</span> <span class="number">74</span> <span class="number">69</span> <span class="number">6</span>F | (...): Connectio``<span class="number">6</span>E <span class="number">20</span> <span class="number">72</span> <span class="number">65</span> <span class="number">73</span> <span class="number">65</span> <span class="number">74</span> <span class="number">20</span> <span class="number">62</span> <span class="number">79</span> <span class="number">20</span> <span class="number">70</span> <span class="number">65</span> <span class="number">65</span> <span class="number">72</span> <span class="number">00</span> | n reset by peer.``<span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">45</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> | ........E.......``<span class="number">45</span> <span class="number">72</span> <span class="number">72</span> <span class="number">6</span>F <span class="number">72</span> <span class="number">20</span> <span class="number">77</span> <span class="number">68</span> <span class="number">69</span> <span class="number">6</span>C <span class="number">65</span> <span class="number">20</span> <span class="number">72</span> <span class="number">65</span> <span class="number">61</span> <span class="number">64</span> | Error ``<span class="keyword">while</span>` `read``<span class="number">28</span> <span class="number">2</span>E <span class="number">2</span>E <span class="number">2</span>E <span class="number">29</span> <span class="number">3</span>A <span class="number">20</span> <span class="number">43</span> <span class="number">6</span>F <span class="number">6</span>E <span class="number">6</span>E <span class="number">65</span> <span class="number">63</span> <span class="number">74</span> <span class="number">69</span> <span class="number">6</span>F | (...): Connectio``<span class="number">6</span>E <span class="number">20</span> <span class="number">72</span> <span class="number">65</span> <span class="number">73</span> <span class="number">65</span> <span class="number">74</span> <span class="number">20</span> <span class="number">62</span> <span class="number">79</span> <span class="number">20</span> <span class="number">70</span> <span class="number">65</span> <span class="number">65</span> <span class="number">72</span> <span class="number">00</span> | n reset by peer.``<span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">45</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> | ........E.......`</span><br></pre></td></tr></table></figure>
+
+<p>里面全是 ……..E……. Error while read(…): Connection reset by peer.</p>
+<p>好像是一个对象，里面的字符串是 Error while read(…): Connection reset by peer.</p>
+<h1 id="分析数据来源"><a href="#分析数据来源" class="headerlink" title="分析数据来源"></a>分析数据来源</h1><p>程序有Dubbo，mq使用了Netty4，zookeeper使用了Netty3。 这几个都有可能申请堆外内存。</p>
+<p>搜索字符串“Error while read”</p>
+<p>搜索netty4.0.24的源码 <strong>发现</strong>了该字符串：</p>
+<p><strong>transport-native-epoll/src/main/c/io_netty_channel_epoll_Native.c</strong></p>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">`jint read0(JNIEnv * env, jclass clazz, jint fd, `</span><span class="string">`void`</span> <span class="string">`*buffer, jint pos, jint limit) &#123;`</span><span class="string">`    `</span><span class="string">`ssize_t res;`</span><span class="string">`    `</span><span class="string">`int`</span> <span class="string">`err;`</span><span class="string">`    `</span><span class="string">`do`</span> <span class="string">`&#123;`</span><span class="string">`        `</span><span class="string">`res = read(fd, buffer + pos, (`</span><span class="string">`size_t`</span><span class="string">`) (limit - pos));`</span><span class="string">`        `</span><span class="string">`// Keep on reading if we was interrupted`</span><span class="string">`    `</span><span class="string">`&#125; `</span><span class="string">`while`</span> <span class="string">`(res == -1 &amp;&amp; ((err = `</span><span class="string">`errno`</span><span class="string">`) == EINTR));`</span> <span class="string">`    `</span><span class="string">`if`</span> <span class="string">`(res &lt; 0) &#123;`</span><span class="string">`        `</span><span class="string">`if`</span> <span class="string">`(err == EAGAIN || err == EWOULDBLOCK) &#123;`</span><span class="string">`            `</span><span class="string">`// Nothing left to read`</span><span class="string">`            `</span><span class="string">`return`</span> <span class="string">`0;`</span><span class="string">`        `</span><span class="string">`&#125;`</span><span class="string">`        `</span><span class="string">`if`</span> <span class="string">`(err == EBADF) &#123;`</span><span class="string">`            `</span><span class="string">`throwClosedChannelException(env);`</span><span class="string">`            `</span><span class="string">`return`</span> <span class="string">`-1;`</span><span class="string">`        `</span><span class="string">`&#125;`</span><span class="string">`        `</span><span class="string">`throwIOException(env, exceptionMessage(`</span><span class="string">`"Error while read(...): "`</span><span class="string">`, err));`</span><span class="string">`        `</span><span class="string">`return`</span> <span class="string">`-1;`</span><span class="string">`    `</span><span class="string">`&#125;`</span> <span class="string">`    `</span><span class="string">`if`</span> <span class="string">`(res == 0) &#123;`</span><span class="string">`        `</span><span class="string">`// end-of-stream`</span><span class="string">`        `</span><span class="string">`return`</span> <span class="string">`-1;`</span><span class="string">`    `</span><span class="string">`&#125;`</span><span class="string">`    `</span><span class="string">`return`</span> <span class="string">`(jint) res;`</span><span class="string">`&#125;`</span></span><br></pre></td></tr></table></figure>
+
+<p>分析源码：如果使用了epoll，客户端连上服务端又断开，就会触发这个异常。</p>
+<p>继续查看Netty源码和ReleaseNote，发现在4.0.25版本 已经优化掉了这个东西。</p>
+<p>参见：<a href="http://netty.io/news/2014/12/31/4-0-25-Final.html" target="_blank" rel="noopener">http://netty.io/news/2014/12/31/4-0-25-Final.html</a></p>
+<p><a href="https://github.com/netty/netty/pull/3227" target="_blank" rel="noopener">https://github.com/netty/netty/pull/3227</a></p>
+<p><a href="https://source.jboss.org/changelog/Netty?cs=c0e889ae543e291f03f003485ee54dd281945ec6&amp;_sscc=t" target="_blank" rel="noopener">https://source.jboss.org/changelog/Netty?cs=c0e889ae543e291f03f003485ee54dd281945ec6&amp;_sscc=t</a></p>
+<h1 id="测试："><a href="#测试：" class="headerlink" title="测试："></a>测试：</h1><p>1.测试关闭epoll是否会重现此问题。——-关闭后正常</p>
+<p>2.更新netty版本，看是否解决。———解决</p>
+<h1 id="解决："><a href="#解决：" class="headerlink" title="解决："></a>解决：</h1><p>1.单独升级Netty4的版本。</p>
+
+      </div>
+      
+        <br>
+        
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-09-10T19:57:17+08:00">
+  <a class='notlink'>
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p>更新于 2019年9月10日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/se/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>se</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://liyong.ac.cn/2019/05/12/aa_category/se/设计模式/堆外内存排查/&title=堆外内存排查 | 李永的博客&pics=https://liyong.ac.cn/img/me.png&summary=现象有人反应线上服务端有一个进程的占用内存特别高，具体如下。
+top命令如下：
+PID USER PR NI VIRT RES SHR S %CPU %MEM TIME+ COMMAND33801 admin 20 0 41.4g 14g 10m S 5.0 5.8 4015:27 java
+可以看到这个java进程占用的资源特别高。"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://liyong.ac.cn/2019/05/12/aa_category/se/设计模式/堆外内存排查/&title=堆外内存排查 | 李永的博客&pics=https://liyong.ac.cn/img/me.png&summary=现象有人反应线上服务端有一个进程的占用内存特别高，具体如下。
+top命令如下：
+PID USER PR NI VIRT RES SHR S %CPU %MEM TIME+ COMMAND33801 admin 20 0 41.4g 14g 10m S 5.0 5.8 4015:27 java
+可以看到这个java进程占用的资源特别高。"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="微博" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=https://liyong.ac.cn/2019/05/12/aa_category/se/设计模式/堆外内存排查/&title=堆外内存排查 | 李永的博客&pics=https://liyong.ac.cn/img/me.png&summary=现象有人反应线上服务端有一个进程的占用内存特别高，具体如下。
+top命令如下：
+PID USER PR NI VIRT RES SHR S %CPU %MEM TIME+ COMMAND33801 admin 20 0 41.4g 14g 10m S 5.0 5.8 4015:27 java
+可以看到这个java进程占用的资源特别高。"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+      
+      
+          <div class="prev-next">
+              
+                  <section class="prev">
+                      <span class="art-item-left">
+                          <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
+                          <h4>
+                              <a href="/2019/05/12/aa_category/se/gc&amp;mem/jstat命令/" rel="prev" title="jstat">
+                                
+                                    jstat
+                                
+                              </a>
+                          </h4>
+                          
+                              
+                              <h6 class="tags">
+                                  <a class="tag" href="/tags/se/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> se</a>
+                              </h6>
+                          
+                      </span>
+                  </section>
+              
+              
+                  <section class="next">
+                      <span class="art-item-right" aria-hidden="true">
+                          <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                          <h4>
+                              <a href="/2019/05/12/aa_category/se/gc&amp;mem/JVM常用命令整理/" rel="prev" title="JVM常用命令整理">
+                                  
+                                      JVM常用命令整理
+                                  
+                              </a>
+                          </h4>
+                          
+                              
+                              <h6 class="tags">
+                                  <a class="tag" href="/tags/se/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> se</a>
+                              </h6>
+                          
+                      </span>
+                  </section>
+              
+          </div>
+      
+    </section>
+  </article>
+
+
+
+  <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box comments">
+    <section class="article typo">
+      <h4><i class="fas fa-comments fa-fw" aria-hidden="true"></i>&nbsp;评论</h4>
+      
+      
+      
+      
+        <section id="comments">
+          <div id="valine_container" class="valine_thread">
+            <i class="fas fa-spinner fa-spin fa-fw"></i>
+          </div>
+        </section>
+      
+    </section>
+  </article>
+
+
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: '堆外内存排查',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+    
+    
+      
+      
+        
+          
+          
+            
+              <section class='widget author'>
+  <div class='content pure'>
+    
+      <div class='avatar'>
+        <img class='avatar' src='https://liyong.ac.cn/img/me.png'/>
+      </div>
+    
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="https://github.com/shanxiliyong"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget toc-wrapper'>
+    
+<header class='pure'>
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;本文目录</div>
+  
+    <!-- <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div> -->
+  
+</header>
+
+    <div class='content pure'>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#现象"><span class="toc-text">现象</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#分析内存分布"><span class="toc-text">分析内存分布</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#分析数据来源"><span class="toc-text">分析数据来源</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#测试："><span class="toc-text">测试：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#解决："><span class="toc-text">解决：</span></a></li></ol>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              <section class='widget grid'>
+  
+<header class='pure'>
+  <div><i class="fas fa-map-signs fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;站内导航</div>
+  
+</header>
+
+  <div class='content pure'>
+    <ul class="grid navgation">
+      
+        <li><a class="flat-box" title="/" href="/"
+          
+          
+          id="home">
+          
+            <i class="fas fa-clock fa-fw" aria-hidden="true"></i>
+          
+          博文
+        </a></li>
+      
+        <li><a class="flat-box" title="/blog/archives" href="/blog/archives"
+          
+            rel="nofollow"
+          
+          
+          id="blogarchives">
+          
+            <i class="fas fa-archive fa-fw" aria-hidden="true"></i>
+          
+          归档
+        </a></li>
+      
+        <li><a class="flat-box" title="/it123/" href="/it123/"
+          
+            rel="nofollow"
+          
+          
+          id="it123">
+          
+            <i class="fas fa-link fa-fw" aria-hidden="true"></i>
+          
+          IT123
+        </a></li>
+      
+        <li><a class="flat-box" title="/about/" href="/about/"
+          
+            rel="nofollow"
+          
+          
+          id="about">
+          
+            <i class="fas fa-info-circle fa-fw" aria-hidden="true"></i>
+          
+          关于
+        </a></li>
+      
+    </ul>
+  </div>
+</section>
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget category'>
+    
+<header class='pure'>
+  <div><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;文章分类</div>
+  
+    <a class="rightBtn"
+    
+      rel="nofollow"
+    
+    
+    href="/categories/"
+    title="categories/">
+    <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
+  
+</header>
+
+    <div class='content pure'>
+      <ul class="entry">
+        
+          <li><a class="flat-box" title="/categories/Java资源大全/" href="/categories/Java资源大全/"><div class='name'>Java资源大全</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/algorithm/" href="/categories/algorithm/"><div class='name'>algorithm</div><div class='badge'>(30)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/db/" href="/categories/db/"><div class='name'>db</div><div class='badge'>(26)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/ee/" href="/categories/ee/"><div class='name'>ee</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/javadoc/" href="/categories/javadoc/"><div class='name'>javadoc</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/linux/" href="/categories/linux/"><div class='name'>linux</div><div class='badge'>(11)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/log/" href="/categories/log/"><div class='name'>log</div><div class='badge'>(3)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/maven/" href="/categories/maven/"><div class='name'>maven</div><div class='badge'>(4)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/methodology/" href="/categories/methodology/"><div class='name'>methodology</div><div class='badge'>(3)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/middleware/" href="/categories/middleware/"><div class='name'>middleware</div><div class='badge'>(5)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/mybatis/" href="/categories/mybatis/"><div class='name'>mybatis</div><div class='badge'>(11)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/netty/" href="/categories/netty/"><div class='name'>netty</div><div class='badge'>(3)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/nio/" href="/categories/nio/"><div class='name'>nio</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/other/" href="/categories/other/"><div class='name'>other</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/se/" href="/categories/se/"><div class='name'>se</div><div class='badge'>(67)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/spring/" href="/categories/spring/"><div class='name'>spring</div><div class='badge'>(8)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/standard/" href="/categories/standard/"><div class='name'>standard</div><div class='badge'>(5)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/storm/" href="/categories/storm/"><div class='name'>storm</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/thread/" href="/categories/thread/"><div class='name'>thread</div><div class='badge'>(3)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/tool/" href="/categories/tool/"><div class='name'>tool</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/web/" href="/categories/web/"><div class='name'>web</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/工具/" href="/categories/工具/"><div class='name'>工具</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/方法论/" href="/categories/方法论/"><div class='name'>方法论</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/死磕/" href="/categories/死磕/"><div class='name'>死磕</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/设计模式/" href="/categories/设计模式/"><div class='name'>设计模式</div><div class='badge'>(2)</div></a></li>
+        
+      </ul>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget tagcloud'>
+    
+<header class='pure'>
+  <div><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;热门标签</div>
+  
+    <a class="rightBtn"
+    
+      rel="nofollow"
+    
+    
+    href="/tags/"
+    title="tags/">
+    <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
+  
+</header>
+
+    <div class='content pure'>
+      <a href="/tags/Java资源大全/" style="font-size: 14px; color: #999">Java资源大全</a> <a href="/tags/algorithm/" style="font-size: 23.29px; color: #5a5a5a">algorithm</a> <a href="/tags/annotation/" style="font-size: 14px; color: #999">annotation</a> <a href="/tags/boot/" style="font-size: 14px; color: #999">boot</a> <a href="/tags/builder/" style="font-size: 14px; color: #999">builder</a> <a href="/tags/cache/" style="font-size: 14px; color: #999">cache</a> <a href="/tags/cloud/" style="font-size: 14px; color: #999">cloud</a> <a href="/tags/code/" style="font-size: 14px; color: #999">code</a> <a href="/tags/concurrent/" style="font-size: 20.43px; color: #6d6d6d">concurrent</a> <a href="/tags/db/" style="font-size: 22.57px; color: #5f5f5f">db</a> <a href="/tags/ee/" style="font-size: 14px; color: #999">ee</a> <a href="/tags/gc/" style="font-size: 15.43px; color: #8f8f8f">gc</a> <a href="/tags/git/" style="font-size: 14px; color: #999">git</a> <a href="/tags/id/" style="font-size: 14px; color: #999">id</a> <a href="/tags/jdbc/" style="font-size: 14px; color: #999">jdbc</a> <a href="/tags/jmm/" style="font-size: 14px; color: #999">jmm</a> <a href="/tags/jvm/" style="font-size: 21.86px; color: #646464">jvm</a> <a href="/tags/lifecycle/" style="font-size: 14.71px; color: #949494">lifecycle</a> <a href="/tags/linux/" style="font-size: 19px; color: #777">linux</a> <a href="/tags/lock/" style="font-size: 15.43px; color: #8f8f8f">lock</a> <a href="/tags/log/" style="font-size: 14px; color: #999">log</a> <a href="/tags/log4j2/" style="font-size: 14.71px; color: #949494">log4j2</a> <a href="/tags/mapper/" style="font-size: 14px; color: #999">mapper</a> <a href="/tags/maven/" style="font-size: 16.14px; color: #8a8a8a">maven</a> <a href="/tags/memory/" style="font-size: 17.57px; color: #818181">memory</a> <a href="/tags/methodology/" style="font-size: 15.43px; color: #8f8f8f">methodology</a> <a href="/tags/middleware/" style="font-size: 16.86px; color: #868686">middleware</a> <a href="/tags/mvc/" style="font-size: 14.71px; color: #949494">mvc</a> <a href="/tags/mybatis/" style="font-size: 19.71px; color: #727272">mybatis</a> <a href="/tags/mysql/" style="font-size: 21.14px; color: #686868">mysql</a> <a href="/tags/netty/" style="font-size: 15.43px; color: #8f8f8f">netty</a> <a href="/tags/nio/" style="font-size: 14.71px; color: #949494">nio</a> <a href="/tags/oracle/" style="font-size: 16.14px; color: #8a8a8a">oracle</a> <a href="/tags/other/" style="font-size: 14px; color: #999">other</a> <a href="/tags/plugin/" style="font-size: 15.43px; color: #8f8f8f">plugin</a> <a href="/tags/plugins/" style="font-size: 14px; color: #999">plugins</a> <a href="/tags/redis/" style="font-size: 16.14px; color: #8a8a8a">redis</a> <a href="/tags/reflect/" style="font-size: 14.71px; color: #949494">reflect</a> <a href="/tags/return/" style="font-size: 14px; color: #999">return</a> <a href="/tags/se/" style="font-size: 24px; color: #555">se</a> <a href="/tags/select/" style="font-size: 14px; color: #999">select</a> <a href="/tags/source/" style="font-size: 16.14px; color: #8a8a8a">source</a> <a href="/tags/spring/" style="font-size: 18.29px; color: #7c7c7c">spring</a> <a href="/tags/standard/" style="font-size: 16.86px; color: #868686">standard</a> <a href="/tags/storm/" style="font-size: 14px; color: #999">storm</a> <a href="/tags/thread/" style="font-size: 15.43px; color: #8f8f8f">thread</a> <a href="/tags/tool/" style="font-size: 14px; color: #999">tool</a> <a href="/tags/url/" style="font-size: 14px; color: #999">url</a> <a href="/tags/web/" style="font-size: 14px; color: #999">web</a> <a href="/tags/zk/" style="font-size: 14.71px; color: #949494">zk</a> <a href="/tags/工具/" style="font-size: 14px; color: #999">工具</a> <a href="/tags/性能调优/" style="font-size: 14.71px; color: #949494">性能调优</a> <a href="/tags/指令/" style="font-size: 14px; color: #999">指令</a> <a href="/tags/方法论/" style="font-size: 14.71px; color: #949494">方法论</a> <a href="/tags/源码分析/" style="font-size: 16.14px; color: #8a8a8a">源码分析</a> <a href="/tags/编码/" style="font-size: 15.43px; color: #8f8f8f">编码</a> <a href="/tags/虚拟机/" style="font-size: 14px; color: #999">虚拟机</a> <a href="/tags/设计模式/" style="font-size: 16.14px; color: #8a8a8a">设计模式</a>
+    </div>
+  </section>
+
+
+            
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+    
+
+  
+</aside>
+
+<footer id="footer" class="clearfix">
+  
+  
+    <div class="social-wrapper">
+      
+        
+          <a href="https://github.com/shanxiliyong"
+            class="social fab fa-github flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+    </div>
+  
+  <br>
+  <div><p>© 2019 Lee IT界的郭靖</p>
+</div>
+</footer>
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+
+  <script>
+    var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+    var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+    var ALGOLIA_API_KEY = "";
+    var ALGOLIA_APP_ID = "";
+    var ALGOLIA_INDEX_NAME = "";
+    var AZURE_SERVICE_NAME = "";
+    var AZURE_INDEX_NAME = "";
+    var AZURE_QUERY_KEY = "";
+    var BAIDU_API_ID = "";
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/"||"/";
+    if(!ROOT.endsWith('/'))ROOT += '/';
+  </script>
+
+<script src="//instant.page/1.2.2" type="module" integrity="sha384-2xV8M5griQmzyiY3CDqh1dn4z3llDVqZDqzjzcY+jCBCk/a5fXJmuZ/40JJAPeoU"></script>
+
+
+  <script async src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      const $reveal = $('.reveal');
+      if ($reveal.length === 0) return;
+      const sr = ScrollReveal({ distance: 0 });
+      sr.reveal('.reveal');
+    });
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+  
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        if ('.cover') {
+          $('.cover').backstretch(
+          ["https://img.vim-cn.com/29/91197b04c13f512f734a76d4ac422d89dbe229.jpg"],
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        } else {
+          $.backstretch(
+          ["https://img.vim-cn.com/29/91197b04c13f512f734a76d4ac422d89dbe229.jpg"],
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+    
+      <script src="/js/volantis.js"></script>
+    
+  
+  <script>
+  var GUEST_INFO = ['nick','mail','link'];
+  var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var notify = 'true' == true;
+  var verify = 'true' == true;
+  var valine = new Valine();
+  valine.init({
+    el: '#valine_container',
+    notify: notify,
+    verify: verify,
+    guest_info: guest_info,
+    
+    appId: "1wR5XCPaSjRlAmhwyn9vJlu1-MdYXbMMI",
+    appKey: "eoHlYROt4D1woDANEOOO0sbo",
+    placeholder: "快来评论吧~",
+    pageSize:'10',
+    avatar:'mp',
+    lang:'zh-cn',
+    highlight:'true'
+  })
+  </script>
+
+
+
+  <script src="/js/app.js"></script>
+
+
+  <script src="/js/search.js"></script>
+
+
+
+
+<!-- 复制 -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  let COPY_SUCCESS = "复制成功";
+  let COPY_FAILURE = "复制失败";
+  /*页面载入完成后，创建复制按钮*/
+  !function (e, t, a) {
+    /* code */
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '  <i class="fa fa-copy"></i><span>复制</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+
+      clipboard.on('success', function(e) {
+        //您可以加入成功提示
+        console.info('Action:', e.action);
+        console.info('Text:', e.text);
+        console.info('Trigger:', e.trigger);
+        success_prompt(COPY_SUCCESS);
+        e.clearSelection();
+      });
+      clipboard.on('error', function(e) {
+        //您可以加入失败提示
+        console.error('Action:', e.action);
+        console.error('Trigger:', e.trigger);
+        fail_prompt(COPY_FAILURE);
+      });
+    }
+    initCopyCode();
+
+  }(window, document);
+
+  /**
+   * 弹出式提示框，默认1.5秒自动消失
+   * @param message 提示信息
+   * @param style 提示样式，有alert-success、alert-danger、alert-warning、alert-info
+   * @param time 消失时间
+   */
+  var prompt = function (message, style, time)
+  {
+      style = (style === undefined) ? 'alert-success' : style;
+      time = (time === undefined) ? 1500 : time*1000;
+      $('<div>')
+          .appendTo('body')
+          .addClass('alert ' + style)
+          .html(message)
+          .show()
+          .delay(time)
+          .fadeOut();
+  };
+
+  // 成功提示
+  var success_prompt = function(message, time)
+  {
+      prompt(message, 'alert-success', time);
+  };
+
+  // 失败提示
+  var fail_prompt = function(message, time)
+  {
+      prompt(message, 'alert-danger', time);
+  };
+
+  // 提醒
+  var warning_prompt = function(message, time)
+  {
+      prompt(message, 'alert-warning', time);
+  };
+
+  // 信息提示
+  var info_prompt = function(message, time)
+  {
+      prompt(message, 'alert-info', time);
+  };
+
+</script>
+
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>
