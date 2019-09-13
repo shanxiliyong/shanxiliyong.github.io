@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>微服务设计读书笔记 | 李永的博客</title>
+  
+  <meta name="keywords" content="李永">
+  
+  
+
+  
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.10.1/css/all.min.css">
+  
+
+  
+  <link rel="shortcut icon" type="image/x-icon" href="https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicon.ico">
+  
+
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.9.9/css/style.css">
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post half'>
+      
+        
+  <h1 class='title'>LEE</h1>
+
+
+  <div class="m_search">
+    <form name="searchform" class="form u-search-form">
+      <input type="text" class="input u-search-input" placeholder="" />
+      <i class="icon fas fa-search fa-fw"></i>
+    </form>
+  </div>
+
+<div class='menu navgation'>
+  <ul class='h-list'>
+    
+      
+        <li>
+          <a class="nav home" href="/"
+            
+            
+            id="home">
+            <i class='fas fa-rss fa-fw'></i>&nbsp;博文
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/it123/"
+            
+            
+            id="it123">
+            <i class='fas fa-link fa-fw'></i>&nbsp;IT123
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/projects/"
+            
+              rel="nofollow"
+            
+            
+            id="projects">
+            <i class='fas fa-code-branch fa-fw'></i>&nbsp;项目
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/about/"
+            
+              rel="nofollow"
+            
+            
+            id="about">
+            <i class='fas fa-info-circle fa-fw'></i>&nbsp;关于
+          </a>
+        </li>
+      
+    
+  </ul>
+</div>
+
+      
+    </cover>
+    <header class="l_header pure">
+  <div id="loading-bar-wrapper">
+    <div id="loading-bar" class="pure"></div>
+  </div>
+
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+      <a class="logo flat-box" href='/' >
+        
+          李永的博客
+        
+      </a>
+			<div class='menu navgation'>
+				<ul class='h-list'>
+          
+  					
+  						<li>
+								<a class="nav flat-box" href="/it123"
+                  
+                  
+                  id="it123">
+									<i class='fas fa-grin fa-fw'></i>&nbsp;IT123
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/categories"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="categories">
+									<i class='fas fa-folder-open fa-fw'></i>&nbsp;分类
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/tags"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="tags">
+									<i class='fas fa-hashtag fa-fw'></i>&nbsp;标签
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/archives/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="archives">
+									<i class='fas fa-archive fa-fw'></i>&nbsp;归档
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/about/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="about">
+									<i class='fas fa-info-circle fa-fw'></i>&nbsp;关于
+								</a>
+							</li>
+      			
+      		
+				</ul>
+			</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="搜索" />
+						<i class="icon fas fa-search fa-fw"></i>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fas fa-search fa-fw" href='javascript:void(0)'></a></li>
+				
+				<li class='s-menu'><a class="fas fa-bars fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo flat-box"></a>
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a class="flat-btn fas fa-comments fa-fw" href='javascript:void(0)'></a></li>
+        
+          <li class='s-toc'><a class="flat-btn fas fa-list fa-fw" href='javascript:void(0)'></a></li>
+        
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+    <header>
+		<nav class="menu navgation">
+      <ul>
+        
+          
+            <li>
+							<a class="nav flat-box" href="/it123"
+                
+                
+                id="it123">
+								<i class='fas fa-grin fa-fw'></i>&nbsp;IT123
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/categories"
+                
+                  rel="nofollow"
+                
+                
+                id="categories">
+								<i class='fas fa-folder-open fa-fw'></i>&nbsp;分类
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/tags"
+                
+                  rel="nofollow"
+                
+                
+                id="tags">
+								<i class='fas fa-hashtag fa-fw'></i>&nbsp;标签
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/archives"
+                
+                  rel="nofollow"
+                
+                
+                id="archives">
+								<i class='fas fa-archive fa-fw'></i>&nbsp;归档
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/about"
+                
+                  rel="nofollow"
+                
+                
+                id="about">
+								<i class='fas fa-info-circle fa-fw'></i>&nbsp;关于
+							</a>
+            </li>
+          
+       
+      </ul>
+		</nav>
+    </header>
+	</aside>
+<script>setLoadingBarProgress(40);</script>
+
+  </div>
+
+
+  <div class="l_body">
+    <div class='body-wrapper'>
+      <div class='l_main'>
+  
+
+  <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/2017/10/10/微服务设计读书笔记/">
+        微服务设计读书笔记
+      </a>
+    </h1>
+  
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://liyong.ac.cn" rel="nofollow">
+        
+          <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/avatar/avatar.png">
+        
+        <p>李永</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2017-10-10</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/ms/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>ms</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class='notlink'>
+        <i class="fas fa-eye" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv">
+            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+          </span>
+        </p>
+      </a>
+    </div>
+  
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+    <section class="article typo">
+      <div class="article-entry" itemprop="articleBody">
+        <h1 id="第1章-微服务-1"><a href="#第1章-微服务-1" class="headerlink" title="第1章　微服务　　1"></a>第1章　微服务　　1</h1><h2 id="1-1-什么是微服务-2"><a href="#1-1-什么是微服务-2" class="headerlink" title="1.1　什么是微服务　　2"></a>1.1　什么是微服务　　2</h2><p>1.1.1　很小，专注于做好一件事　　2<br>1.1.2　自治性　　3</p>
+<h2 id="1-2-主要好处-3"><a href="#1-2-主要好处-3" class="headerlink" title="1.2　主要好处　　3"></a>1.2　主要好处　　3</h2><p>1.2.1　技术异构性　　3<br>1.2.2　弹性　　4<br>1.2.3　扩展　　5<br>1.2.4　简化部署　　5<br>1.2.5　与组织结构相匹配　　6<br>1.2.6　可组合性　　6<br>1.2.7　对可替代性的优化　　6</p>
+<h2 id="1-3-面向服务的架构-7"><a href="#1-3-面向服务的架构-7" class="headerlink" title="1.3　面向服务的架构　　7"></a>1.3　面向服务的架构　　7</h2><h2 id="1-4-其他分解技术-7"><a href="#1-4-其他分解技术-7" class="headerlink" title="1.4　其他分解技术　　7"></a>1.4　其他分解技术　　7</h2><p>1.4.1　共享库　　8<br>1.4.2　模块　　8</p>
+<h2 id="1-5-没有银弹-9"><a href="#1-5-没有银弹-9" class="headerlink" title="1.5　没有银弹　　9"></a>1.5　没有银弹　　9</h2><a id="more"></a>
+
+<h1 id="第2章-演化式架构师-11"><a href="#第2章-演化式架构师-11" class="headerlink" title="第2章　演化式架构师　　11"></a>第2章　演化式架构师　　11</h1><h2 id="2-1-不准确的比较-11"><a href="#2-1-不准确的比较-11" class="headerlink" title="2.1　不准确的比较　　11"></a>2.1　不准确的比较　　11</h2><h2 id="2-2-架构师的演化视角-12"><a href="#2-2-架构师的演化视角-12" class="headerlink" title="2.2　架构师的演化视角　　12"></a>2.2　架构师的演化视角　　12</h2><h2 id="2-3-分区-14"><a href="#2-3-分区-14" class="headerlink" title="2.3　分区　　14"></a>2.3　分区　　14</h2><h2 id="2-4-一个原则性的方法-15"><a href="#2-4-一个原则性的方法-15" class="headerlink" title="2.4　一个原则性的方法　　15"></a>2.4　一个原则性的方法　　15</h2><p>2.4.1　战略目标　　15<br>2.4.2　原则　　15<br>2.4.3　实践　　16<br>2.4.4　将原则和实践相结合　　16<br>2.4.5　真实世界的例子　　16</p>
+<h2 id="2-5-要求的标准-17"><a href="#2-5-要求的标准-17" class="headerlink" title="2.5　要求的标准　　17"></a>2.5　要求的标准　　17</h2><p>2.5.1　监控　　18<br>2.5.2　接口　　18<br>2.5.3　架构安全性　　18</p>
+<h2 id="2-6-代码治理-18"><a href="#2-6-代码治理-18" class="headerlink" title="2.6　代码治理　　18"></a>2.6　代码治理　　18</h2><p>2.6.1　范例　　19<br>2.6.2　裁剪服务代码模板　　19</p>
+<h2 id="2-7-技术债务-20"><a href="#2-7-技术债务-20" class="headerlink" title="2.7　技术债务　　20"></a>2.7　技术债务　　20</h2><h2 id="2-8-例外管理-21"><a href="#2-8-例外管理-21" class="headerlink" title="2.8　例外管理　　21"></a>2.8　例外管理　　21</h2><h2 id="2-9-集中治理和领导-21"><a href="#2-9-集中治理和领导-21" class="headerlink" title="2.9　集中治理和领导　　21"></a>2.9　集中治理和领导　　21</h2><h2 id="2-10-建设团队-22"><a href="#2-10-建设团队-22" class="headerlink" title="2.10　建设团队　　22"></a>2.10　建设团队　　22</h2><h1 id="第3章-如何建模服务-24"><a href="#第3章-如何建模服务-24" class="headerlink" title="第3章　如何建模服务　　24"></a>第3章　如何建模服务　　24</h1><h2 id="3-1-MusicCorp简介-24"><a href="#3-1-MusicCorp简介-24" class="headerlink" title="3.1　MusicCorp简介　　24"></a>3.1　MusicCorp简介　　24</h2><h2 id="3-2-什么样的服务是好服务-25"><a href="#3-2-什么样的服务是好服务-25" class="headerlink" title="3.2　什么样的服务是好服务　　25"></a>3.2　什么样的服务是好服务　　25</h2><p>3.2.1　松耦合　　25<br>3.2.2　高内聚　　25</p>
+<h2 id="3-3-限界上下文-26"><a href="#3-3-限界上下文-26" class="headerlink" title="3.3　限界上下文　　26"></a>3.3　限界上下文　　26</h2><p>3.3.1　共享的隐藏模型　　26<br>3.3.2　模块和服务　　27<br>3.3.3　过早划分　　28</p>
+<h2 id="3-4-业务功能-28"><a href="#3-4-业务功能-28" class="headerlink" title="3.4　业务功能　　28"></a>3.4　业务功能　　28</h2><h2 id="3-5-逐步划分上下文-29"><a href="#3-5-逐步划分上下文-29" class="headerlink" title="3.5　逐步划分上下文　　29"></a>3.5　逐步划分上下文　　29</h2><h2 id="3-6-关于业务概念的沟通-30"><a href="#3-6-关于业务概念的沟通-30" class="headerlink" title="3.6　关于业务概念的沟通　　30"></a>3.6　关于业务概念的沟通　　30</h2><h2 id="3-7-技术边界-30"><a href="#3-7-技术边界-30" class="headerlink" title="3.7　技术边界　　30"></a>3.7　技术边界　　30</h2><h1 id="第4章-集成-32"><a href="#第4章-集成-32" class="headerlink" title="第4章　集成　　32"></a>第4章　集成　　32</h1><h2 id="4-1-寻找理想的集成技术-32"><a href="#4-1-寻找理想的集成技术-32" class="headerlink" title="4.1　寻找理想的集成技术　　32"></a>4.1　寻找理想的集成技术　　32</h2><p>4.1.1　避免破坏性修改　　32<br>4.1.2　保证API的技术无关性　　32<br>4.1.3　使你的服务易于消费方使用　　33<br>4.1.4　隐藏内部实现细节　　33</p>
+<h2 id="4-2-为用户创建接口-33"><a href="#4-2-为用户创建接口-33" class="headerlink" title="4.2　为用户创建接口　　33"></a>4.2　为用户创建接口　　33</h2><h2 id="4-3-共享数据库-33"><a href="#4-3-共享数据库-33" class="headerlink" title="4.3　共享数据库　　33"></a>4.3　共享数据库　　33</h2><h2 id="4-4-同步与异步-35"><a href="#4-4-同步与异步-35" class="headerlink" title="4.4　同步与异步　　35"></a>4.4　同步与异步　　35</h2><h2 id="4-5-编排与协同-35"><a href="#4-5-编排与协同-35" class="headerlink" title="4.5　编排与协同　　35"></a>4.5　编排与协同　　35</h2><h2 id="4-6-远程过程调用-38"><a href="#4-6-远程过程调用-38" class="headerlink" title="4.6　远程过程调用　　38"></a>4.6　远程过程调用　　38</h2><p>4.6.1　技术的耦合　　38<br>4.6.2　本地调用和远程调用并不相同　　39<br>4.6.3　脆弱性　　39<br>4.6.4　RPC很糟糕吗　　40</p>
+<h2 id="4-7-REST-41"><a href="#4-7-REST-41" class="headerlink" title="4.7　REST　　41"></a>4.7　REST　　41</h2><p>4.7.1　REST和HTTP　　41<br>4.7.2　超媒体作为程序状态的引擎　　42<br>4.7.3　JSON、XML还是其他　　44<br>4.7.4　留心过多的约定　　44<br>4.7.5　基于HTTP的REST的缺点　　45</p>
+<h2 id="4-8-实现基于事件的异步协作方式-46"><a href="#4-8-实现基于事件的异步协作方式-46" class="headerlink" title="4.8　实现基于事件的异步协作方式　　46"></a>4.8　实现基于事件的异步协作方式　　46</h2><p>4.8.1　技术选择　　46<br>4.8.2　异步架构的复杂性　　47</p>
+<h2 id="4-9-服务即状态机-48"><a href="#4-9-服务即状态机-48" class="headerlink" title="4.9　服务即状态机　　48"></a>4.9　服务即状态机　　48</h2><h2 id="4-10-响应式扩展-48"><a href="#4-10-响应式扩展-48" class="headerlink" title="4.10　响应式扩展　　48"></a>4.10　响应式扩展　　48</h2><h2 id="4-11-微服务世界中的DRY和代码重用的危险-49"><a href="#4-11-微服务世界中的DRY和代码重用的危险-49" class="headerlink" title="4.11　微服务世界中的DRY和代码重用的危险　　49"></a>4.11　微服务世界中的DRY和代码重用的危险　　49</h2><h2 id="4-12-按引用访问-50"><a href="#4-12-按引用访问-50" class="headerlink" title="4.12　按引用访问　　50"></a>4.12　按引用访问　　50</h2><h2 id="4-13-版本管理-51"><a href="#4-13-版本管理-51" class="headerlink" title="4.13　版本管理　　51"></a>4.13　版本管理　　51</h2><p>4.13.1　尽可能推迟　　51<br>4.13.2　及早发现破坏性修改　　52<br>4.13.3　使用语义化的版本管理　　53<br>4.13.4　不同的接口共存　　53<br>4.13.5　同时使用多个版本的服务　　54</p>
+<h2 id="4-14-用户界面-55"><a href="#4-14-用户界面-55" class="headerlink" title="4.14　用户界面　　55"></a>4.14　用户界面　　55</h2><p>4.14.1　走向数字化　　56<br>4.14.2　约束　　56<br>4.14.3　API组合　　57<br>4.14.4　UI片段的组合　　57<br>4.14.5　为前端服务的后端　　59<br>4.14.6　一种混合方式　　60</p>
+<h2 id="4-15-与第三方软件集成-61"><a href="#4-15-与第三方软件集成-61" class="headerlink" title="4.15　与第三方软件集成　　61"></a>4.15　与第三方软件集成　　61</h2><p>4.15.1　缺乏控制　　61<br>4.15.2　定制化　　62<br>4.15.3　意大利面式的集成　　62<br>4.15.4　在自己可控的平台进行定制化　　62<br>4.15.5　绞杀者模式　　64</p>
+<h1 id="第5章-分解单块系统-66"><a href="#第5章-分解单块系统-66" class="headerlink" title="第5章　分解单块系统　　66"></a>第5章　分解单块系统　　66</h1><h2 id="5-1-关键是接缝-66"><a href="#5-1-关键是接缝-66" class="headerlink" title="5.1　关键是接缝　　66"></a>5.1　关键是接缝　　66</h2><h2 id="5-2-分解MusicCorp-67"><a href="#5-2-分解MusicCorp-67" class="headerlink" title="5.2　分解MusicCorp　　67"></a>5.2　分解MusicCorp　　67</h2><h2 id="5-3-分解单块系统的原因-68"><a href="#5-3-分解单块系统的原因-68" class="headerlink" title="5.3　分解单块系统的原因　　68"></a>5.3　分解单块系统的原因　　68</h2><p>5.3.1　改变的速度　　68<br>5.3.2　团队结构　　68<br>5.3.3　安全　　68<br>5.3.4　技术　　68</p>
+<h2 id="5-4-杂乱的依赖-69"><a href="#5-4-杂乱的依赖-69" class="headerlink" title="5.4　杂乱的依赖　　69"></a>5.4　杂乱的依赖　　69</h2><h2 id="5-5-数据库-69"><a href="#5-5-数据库-69" class="headerlink" title="5.5　数据库　　69"></a>5.5　数据库　　69</h2><h2 id="5-6-找到问题的关键-69"><a href="#5-6-找到问题的关键-69" class="headerlink" title="5.6　找到问题的关键　　69"></a>5.6　找到问题的关键　　69</h2><p>5.7　例子：打破外键关系　　70<br>5.8　例子：共享静态数据　　71<br>5.9　例子：共享数据　　72<br>5.10　例子：共享表　　73</p>
+<h2 id="5-11-重构数据库-74"><a href="#5-11-重构数据库-74" class="headerlink" title="5.11　重构数据库　　74"></a>5.11　重构数据库　　74</h2><p>《数据库重构》</p>
+<h2 id="5-12-事务边界-75"><a href="#5-12-事务边界-75" class="headerlink" title="5.12　事务边界　　75"></a>5.12　事务边界　　75</h2><p>5.12.1　再试一次　　76<br>5.12.2　终止整个操作　　77<br>5.12.3　分布式事务　　77<br>5.12.4　应该怎么办呢　　78</p>
+<h2 id="5-13-报告-78"><a href="#5-13-报告-78" class="headerlink" title="5.13　报告　　78"></a>5.13　报告　　78</h2><h2 id="5-14-报告数据库-78"><a href="#5-14-报告数据库-78" class="headerlink" title="5.14　报告数据库　　78"></a>5.14　报告数据库　　78</h2><h2 id="5-15-通过服务调用来获取数据-80"><a href="#5-15-通过服务调用来获取数据-80" class="headerlink" title="5.15　通过服务调用来获取数据　　80"></a>5.15　通过服务调用来获取数据　　80</h2><h2 id="5-16-数据导出-81"><a href="#5-16-数据导出-81" class="headerlink" title="5.16　数据导出　　81"></a>5.16　数据导出　　81</h2><h2 id="5-17-事件数据导出-82"><a href="#5-17-事件数据导出-82" class="headerlink" title="5.17　事件数据导出　　82"></a>5.17　事件数据导出　　82</h2><h2 id="5-18-数据导出的备份-83"><a href="#5-18-数据导出的备份-83" class="headerlink" title="5.18　数据导出的备份　　83"></a>5.18　数据导出的备份　　83</h2><h2 id="5-19-走向实时-84"><a href="#5-19-走向实时-84" class="headerlink" title="5.19　走向实时　　84"></a>5.19　走向实时　　84</h2><h2 id="5-20-修改的代价-84"><a href="#5-20-修改的代价-84" class="headerlink" title="5.20　修改的代价　　84"></a>5.20　修改的代价　　84</h2><h2 id="5-21-理解根本原因-84"><a href="#5-21-理解根本原因-84" class="headerlink" title="5.21　理解根本原因　　84"></a>5.21　理解根本原因　　84</h2><h1 id="第6章-部署-86"><a href="#第6章-部署-86" class="headerlink" title="第6章　部署　　86"></a>第6章　部署　　86</h1><h2 id="6-1-持续集成简介-86"><a href="#6-1-持续集成简介-86" class="headerlink" title="6.1　持续集成简介　　86"></a>6.1　持续集成简介　　86</h2><h2 id="6-2-把持续集成映射到微服务-87"><a href="#6-2-把持续集成映射到微服务-87" class="headerlink" title="6.2　把持续集成映射到微服务　　87"></a>6.2　把持续集成映射到微服务　　87</h2><h2 id="6-3-构建流水线和持续交付-90"><a href="#6-3-构建流水线和持续交付-90" class="headerlink" title="6.3　构建流水线和持续交付　　90"></a>6.3　构建流水线和持续交付　　90</h2><h2 id="6-4-平台特定的构建物-91"><a href="#6-4-平台特定的构建物-91" class="headerlink" title="6.4　平台特定的构建物　　91"></a>6.4　平台特定的构建物　　91</h2><h2 id="6-5-操作系统构建物-92"><a href="#6-5-操作系统构建物-92" class="headerlink" title="6.5　操作系统构建物　　92"></a>6.5　操作系统构建物　　92</h2><h2 id="6-6-定制化镜像-93"><a href="#6-6-定制化镜像-93" class="headerlink" title="6.6　定制化镜像　　93"></a>6.6　定制化镜像　　93</h2><p>6.6.1　将镜像作为构建物　　94<br>6.6.2　不可变服务器　　95</p>
+<h2 id="6-7-环境-95"><a href="#6-7-环境-95" class="headerlink" title="6.7　环境　　95"></a>6.7　环境　　95</h2><h2 id="6-8-服务配置-96"><a href="#6-8-服务配置-96" class="headerlink" title="6.8　服务配置　　96"></a>6.8　服务配置　　96</h2><h2 id="6-9-服务与主机之间的映射-97"><a href="#6-9-服务与主机之间的映射-97" class="headerlink" title="6.9　服务与主机之间的映射　　97"></a>6.9　服务与主机之间的映射　　97</h2><p>6.9.1　单主机多服务　　97<br>6.9.2　应用程序容器　　99<br>6.9.3　每个主机一个服务　　100<br>6.9.4　平台即服务　　101</p>
+<h2 id="6-10-自动化-101"><a href="#6-10-自动化-101" class="headerlink" title="6.10　自动化　　101"></a>6.10　自动化　　101</h2><h2 id="6-11-从物理机到虚拟机-102"><a href="#6-11-从物理机到虚拟机-102" class="headerlink" title="6.11　从物理机到虚拟机　　102"></a>6.11　从物理机到虚拟机　　102</h2><p>6.11.1　传统的虚拟化技术　　103<br>6.11.2　Vagrant　　104<br>6.11.3　Linux容器　　104<br>6.11.4　Docker　　106</p>
+<h2 id="6-12-一个部署接口-107"><a href="#6-12-一个部署接口-107" class="headerlink" title="6.12　一个部署接口　　107"></a>6.12　一个部署接口　　107</h2><p>参数化的命令行调用是出发任何部署的最合理方式</p>
+<h1 id="第7章-测试-110"><a href="#第7章-测试-110" class="headerlink" title="第7章　测试　　110"></a>第7章　测试　　110</h1><h2 id="7-1-测试类型-110"><a href="#7-1-测试类型-110" class="headerlink" title="7.1　测试类型　　110"></a>7.1　测试类型　　110</h2><p><img src="1.png" alt></p>
+<h2 id="7-2-测试范围-111"><a href="#7-2-测试范围-111" class="headerlink" title="7.2　测试范围　　111"></a>7.2　测试范围　　111</h2><p>测试金字塔<br><img src="2.png" alt><br>7.2.1　单元测试　　112<br>TDD(Test Drivern Design)<br>7.2.2　服务测试　　113<br>7.2.3　端到端测试　 114<br>7.2.4　权衡　　114<br>7.2.5　比例　　115</p>
+<h2 id="7-3-实现服务测试-115"><a href="#7-3-实现服务测试-115" class="headerlink" title="7.3　实现服务测试　　115"></a>7.3　实现服务测试　　115</h2><p>7.3.1　mock还是打桩　　115<br>7.3.2　智能的打桩服务　　116</p>
+<h2 id="7-4-微妙的端到端测试-117"><a href="#7-4-微妙的端到端测试-117" class="headerlink" title="7.4　微妙的端到端测试　　117"></a>7.4　微妙的端到端测试　　117</h2><h2 id="7-5-端到端测试的缺点-118"><a href="#7-5-端到端测试的缺点-118" class="headerlink" title="7.5　端到端测试的缺点　　118"></a>7.5　端到端测试的缺点　　118</h2><h2 id="7-6-脆弱的测试-118"><a href="#7-6-脆弱的测试-118" class="headerlink" title="7.6　脆弱的测试　　118"></a>7.6　脆弱的测试　　118</h2><p>7.6.1　谁来写这些测试　　119<br>7.6.2　测试多长时间　　119<br>7.6.3　大量的堆积　　120<br>7.6.4　元版本　　120</p>
+<h2 id="7-7-测试场景，而不是故事-121"><a href="#7-7-测试场景，而不是故事-121" class="headerlink" title="7.7　测试场景，而不是故事　　121"></a>7.7　测试场景，而不是故事　　121</h2><h2 id="7-8-拯救消费者驱动的测试-121"><a href="#7-8-拯救消费者驱动的测试-121" class="headerlink" title="7.8　拯救消费者驱动的测试　　121"></a>7.8　拯救消费者驱动的测试　　121</h2><p>7.8.1　Pact　　123<br>7.8.2　关于沟通　　124</p>
+<h2 id="7-9-还应该使用端到端测试吗-124"><a href="#7-9-还应该使用端到端测试吗-124" class="headerlink" title="7.9　还应该使用端到端测试吗　　124"></a>7.9　还应该使用端到端测试吗　　124</h2><h2 id="7-10-部署后再测试-125"><a href="#7-10-部署后再测试-125" class="headerlink" title="7.10　部署后再测试　　125"></a>7.10　部署后再测试　　125</h2><p>7.10.1　区分部署和上线　　125<br>7.10.2　金丝雀发布　　126<br>7.10.3　平均修复时间胜过平均故障间隔时间　　127</p>
+<h2 id="7-11-跨功能的测试-128"><a href="#7-11-跨功能的测试-128" class="headerlink" title="7.11　跨功能的测试　　128"></a>7.11　跨功能的测试　　128</h2><p>第8章　监控　　131<br>8.1　单一服务，单一服务器　　132<br>8.2　单一服务，多个服务器　　132<br>8.3　多个服务，多个服务器　　133<br>8.4　日志，日志，更多的日志　　134<br>8.5　多个服务的指标跟踪　　135<br>8.6　服务指标　　135<br>8.7　综合监控　　136<br>8.8　关联标识　　137<br>8.9　级联　　139<br>8.10　标准化　　139<br>8.11　考虑受众　　140<br>8.12　未来　　140<br>8.13　小结　　141<br>第9章　安全　　143<br>9.1　身份验证和授权　　143<br>9.1.1　常见的单点登录实现　　144<br>9.1.2　单点登录网关　　145<br>9.1.3　细粒度的授权　　146<br>9.2　服务间的身份验证和授权　　146<br>9.2.1　在边界内允许一切　　146<br>9.2.2　HTTP(S) 基本身份验证　　147<br>9.2.3　使用SAML或OpenID Connect　　148<br>9.2.4　客户端证书　　148<br>9.2.5　HTTP之上的HMAC　　149<br>9.2.6　API密钥　　149<br>9.2.7　代理问题　　150<br>9.3　静态数据的安全　　152<br>9.3.1　使用众所周知的加密算法　　152<br>9.3.2　一切皆与密钥相关　　153<br>9.3.3　选择你的目标　　153<br>9.3.4　按需解密　　153<br>9.3.5　加密备份　　153<br>9.4　深度防御　　154<br>9.4.1　防火墙　　154<br>9.4.2　日志　　154<br>9.4.3　入侵检测（和预防）系统　　154<br>9.4.4　网络隔离　　155<br>9.4.5　操作系统　　155<br>9.5　一个示例　　156<br>9.6　保持节俭　　158<br>9.7　人的因素　　158<br>9.8　黄金法则　　158<br>9.9　内建安全　　159<br>9.10　外部验证　　159<br>9.11　小结　　159<br>第10章　康威定律和系统设计　　161<br>10.1　证据　　161<br>10.1.1　松耦合组织和紧耦合组织　　162<br>10.1.2　Windows Vista　　162<br>10.2　Netflix和Amazon　　162<br>10.3　我们可以做什么　　163<br>10.4　适应沟通途径　　163<br>10.5　服务所有权　　164<br>10.6　共享服务的原因　　164<br>10.6.1　难以分割　　164<br>10.6.2　特性团队　　164<br>10.6.3　交付瓶颈　　165<br>10.7　内部开源　　166<br>10.7.1　守护者的角色　　166<br>10.7.2　成熟　　166<br>10.7.3　工具　　167<br>10.8　限界上下文和团队结构　　167<br>10.9　孤儿服务　　167<br>10.10　案例研究：RealEstate.com.au　　168<br>10.11　反向的康威定律　　169<br>10.12　人　　170<br>10.13　小结　　170<br>第11章　规模化微服务　　171<br>11.1　故障无处不在　　171<br>11.2　多少是太多　　172<br>11.3　功能降级　　173<br>11.4　架构性安全措施　　174<br>11.5　反脆弱的组织　　175<br>11.5.1　超时　　176<br>11.5.2　断路器　　176<br>11.5.3　舱壁　　178<br>11.5.4　隔离　　179<br>11.6　幂等　　179<br>11.7　扩展　　180<br>11.7.1　更强大的主机　　181<br>11.7.2　拆分负载　　181<br>11.7.3　分散风险　　181<br>11.7.4　负载均衡　　182<br>11.7.5　基于worker的系统　　184<br>11.7.6　重新设计　　184<br>11.8　扩展数据库　　185<br>11.8.1　服务的可用性和数据的持久性　　185<br>11.8.2　扩展读取　　185<br>11.8.3　扩展写操作　　186<br>11.8.4　共享数据库基础设施　　187<br>11.8.5　CQRS　　187<br>11.9　缓存　　188<br>11.9.1　客户端、 代理和服务器端缓存　　188<br>11.9.2　HTTP缓存　　189<br>11.9.3　为写使用缓存　　190<br>11.9.4　为弹性使用缓存　　190<br>11.9.5　隐藏源服务　　191<br>11.9.6　保持简单　　191<br>11.9.7　缓存中毒：一个警示　　192<br>11.10　自动伸缩　　192<br>11.11　CAP定理　　193<br>11.11.1　牺牲一致性　　194<br>11.11.2　牺牲可用性　　195<br>11.11.3　牺牲分区容忍性　　195<br>11.11.4　AP还是CP　　196<br>11.11.5　这不是全部或全不　　196<br>11.11.6　真实世界　　197<br>11.12　服务发现　　197<br>11.13　动态服务注册　　199<br>11.13.1　Zookeeper　　199<br>11.13.2　Consul　　200<br>11.13.4　构造你自己的系统　　201<br>11.13.5　别忘了人　　201<br>11.14　文档服务　　201<br>11.14.1　Swagger　　202<br>11.14.2　HAL 和HAL浏览器　　202<br>11.15　自描述系统　　203<br>11.16　小结　　203<br>第12章　总结　　204<br>12.1　微服务的原则　　204<br>12.1.1　围绕业务概念建模　　205<br>12.1.2　接受自动化文化　　205<br>12.1.3　隐藏内部实现细节　　205<br>12.1.4　让一切都去中心化　　206<br>12.1.5　可独立部署　　206<br>12.1.6　隔离失败　　206<br>12.1.7　高度可观察　　207<br>12.2　什么时候你不应该使用微服务　　207<br>12.3　临别赠言　　208<br>关于作者　　209<br>关于封面　　209</p>
+
+      </div>
+      
+        <br>
+        
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-09-10T19:57:17+08:00">
+  <a class='notlink'>
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p>更新于 2019年9月10日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/笔记/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>笔记</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://liyong.ac.cn/2017/10/10/微服务设计读书笔记/&title=微服务设计读书笔记 | 李永的博客&pics=https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/avatar/avatar.png&summary=第1章　微服务　　11.1　什么是微服务　　21.1.1　很小，专注于做好一件事　　21.1.2　自治性　　3
+1.2　主要好处　　31.2.1　技术异构性　　31.2.2　弹性　　41.2.3　扩展　　51.2.4　简化部署　　51.2.5　与组织结构相匹配　　61.2.6　可组合性　　61.2.7　对可替代性的优化　　6
+1.3　面向服务的架构　　71.4　其他分解技术　　71.4.1　共享库　　81.4.2　模块　　8
+1.5　没有银弹　　9"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://liyong.ac.cn/2017/10/10/微服务设计读书笔记/&title=微服务设计读书笔记 | 李永的博客&pics=https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/avatar/avatar.png&summary=第1章　微服务　　11.1　什么是微服务　　21.1.1　很小，专注于做好一件事　　21.1.2　自治性　　3
+1.2　主要好处　　31.2.1　技术异构性　　31.2.2　弹性　　41.2.3　扩展　　51.2.4　简化部署　　51.2.5　与组织结构相匹配　　61.2.6　可组合性　　61.2.7　对可替代性的优化　　6
+1.3　面向服务的架构　　71.4　其他分解技术　　71.4.1　共享库　　81.4.2　模块　　8
+1.5　没有银弹　　9"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="微博" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=https://liyong.ac.cn/2017/10/10/微服务设计读书笔记/&title=微服务设计读书笔记 | 李永的博客&pics=https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/avatar/avatar.png&summary=第1章　微服务　　11.1　什么是微服务　　21.1.1　很小，专注于做好一件事　　21.1.2　自治性　　3
+1.2　主要好处　　31.2.1　技术异构性　　31.2.2　弹性　　41.2.3　扩展　　51.2.4　简化部署　　51.2.5　与组织结构相匹配　　61.2.6　可组合性　　61.2.7　对可替代性的优化　　6
+1.3　面向服务的架构　　71.4　其他分解技术　　71.4.1　共享库　　81.4.2　模块　　8
+1.5　没有银弹　　9"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+      
+      
+          <div class="prev-next">
+              
+                  <section class="prev">
+                      <span class="art-item-left">
+                          <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
+                          <h4>
+                              <a href="/2017/10/18/spring/" rel="prev" title="spring">
+                                
+                                    spring
+                                
+                              </a>
+                          </h4>
+                          
+                              
+                              <h6 class="tags">
+                                  <a class="tag" href="/tags/spring/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> spring</a>
+                              </h6>
+                          
+                      </span>
+                  </section>
+              
+              
+                  <section class="next">
+                      <span class="art-item-right" aria-hidden="true">
+                          <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                          <h4>
+                              <a href="/2017/09/26/react资源/" rel="prev" title="react资源">
+                                  
+                                      react资源
+                                  
+                              </a>
+                          </h4>
+                          
+                      </span>
+                  </section>
+              
+          </div>
+      
+    </section>
+  </article>
+
+
+
+  <!-- 显示推荐文章和评论 -->
+
+
+
+  
+
+
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: '微服务设计读书笔记',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+    
+    
+      
+      
+        
+          
+          
+            
+              <section class='widget author'>
+  <div class='content pure'>
+    
+      <div class='avatar'>
+        <img class='avatar' src='https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/avatar/avatar.png'/>
+      </div>
+    
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="https://github.com/shanxiliyong"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget toc-wrapper'>
+    
+<header class='pure'>
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;本文目录</div>
+  
+    <!-- <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div> -->
+  
+</header>
+
+    <div class='content pure'>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#第1章-微服务-1"><span class="toc-text">第1章　微服务　　1</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-什么是微服务-2"><span class="toc-text">1.1　什么是微服务　　2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-主要好处-3"><span class="toc-text">1.2　主要好处　　3</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-面向服务的架构-7"><span class="toc-text">1.3　面向服务的架构　　7</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-其他分解技术-7"><span class="toc-text">1.4　其他分解技术　　7</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-5-没有银弹-9"><span class="toc-text">1.5　没有银弹　　9</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第2章-演化式架构师-11"><span class="toc-text">第2章　演化式架构师　　11</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-不准确的比较-11"><span class="toc-text">2.1　不准确的比较　　11</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-架构师的演化视角-12"><span class="toc-text">2.2　架构师的演化视角　　12</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-分区-14"><span class="toc-text">2.3　分区　　14</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-一个原则性的方法-15"><span class="toc-text">2.4　一个原则性的方法　　15</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-5-要求的标准-17"><span class="toc-text">2.5　要求的标准　　17</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-6-代码治理-18"><span class="toc-text">2.6　代码治理　　18</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-7-技术债务-20"><span class="toc-text">2.7　技术债务　　20</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-8-例外管理-21"><span class="toc-text">2.8　例外管理　　21</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-9-集中治理和领导-21"><span class="toc-text">2.9　集中治理和领导　　21</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-10-建设团队-22"><span class="toc-text">2.10　建设团队　　22</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第3章-如何建模服务-24"><span class="toc-text">第3章　如何建模服务　　24</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-MusicCorp简介-24"><span class="toc-text">3.1　MusicCorp简介　　24</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-什么样的服务是好服务-25"><span class="toc-text">3.2　什么样的服务是好服务　　25</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-限界上下文-26"><span class="toc-text">3.3　限界上下文　　26</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-4-业务功能-28"><span class="toc-text">3.4　业务功能　　28</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-5-逐步划分上下文-29"><span class="toc-text">3.5　逐步划分上下文　　29</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-6-关于业务概念的沟通-30"><span class="toc-text">3.6　关于业务概念的沟通　　30</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-7-技术边界-30"><span class="toc-text">3.7　技术边界　　30</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第4章-集成-32"><span class="toc-text">第4章　集成　　32</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-寻找理想的集成技术-32"><span class="toc-text">4.1　寻找理想的集成技术　　32</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-为用户创建接口-33"><span class="toc-text">4.2　为用户创建接口　　33</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3-共享数据库-33"><span class="toc-text">4.3　共享数据库　　33</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-4-同步与异步-35"><span class="toc-text">4.4　同步与异步　　35</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-5-编排与协同-35"><span class="toc-text">4.5　编排与协同　　35</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-6-远程过程调用-38"><span class="toc-text">4.6　远程过程调用　　38</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-7-REST-41"><span class="toc-text">4.7　REST　　41</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-8-实现基于事件的异步协作方式-46"><span class="toc-text">4.8　实现基于事件的异步协作方式　　46</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-9-服务即状态机-48"><span class="toc-text">4.9　服务即状态机　　48</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-10-响应式扩展-48"><span class="toc-text">4.10　响应式扩展　　48</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-11-微服务世界中的DRY和代码重用的危险-49"><span class="toc-text">4.11　微服务世界中的DRY和代码重用的危险　　49</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-12-按引用访问-50"><span class="toc-text">4.12　按引用访问　　50</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-13-版本管理-51"><span class="toc-text">4.13　版本管理　　51</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-14-用户界面-55"><span class="toc-text">4.14　用户界面　　55</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-15-与第三方软件集成-61"><span class="toc-text">4.15　与第三方软件集成　　61</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第5章-分解单块系统-66"><span class="toc-text">第5章　分解单块系统　　66</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-1-关键是接缝-66"><span class="toc-text">5.1　关键是接缝　　66</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-2-分解MusicCorp-67"><span class="toc-text">5.2　分解MusicCorp　　67</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-3-分解单块系统的原因-68"><span class="toc-text">5.3　分解单块系统的原因　　68</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-4-杂乱的依赖-69"><span class="toc-text">5.4　杂乱的依赖　　69</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-5-数据库-69"><span class="toc-text">5.5　数据库　　69</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-6-找到问题的关键-69"><span class="toc-text">5.6　找到问题的关键　　69</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-11-重构数据库-74"><span class="toc-text">5.11　重构数据库　　74</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-12-事务边界-75"><span class="toc-text">5.12　事务边界　　75</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-13-报告-78"><span class="toc-text">5.13　报告　　78</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-14-报告数据库-78"><span class="toc-text">5.14　报告数据库　　78</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-15-通过服务调用来获取数据-80"><span class="toc-text">5.15　通过服务调用来获取数据　　80</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-16-数据导出-81"><span class="toc-text">5.16　数据导出　　81</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-17-事件数据导出-82"><span class="toc-text">5.17　事件数据导出　　82</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-18-数据导出的备份-83"><span class="toc-text">5.18　数据导出的备份　　83</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-19-走向实时-84"><span class="toc-text">5.19　走向实时　　84</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-20-修改的代价-84"><span class="toc-text">5.20　修改的代价　　84</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-21-理解根本原因-84"><span class="toc-text">5.21　理解根本原因　　84</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第6章-部署-86"><span class="toc-text">第6章　部署　　86</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#6-1-持续集成简介-86"><span class="toc-text">6.1　持续集成简介　　86</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-2-把持续集成映射到微服务-87"><span class="toc-text">6.2　把持续集成映射到微服务　　87</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-3-构建流水线和持续交付-90"><span class="toc-text">6.3　构建流水线和持续交付　　90</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-4-平台特定的构建物-91"><span class="toc-text">6.4　平台特定的构建物　　91</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-5-操作系统构建物-92"><span class="toc-text">6.5　操作系统构建物　　92</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-6-定制化镜像-93"><span class="toc-text">6.6　定制化镜像　　93</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-7-环境-95"><span class="toc-text">6.7　环境　　95</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-8-服务配置-96"><span class="toc-text">6.8　服务配置　　96</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-9-服务与主机之间的映射-97"><span class="toc-text">6.9　服务与主机之间的映射　　97</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-10-自动化-101"><span class="toc-text">6.10　自动化　　101</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-11-从物理机到虚拟机-102"><span class="toc-text">6.11　从物理机到虚拟机　　102</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-12-一个部署接口-107"><span class="toc-text">6.12　一个部署接口　　107</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第7章-测试-110"><span class="toc-text">第7章　测试　　110</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#7-1-测试类型-110"><span class="toc-text">7.1　测试类型　　110</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-2-测试范围-111"><span class="toc-text">7.2　测试范围　　111</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-3-实现服务测试-115"><span class="toc-text">7.3　实现服务测试　　115</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-4-微妙的端到端测试-117"><span class="toc-text">7.4　微妙的端到端测试　　117</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-5-端到端测试的缺点-118"><span class="toc-text">7.5　端到端测试的缺点　　118</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-6-脆弱的测试-118"><span class="toc-text">7.6　脆弱的测试　　118</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-7-测试场景，而不是故事-121"><span class="toc-text">7.7　测试场景，而不是故事　　121</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-8-拯救消费者驱动的测试-121"><span class="toc-text">7.8　拯救消费者驱动的测试　　121</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-9-还应该使用端到端测试吗-124"><span class="toc-text">7.9　还应该使用端到端测试吗　　124</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-10-部署后再测试-125"><span class="toc-text">7.10　部署后再测试　　125</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-11-跨功能的测试-128"><span class="toc-text">7.11　跨功能的测试　　128</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              <section class='widget grid'>
+  
+<header class='pure'>
+  <div><i class="fas fa-map-signs fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;站内导航</div>
+  
+</header>
+
+  <div class='content pure'>
+    <ul class="grid navgation">
+      
+        <li><a class="flat-box" title="/" href="/"
+          
+          
+          id="home">
+          
+            <i class="fas fa-clock fa-fw" aria-hidden="true"></i>
+          
+          博文
+        </a></li>
+      
+        <li><a class="flat-box" title="/blog/archives/" href="/blog/archives/"
+          
+            rel="nofollow"
+          
+          
+          id="blogarchives">
+          
+            <i class="fas fa-archive fa-fw" aria-hidden="true"></i>
+          
+          归档
+        </a></li>
+      
+        <li><a class="flat-box" title="/it123/" href="/it123/"
+          
+            rel="nofollow"
+          
+          
+          id="it123">
+          
+            <i class="fas fa-link fa-fw" aria-hidden="true"></i>
+          
+          IT123
+        </a></li>
+      
+        <li><a class="flat-box" title="/about/" href="/about/"
+          
+            rel="nofollow"
+          
+          
+          id="about">
+          
+            <i class="fas fa-info-circle fa-fw" aria-hidden="true"></i>
+          
+          关于
+        </a></li>
+      
+    </ul>
+  </div>
+</section>
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget category'>
+    
+<header class='pure'>
+  <div><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;文章分类</div>
+  
+    <a class="rightBtn"
+    
+      rel="nofollow"
+    
+    
+    href="/blog/categories/"
+    title="blog/categories/">
+    <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
+  
+</header>
+
+    <div class='content pure'>
+      <ul class="entry">
+        
+          <li><a class="flat-box" title="/categories/Java资源大全/" href="/categories/Java资源大全/"><div class='name'>Java资源大全</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/algorithm/" href="/categories/algorithm/"><div class='name'>algorithm</div><div class='badge'>(30)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/db/" href="/categories/db/"><div class='name'>db</div><div class='badge'>(27)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/docker/" href="/categories/docker/"><div class='name'>docker</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/ee/" href="/categories/ee/"><div class='name'>ee</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/git/" href="/categories/git/"><div class='name'>git</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/idea/" href="/categories/idea/"><div class='name'>idea</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/javadoc/" href="/categories/javadoc/"><div class='name'>javadoc</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/linux/" href="/categories/linux/"><div class='name'>linux</div><div class='badge'>(11)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/log/" href="/categories/log/"><div class='name'>log</div><div class='badge'>(3)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/maven/" href="/categories/maven/"><div class='name'>maven</div><div class='badge'>(4)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/methodology/" href="/categories/methodology/"><div class='name'>methodology</div><div class='badge'>(3)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/middleware/" href="/categories/middleware/"><div class='name'>middleware</div><div class='badge'>(5)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/ms/" href="/categories/ms/"><div class='name'>ms</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/mybatis/" href="/categories/mybatis/"><div class='name'>mybatis</div><div class='badge'>(11)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/netty/" href="/categories/netty/"><div class='name'>netty</div><div class='badge'>(3)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/nio/" href="/categories/nio/"><div class='name'>nio</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/other/" href="/categories/other/"><div class='name'>other</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/se/" href="/categories/se/"><div class='name'>se</div><div class='badge'>(67)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/spring/" href="/categories/spring/"><div class='name'>spring</div><div class='badge'>(14)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/standard/" href="/categories/standard/"><div class='name'>standard</div><div class='badge'>(5)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/storm/" href="/categories/storm/"><div class='name'>storm</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/thread/" href="/categories/thread/"><div class='name'>thread</div><div class='badge'>(3)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/tool/" href="/categories/tool/"><div class='name'>tool</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/uml/" href="/categories/uml/"><div class='name'>uml</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/web/" href="/categories/web/"><div class='name'>web</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/工具/" href="/categories/工具/"><div class='name'>工具</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/方法论/" href="/categories/方法论/"><div class='name'>方法论</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/死磕/" href="/categories/死磕/"><div class='name'>死磕</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/设计模式/" href="/categories/设计模式/"><div class='name'>设计模式</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/项目管理/" href="/categories/项目管理/"><div class='name'>项目管理</div><div class='badge'>(1)</div></a></li>
+        
+      </ul>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget tagcloud'>
+    
+<header class='pure'>
+  <div><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;热门标签</div>
+  
+    <a class="rightBtn"
+    
+      rel="nofollow"
+    
+    
+    href="/blog/tags/"
+    title="blog/tags/">
+    <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
+  
+</header>
+
+    <div class='content pure'>
+      <a href="/tags/Java资源大全/" style="font-size: 14px; color: #999">Java资源大全</a> <a href="/tags/OAuth2/" style="font-size: 14.77px; color: #949494">OAuth2</a> <a href="/tags/algorithm/" style="font-size: 23.23px; color: #5a5a5a">algorithm</a> <a href="/tags/annotation/" style="font-size: 14px; color: #999">annotation</a> <a href="/tags/boot/" style="font-size: 14px; color: #999">boot</a> <a href="/tags/builder/" style="font-size: 14px; color: #999">builder</a> <a href="/tags/cache/" style="font-size: 14px; color: #999">cache</a> <a href="/tags/cloud/" style="font-size: 14px; color: #999">cloud</a> <a href="/tags/code/" style="font-size: 14px; color: #999">code</a> <a href="/tags/concurrent/" style="font-size: 20.15px; color: #6f6f6f">concurrent</a> <a href="/tags/db/" style="font-size: 22.46px; color: #5f5f5f">db</a> <a href="/tags/docker/" style="font-size: 14px; color: #999">docker</a> <a href="/tags/ee/" style="font-size: 14px; color: #999">ee</a> <a href="/tags/gc/" style="font-size: 15.54px; color: #8f8f8f">gc</a> <a href="/tags/git/" style="font-size: 14px; color: #999">git</a> <a href="/tags/id/" style="font-size: 14px; color: #999">id</a> <a href="/tags/idea/" style="font-size: 14px; color: #999">idea</a> <a href="/tags/jdbc/" style="font-size: 14px; color: #999">jdbc</a> <a href="/tags/jmm/" style="font-size: 14px; color: #999">jmm</a> <a href="/tags/jvm/" style="font-size: 21.69px; color: #656565">jvm</a> <a href="/tags/lifecycle/" style="font-size: 14.77px; color: #949494">lifecycle</a> <a href="/tags/linux/" style="font-size: 18.62px; color: #7a7a7a">linux</a> <a href="/tags/lock/" style="font-size: 15.54px; color: #8f8f8f">lock</a> <a href="/tags/log/" style="font-size: 14px; color: #999">log</a> <a href="/tags/log4j2/" style="font-size: 14.77px; color: #949494">log4j2</a> <a href="/tags/mapper/" style="font-size: 14px; color: #999">mapper</a> <a href="/tags/maven/" style="font-size: 16.31px; color: #898989">maven</a> <a href="/tags/memory/" style="font-size: 17.85px; color: #7f7f7f">memory</a> <a href="/tags/methodology/" style="font-size: 15.54px; color: #8f8f8f">methodology</a> <a href="/tags/middleware/" style="font-size: 17.08px; color: #848484">middleware</a> <a href="/tags/mvc/" style="font-size: 14.77px; color: #949494">mvc</a> <a href="/tags/mybatis/" style="font-size: 19.38px; color: #747474">mybatis</a> <a href="/tags/mysql/" style="font-size: 20.92px; color: #6a6a6a">mysql</a> <a href="/tags/netty/" style="font-size: 15.54px; color: #8f8f8f">netty</a> <a href="/tags/nio/" style="font-size: 14.77px; color: #949494">nio</a> <a href="/tags/oracle/" style="font-size: 17.08px; color: #848484">oracle</a> <a href="/tags/other/" style="font-size: 14px; color: #999">other</a> <a href="/tags/plugin/" style="font-size: 15.54px; color: #8f8f8f">plugin</a> <a href="/tags/plugins/" style="font-size: 14px; color: #999">plugins</a> <a href="/tags/redis/" style="font-size: 16.31px; color: #898989">redis</a> <a href="/tags/reflect/" style="font-size: 14.77px; color: #949494">reflect</a> <a href="/tags/return/" style="font-size: 14px; color: #999">return</a> <a href="/tags/se/" style="font-size: 24px; color: #555">se</a> <a href="/tags/select/" style="font-size: 14px; color: #999">select</a> <a href="/tags/source/" style="font-size: 16.31px; color: #898989">source</a> <a href="/tags/spring/" style="font-size: 18.62px; color: #7a7a7a">spring</a> <a href="/tags/sso/" style="font-size: 14.77px; color: #949494">sso</a> <a href="/tags/standard/" style="font-size: 17.08px; color: #848484">standard</a> <a href="/tags/storm/" style="font-size: 14px; color: #999">storm</a> <a href="/tags/thread/" style="font-size: 15.54px; color: #8f8f8f">thread</a> <a href="/tags/tool/" style="font-size: 14px; color: #999">tool</a> <a href="/tags/uml/" style="font-size: 14px; color: #999">uml</a> <a href="/tags/url/" style="font-size: 14px; color: #999">url</a> <a href="/tags/web/" style="font-size: 14px; color: #999">web</a> <a href="/tags/zk/" style="font-size: 14.77px; color: #949494">zk</a> <a href="/tags/域名解析/" style="font-size: 14px; color: #999">域名解析</a> <a href="/tags/工具/" style="font-size: 14px; color: #999">工具</a> <a href="/tags/性能调优/" style="font-size: 14.77px; color: #949494">性能调优</a> <a href="/tags/指令/" style="font-size: 14px; color: #999">指令</a> <a href="/tags/方法论/" style="font-size: 14.77px; color: #949494">方法论</a> <a href="/tags/源码分析/" style="font-size: 16.31px; color: #898989">源码分析</a> <a href="/tags/笔记/" style="font-size: 14px; color: #999">笔记</a> <a href="/tags/编码/" style="font-size: 15.54px; color: #8f8f8f">编码</a> <a href="/tags/虚拟机/" style="font-size: 14px; color: #999">虚拟机</a> <a href="/tags/设计模式/" style="font-size: 16.31px; color: #898989">设计模式</a> <a href="/tags/项目管理/" style="font-size: 14px; color: #999">项目管理</a>
+    </div>
+  </section>
+
+
+            
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+    
+
+  
+</aside>
+
+<footer id="footer" class="clearfix">
+  
+  
+    <div class="social-wrapper">
+      
+        
+          <a href="https://github.com/shanxiliyong"
+            class="social fab fa-github flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+    </div>
+  
+  <br>
+  <div><p>© 2019 Lee IT界的郭靖</p>
+</div>
+</footer>
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+
+  <script>
+    var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+    var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+    var ALGOLIA_API_KEY = "";
+    var ALGOLIA_APP_ID = "";
+    var ALGOLIA_INDEX_NAME = "";
+    var AZURE_SERVICE_NAME = "";
+    var AZURE_INDEX_NAME = "";
+    var AZURE_QUERY_KEY = "";
+    var BAIDU_API_ID = "";
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/"||"/";
+    if(!ROOT.endsWith('/'))ROOT += '/';
+  </script>
+
+<script src="//instant.page/1.2.2" type="module" integrity="sha384-2xV8M5griQmzyiY3CDqh1dn4z3llDVqZDqzjzcY+jCBCk/a5fXJmuZ/40JJAPeoU"></script>
+
+
+  <script async src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      const $reveal = $('.reveal');
+      if ($reveal.length === 0) return;
+      const sr = ScrollReveal({ distance: 0 });
+      sr.reveal('.reveal');
+    });
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+  
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        if ('.cover') {
+          $('.cover').backstretch(
+          ["https://img.vim-cn.com/29/91197b04c13f512f734a76d4ac422d89dbe229.jpg"],
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        } else {
+          $.backstretch(
+          ["https://img.vim-cn.com/29/91197b04c13f512f734a76d4ac422d89dbe229.jpg"],
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.9/js/app.js"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.9/js/search.js"></script>
+
+
+
+
+<!-- 复制 -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  let COPY_SUCCESS = "复制成功";
+  let COPY_FAILURE = "复制失败";
+  /*页面载入完成后，创建复制按钮*/
+  !function (e, t, a) {
+    /* code */
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '  <i class="fa fa-copy"></i><span>复制</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+
+      clipboard.on('success', function(e) {
+        //您可以加入成功提示
+        console.info('Action:', e.action);
+        console.info('Text:', e.text);
+        console.info('Trigger:', e.trigger);
+        success_prompt(COPY_SUCCESS);
+        e.clearSelection();
+      });
+      clipboard.on('error', function(e) {
+        //您可以加入失败提示
+        console.error('Action:', e.action);
+        console.error('Trigger:', e.trigger);
+        fail_prompt(COPY_FAILURE);
+      });
+    }
+    initCopyCode();
+
+  }(window, document);
+
+  /**
+   * 弹出式提示框，默认1.5秒自动消失
+   * @param message 提示信息
+   * @param style 提示样式，有alert-success、alert-danger、alert-warning、alert-info
+   * @param time 消失时间
+   */
+  var prompt = function (message, style, time)
+  {
+      style = (style === undefined) ? 'alert-success' : style;
+      time = (time === undefined) ? 1500 : time*1000;
+      $('<div>')
+          .appendTo('body')
+          .addClass('alert ' + style)
+          .html(message)
+          .show()
+          .delay(time)
+          .fadeOut();
+  };
+
+  // 成功提示
+  var success_prompt = function(message, time)
+  {
+      prompt(message, 'alert-success', time);
+  };
+
+  // 失败提示
+  var fail_prompt = function(message, time)
+  {
+      prompt(message, 'alert-danger', time);
+  };
+
+  // 提醒
+  var warning_prompt = function(message, time)
+  {
+      prompt(message, 'alert-warning', time);
+  };
+
+  // 信息提示
+  var info_prompt = function(message, time)
+  {
+      prompt(message, 'alert-info', time);
+  };
+
+</script>
+
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>
