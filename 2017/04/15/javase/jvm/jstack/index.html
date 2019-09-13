@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>jstack | 李永的博客</title>
+  
+  <meta name="keywords" content="李永">
+  
+  
+
+  
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- meta -->
+  
+  
+  <meta name="theme-color" content="#FFFFFF">
+  <meta name="msapplication-TileColor" content="#1BC3FB">
+  <meta name="msapplication-config" content="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-favicon@19.9.6/browserconfig.xml">
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.10.1/css/all.min.css">
+  
+  
+  <link rel="shortcut icon" type="image/x-icon" href="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-favicon@19.9.6/favicon.ico">
+  <link rel="icon" type="image/x-icon" sizes="32x32" href="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-favicon@19.9.6/favicon-32x32.png">
+  <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-favicon@19.9.6/apple-touch-icon.png">
+  <link rel="mask-icon" color="#1BC3FB" href="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-favicon@19.9.6/safari-pinned-tab.svg">
+  <link rel="manifest" href="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-favicon@19.9.6/site.webmanifest">
+  
+
+  
+  <link rel="shortcut icon" type="image/x-icon" href="https://cdn.jsdelivr.net/gh/xaoxuu/assets@master/favicon/favicon.ico">
+  
+
+  
+    <link rel="stylesheet" href="/style.css">
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+  
+  
+  <div class="cover-wrapper">
+    <cover class='cover post half'>
+      
+        
+  <h1 class='title'>LEE</h1>
+
+
+  <div class="m_search">
+    <form name="searchform" class="form u-search-form">
+      <input type="text" class="input u-search-input" placeholder="" />
+      <i class="icon fas fa-search fa-fw"></i>
+    </form>
+  </div>
+
+<div class='menu navgation'>
+  <ul class='h-list'>
+    
+      
+        <li>
+          <a class="nav home" href="/"
+            
+            
+            id="home">
+            <i class='fas fa-rss fa-fw'></i>&nbsp;博文
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/it123/"
+            
+            
+            id="it123">
+            <i class='fas fa-link fa-fw'></i>&nbsp;IT123
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/projects/"
+            
+              rel="nofollow"
+            
+            
+            id="projects">
+            <i class='fas fa-code-branch fa-fw'></i>&nbsp;项目
+          </a>
+        </li>
+      
+        <li>
+          <a class="nav home" href="/about/"
+            
+              rel="nofollow"
+            
+            
+            id="about">
+            <i class='fas fa-info-circle fa-fw'></i>&nbsp;关于
+          </a>
+        </li>
+      
+    
+  </ul>
+</div>
+
+      
+    </cover>
+    <header class="l_header pure">
+  <div id="loading-bar-wrapper">
+    <div id="loading-bar" class="pure"></div>
+  </div>
+
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+      <a class="logo flat-box" href='/' >
+        
+          李永的博客
+        
+      </a>
+			<div class='menu navgation'>
+				<ul class='h-list'>
+          
+  					
+  						<li>
+								<a class="nav flat-box" href="/it123"
+                  
+                  
+                  id="it123">
+									<i class='fas fa-grin fa-fw'></i>&nbsp;IT123
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/blog/categories"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="blogcategories">
+									<i class='fas fa-folder-open fa-fw'></i>&nbsp;分类
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/blog/tags"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="blogtags">
+									<i class='fas fa-hashtag fa-fw'></i>&nbsp;标签
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/archives"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="archives">
+									<i class='fas fa-archive fa-fw'></i>&nbsp;归档
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/about/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="about">
+									<i class='fas fa-info-circle fa-fw'></i>&nbsp;关于
+								</a>
+							</li>
+      			
+      		
+				</ul>
+			</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="搜索" />
+						<i class="icon fas fa-search fa-fw"></i>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fas fa-search fa-fw" href='javascript:void(0)'></a></li>
+				
+				<li class='s-menu'><a class="fas fa-bars fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo flat-box"></a>
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a class="flat-btn fas fa-comments fa-fw" href='javascript:void(0)'></a></li>
+        
+          <li class='s-toc'><a class="flat-btn fas fa-list fa-fw" href='javascript:void(0)'></a></li>
+        
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+    <header>
+		<nav class="menu navgation">
+      <ul>
+        
+          
+            <li>
+							<a class="nav flat-box" href="/it123"
+                
+                
+                id="it123">
+								<i class='fas fa-grin fa-fw'></i>&nbsp;IT123
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/blog/categories"
+                
+                  rel="nofollow"
+                
+                
+                id="blogcategories">
+								<i class='fas fa-folder-open fa-fw'></i>&nbsp;分类
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/blog/tags"
+                
+                  rel="nofollow"
+                
+                
+                id="blogtags">
+								<i class='fas fa-hashtag fa-fw'></i>&nbsp;标签
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/archives"
+                
+                  rel="nofollow"
+                
+                
+                id="archives">
+								<i class='fas fa-archive fa-fw'></i>&nbsp;归档
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/about"
+                
+                  rel="nofollow"
+                
+                
+                id="about">
+								<i class='fas fa-info-circle fa-fw'></i>&nbsp;关于
+							</a>
+            </li>
+          
+       
+      </ul>
+		</nav>
+    </header>
+	</aside>
+<script>setLoadingBarProgress(40);</script>
+
+  </div>
+
+
+  <div class="l_body">
+    <div class='body-wrapper'>
+      <div class='l_main'>
+  
+
+  <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
+    
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/2017/04/15/javase/jvm/jstack/">
+        jstack
+      </a>
+    </h1>
+  
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://liyong.ac.cn" rel="nofollow">
+        
+          <img src="https://liyong.ac.cn/img/me.png">
+        
+        <p>李永</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2017-04-15</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/javase/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>javase</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class='notlink'>
+        <i class="fas fa-eye" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv">
+            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+          </span>
+        </p>
+      </a>
+    </div>
+  
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+    <section class="article typo">
+      <div class="article-entry" itemprop="articleBody">
+        <p>jstack主要用来查看某个Java进程内的线程堆栈信息。语法格式如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">jstack [option] pid</span><br><span class="line">jstack [option] executable core</span><br><span class="line">jstack [option] [server-id@]remote-hostname-or-ip</span><br></pre></td></tr></table></figure>
+
+<p> 命令行参数选项说明如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-l long listings，会打印出额外的锁信息，在发生死锁时可以用jstack -l pid来观察锁</span><br></pre></td></tr></table></figure>
+
+<p>1、jstack定位到堆栈信息<br>2、根据堆栈信息可以堆栈信息可以定位到具体代码，所以在JVM性能调优中使用的的相当多</p>
+<a id="more"></a>
+<h2 id="Java代码查看堆栈信息"><a href="#Java代码查看堆栈信息" class="headerlink" title="Java代码查看堆栈信息"></a>Java代码查看堆栈信息</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line"></span><br><span class="line">	Map&lt;Thread, StackTraceElement[]&gt; traces = Thread.getAllStackTraces();</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (Map.Entry&lt;Thread, StackTraceElement[]&gt; trace : traces.entrySet()) &#123;</span><br><span class="line">		Thread thread = trace.getKey();</span><br><span class="line">		<span class="keyword">if</span> (thread.equals(Thread.currentThread())) &#123;</span><br><span class="line">			<span class="keyword">continue</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">		sb.append(<span class="string">"线程 "</span> + thread.getName() + <span class="string">"\r\n"</span>);</span><br><span class="line">		<span class="keyword">for</span> (StackTraceElement element : trace.getValue()) &#123;</span><br><span class="line">			sb.append(<span class="string">"--"</span> + element + <span class="string">"\r\n"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println(sb);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      </div>
+      
+        <br>
+        
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-09-13T21:01:01+08:00">
+  <a class='notlink'>
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p>更新于 2019年9月13日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/性能调优/" rel="nofollow"><i class="fas fa-tag" aria-hidden="true"></i><p>性能调优</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://liyong.ac.cn/2017/04/15/javase/jvm/jstack/&title=jstack | 李永的博客&pics=https://liyong.ac.cn/img/me.png&summary=jstack主要用来查看某个Java进程内的线程堆栈信息。语法格式如下：
+123jstack [option] pidjstack [option] executable corejstack [option] [server-id@]remote-hostname-or-ip
+
+ 命令行参数选项说明如下：
+1-l long listings，会打印出额外的锁信息，在发生死锁时可以用jstack -l pid来观察锁
+
+1、jstack定位到堆栈信息2、根据堆栈信息可以堆栈信息可以定位到具体代码，所以在JVM性能调优中使用的的相当多"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://liyong.ac.cn/2017/04/15/javase/jvm/jstack/&title=jstack | 李永的博客&pics=https://liyong.ac.cn/img/me.png&summary=jstack主要用来查看某个Java进程内的线程堆栈信息。语法格式如下：
+123jstack [option] pidjstack [option] executable corejstack [option] [server-id@]remote-hostname-or-ip
+
+ 命令行参数选项说明如下：
+1-l long listings，会打印出额外的锁信息，在发生死锁时可以用jstack -l pid来观察锁
+
+1、jstack定位到堆栈信息2、根据堆栈信息可以堆栈信息可以定位到具体代码，所以在JVM性能调优中使用的的相当多"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="微博" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=https://liyong.ac.cn/2017/04/15/javase/jvm/jstack/&title=jstack | 李永的博客&pics=https://liyong.ac.cn/img/me.png&summary=jstack主要用来查看某个Java进程内的线程堆栈信息。语法格式如下：
+123jstack [option] pidjstack [option] executable corejstack [option] [server-id@]remote-hostname-or-ip
+
+ 命令行参数选项说明如下：
+1-l long listings，会打印出额外的锁信息，在发生死锁时可以用jstack -l pid来观察锁
+
+1、jstack定位到堆栈信息2、根据堆栈信息可以堆栈信息可以定位到具体代码，所以在JVM性能调优中使用的的相当多"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+      
+      
+          <div class="prev-next">
+              
+                  <section class="prev">
+                      <span class="art-item-left">
+                          <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
+                          <h4>
+                              <a href="/2017/04/15/javase/jvm/指令重排序/" rel="prev" title="指令重排序">
+                                
+                                    指令重排序
+                                
+                              </a>
+                          </h4>
+                          
+                              
+                              <h6 class="tags">
+                                  <a class="tag" href="/tags/concurrent/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> concurrent</a> <a class="tag" href="/tags/性能调优/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> 性能调优</a>
+                              </h6>
+                          
+                      </span>
+                  </section>
+              
+              
+                  <section class="next">
+                      <span class="art-item-right" aria-hidden="true">
+                          <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                          <h4>
+                              <a href="/2017/04/15/javase/thread/ThreadGoup/" rel="prev" title="ThreadGoup">
+                                  
+                                      ThreadGoup
+                                  
+                              </a>
+                          </h4>
+                          
+                              
+                              <h6 class="tags">
+                                  <a class="tag" href="/tags/thread/"><i class="fas fa-tag fa-fw" aria-hidden="true"></i> thread</a>
+                              </h6>
+                          
+                      </span>
+                  </section>
+              
+          </div>
+      
+    </section>
+  </article>
+
+
+
+  <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box comments">
+    <section class="article typo">
+      <h4><i class="fas fa-comments fa-fw" aria-hidden="true"></i>&nbsp;评论</h4>
+      
+      
+      
+      
+        <section id="comments">
+          <div id="valine_container" class="valine_thread">
+            <i class="fas fa-spinner fa-spin fa-fw"></i>
+          </div>
+        </section>
+      
+    </section>
+  </article>
+
+
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: 'jstack',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+    
+    
+      
+      
+        
+          
+          
+            
+              <section class='widget author'>
+  <div class='content pure'>
+    
+      <div class='avatar'>
+        <img class='avatar' src='https://liyong.ac.cn/img/me.png'/>
+      </div>
+    
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="https://github.com/shanxiliyong"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget toc-wrapper'>
+    
+<header class='pure'>
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;本文目录</div>
+  
+    <!-- <div class='wrapper'><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div> -->
+  
+</header>
+
+    <div class='content pure'>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Java代码查看堆栈信息"><span class="toc-text">Java代码查看堆栈信息</span></a></li></ol>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              <section class='widget grid'>
+  
+<header class='pure'>
+  <div><i class="fas fa-map-signs fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;站内导航</div>
+  
+</header>
+
+  <div class='content pure'>
+    <ul class="grid navgation">
+      
+        <li><a class="flat-box" title="/" href="/"
+          
+          
+          id="home">
+          
+            <i class="fas fa-clock fa-fw" aria-hidden="true"></i>
+          
+          博文
+        </a></li>
+      
+        <li><a class="flat-box" title="/archives" href="/archives"
+          
+            rel="nofollow"
+          
+          
+          id="archives">
+          
+            <i class="fas fa-archive fa-fw" aria-hidden="true"></i>
+          
+          归档
+        </a></li>
+      
+        <li><a class="flat-box" title="/it123/" href="/it123/"
+          
+            rel="nofollow"
+          
+          
+          id="it123">
+          
+            <i class="fas fa-link fa-fw" aria-hidden="true"></i>
+          
+          IT123
+        </a></li>
+      
+        <li><a class="flat-box" title="/about/" href="/about/"
+          
+            rel="nofollow"
+          
+          
+          id="about">
+          
+            <i class="fas fa-info-circle fa-fw" aria-hidden="true"></i>
+          
+          关于
+        </a></li>
+      
+    </ul>
+  </div>
+</section>
+
+            
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget category'>
+    
+<header class='pure'>
+  <div><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;文章分类</div>
+  
+    <a class="rightBtn"
+    
+      rel="nofollow"
+    
+    
+    href="/categories/"
+    title="categories/">
+    <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
+  
+</header>
+
+    <div class='content pure'>
+      <ul class="entry">
+        
+          <li><a class="flat-box" title="/categories/algorithm/" href="/categories/algorithm/"><div class='name'>algorithm</div><div class='badge'>(30)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/db/" href="/categories/db/"><div class='name'>db</div><div class='badge'>(25)</div></a></li>
+        
+          <li><a class="flat-box child" title="/categories/db/mysql/" href="/categories/db/mysql/"><div class='name'>mysql</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/javaee/" href="/categories/javaee/"><div class='name'>javaee</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/javase/" href="/categories/javase/"><div class='name'>javase</div><div class='badge'>(68)</div></a></li>
+        
+          <li><a class="flat-box child" title="/categories/javase/thread/" href="/categories/javase/thread/"><div class='name'>thread</div><div class='badge'>(15)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/linux/" href="/categories/linux/"><div class='name'>linux</div><div class='badge'>(11)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/log/" href="/categories/log/"><div class='name'>log</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/mybatis/" href="/categories/mybatis/"><div class='name'>mybatis</div><div class='badge'>(11)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/netty/" href="/categories/netty/"><div class='name'>netty</div><div class='badge'>(6)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/other/" href="/categories/other/"><div class='name'>other</div><div class='badge'>(3)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/spring/" href="/categories/spring/"><div class='name'>spring</div><div class='badge'>(6)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/storm/" href="/categories/storm/"><div class='name'>storm</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/thread/" href="/categories/thread/"><div class='name'>thread</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/tool/" href="/categories/tool/"><div class='name'>tool</div><div class='badge'>(7)</div></a></li>
+        
+          <li><a class="flat-box child" title="/categories/tool/mat/" href="/categories/tool/mat/"><div class='name'>mat</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box child" title="/categories/tool/maven/" href="/categories/tool/maven/"><div class='name'>maven</div><div class='badge'>(3)</div></a></li>
+        
+          <li><a class="flat-box child" title="/categories/tool/uml/" href="/categories/tool/uml/"><div class='name'>uml</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/vue/" href="/categories/vue/"><div class='name'>vue</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/web/" href="/categories/web/"><div class='name'>web</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/中间件/" href="/categories/中间件/"><div class='name'>中间件</div><div class='badge'>(5)</div></a></li>
+        
+          <li><a class="flat-box child" title="/categories/中间件/redis/" href="/categories/中间件/redis/"><div class='name'>redis</div><div class='badge'>(4)</div></a></li>
+        
+          <li><a class="flat-box child" title="/categories/中间件/zk/" href="/categories/中间件/zk/"><div class='name'>zk</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/方法论/" href="/categories/方法论/"><div class='name'>方法论</div><div class='badge'>(15)</div></a></li>
+        
+          <li><a class="flat-box child" title="/categories/方法论/规范/" href="/categories/方法论/规范/"><div class='name'>规范</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box child" title="/categories/方法论/设计/" href="/categories/方法论/设计/"><div class='name'>设计</div><div class='badge'>(8)</div></a></li>
+        
+      </ul>
+    </div>
+  </section>
+
+
+            
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+            
+              
+  <section class='widget tagcloud'>
+    
+<header class='pure'>
+  <div><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;热门标签</div>
+  
+    <a class="rightBtn"
+    
+      rel="nofollow"
+    
+    
+    href="/tags/"
+    title="tags/">
+    <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
+  
+</header>
+
+    <div class='content pure'>
+      <a href="/tags/algorithm/" style="font-size: 23.38px; color: #595959">algorithm</a> <a href="/tags/builder/" style="font-size: 14px; color: #999">builder</a> <a href="/tags/cache/" style="font-size: 14px; color: #999">cache</a> <a href="/tags/concurrent/" style="font-size: 15.25px; color: #919191">concurrent</a> <a href="/tags/db/" style="font-size: 22.13px; color: #626262">db</a> <a href="/tags/gc/" style="font-size: 15.25px; color: #919191">gc</a> <a href="/tags/id/" style="font-size: 14px; color: #999">id</a> <a href="/tags/javaee/" style="font-size: 14px; color: #999">javaee</a> <a href="/tags/javase/" style="font-size: 24px; color: #555">javase</a> <a href="/tags/jdbc/" style="font-size: 14px; color: #999">jdbc</a> <a href="/tags/jmm/" style="font-size: 14px; color: #999">jmm</a> <a href="/tags/jvm/" style="font-size: 22.75px; color: #5e5e5e">jvm</a> <a href="/tags/lifecycle/" style="font-size: 14px; color: #999">lifecycle</a> <a href="/tags/linux/" style="font-size: 19px; color: #777">linux</a> <a href="/tags/lock/" style="font-size: 14.63px; color: #959595">lock</a> <a href="/tags/log/" style="font-size: 14px; color: #999">log</a> <a href="/tags/log4j2/" style="font-size: 14px; color: #999">log4j2</a> <a href="/tags/mapper/" style="font-size: 14px; color: #999">mapper</a> <a href="/tags/maven/" style="font-size: 15.25px; color: #919191">maven</a> <a href="/tags/memory/" style="font-size: 17.13px; color: #848484">memory</a> <a href="/tags/mvc/" style="font-size: 14px; color: #999">mvc</a> <a href="/tags/mybatis/" style="font-size: 19.63px; color: #737373">mybatis</a> <a href="/tags/mysql/" style="font-size: 21.5px; color: #666">mysql</a> <a href="/tags/netty/" style="font-size: 16.5px; color: #888">netty</a> <a href="/tags/nio/" style="font-size: 15.25px; color: #919191">nio</a> <a href="/tags/oracle/" style="font-size: 15.88px; color: #8c8c8c">oracle</a> <a href="/tags/other/" style="font-size: 14.63px; color: #959595">other</a> <a href="/tags/plugin/" style="font-size: 14.63px; color: #959595">plugin</a> <a href="/tags/plugins/" style="font-size: 14px; color: #999">plugins</a> <a href="/tags/redis/" style="font-size: 15.88px; color: #8c8c8c">redis</a> <a href="/tags/reflect/" style="font-size: 14.63px; color: #959595">reflect</a> <a href="/tags/return/" style="font-size: 14px; color: #999">return</a> <a href="/tags/select/" style="font-size: 14px; color: #999">select</a> <a href="/tags/servlet/" style="font-size: 14px; color: #999">servlet</a> <a href="/tags/source/" style="font-size: 14px; color: #999">source</a> <a href="/tags/spring/" style="font-size: 17.75px; color: #808080">spring</a> <a href="/tags/storm/" style="font-size: 14px; color: #999">storm</a> <a href="/tags/thread/" style="font-size: 20.88px; color: #6a6a6a">thread</a> <a href="/tags/tool/" style="font-size: 15.25px; color: #919191">tool</a> <a href="/tags/uml/" style="font-size: 14px; color: #999">uml</a> <a href="/tags/url/" style="font-size: 14px; color: #999">url</a> <a href="/tags/vue/" style="font-size: 14px; color: #999">vue</a> <a href="/tags/zk/" style="font-size: 14px; color: #999">zk</a> <a href="/tags/中间件/" style="font-size: 16.5px; color: #888">中间件</a> <a href="/tags/性能调优/" style="font-size: 14.63px; color: #959595">性能调优</a> <a href="/tags/指令/" style="font-size: 14px; color: #999">指令</a> <a href="/tags/方法论/" style="font-size: 20.25px; color: #6f6f6f">方法论</a> <a href="/tags/源码分析/" style="font-size: 17.75px; color: #808080">源码分析</a> <a href="/tags/编码/" style="font-size: 15.25px; color: #919191">编码</a> <a href="/tags/虚拟机/" style="font-size: 14px; color: #999">虚拟机</a> <a href="/tags/规范/" style="font-size: 14.63px; color: #959595">规范</a> <a href="/tags/设计/" style="font-size: 18.38px; color: #7b7b7b">设计</a>
+    </div>
+  </section>
+
+
+            
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+      
+    
+
+  
+</aside>
+
+<footer id="footer" class="clearfix">
+  
+  
+    <div class="social-wrapper">
+      
+        
+          <a href="https://github.com/shanxiliyong"
+            class="social fab fa-github flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+    </div>
+  
+  <br>
+  <div><p>© 2019 Lee IT界的郭靖</p>
+</div>
+</footer>
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+
+  <script>
+    var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+    var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+    var ALGOLIA_API_KEY = "";
+    var ALGOLIA_APP_ID = "";
+    var ALGOLIA_INDEX_NAME = "";
+    var AZURE_SERVICE_NAME = "";
+    var AZURE_INDEX_NAME = "";
+    var AZURE_QUERY_KEY = "";
+    var BAIDU_API_ID = "";
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/"||"/";
+    if(!ROOT.endsWith('/'))ROOT += '/';
+  </script>
+
+<script src="//instant.page/1.2.2" type="module" integrity="sha384-2xV8M5griQmzyiY3CDqh1dn4z3llDVqZDqzjzcY+jCBCk/a5fXJmuZ/40JJAPeoU"></script>
+
+
+  <script async src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      const $reveal = $('.reveal');
+      if ($reveal.length === 0) return;
+      const sr = ScrollReveal({ distance: 0 });
+      sr.reveal('.reveal');
+    });
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+  
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        if ('.cover') {
+          $('.cover').backstretch(
+          ["https://img.vim-cn.com/29/91197b04c13f512f734a76d4ac422d89dbe229.jpg"],
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        } else {
+          $.backstretch(
+          ["https://img.vim-cn.com/29/91197b04c13f512f734a76d4ac422d89dbe229.jpg"],
+          {
+            duration: "6000",
+            fade: "2500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+    
+      <script src="/js/volantis.js"></script>
+    
+  
+  <script>
+  var GUEST_INFO = ['nick','mail','link'];
+  var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var notify = 'true' == true;
+  var verify = 'true' == true;
+  var valine = new Valine();
+  valine.init({
+    el: '#valine_container',
+    notify: notify,
+    verify: verify,
+    guest_info: guest_info,
+    
+    appId: "1wR5XCPaSjRlAmhwyn9vJlu1-MdYXbMMI",
+    appKey: "eoHlYROt4D1woDANEOOO0sbo",
+    placeholder: "快来评论吧~",
+    pageSize:'10',
+    avatar:'mp',
+    lang:'zh-cn',
+    highlight:'true'
+  })
+  </script>
+
+
+
+  <script src="/js/app.js"></script>
+
+
+  <script src="/js/search.js"></script>
+
+
+
+
+<!-- 复制 -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  let COPY_SUCCESS = "复制成功";
+  let COPY_FAILURE = "复制失败";
+  /*页面载入完成后，创建复制按钮*/
+  !function (e, t, a) {
+    /* code */
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '  <i class="fa fa-copy"></i><span>复制</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+
+      clipboard.on('success', function(e) {
+        //您可以加入成功提示
+        console.info('Action:', e.action);
+        console.info('Text:', e.text);
+        console.info('Trigger:', e.trigger);
+        success_prompt(COPY_SUCCESS);
+        e.clearSelection();
+      });
+      clipboard.on('error', function(e) {
+        //您可以加入失败提示
+        console.error('Action:', e.action);
+        console.error('Trigger:', e.trigger);
+        fail_prompt(COPY_FAILURE);
+      });
+    }
+    initCopyCode();
+
+  }(window, document);
+
+  /**
+   * 弹出式提示框，默认1.5秒自动消失
+   * @param message 提示信息
+   * @param style 提示样式，有alert-success、alert-danger、alert-warning、alert-info
+   * @param time 消失时间
+   */
+  var prompt = function (message, style, time)
+  {
+      style = (style === undefined) ? 'alert-success' : style;
+      time = (time === undefined) ? 1500 : time*1000;
+      $('<div>')
+          .appendTo('body')
+          .addClass('alert ' + style)
+          .html(message)
+          .show()
+          .delay(time)
+          .fadeOut();
+  };
+
+  // 成功提示
+  var success_prompt = function(message, time)
+  {
+      prompt(message, 'alert-success', time);
+  };
+
+  // 失败提示
+  var fail_prompt = function(message, time)
+  {
+      prompt(message, 'alert-danger', time);
+  };
+
+  // 提醒
+  var warning_prompt = function(message, time)
+  {
+      prompt(message, 'alert-warning', time);
+  };
+
+  // 信息提示
+  var info_prompt = function(message, time)
+  {
+      prompt(message, 'alert-info', time);
+  };
+
+</script>
+
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

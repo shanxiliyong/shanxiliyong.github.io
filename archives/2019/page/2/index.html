@@ -171,12 +171,12 @@
 							</li>
       			
   						<li>
-								<a class="nav flat-box" href="/blog/archives/"
+								<a class="nav flat-box" href="/archives"
                   
                     rel="nofollow"
                   
                   
-                  id="blogarchives">
+                  id="archives">
 									<i class='fas fa-archive fa-fw'></i>&nbsp;归档
 								</a>
 							</li>
@@ -261,12 +261,12 @@
             </li>
           
             <li>
-							<a class="nav flat-box" href="/blog/archives"
+							<a class="nav flat-box" href="/archives"
                 
                   rel="nofollow"
                 
                 
-                id="blogarchives">
+                id="archives">
 								<i class='fas fa-archive fa-fw'></i>&nbsp;归档
 							</a>
             </li>
@@ -314,8 +314,8 @@
       
         
   <h2 class="title">
-    <a href="/2019/04/12/linux/Linux性能优化实战/03-04基础篇：经常说的 CPU 上下文切换是什么意思/">
-      03-04基础篇：经常说的 CPU 上下文切换是什么意思
+    <a href="/2019/04/12/linux/Linux性能优化实战/24-25基础篇：Linux 磁盘IO是怎么工作的/">
+      24-25基础篇：Linux 磁盘IO是怎么工作的
     </a>
   </h2>
 
@@ -379,113 +379,13 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <p>CPU 寄存器，是 CPU 内置的容量小、但速度极快的内存。而程序计数器，则是用来存储 CPU 正在执行的指令位置、或者即将执行的下一条指令位置。它们都是 CPU 在运行任何任务前，必须的依赖环境，因此也被叫做 cpu上下文</p>
-<p><img src="http://liyong.ac.cn/pic/98ac9df2593a193d6a7f1767cd68eb5f.png" alt="1"></p>
+      <h1 id="磁盘"><a href="#磁盘" class="headerlink" title="磁盘"></a>磁盘</h1><ul>
+<li>第一类，机械磁盘，也称为硬盘驱动器（Hard Disk Driver），通常缩写为 HDD。机械磁盘主要由盘片和读写磁头组成，数据就存储在盘片的环状磁道中。在读写数据前，需要移动读写磁头，定位到数据所在的磁道，然后才能访问数据。</li>
+<li>第二类，固态磁盘（Solid State Disk），通常缩写为 SSD，由固态电子元器件组成。固态磁盘不需要磁道寻址，所以，不管是连续 I/O，还是随机 I/O 的性能，都比机械磁盘要好得多。</li>
+</ul>
       
         <div class="readmore">
-          <a href="/2019/04/12/linux/Linux性能优化实战/03-04基础篇：经常说的 CPU 上下文切换是什么意思/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/linux/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> linux</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2019/04/12/linux/Linux性能优化实战/开篇词_别再让Linux性能问题成为你的绊脚石/">
-      开篇词_别再让Linux性能问题成为你的绊脚石
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://liyong.ac.cn" rel="nofollow">
-        
-          <img src="https://liyong.ac.cn/img/me.png">
-        
-        <p>李永</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-04-12</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/linux/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>linux</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <p>最好的学习方式一定是带着问题学习</p>
-<p>具体来看，我会分为 5 个模块。前 4 个模块我会从资源使用的视角出发，带你分析各种 Linux 资源可能会碰到的性能问题，包括 CPU 性能、磁盘 I/O 性能、内存性能、网络性能</p>
-      
-        <div class="readmore">
-          <a href="/2019/04/12/linux/Linux性能优化实战/开篇词_别再让Linux性能问题成为你的绊脚石/" class="flat-box">
+          <a href="/2019/04/12/linux/Linux性能优化实战/24-25基础篇：Linux 磁盘IO是怎么工作的/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -723,8 +623,8 @@
       
         
   <h2 class="title">
-    <a href="/2019/04/12/linux/Linux性能优化实战/15 基础篇：Linux内存是怎么工作的/">
-      15 基础篇：Linux内存是怎么工作的
+    <a href="/2019/04/12/linux/Linux性能优化实战/05基础篇：某个应用的CPU使用率居然达到100%，我该怎么办/">
+      05基础篇：某个应用的CPU使用率居然达到100%我该怎么办
     </a>
   </h2>
 
@@ -788,10 +688,12 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h1 id="内存映射"><a href="#内存映射" class="headerlink" title="内存映射"></a>内存映射</h1><p>Linux 内核给每个进程都提供了一个独立的虚拟地址空间，并且这个地址空间是连续的。这样，进程就可以很方便地访问内存，更确切地说是访问虚拟内存。</p>
+      <h1 id="CPU-使用率"><a href="#CPU-使用率" class="headerlink" title="CPU 使用率"></a>CPU 使用率</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">grep <span class="string">'CONFIG_HZ='</span> /boot/config-$(uname -r)</span><br><span class="line">CONFIG_HZ=250</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 只保留各个 CPU 的数据</span></span><br><span class="line">$ cat /proc/<span class="built_in">stat</span> | grep ^cpu</span><br><span class="line">cpu  280580 7407 286084 172900810 83602 0 583 0 0 0</span><br><span class="line">cpu0 144745 4181 176701 86423902 52076 0 301 0 0 0</span><br><span class="line">cpu1 135834 3226 109383 86476907 31525 0 282 0 0 0</span><br></pre></td></tr></table></figure>
       
         <div class="readmore">
-          <a href="/2019/04/12/linux/Linux性能优化实战/15 基础篇：Linux内存是怎么工作的/" class="flat-box">
+          <a href="/2019/04/12/linux/Linux性能优化实战/05基础篇：某个应用的CPU使用率居然达到100%，我该怎么办/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -824,8 +726,8 @@
       
         
   <h2 class="title">
-    <a href="/2019/04/12/linux/Linux性能优化实战/24-25基础篇：Linux 磁盘IO是怎么工作的/">
-      24-25基础篇：Linux 磁盘IO是怎么工作的
+    <a href="/2019/04/12/linux/Linux性能优化实战/03-04基础篇：经常说的 CPU 上下文切换是什么意思/">
+      03-04基础篇：经常说的 CPU 上下文切换是什么意思
     </a>
   </h2>
 
@@ -889,13 +791,11 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h1 id="磁盘"><a href="#磁盘" class="headerlink" title="磁盘"></a>磁盘</h1><ul>
-<li>第一类，机械磁盘，也称为硬盘驱动器（Hard Disk Driver），通常缩写为 HDD。机械磁盘主要由盘片和读写磁头组成，数据就存储在盘片的环状磁道中。在读写数据前，需要移动读写磁头，定位到数据所在的磁道，然后才能访问数据。</li>
-<li>第二类，固态磁盘（Solid State Disk），通常缩写为 SSD，由固态电子元器件组成。固态磁盘不需要磁道寻址，所以，不管是连续 I/O，还是随机 I/O 的性能，都比机械磁盘要好得多。</li>
-</ul>
+      <p>CPU 寄存器，是 CPU 内置的容量小、但速度极快的内存。而程序计数器，则是用来存储 CPU 正在执行的指令位置、或者即将执行的下一条指令位置。它们都是 CPU 在运行任何任务前，必须的依赖环境，因此也被叫做 cpu上下文</p>
+<p><img src="http://liyong.ac.cn/pic/98ac9df2593a193d6a7f1767cd68eb5f.png" alt="1"></p>
       
         <div class="readmore">
-          <a href="/2019/04/12/linux/Linux性能优化实战/24-25基础篇：Linux 磁盘IO是怎么工作的/" class="flat-box">
+          <a href="/2019/04/12/linux/Linux性能优化实战/03-04基础篇：经常说的 CPU 上下文切换是什么意思/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -1134,8 +1034,8 @@
       
         
   <h2 class="title">
-    <a href="/2019/04/12/linux/如何用十条命令在一分钟内检查Linux服务器性能/">
-      如何用十条命令在一分钟内检查Linux服务器性能
+    <a href="/2019/03/11/middleware/zookeeper/zk使用场景/">
+      zk使用场景
     </a>
   </h2>
 
@@ -1165,7 +1065,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-04-12</p>
+    <p>2019-03-11</p>
   </a>
 </div>
 
@@ -1175,9 +1075,9 @@
             
   
   <div class='new-meta-item category'>
-    <a href='/categories/linux/' rel="nofollow">
+    <a href='/categories/中间件/zk/' rel="nofollow">
       <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>linux</p>
+      <p>中间件&nbsp;/&nbsp;zk</p>
     </a>
   </div>
 
@@ -1199,22 +1099,121 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a><strong>概述</strong></h1><p>通过执行以下命令，可以在1分钟内对系统资源使用情况有个大致的了解。</p>
+      <ul>
+<li>分布式协调</li>
+<li>分布式锁</li>
+<li>配置信息管理</li>
+<li>HA高可用</li>
+</ul>
+      
+        <div class="readmore">
+          <a href="/2019/03/11/middleware/zookeeper/zk使用场景/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/中间件/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> 中间件</a>
+        
+          <a href="/tags/zk/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> zk</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2019/03/11/db/mysql/mysql实战/1一条SQL查询语句是如何执行的/">
+      1一条SQL查询语句是如何执行的
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://liyong.ac.cn" rel="nofollow">
+        
+          <img src="https://liyong.ac.cn/img/me.png">
+        
+        <p>李永</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-03-11</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/db/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>db</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h1 id="summarize"><a href="#summarize" class="headerlink" title="summarize"></a>summarize</h1><p><img src="http://liyong.ac.cn/pic/1546866826086.png" alt="1546866826086"></p>
 <ul>
-<li>uptime</li>
-<li>dmesg | tail</li>
-<li>vmstat 1</li>
-<li>mpstat -P ALL 1</li>
-<li>pidstat 1</li>
-<li>iostat -xz 1</li>
-<li>free -m</li>
-<li>sar -n DEV 1</li>
-<li>sar -n TCP,ETCP 1</li>
-<li>top</li>
+<li>server层包括连接器、查询缓存、分析器、优化器、执行器以及所有的内置函数（如日期、时间、数学函数）</li>
 </ul>
       
         <div class="readmore">
-          <a href="/2019/04/12/linux/如何用十条命令在一分钟内检查Linux服务器性能/" class="flat-box">
+          <a href="/2019/03/11/db/mysql/mysql实战/1一条SQL查询语句是如何执行的/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -1224,7 +1223,9 @@
     
       <div class="full-width auto-padding tags">
         
-          <a href="/tags/linux/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> linux</a>
+          <a href="/tags/mysql/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> mysql</a>
+        
+          <a href="/tags/db/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> db</a>
         
       </div>
     
@@ -1247,212 +1248,8 @@
       
         
   <h2 class="title">
-    <a href="/2019/04/12/linux/Linux性能优化实战/33-34关于 Linux 网络，你必须知道这些/">
-      33-34关于 Linux 网络，你必须知道这些
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://liyong.ac.cn" rel="nofollow">
-        
-          <img src="https://liyong.ac.cn/img/me.png">
-        
-        <p>李永</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-04-12</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/linux/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>linux</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h1 id="网络模型"><a href="#网络模型" class="headerlink" title="网络模型"></a>网络模型</h1>
-      
-        <div class="readmore">
-          <a href="/2019/04/12/linux/Linux性能优化实战/33-34关于 Linux 网络，你必须知道这些/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/linux/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> linux</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2019/04/12/linux/Linux性能优化实战/05基础篇：某个应用的CPU使用率居然达到100%，我该怎么办/">
-      05基础篇：某个应用的CPU使用率居然达到100%我该怎么办
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://liyong.ac.cn" rel="nofollow">
-        
-          <img src="https://liyong.ac.cn/img/me.png">
-        
-        <p>李永</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-04-12</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/linux/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>linux</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h1 id="CPU-使用率"><a href="#CPU-使用率" class="headerlink" title="CPU 使用率"></a>CPU 使用率</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">grep <span class="string">'CONFIG_HZ='</span> /boot/config-$(uname -r)</span><br><span class="line">CONFIG_HZ=250</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 只保留各个 CPU 的数据</span></span><br><span class="line">$ cat /proc/<span class="built_in">stat</span> | grep ^cpu</span><br><span class="line">cpu  280580 7407 286084 172900810 83602 0 583 0 0 0</span><br><span class="line">cpu0 144745 4181 176701 86423902 52076 0 301 0 0 0</span><br><span class="line">cpu1 135834 3226 109383 86476907 31525 0 282 0 0 0</span><br></pre></td></tr></table></figure>
-      
-        <div class="readmore">
-          <a href="/2019/04/12/linux/Linux性能优化实战/05基础篇：某个应用的CPU使用率居然达到100%，我该怎么办/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/linux/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> linux</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2019/03/11/se/深入拆解 Java 虚拟机/30-31Java虚拟机的监控及诊断工具/">
-      30Java虚拟机的监控及诊断工具
+    <a href="/2019/03/11/db/mysql/mysql实战/21为什么我只改一行的语句，锁这么多/">
+      21为什么我只改一行的语句，锁这么多
     </a>
   </h2>
 
@@ -1492,9 +1289,9 @@
             
   
   <div class='new-meta-item category'>
-    <a href='/categories/se/' rel="nofollow">
+    <a href='/categories/db/' rel="nofollow">
       <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>se</p>
+      <p>db</p>
     </a>
   </div>
 
@@ -1516,329 +1313,21 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h1 id="jps"><a href="#jps" class="headerlink" title="jps"></a>jps</h1><p><a href="https://docs.oracle.com/javase/8/docs/technotes/tools/unix/jps.html#CHDCGECD" target="_blank" rel="noopener">https://docs.oracle.com/javase/8/docs/technotes/tools/unix/jps.html#CHDCGECD</a></p>
-      
-        <div class="readmore">
-          <a href="/2019/03/11/se/深入拆解 Java 虚拟机/30-31Java虚拟机的监控及诊断工具/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/se/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> se</a>
-        
-          <a href="/tags/jvm/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> jvm</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2019/03/11/se/深入拆解 Java 虚拟机/28-29基准测试框架JMH/">
-      28-29基准测试框架JMH
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://liyong.ac.cn" rel="nofollow">
-        
-          <img src="https://liyong.ac.cn/img/me.png">
-        
-        <p>李永</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-03-11</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/se/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>se</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-        <div class="readmore">
-          <a href="/2019/03/11/se/深入拆解 Java 虚拟机/28-29基准测试框架JMH/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/se/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> se</a>
-        
-          <a href="/tags/jvm/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> jvm</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2019/03/11/se/深入拆解 Java 虚拟机/27注解处理器/">
-      27注解处理器
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://liyong.ac.cn" rel="nofollow">
-        
-          <img src="https://liyong.ac.cn/img/me.png">
-        
-        <p>李永</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-03-11</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/se/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>se</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h1 id="注解处理器的原理"><a href="#注解处理器的原理" class="headerlink" title="注解处理器的原理"></a>注解处理器的原理</h1><h2 id="Java-编译器的工作流程"><a href="#Java-编译器的工作流程" class="headerlink" title="Java 编译器的工作流程"></a>Java 编译器的工作流程</h2><p><img src="http://liyong.ac.cn/pic/5C1553688920602.png" alt="1553688920602"></p>
-<ol>
-将源文件解析为抽象语法树；
-调用已注册的注解处理器；
-生成字节码。
-</ol>
-      
-        <div class="readmore">
-          <a href="/2019/03/11/se/深入拆解 Java 虚拟机/27注解处理器/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/se/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> se</a>
-        
-          <a href="/tags/jvm/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> jvm</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2019/03/11/se/深入拆解 Java 虚拟机/22HotSpot虚拟机的intrinsic/">
-      22HotSpot虚拟机的intrinsic
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://liyong.ac.cn" rel="nofollow">
-        
-          <img src="https://liyong.ac.cn/img/me.png">
-        
-        <p>李永</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-03-11</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/se/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>se</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <p>换句话说，HotSpot 虚拟机将为标注了@HotSpotIntrinsicCandidate注解的方法额外维护一套高效实现。如果 Java 核心类库的开发者更改了原本的实现，那么虚拟机中的高效实现也需要进行相应的修改，以保证程序语义一致。</p>
-<h1 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h1><ul>
-<li><a href="http://openjdk.java.net/jeps/254" target="_blank" rel="noopener">http://openjdk.java.net/jeps/254</a></li>
-<li><a href="http://hg.openjdk.java.net/jdk/hs/file/46dc568d6804/src/hotspot/share/classfile/vmSymbols.hpp#l727" target="_blank" rel="noopener">http://hg.openjdk.java.net/jdk/hs/file/46dc568d6804/src/hotspot/share/classfile/vmSymbols.hpp#l727</a></li>
-<li><a href="http://hg.openjdk.java.net/jdk8u/jdk8u/hotspot/file/2af8917ffbee/src/share/vm/classfile/vmSymbols.hpp#l647" target="_blank" rel="noopener">http://hg.openjdk.java.net/jdk8u/jdk8u/hotspot/file/2af8917ffbee/src/share/vm/classfile/vmSymbols.hpp#l647</a></li>
+      <h1 id="两个“原则”、两个“优化”和一个“bug"><a href="#两个“原则”、两个“优化”和一个“bug" class="headerlink" title="两个“原则”、两个“优化”和一个“bug"></a>两个“原则”、两个“优化”和一个“bug</h1><ul>
+<li><p>原则 1：加锁的基本单位是 next-key lock。</p>
+</li>
+<li><p>原则 2：查找过程中访问到的对象才会加锁。</p>
+</li>
+<li><p>优化 1：索引上的等值查询，给唯一索引加锁的时候，next-key lock 退化为行锁。</p>
+</li>
+<li><p>优化 2：索引上的等值查询，向右遍历时且最后一个值不满足等值条件的时候，next-key lock 退化为间隙锁。</p>
+</li>
+<li><p>一个 bug：唯一索引上的范围查询会访问到不满足条件的第一个值为止</p>
+</li>
 </ul>
       
         <div class="readmore">
-          <a href="/2019/03/11/se/深入拆解 Java 虚拟机/22HotSpot虚拟机的intrinsic/" class="flat-box">
+          <a href="/2019/03/11/db/mysql/mysql实战/21为什么我只改一行的语句，锁这么多/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -1848,9 +1337,556 @@
     
       <div class="full-width auto-padding tags">
         
-          <a href="/tags/se/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> se</a>
+          <a href="/tags/mysql/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> mysql</a>
+        
+          <a href="/tags/db/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> db</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2019/03/11/javase/深入拆解 Java 虚拟机/02Java的基本类型/">
+      02Java的基本类型
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://liyong.ac.cn" rel="nofollow">
+        
+          <img src="https://liyong.ac.cn/img/me.png">
+        
+        <p>李永</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-03-11</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/javase/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>javase</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <ul>
+<li>ifeq succeeds if and only if value = 0</li>
+<li>ifne succeeds if and only if value ≠ 0</li>
+<li>ifle succeeds if and only if value ≤ 0</li>
+<li>ifgt succeeds if and only if value &gt; 0</li>
+<li>ifge succeeds if and only if value ≥ 0
+      
+        <div class="readmore">
+          <a href="/2019/03/11/javase/深入拆解 Java 虚拟机/02Java的基本类型/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/javase/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> javase</a>
         
           <a href="/tags/jvm/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> jvm</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2019/03/11/db/mysql/mysql实战/3为什么你改了我还看不见/">
+      3为什么你改了我还看不见
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://liyong.ac.cn" rel="nofollow">
+        
+          <img src="https://liyong.ac.cn/img/me.png">
+        
+        <p>李永</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-03-11</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/db/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>db</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h1 id="隔离性与隔离级别"><a href="#隔离性与隔离级别" class="headerlink" title="隔离性与隔离级别"></a>隔离性与隔离级别</h1><ul>
+<li><p>Atomicity、Consistency、Isolation、Durability</p>
+</li>
+<li><p>脏读（dirty read）、不可重复读(non-repeatable read)、幻读(phantom read)</p>
+</li>
+<li><p>读未提交（read uncommitted）,一个事务还没有提交，就能被其它事务看到</p>
+</li>
+<li><p>读提交（read committed），一个事务提交才能被其它事务看到</p>
+</li>
+<li><p>可重复读（repeatable read），一个事务执行过程中看到的数据和启动时看到的数据一致</p>
+</li>
+<li><p>串行化（serializable ），对于同一行记录，写会加写锁，读会加读锁，当出现读写锁冲突的时候，必须等待前一个事务结束，才能继续</p>
+</li>
+<li><p>查看隔离级别  show variables like ‘transaction_isolation’;  SELECT @@tx_isolation</p>
+</li>
+</ul>
+      
+        <div class="readmore">
+          <a href="/2019/03/11/db/mysql/mysql实战/3为什么你改了我还看不见/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/mysql/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> mysql</a>
+        
+          <a href="/tags/db/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> db</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2019/03/11/db/mysql/mysql实战/20幻读是什么，幻读有什么问题/">
+      20幻读是什么，幻读有什么问题
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://liyong.ac.cn" rel="nofollow">
+        
+          <img src="https://liyong.ac.cn/img/me.png">
+        
+        <p>李永</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-03-11</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/db/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>db</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`t`</span> (</span><br><span class="line">  <span class="string">`id`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`c`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`d`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span> (<span class="string">`id`</span>),</span><br><span class="line">  <span class="keyword">KEY</span> <span class="string">`c`</span> (<span class="string">`c`</span>)</span><br><span class="line">) <span class="keyword">ENGINE</span>=<span class="keyword">InnoDB</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> t <span class="keyword">values</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>),(<span class="number">5</span>,<span class="number">5</span>,<span class="number">5</span>),</span><br><span class="line">(<span class="number">10</span>,<span class="number">10</span>,<span class="number">10</span>),(<span class="number">15</span>,<span class="number">15</span>,<span class="number">15</span>),(<span class="number">20</span>,<span class="number">20</span>,<span class="number">20</span>),(<span class="number">25</span>,<span class="number">25</span>,<span class="number">25</span>);</span><br></pre></td></tr></table></figure>
+      
+        <div class="readmore">
+          <a href="/2019/03/11/db/mysql/mysql实战/20幻读是什么，幻读有什么问题/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/mysql/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> mysql</a>
+        
+          <a href="/tags/db/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> db</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2019/03/11/db/mysql/mysql实战/2一条SQL更新语句是如何执行的/">
+      2一条SQL更新语句是如何执行的
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://liyong.ac.cn" rel="nofollow">
+        
+          <img src="https://liyong.ac.cn/img/me.png">
+        
+        <p>李永</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-03-11</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/db/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>db</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h1 id="summarize"><a href="#summarize" class="headerlink" title="summarize"></a>summarize</h1><h1 id="redo-log"><a href="#redo-log" class="headerlink" title="redo log"></a>redo log</h1><ul>
+<li>Write-Ahead Logging，先写日志，再写磁盘</li>
+<li>先写日志，更新内存，当系统比较清闲的时候，写入磁盘</li>
+<li>write pos 是当前记录的位置</li>
+<li>chekpoint 是当前要擦出的位置</li>
+<li>write pos 到chekpoint 之间的位置是可以记录的空间</li>
+<li>crash-safe</li>
+</ul>
+      
+        <div class="readmore">
+          <a href="/2019/03/11/db/mysql/mysql实战/2一条SQL更新语句是如何执行的/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/mysql/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> mysql</a>
+        
+          <a href="/tags/db/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> db</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2019/03/11/db/mysql/mysql实战/4深入浅出索引/">
+      4深入浅出索引
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://liyong.ac.cn" rel="nofollow">
+        
+          <img src="https://liyong.ac.cn/img/me.png">
+        
+        <p>李永</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-03-11</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/db/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>db</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h1 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a>哈希表</h1><ul>
+<li>和hashmap的思路一样</li>
+<li>区间查询比较慢</li>
+<li>适用于等值查询的场景</li>
+</ul>
+<p><img src="http://liyong.ac.cn/pic/20190215_01.png" alt="1550194991315"></p>
+      
+        <div class="readmore">
+          <a href="/2019/03/11/db/mysql/mysql实战/4深入浅出索引/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/mysql/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> mysql</a>
+        
+          <a href="/tags/db/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> db</a>
         
       </div>
     
@@ -1994,12 +2030,12 @@
           博文
         </a></li>
       
-        <li><a class="flat-box" title="/blog/archives" href="/blog/archives"
+        <li><a class="flat-box" title="/archives" href="/archives"
           
             rel="nofollow"
           
           
-          id="blogarchives">
+          id="archives">
           
             <i class="fas fa-archive fa-fw" aria-hidden="true"></i>
           
@@ -2077,61 +2113,57 @@
     <div class='content pure'>
       <ul class="entry">
         
-          <li><a class="flat-box" title="/categories/Java资源大全/" href="/categories/Java资源大全/"><div class='name'>Java资源大全</div><div class='badge'>(1)</div></a></li>
-        
           <li><a class="flat-box" title="/categories/algorithm/" href="/categories/algorithm/"><div class='name'>algorithm</div><div class='badge'>(30)</div></a></li>
         
-          <li><a class="flat-box" title="/categories/db/" href="/categories/db/"><div class='name'>db</div><div class='badge'>(26)</div></a></li>
+          <li><a class="flat-box" title="/categories/db/" href="/categories/db/"><div class='name'>db</div><div class='badge'>(25)</div></a></li>
         
           <li><a class="flat-box child" title="/categories/db/mysql/" href="/categories/db/mysql/"><div class='name'>mysql</div><div class='badge'>(1)</div></a></li>
         
-          <li><a class="flat-box" title="/categories/ee/" href="/categories/ee/"><div class='name'>ee</div><div class='badge'>(1)</div></a></li>
+          <li><a class="flat-box" title="/categories/javaee/" href="/categories/javaee/"><div class='name'>javaee</div><div class='badge'>(1)</div></a></li>
         
-          <li><a class="flat-box" title="/categories/javadoc/" href="/categories/javadoc/"><div class='name'>javadoc</div><div class='badge'>(1)</div></a></li>
+          <li><a class="flat-box" title="/categories/javase/" href="/categories/javase/"><div class='name'>javase</div><div class='badge'>(68)</div></a></li>
+        
+          <li><a class="flat-box child" title="/categories/javase/thread/" href="/categories/javase/thread/"><div class='name'>thread</div><div class='badge'>(15)</div></a></li>
         
           <li><a class="flat-box" title="/categories/linux/" href="/categories/linux/"><div class='name'>linux</div><div class='badge'>(11)</div></a></li>
         
-          <li><a class="flat-box" title="/categories/log/" href="/categories/log/"><div class='name'>log</div><div class='badge'>(3)</div></a></li>
-        
-          <li><a class="flat-box" title="/categories/maven/" href="/categories/maven/"><div class='name'>maven</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box" title="/categories/methodology/" href="/categories/methodology/"><div class='name'>methodology</div><div class='badge'>(3)</div></a></li>
-        
-          <li><a class="flat-box" title="/categories/middleware/" href="/categories/middleware/"><div class='name'>middleware</div><div class='badge'>(5)</div></a></li>
+          <li><a class="flat-box" title="/categories/log/" href="/categories/log/"><div class='name'>log</div><div class='badge'>(2)</div></a></li>
         
           <li><a class="flat-box" title="/categories/mybatis/" href="/categories/mybatis/"><div class='name'>mybatis</div><div class='badge'>(11)</div></a></li>
         
-          <li><a class="flat-box" title="/categories/netty/" href="/categories/netty/"><div class='name'>netty</div><div class='badge'>(3)</div></a></li>
+          <li><a class="flat-box" title="/categories/netty/" href="/categories/netty/"><div class='name'>netty</div><div class='badge'>(6)</div></a></li>
         
-          <li><a class="flat-box" title="/categories/nio/" href="/categories/nio/"><div class='name'>nio</div><div class='badge'>(2)</div></a></li>
+          <li><a class="flat-box" title="/categories/other/" href="/categories/other/"><div class='name'>other</div><div class='badge'>(3)</div></a></li>
         
-          <li><a class="flat-box" title="/categories/other/" href="/categories/other/"><div class='name'>other</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box" title="/categories/se/" href="/categories/se/"><div class='name'>se</div><div class='badge'>(67)</div></a></li>
-        
-          <li><a class="flat-box" title="/categories/spring/" href="/categories/spring/"><div class='name'>spring</div><div class='badge'>(8)</div></a></li>
-        
-          <li><a class="flat-box" title="/categories/standard/" href="/categories/standard/"><div class='name'>standard</div><div class='badge'>(5)</div></a></li>
+          <li><a class="flat-box" title="/categories/spring/" href="/categories/spring/"><div class='name'>spring</div><div class='badge'>(6)</div></a></li>
         
           <li><a class="flat-box" title="/categories/storm/" href="/categories/storm/"><div class='name'>storm</div><div class='badge'>(1)</div></a></li>
         
-          <li><a class="flat-box" title="/categories/thread/" href="/categories/thread/"><div class='name'>thread</div><div class='badge'>(3)</div></a></li>
+          <li><a class="flat-box" title="/categories/thread/" href="/categories/thread/"><div class='name'>thread</div><div class='badge'>(1)</div></a></li>
         
-          <li><a class="flat-box" title="/categories/tool/" href="/categories/tool/"><div class='name'>tool</div><div class='badge'>(6)</div></a></li>
+          <li><a class="flat-box" title="/categories/tool/" href="/categories/tool/"><div class='name'>tool</div><div class='badge'>(7)</div></a></li>
         
           <li><a class="flat-box child" title="/categories/tool/mat/" href="/categories/tool/mat/"><div class='name'>mat</div><div class='badge'>(1)</div></a></li>
         
-          <li><a class="flat-box child" title="/categories/tool/maven/" href="/categories/tool/maven/"><div class='name'>maven</div><div class='badge'>(2)</div></a></li>
+          <li><a class="flat-box child" title="/categories/tool/maven/" href="/categories/tool/maven/"><div class='name'>maven</div><div class='badge'>(3)</div></a></li>
         
           <li><a class="flat-box child" title="/categories/tool/uml/" href="/categories/tool/uml/"><div class='name'>uml</div><div class='badge'>(1)</div></a></li>
         
+          <li><a class="flat-box" title="/categories/vue/" href="/categories/vue/"><div class='name'>vue</div><div class='badge'>(1)</div></a></li>
+        
           <li><a class="flat-box" title="/categories/web/" href="/categories/web/"><div class='name'>web</div><div class='badge'>(1)</div></a></li>
         
-          <li><a class="flat-box" title="/categories/方法论/" href="/categories/方法论/"><div class='name'>方法论</div><div class='badge'>(2)</div></a></li>
+          <li><a class="flat-box" title="/categories/中间件/" href="/categories/中间件/"><div class='name'>中间件</div><div class='badge'>(5)</div></a></li>
         
-          <li><a class="flat-box" title="/categories/死磕/" href="/categories/死磕/"><div class='name'>死磕</div><div class='badge'>(1)</div></a></li>
+          <li><a class="flat-box child" title="/categories/中间件/redis/" href="/categories/中间件/redis/"><div class='name'>redis</div><div class='badge'>(4)</div></a></li>
         
-          <li><a class="flat-box" title="/categories/设计模式/" href="/categories/设计模式/"><div class='name'>设计模式</div><div class='badge'>(2)</div></a></li>
+          <li><a class="flat-box child" title="/categories/中间件/zk/" href="/categories/中间件/zk/"><div class='name'>zk</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/方法论/" href="/categories/方法论/"><div class='name'>方法论</div><div class='badge'>(15)</div></a></li>
+        
+          <li><a class="flat-box child" title="/categories/方法论/规范/" href="/categories/方法论/规范/"><div class='name'>规范</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box child" title="/categories/方法论/设计/" href="/categories/方法论/设计/"><div class='name'>设计</div><div class='badge'>(8)</div></a></li>
         
       </ul>
     </div>
@@ -2179,7 +2211,7 @@
 </header>
 
     <div class='content pure'>
-      <a href="/tags/Java资源大全/" style="font-size: 14px; color: #999">Java资源大全</a> <a href="/tags/algorithm/" style="font-size: 23.29px; color: #5a5a5a">algorithm</a> <a href="/tags/annotation/" style="font-size: 14px; color: #999">annotation</a> <a href="/tags/boot/" style="font-size: 14px; color: #999">boot</a> <a href="/tags/builder/" style="font-size: 14px; color: #999">builder</a> <a href="/tags/cache/" style="font-size: 14px; color: #999">cache</a> <a href="/tags/cloud/" style="font-size: 14px; color: #999">cloud</a> <a href="/tags/code/" style="font-size: 14px; color: #999">code</a> <a href="/tags/concurrent/" style="font-size: 20.43px; color: #6d6d6d">concurrent</a> <a href="/tags/db/" style="font-size: 22.57px; color: #5f5f5f">db</a> <a href="/tags/ee/" style="font-size: 14px; color: #999">ee</a> <a href="/tags/gc/" style="font-size: 15.43px; color: #8f8f8f">gc</a> <a href="/tags/git/" style="font-size: 14px; color: #999">git</a> <a href="/tags/id/" style="font-size: 14px; color: #999">id</a> <a href="/tags/jdbc/" style="font-size: 14px; color: #999">jdbc</a> <a href="/tags/jmm/" style="font-size: 14px; color: #999">jmm</a> <a href="/tags/jvm/" style="font-size: 21.86px; color: #646464">jvm</a> <a href="/tags/lifecycle/" style="font-size: 14.71px; color: #949494">lifecycle</a> <a href="/tags/linux/" style="font-size: 19px; color: #777">linux</a> <a href="/tags/lock/" style="font-size: 15.43px; color: #8f8f8f">lock</a> <a href="/tags/log/" style="font-size: 14px; color: #999">log</a> <a href="/tags/log4j2/" style="font-size: 14.71px; color: #949494">log4j2</a> <a href="/tags/mapper/" style="font-size: 14px; color: #999">mapper</a> <a href="/tags/maven/" style="font-size: 15.43px; color: #8f8f8f">maven</a> <a href="/tags/memory/" style="font-size: 17.57px; color: #818181">memory</a> <a href="/tags/methodology/" style="font-size: 15.43px; color: #8f8f8f">methodology</a> <a href="/tags/middleware/" style="font-size: 16.86px; color: #868686">middleware</a> <a href="/tags/mvc/" style="font-size: 14.71px; color: #949494">mvc</a> <a href="/tags/mybatis/" style="font-size: 19.71px; color: #727272">mybatis</a> <a href="/tags/mysql/" style="font-size: 21.14px; color: #686868">mysql</a> <a href="/tags/netty/" style="font-size: 15.43px; color: #8f8f8f">netty</a> <a href="/tags/nio/" style="font-size: 14.71px; color: #949494">nio</a> <a href="/tags/oracle/" style="font-size: 16.14px; color: #8a8a8a">oracle</a> <a href="/tags/other/" style="font-size: 14px; color: #999">other</a> <a href="/tags/plugin/" style="font-size: 14.71px; color: #949494">plugin</a> <a href="/tags/plugins/" style="font-size: 14px; color: #999">plugins</a> <a href="/tags/redis/" style="font-size: 16.14px; color: #8a8a8a">redis</a> <a href="/tags/reflect/" style="font-size: 14.71px; color: #949494">reflect</a> <a href="/tags/return/" style="font-size: 14px; color: #999">return</a> <a href="/tags/se/" style="font-size: 24px; color: #555">se</a> <a href="/tags/select/" style="font-size: 14px; color: #999">select</a> <a href="/tags/source/" style="font-size: 16.14px; color: #8a8a8a">source</a> <a href="/tags/spring/" style="font-size: 18.29px; color: #7c7c7c">spring</a> <a href="/tags/standard/" style="font-size: 16.86px; color: #868686">standard</a> <a href="/tags/storm/" style="font-size: 14px; color: #999">storm</a> <a href="/tags/thread/" style="font-size: 15.43px; color: #8f8f8f">thread</a> <a href="/tags/tool/" style="font-size: 15.43px; color: #8f8f8f">tool</a> <a href="/tags/uml/" style="font-size: 14px; color: #999">uml</a> <a href="/tags/url/" style="font-size: 14px; color: #999">url</a> <a href="/tags/web/" style="font-size: 14px; color: #999">web</a> <a href="/tags/zk/" style="font-size: 14.71px; color: #949494">zk</a> <a href="/tags/性能调优/" style="font-size: 14.71px; color: #949494">性能调优</a> <a href="/tags/指令/" style="font-size: 14px; color: #999">指令</a> <a href="/tags/方法论/" style="font-size: 14.71px; color: #949494">方法论</a> <a href="/tags/源码分析/" style="font-size: 16.14px; color: #8a8a8a">源码分析</a> <a href="/tags/编码/" style="font-size: 15.43px; color: #8f8f8f">编码</a> <a href="/tags/虚拟机/" style="font-size: 14px; color: #999">虚拟机</a> <a href="/tags/设计模式/" style="font-size: 16.14px; color: #8a8a8a">设计模式</a>
+      <a href="/tags/algorithm/" style="font-size: 23.38px; color: #595959">algorithm</a> <a href="/tags/builder/" style="font-size: 14px; color: #999">builder</a> <a href="/tags/cache/" style="font-size: 14px; color: #999">cache</a> <a href="/tags/concurrent/" style="font-size: 15.25px; color: #919191">concurrent</a> <a href="/tags/db/" style="font-size: 22.13px; color: #626262">db</a> <a href="/tags/gc/" style="font-size: 15.25px; color: #919191">gc</a> <a href="/tags/id/" style="font-size: 14px; color: #999">id</a> <a href="/tags/javaee/" style="font-size: 14px; color: #999">javaee</a> <a href="/tags/javase/" style="font-size: 24px; color: #555">javase</a> <a href="/tags/jdbc/" style="font-size: 14px; color: #999">jdbc</a> <a href="/tags/jmm/" style="font-size: 14px; color: #999">jmm</a> <a href="/tags/jvm/" style="font-size: 22.75px; color: #5e5e5e">jvm</a> <a href="/tags/lifecycle/" style="font-size: 14px; color: #999">lifecycle</a> <a href="/tags/linux/" style="font-size: 19px; color: #777">linux</a> <a href="/tags/lock/" style="font-size: 14.63px; color: #959595">lock</a> <a href="/tags/log/" style="font-size: 14px; color: #999">log</a> <a href="/tags/log4j2/" style="font-size: 14px; color: #999">log4j2</a> <a href="/tags/mapper/" style="font-size: 14px; color: #999">mapper</a> <a href="/tags/maven/" style="font-size: 15.25px; color: #919191">maven</a> <a href="/tags/memory/" style="font-size: 17.13px; color: #848484">memory</a> <a href="/tags/mvc/" style="font-size: 14px; color: #999">mvc</a> <a href="/tags/mybatis/" style="font-size: 19.63px; color: #737373">mybatis</a> <a href="/tags/mysql/" style="font-size: 21.5px; color: #666">mysql</a> <a href="/tags/netty/" style="font-size: 16.5px; color: #888">netty</a> <a href="/tags/nio/" style="font-size: 15.25px; color: #919191">nio</a> <a href="/tags/oracle/" style="font-size: 15.88px; color: #8c8c8c">oracle</a> <a href="/tags/other/" style="font-size: 14.63px; color: #959595">other</a> <a href="/tags/plugin/" style="font-size: 14.63px; color: #959595">plugin</a> <a href="/tags/plugins/" style="font-size: 14px; color: #999">plugins</a> <a href="/tags/redis/" style="font-size: 15.88px; color: #8c8c8c">redis</a> <a href="/tags/reflect/" style="font-size: 14.63px; color: #959595">reflect</a> <a href="/tags/return/" style="font-size: 14px; color: #999">return</a> <a href="/tags/select/" style="font-size: 14px; color: #999">select</a> <a href="/tags/servlet/" style="font-size: 14px; color: #999">servlet</a> <a href="/tags/source/" style="font-size: 14px; color: #999">source</a> <a href="/tags/spring/" style="font-size: 17.75px; color: #808080">spring</a> <a href="/tags/storm/" style="font-size: 14px; color: #999">storm</a> <a href="/tags/thread/" style="font-size: 20.88px; color: #6a6a6a">thread</a> <a href="/tags/tool/" style="font-size: 15.25px; color: #919191">tool</a> <a href="/tags/uml/" style="font-size: 14px; color: #999">uml</a> <a href="/tags/url/" style="font-size: 14px; color: #999">url</a> <a href="/tags/vue/" style="font-size: 14px; color: #999">vue</a> <a href="/tags/zk/" style="font-size: 14px; color: #999">zk</a> <a href="/tags/中间件/" style="font-size: 16.5px; color: #888">中间件</a> <a href="/tags/性能调优/" style="font-size: 14.63px; color: #959595">性能调优</a> <a href="/tags/指令/" style="font-size: 14px; color: #999">指令</a> <a href="/tags/方法论/" style="font-size: 20.25px; color: #6f6f6f">方法论</a> <a href="/tags/源码分析/" style="font-size: 17.75px; color: #808080">源码分析</a> <a href="/tags/编码/" style="font-size: 15.25px; color: #919191">编码</a> <a href="/tags/虚拟机/" style="font-size: 14px; color: #999">虚拟机</a> <a href="/tags/规范/" style="font-size: 14.63px; color: #959595">规范</a> <a href="/tags/设计/" style="font-size: 18.38px; color: #7b7b7b">设计</a>
     </div>
   </section>
 
