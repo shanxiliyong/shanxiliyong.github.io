@@ -740,8 +740,8 @@
       
         
   <h2 class="title">
-    <a href="/2019/03/11/db/mysql/mysql实战/5深入浅出索引/">
-      5深入浅出索引
+    <a href="/2019/03/11/db/mysql/mysql实战/3为什么你改了我还看不见/">
+      3为什么你改了我还看不见
     </a>
   </h2>
 
@@ -805,10 +805,25 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> T (</span><br><span class="line"><span class="keyword">ID</span> <span class="built_in">int</span> primary <span class="keyword">key</span>,</span><br><span class="line">k <span class="built_in">int</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="number">0</span>, </span><br><span class="line">s <span class="built_in">varchar</span>(<span class="number">16</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">''</span>,</span><br><span class="line"><span class="keyword">index</span> k(k))</span><br><span class="line"><span class="keyword">engine</span>=<span class="keyword">InnoDB</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> T <span class="keyword">values</span>(<span class="number">100</span>,<span class="number">1</span>, <span class="string">'aa'</span>),(<span class="number">200</span>,<span class="number">2</span>,<span class="string">'bb'</span>),(<span class="number">300</span>,<span class="number">3</span>,<span class="string">'cc'</span>),(<span class="number">500</span>,<span class="number">5</span>,<span class="string">'ee'</span>),(<span class="number">600</span>,<span class="number">6</span>,<span class="string">'ff'</span>),(<span class="number">700</span>,<span class="number">7</span>,<span class="string">'gg'</span>);</span><br></pre></td></tr></table></figure>
+      <h1 id="隔离性与隔离级别"><a href="#隔离性与隔离级别" class="headerlink" title="隔离性与隔离级别"></a>隔离性与隔离级别</h1><ul>
+<li><p>Atomicity、Consistency、Isolation、Durability</p>
+</li>
+<li><p>脏读（dirty read）、不可重复读(non-repeatable read)、幻读(phantom read)</p>
+</li>
+<li><p>读未提交（read uncommitted）,一个事务还没有提交，就能被其它事务看到</p>
+</li>
+<li><p>读提交（read committed），一个事务提交才能被其它事务看到</p>
+</li>
+<li><p>可重复读（repeatable read），一个事务执行过程中看到的数据和启动时看到的数据一致</p>
+</li>
+<li><p>串行化（serializable ），对于同一行记录，写会加写锁，读会加读锁，当出现读写锁冲突的时候，必须等待前一个事务结束，才能继续</p>
+</li>
+<li><p>查看隔离级别  show variables like ‘transaction_isolation’;  SELECT @@tx_isolation</p>
+</li>
+</ul>
       
         <div class="readmore">
-          <a href="/2019/03/11/db/mysql/mysql实战/5深入浅出索引/" class="flat-box">
+          <a href="/2019/03/11/db/mysql/mysql实战/3为什么你改了我还看不见/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -1378,8 +1393,8 @@
       
         
   <h2 class="title">
-    <a href="/2019/03/11/db/mysql/mysql实战/3为什么你改了我还看不见/">
-      3为什么你改了我还看不见
+    <a href="/2019/03/11/db/mysql/mysql实战/5深入浅出索引/">
+      5深入浅出索引
     </a>
   </h2>
 
@@ -1443,25 +1458,10 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h1 id="隔离性与隔离级别"><a href="#隔离性与隔离级别" class="headerlink" title="隔离性与隔离级别"></a>隔离性与隔离级别</h1><ul>
-<li><p>Atomicity、Consistency、Isolation、Durability</p>
-</li>
-<li><p>脏读（dirty read）、不可重复读(non-repeatable read)、幻读(phantom read)</p>
-</li>
-<li><p>读未提交（read uncommitted）,一个事务还没有提交，就能被其它事务看到</p>
-</li>
-<li><p>读提交（read committed），一个事务提交才能被其它事务看到</p>
-</li>
-<li><p>可重复读（repeatable read），一个事务执行过程中看到的数据和启动时看到的数据一致</p>
-</li>
-<li><p>串行化（serializable ），对于同一行记录，写会加写锁，读会加读锁，当出现读写锁冲突的时候，必须等待前一个事务结束，才能继续</p>
-</li>
-<li><p>查看隔离级别  show variables like ‘transaction_isolation’;  SELECT @@tx_isolation</p>
-</li>
-</ul>
+      <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> T (</span><br><span class="line"><span class="keyword">ID</span> <span class="built_in">int</span> primary <span class="keyword">key</span>,</span><br><span class="line">k <span class="built_in">int</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="number">0</span>, </span><br><span class="line">s <span class="built_in">varchar</span>(<span class="number">16</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">''</span>,</span><br><span class="line"><span class="keyword">index</span> k(k))</span><br><span class="line"><span class="keyword">engine</span>=<span class="keyword">InnoDB</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> T <span class="keyword">values</span>(<span class="number">100</span>,<span class="number">1</span>, <span class="string">'aa'</span>),(<span class="number">200</span>,<span class="number">2</span>,<span class="string">'bb'</span>),(<span class="number">300</span>,<span class="number">3</span>,<span class="string">'cc'</span>),(<span class="number">500</span>,<span class="number">5</span>,<span class="string">'ee'</span>),(<span class="number">600</span>,<span class="number">6</span>,<span class="string">'ff'</span>),(<span class="number">700</span>,<span class="number">7</span>,<span class="string">'gg'</span>);</span><br></pre></td></tr></table></figure>
       
         <div class="readmore">
-          <a href="/2019/03/11/db/mysql/mysql实战/3为什么你改了我还看不见/" class="flat-box">
+          <a href="/2019/03/11/db/mysql/mysql实战/5深入浅出索引/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -1601,8 +1601,8 @@
       
         
   <h2 class="title">
-    <a href="/2019/03/11/javase/深入拆解 Java 虚拟机/10Java对象的内存布局/">
-      10Java对象的内存布局
+    <a href="/2019/03/11/javase/深入拆解 Java 虚拟机/08-09JVM是怎么实现invokedynamic的/">
+      08-09JVM是怎么实现invokedynamic的
     </a>
   </h2>
 
@@ -1666,22 +1666,13 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h1 id="对象的内存布局"><a href="#对象的内存布局" class="headerlink" title="对象的内存布局"></a>对象的内存布局</h1><ul>
-<li><p>对象头</p>
-</li>
-<li><ul>
-<li>存储对象自身的运行时数据，Mark Word</li>
-<li>类型指针，对象指向类元数据的指针（32bit–&gt;32bit，64bit–&gt;64bit(未开启压缩指针)，32bit(开启压缩指针)），JVM通过这个指针来确定这个对象是哪个类的实例（根据对象确定其Class的指针）</li>
-</ul>
-</li>
-<li><p>实例数据，对象真正存储的有效信息</p>
-</li>
-<li><p>对齐填充，JVM要求对象的大小必须是8的整数倍，若不是，需要补位对齐</p>
-</li>
+      <h1 id="方法句柄的概念"><a href="#方法句柄的概念" class="headerlink" title="方法句柄的概念"></a>方法句柄的概念</h1><ul>
+<li>方法句柄的权限取决于Lookup对象的创建位置</li>
+<li>方法句柄的类型（MethodType）是由所指向方法的参数类型以及返回类型组成的</li>
 </ul>
       
         <div class="readmore">
-          <a href="/2019/03/11/javase/深入拆解 Java 虚拟机/10Java对象的内存布局/" class="flat-box">
+          <a href="/2019/03/11/javase/深入拆解 Java 虚拟机/08-09JVM是怎么实现invokedynamic的/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>

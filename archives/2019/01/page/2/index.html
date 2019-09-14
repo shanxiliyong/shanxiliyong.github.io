@@ -512,8 +512,8 @@
       
         
   <h2 class="title">
-    <a href="/2019/01/24/algorithm/数据结构与算法之美/24二叉树基础：有了如此高效的散列表，为什么还需要二叉树/">
-      24二叉树基础：有了如此高效的散列表，为什么还需要二叉树
+    <a href="/2019/01/24/algorithm/数据结构与算法之美/23 二叉树基础：什么样的二叉树适合用数组来存储/">
+      23 二叉树基础：什么样的二叉树适合用数组来存储
     </a>
   </h2>
 
@@ -577,10 +577,10 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h1 id="二叉查找树（Binary-Search-Tree）"><a href="#二叉查找树（Binary-Search-Tree）" class="headerlink" title="二叉查找树（Binary Search Tree）"></a>二叉查找树（Binary Search Tree）</h1><p> 二叉查找树要求，在树中的任意一个节点，其左子树中的每个节点的值，都要小于这个节点的值，而右子树节点的值都大于这个节点的值</p>
+      <h1 id="树（Tree）"><a href="#树（Tree）" class="headerlink" title="树（Tree）"></a>树（Tree）</h1><p><img src="http://liyong.ac.cn/pic/b7043bf29a253bb36221eaec62b2e129.jpg" alt></p>
       
         <div class="readmore">
-          <a href="/2019/01/24/algorithm/数据结构与算法之美/24二叉树基础：有了如此高效的散列表，为什么还需要二叉树/" class="flat-box">
+          <a href="/2019/01/24/algorithm/数据结构与算法之美/23 二叉树基础：什么样的二叉树适合用数组来存储/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -722,8 +722,8 @@
       
         
   <h2 class="title">
-    <a href="/2019/01/24/algorithm/数据结构与算法之美/23 二叉树基础：什么样的二叉树适合用数组来存储/">
-      23 二叉树基础：什么样的二叉树适合用数组来存储
+    <a href="/2019/01/24/algorithm/数据结构与算法之美/24二叉树基础：有了如此高效的散列表，为什么还需要二叉树/">
+      24二叉树基础：有了如此高效的散列表，为什么还需要二叉树
     </a>
   </h2>
 
@@ -787,10 +787,10 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h1 id="树（Tree）"><a href="#树（Tree）" class="headerlink" title="树（Tree）"></a>树（Tree）</h1><p><img src="http://liyong.ac.cn/pic/b7043bf29a253bb36221eaec62b2e129.jpg" alt></p>
+      <h1 id="二叉查找树（Binary-Search-Tree）"><a href="#二叉查找树（Binary-Search-Tree）" class="headerlink" title="二叉查找树（Binary Search Tree）"></a>二叉查找树（Binary Search Tree）</h1><p> 二叉查找树要求，在树中的任意一个节点，其左子树中的每个节点的值，都要小于这个节点的值，而右子树节点的值都大于这个节点的值</p>
       
         <div class="readmore">
-          <a href="/2019/01/24/algorithm/数据结构与算法之美/23 二叉树基础：什么样的二叉树适合用数组来存储/" class="flat-box">
+          <a href="/2019/01/24/algorithm/数据结构与算法之美/24二叉树基础：有了如此高效的散列表，为什么还需要二叉树/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -1454,6 +1454,116 @@
       
         
   <h2 class="title">
+    <a href="/2019/01/24/algorithm/数据结构与算法之美/38分治算法/">
+      38分治算法
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://liyong.ac.cn" rel="nofollow">
+        
+          <img src="https://liyong.ac.cn/img/me.png">
+        
+        <p>李永</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-01-24</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/algorithm/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>algorithm</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h1 id="如何理解“贪心算法”"><a href="#如何理解“贪心算法”" class="headerlink" title="如何理解“贪心算法”"></a>如何理解“贪心算法”</h1><p>分治法，就是把一个复杂的问题分成两个或更多的相同或相似的子问题，直到最后子问题可以简单的直接求解，原问题的解即子问题的解的合并</p>
+<p>分治算法的递归实现中，每一层递归都会涉及这样三个操作：</p>
+<ul>
+<li><p>分解：将原问题分解成一系列子问题；</p>
+</li>
+<li><p>解决：递归地求解各个子问题，若子问题足够小，则直接求解；</p>
+</li>
+<li><p>合并：将子问题的结果合并成原问题。</p>
+      
+        <div class="readmore">
+          <a href="/2019/01/24/algorithm/数据结构与算法之美/38分治算法/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/javase/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> javase</a>
+        
+          <a href="/tags/algorithm/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> algorithm</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
     <a href="/2019/01/24/algorithm/数据结构与算法之美/37贪心算法/">
       37贪心算法
     </a>
@@ -1631,116 +1741,6 @@
       
         <div class="readmore">
           <a href="/2019/01/24/algorithm/数据结构与算法之美/35Trie树/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/javase/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> javase</a>
-        
-          <a href="/tags/algorithm/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> algorithm</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2019/01/24/algorithm/数据结构与算法之美/38分治算法/">
-      38分治算法
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://liyong.ac.cn" rel="nofollow">
-        
-          <img src="https://liyong.ac.cn/img/me.png">
-        
-        <p>李永</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-01-24</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/algorithm/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>algorithm</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h1 id="如何理解“贪心算法”"><a href="#如何理解“贪心算法”" class="headerlink" title="如何理解“贪心算法”"></a>如何理解“贪心算法”</h1><p>分治法，就是把一个复杂的问题分成两个或更多的相同或相似的子问题，直到最后子问题可以简单的直接求解，原问题的解即子问题的解的合并</p>
-<p>分治算法的递归实现中，每一层递归都会涉及这样三个操作：</p>
-<ul>
-<li><p>分解：将原问题分解成一系列子问题；</p>
-</li>
-<li><p>解决：递归地求解各个子问题，若子问题足够小，则直接求解；</p>
-</li>
-<li><p>合并：将子问题的结果合并成原问题。</p>
-      
-        <div class="readmore">
-          <a href="/2019/01/24/algorithm/数据结构与算法之美/38分治算法/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>

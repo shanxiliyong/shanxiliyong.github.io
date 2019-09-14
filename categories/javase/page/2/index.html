@@ -524,8 +524,8 @@
       
         
   <h2 class="title">
-    <a href="/2019/03/11/javase/深入拆解 Java 虚拟机/27注解处理器/">
-      27注解处理器
+    <a href="/2019/03/11/javase/深入拆解 Java 虚拟机/22HotSpot虚拟机的intrinsic/">
+      22HotSpot虚拟机的intrinsic
     </a>
   </h2>
 
@@ -589,15 +589,15 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h1 id="注解处理器的原理"><a href="#注解处理器的原理" class="headerlink" title="注解处理器的原理"></a>注解处理器的原理</h1><h2 id="Java-编译器的工作流程"><a href="#Java-编译器的工作流程" class="headerlink" title="Java 编译器的工作流程"></a>Java 编译器的工作流程</h2><p><img src="http://liyong.ac.cn/pic/5C1553688920602.png" alt="1553688920602"></p>
-<ol>
-将源文件解析为抽象语法树；
-调用已注册的注解处理器；
-生成字节码。
-</ol>
+      <p>换句话说，HotSpot 虚拟机将为标注了@HotSpotIntrinsicCandidate注解的方法额外维护一套高效实现。如果 Java 核心类库的开发者更改了原本的实现，那么虚拟机中的高效实现也需要进行相应的修改，以保证程序语义一致。</p>
+<h1 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h1><ul>
+<li><a href="http://openjdk.java.net/jeps/254" target="_blank" rel="noopener">http://openjdk.java.net/jeps/254</a></li>
+<li><a href="http://hg.openjdk.java.net/jdk/hs/file/46dc568d6804/src/hotspot/share/classfile/vmSymbols.hpp#l727" target="_blank" rel="noopener">http://hg.openjdk.java.net/jdk/hs/file/46dc568d6804/src/hotspot/share/classfile/vmSymbols.hpp#l727</a></li>
+<li><a href="http://hg.openjdk.java.net/jdk8u/jdk8u/hotspot/file/2af8917ffbee/src/share/vm/classfile/vmSymbols.hpp#l647" target="_blank" rel="noopener">http://hg.openjdk.java.net/jdk8u/jdk8u/hotspot/file/2af8917ffbee/src/share/vm/classfile/vmSymbols.hpp#l647</a></li>
+</ul>
       
         <div class="readmore">
-          <a href="/2019/03/11/javase/深入拆解 Java 虚拟机/27注解处理器/" class="flat-box">
+          <a href="/2019/03/11/javase/深入拆解 Java 虚拟机/22HotSpot虚拟机的intrinsic/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -951,8 +951,8 @@
       
         
   <h2 class="title">
-    <a href="/2019/03/11/javase/深入拆解 Java 虚拟机/10Java对象的内存布局/">
-      10Java对象的内存布局
+    <a href="/2019/03/11/javase/深入拆解 Java 虚拟机/08-09JVM是怎么实现invokedynamic的/">
+      08-09JVM是怎么实现invokedynamic的
     </a>
   </h2>
 
@@ -1016,22 +1016,13 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h1 id="对象的内存布局"><a href="#对象的内存布局" class="headerlink" title="对象的内存布局"></a>对象的内存布局</h1><ul>
-<li><p>对象头</p>
-</li>
-<li><ul>
-<li>存储对象自身的运行时数据，Mark Word</li>
-<li>类型指针，对象指向类元数据的指针（32bit–&gt;32bit，64bit–&gt;64bit(未开启压缩指针)，32bit(开启压缩指针)），JVM通过这个指针来确定这个对象是哪个类的实例（根据对象确定其Class的指针）</li>
-</ul>
-</li>
-<li><p>实例数据，对象真正存储的有效信息</p>
-</li>
-<li><p>对齐填充，JVM要求对象的大小必须是8的整数倍，若不是，需要补位对齐</p>
-</li>
+      <h1 id="方法句柄的概念"><a href="#方法句柄的概念" class="headerlink" title="方法句柄的概念"></a>方法句柄的概念</h1><ul>
+<li>方法句柄的权限取决于Lookup对象的创建位置</li>
+<li>方法句柄的类型（MethodType）是由所指向方法的参数类型以及返回类型组成的</li>
 </ul>
       
         <div class="readmore">
-          <a href="/2019/03/11/javase/深入拆解 Java 虚拟机/10Java对象的内存布局/" class="flat-box">
+          <a href="/2019/03/11/javase/深入拆解 Java 虚拟机/08-09JVM是怎么实现invokedynamic的/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -1383,8 +1374,8 @@
       
         
   <h2 class="title">
-    <a href="/2019/03/11/javase/深入拆解 Java 虚拟机/08-09JVM是怎么实现invokedynamic的/">
-      08-09JVM是怎么实现invokedynamic的
+    <a href="/2019/03/11/javase/深入拆解 Java 虚拟机/10Java对象的内存布局/">
+      10Java对象的内存布局
     </a>
   </h2>
 
@@ -1448,13 +1439,22 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h1 id="方法句柄的概念"><a href="#方法句柄的概念" class="headerlink" title="方法句柄的概念"></a>方法句柄的概念</h1><ul>
-<li>方法句柄的权限取决于Lookup对象的创建位置</li>
-<li>方法句柄的类型（MethodType）是由所指向方法的参数类型以及返回类型组成的</li>
+      <h1 id="对象的内存布局"><a href="#对象的内存布局" class="headerlink" title="对象的内存布局"></a>对象的内存布局</h1><ul>
+<li><p>对象头</p>
+</li>
+<li><ul>
+<li>存储对象自身的运行时数据，Mark Word</li>
+<li>类型指针，对象指向类元数据的指针（32bit–&gt;32bit，64bit–&gt;64bit(未开启压缩指针)，32bit(开启压缩指针)），JVM通过这个指针来确定这个对象是哪个类的实例（根据对象确定其Class的指针）</li>
+</ul>
+</li>
+<li><p>实例数据，对象真正存储的有效信息</p>
+</li>
+<li><p>对齐填充，JVM要求对象的大小必须是8的整数倍，若不是，需要补位对齐</p>
+</li>
 </ul>
       
         <div class="readmore">
-          <a href="/2019/03/11/javase/深入拆解 Java 虚拟机/08-09JVM是怎么实现invokedynamic的/" class="flat-box">
+          <a href="/2019/03/11/javase/深入拆解 Java 虚拟机/10Java对象的内存布局/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
