@@ -304,8 +304,8 @@
       
         
   <h2 class="title">
-    <a href="/2017/04/15/javase/jvm/指令重排序/">
-      指令重排序
+    <a href="/2018/01/09/javase/thread/AbstractQueuedSynchronizer-源码分析/">
+      AbstractQueuedSynchronizer:源码分析
     </a>
   </h2>
 
@@ -335,217 +335,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2017-04-15</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/javase/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>javase</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <p>1、对于一个线程来说，它看到的指令执行顺序是一致的。<br>2、线程writer的指令执行顺序在现场reader看来是没有保证的<br>3、下面的例子可能会出现flag=true的时候a=2还未执行，至于是否发生了指令重排序，如何重排序我们是无法预测的。</p>
-      
-        <div class="readmore">
-          <a href="/2017/04/15/javase/jvm/指令重排序/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/concurrent/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> concurrent</a>
-        
-          <a href="/tags/性能调优/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> 性能调优</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2017/04/15/javase/jvm/jstack/">
-      jstack
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://liyong.ac.cn" rel="nofollow">
-        
-          <img src="https://liyong.ac.cn/img/me.png">
-        
-        <p>李永</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2017-04-15</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/javase/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>javase</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <p>jstack主要用来查看某个Java进程内的线程堆栈信息。语法格式如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">jstack [option] pid</span><br><span class="line">jstack [option] executable core</span><br><span class="line">jstack [option] [server-id@]remote-hostname-or-ip</span><br></pre></td></tr></table></figure>
-
-<p> 命令行参数选项说明如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-l long listings，会打印出额外的锁信息，在发生死锁时可以用jstack -l pid来观察锁</span><br></pre></td></tr></table></figure>
-
-<p>1、jstack定位到堆栈信息<br>2、根据堆栈信息可以堆栈信息可以定位到具体代码，所以在JVM性能调优中使用的的相当多</p>
-      
-        <div class="readmore">
-          <a href="/2017/04/15/javase/jvm/jstack/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/性能调优/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> 性能调优</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2017/04/15/javase/thread/ThreadGoup/">
-      ThreadGoup
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://liyong.ac.cn" rel="nofollow">
-        
-          <img src="https://liyong.ac.cn/img/me.png">
-        
-        <p>李永</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2017-04-15</p>
+    <p>2018-01-09</p>
   </a>
 </div>
 
@@ -579,216 +369,10 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <p>分门别类的管理，线程组</p>
+      
       
         <div class="readmore">
-          <a href="/2017/04/15/javase/thread/ThreadGoup/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/thread/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> thread</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2017/04/15/javase/thread/ReentrantLock/">
-      ReentrantLock
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://liyong.ac.cn" rel="nofollow">
-        
-          <img src="https://liyong.ac.cn/img/me.png">
-        
-        <p>李永</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2017-04-15</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/javase/thread/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>javase&nbsp;/&nbsp;thread</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h2 id="ReentrantLock比-synchronized的优势"><a href="#ReentrantLock比-synchronized的优势" class="headerlink" title="ReentrantLock比 synchronized的优势"></a>ReentrantLock比 synchronized的优势</h2><p>1、RenntrantLock性能远远好于synchronized，但从JDK 1.6 开始，JDK在synchronized做了大量的优化，使得两者性能差距并不大<br>2、RenntrantLock支持中断响应<br>3、ReentrantLock支持指定限时等待锁<br>4、ReenTrantLock支持公平锁</p>
-<h2 id="ReentrantLock实现三要素"><a href="#ReentrantLock实现三要素" class="headerlink" title="ReentrantLock实现三要素"></a>ReentrantLock实现三要素</h2><ol>
-<li>原子性，使用cas保证原子性</li>
-<li>等待队列，没有请求道锁的线程会进入等待队列，如果某个线程释放锁，则从等待队列中唤醒一个线程，继续工作</li>
-<li>阻塞 park,恢复unpark
-      
-        <div class="readmore">
-          <a href="/2017/04/15/javase/thread/ReentrantLock/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/thread/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> thread</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2017/03/10/javase/thread/如何提高Java并行程序性能/">
-      如何提高Java并行程序性能
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://liyong.ac.cn" rel="nofollow">
-        
-          <img src="https://liyong.ac.cn/img/me.png">
-        
-        <p>李永</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2017-03-10</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/javase/thread/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>javase&nbsp;/&nbsp;thread</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <p>在Java程序中，多线程几乎已经无处不在。与单线程相比，多线程程序的设计和实现略微困难，但通过多线程，我们却可以获得多核CPU带来的性能飞跃，从这个角度说，多线程是一种值得尝试的技术。那么如何写出高效的多线程程序呢？</p>
-      
-        <div class="readmore">
-          <a href="/2017/03/10/javase/thread/如何提高Java并行程序性能/" class="flat-box">
+          <a href="/2018/01/09/javase/thread/AbstractQueuedSynchronizer-源码分析/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -823,8 +407,8 @@
       
         
   <h2 class="title">
-    <a href="/2017/03/09/javase/Java中字符串内存位置浅析/">
-      Java中字符串内存位置浅析
+    <a href="/2017/11/08/javase/reflect/reflect/">
+      reflect
     </a>
   </h2>
 
@@ -854,7 +438,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2017-03-09</p>
+    <p>2017-11-08</p>
   </a>
 </div>
 
@@ -888,10 +472,629 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>之前面试被问，Java里面String存放的位置，之前只记得String是一个不变的量，应该是要存放在常量池里面的，但是后来问到new一个String出来应该是放到哪里的，这个应该是放到堆里面的，后来又问到String的引用是放在什么地方的，当时傻逼的说也是放在堆里面的，现在总结一下：基本类型的变量数据和对象的引用都是放在栈里面的，对象本身放在堆里面，显式的String常量放在常量池，String对象放在堆中。</p>
+      <ul>
+<li>java.lang.reflect.Type：java语言中所有类型的公共父接口</li>
+<li>java.lang.reflect.ParameterizedType 表示一种参数化的类型，比如Collection</li>
+<li>java.lang.reflect.GenericArrayType 表示一种元素类型是参数化类型或者类型变量的数组类型</li>
+<li>java.lang.reflectTypeVariable 是各种类型变量的公共父接口</li>
+<li>java.lang.reflect.WildcardType 代表一种通配符类型表达式，比如?, ? extends Number, ? super Integer【wildcard是一个单词：就是“通配符”】</li>
+</ul>
       
         <div class="readmore">
-          <a href="/2017/03/09/javase/Java中字符串内存位置浅析/" class="flat-box">
+          <a href="/2017/11/08/javase/reflect/reflect/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/reflect/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> reflect</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2017/10/21/javase/Javadoc/">
+      Javadoc
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://liyong.ac.cn" rel="nofollow">
+        
+          <img src="https://liyong.ac.cn/img/me.png">
+        
+        <p>李永</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2017-10-21</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/javase/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>javase</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h1 id="link"><a href="#link" class="headerlink" title="@link"></a>@link</h1><p>引用当前类</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Alias <span class="keyword">for</span> &#123;@link <span class="comment">#basePackages&#125;.</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"> </span><br></pre></td></tr></table></figure>
+      
+        <div class="readmore">
+          <a href="/2017/10/21/javase/Javadoc/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/javase/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> javase</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2017/05/30/javase/乱码总结/">
+      乱码总结
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://liyong.ac.cn" rel="nofollow">
+        
+          <img src="https://liyong.ac.cn/img/me.png">
+        
+        <p>李永</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2017-05-30</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/javase/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>javase</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+        <div class="readmore">
+          <a href="/2017/05/30/javase/乱码总结/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/编码/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> 编码</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2017/05/30/javase/常见编码格式/">
+      常见编码格式
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://liyong.ac.cn" rel="nofollow">
+        
+          <img src="https://liyong.ac.cn/img/me.png">
+        
+        <p>李永</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2017-05-30</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/javase/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>javase</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h2 id="为什么编码？"><a href="#为什么编码？" class="headerlink" title="为什么编码？"></a>为什么编码？</h2><p>1、计算机中最小存储单位为一个字节，即8个bit，所以能表示的范围为0-255<br>2、人类要表示的符号太多，无法用一个字节来完全表示<br>要解决这个矛盾就要新的数据结构char，从char到byte就需要编码</p>
+      
+        <div class="readmore">
+          <a href="/2017/05/30/javase/常见编码格式/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/编码/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> 编码</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2017/05/30/javase/jvm/垃圾收集算法/">
+      垃圾收集算法
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://liyong.ac.cn" rel="nofollow">
+        
+          <img src="https://liyong.ac.cn/img/me.png">
+        
+        <p>李永</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2017-05-30</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/javase/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>javase</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <p>垃圾收集器通常会假设大部分的对象的存活时间都非常短，只有少数对象的存活时间比较长。<br>垃圾收集算法在JVM中主要是复制算法（新生代GC）和标记/整理算法（老年代GC）。</p>
+      
+        <div class="readmore">
+          <a href="/2017/05/30/javase/jvm/垃圾收集算法/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/memory/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> memory</a>
+        
+          <a href="/tags/gc/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> gc</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2017/05/30/javase/jvm/对象已死吗/">
+      对象已死吗
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://liyong.ac.cn" rel="nofollow">
+        
+          <img src="https://liyong.ac.cn/img/me.png">
+        
+        <p>李永</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2017-05-30</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/javase/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>javase</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h2 id="引用计数算法"><a href="#引用计数算法" class="headerlink" title="引用计数算法"></a>引用计数算法</h2><p>给对象添加一个引用计数器，每当有一个地方引用它时，计数器值就加1；当引用失效时，计数器值就减1；任何时刻计数器为0的对象就是不可能再被使用的。<br>主流的java虚拟机里面没有选用这个算法来管理内存，主要原因是它很难解决对象之间相互循环引用的问题。</p>
+      
+        <div class="readmore">
+          <a href="/2017/05/30/javase/jvm/对象已死吗/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/memory/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> memory</a>
+        
+          <a href="/tags/gc/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> gc</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2017/05/29/javase/jvm/HotSpot虚拟机对象探秘/">
+      HotSpot虚拟机对象探秘
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://liyong.ac.cn" rel="nofollow">
+        
+          <img src="https://liyong.ac.cn/img/me.png">
+        
+        <p>李永</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2017-05-29</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/javase/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>javase</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h2 id="对象的创建"><a href="#对象的创建" class="headerlink" title="对象的创建"></a>对象的创建</h2><p>虚拟机遇到一条new指令时，首先将去检查这个指令的参数是否能在常量池中定位到一个类的符号引用，并且检查这个符号引用代表的类是否已被加载、解析和初始化过的。如果没有，那必须先执行相应的类加载过程</p>
+      
+        <div class="readmore">
+          <a href="/2017/05/29/javase/jvm/HotSpot虚拟机对象探秘/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -924,8 +1127,8 @@
       
         
   <h2 class="title">
-    <a href="/2017/03/09/javase/jvm/JVM内存区域划分/">
-      JVM内存区域划分
+    <a href="/2017/05/29/javase/jvm/运行时数据区域/">
+      运行时数据区域
     </a>
   </h2>
 
@@ -955,7 +1158,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2017-03-09</p>
+    <p>2017-05-29</p>
   </a>
 </div>
 
@@ -989,13 +1192,10 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <p>学习Java不可避免的要学习Java虚拟机，也就是JVM，Java虚拟机规范里面规定了程序运行期间会使用到的运行时数据区，这也是JVM的内存区域划分的模型，应该可以这么理解吧。</p>
-<p>这其中有一些是随着虚拟机的启动和退出而创建和销毁的，这些区域是线程共享的，另外有一些是跟各个线程绑定的，随着线程的开始和结束而创建和销毁，我们可以称这些区域是线程私有的。</p>
-<p>根据《Java虚拟机规范Java SE 7版》和《Java虚拟机规范Java SE 8版》的规定，我们可以划分出如下几个运行时数据区，如下图所示：</p>
-<p><img src="1.png" alt="JVM内存区域划分"></p>
+      <p> <img src="1.jpg" alt="1"></p>
       
         <div class="readmore">
-          <a href="/2017/03/09/javase/jvm/JVM内存区域划分/" class="flat-box">
+          <a href="/2017/05/29/javase/jvm/运行时数据区域/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -1004,6 +1204,8 @@
     </div>
     
       <div class="full-width auto-padding tags">
+        
+          <a href="/tags/javase/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> javase</a>
         
           <a href="/tags/memory/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> memory</a>
         
@@ -1028,8 +1230,8 @@
       
         
   <h2 class="title">
-    <a href="/2017/03/01/javase/KeyTool/">
-      KeyTool
+    <a href="/2017/05/29/javase/jvm/JVM中锁优化/">
+      JVM中锁优化，偏向锁、自旋锁、锁消除、锁粗化
     </a>
   </h2>
 
@@ -1059,7 +1261,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2017-03-01</p>
+    <p>2017-05-29</p>
   </a>
 </div>
 
@@ -1093,10 +1295,10 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      jdk生成keytool.
+      <h2 id="锁消除"><a href="#锁消除" class="headerlink" title="锁消除"></a>锁消除</h2><p>锁削除是指虚拟机即时编译器在运行时，对一些代码上要求同步，但是被检测到不可能存在共享数据竞争的锁进行削除（主要判定依据来源于逃逸分析的数据支持，如果判断到一段代码中，在堆上的所有数据都不会逃逸出去被其他线程访问到，那就可以把它们当作栈上数据对待，认为它们是线程私有的，同步加锁自然就无须进行）</p>
       
         <div class="readmore">
-          <a href="/2017/03/01/javase/KeyTool/" class="flat-box">
+          <a href="/2017/05/29/javase/jvm/JVM中锁优化/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -1106,7 +1308,7 @@
     
       <div class="full-width auto-padding tags">
         
-          <a href="/tags/plugins/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> plugins</a>
+          <a href="/tags/concurrent/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> concurrent</a>
         
       </div>
     
@@ -1131,8 +1333,14 @@
             </a>
           
           <p class="current">
-            5 / 5
+            5 / 7
           </p>
+          
+            <a class="next" rel="next" href="/categories/javase/page/6/">
+              <section class="post next">
+                &nbsp;下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i>
+              </section>
+            </a>
           
         </div>
       </div>

@@ -236,8 +236,8 @@
       
         
   <h2 class="title">
-    <a href="/2018/01/09/javase/thread/AbstractQueuedSynchronizer-源码分析/">
-      AbstractQueuedSynchronizer:源码分析
+    <a href="/2019/01/24/algorithm/数据结构与算法之美/08栈：如何实现浏览器的前进和后退功能/">
+      08栈：如何实现浏览器的前进和后退功能
     </a>
   </h2>
 
@@ -267,7 +267,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2018-01-09</p>
+    <p>2019-01-24</p>
   </a>
 </div>
 
@@ -277,9 +277,9 @@
             
   
   <div class='new-meta-item category'>
-    <a href='/categories/javase/thread/' rel="nofollow">
+    <a href='/categories/algorithm/' rel="nofollow">
       <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>javase&nbsp;/&nbsp;thread</p>
+      <p>algorithm</p>
     </a>
   </div>
 
@@ -301,10 +301,10 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      
+      <h2 id="如何理解“栈”？"><a href="#如何理解“栈”？" class="headerlink" title="如何理解“栈”？"></a>如何理解“栈”？</h2><p>当某个数据集合只涉及在一端插入和删除数据，并且满足后进先出、先进后出的特性，我们就应该首选“栈”这种数据结构</p>
       
         <div class="readmore">
-          <a href="/2018/01/09/javase/thread/AbstractQueuedSynchronizer-源码分析/" class="flat-box">
+          <a href="/2019/01/24/algorithm/数据结构与算法之美/08栈：如何实现浏览器的前进和后退功能/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -314,9 +314,9 @@
     
       <div class="full-width auto-padding tags">
         
-          <a href="/tags/源码分析/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> 源码分析</a>
+          <a href="/tags/javase/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> javase</a>
         
-          <a href="/tags/thread/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> thread</a>
+          <a href="/tags/algorithm/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> algorithm</a>
         
       </div>
     
@@ -339,8 +339,8 @@
       
         
   <h2 class="title">
-    <a href="/2018/01/09/javase/thread/CyclicBarrier-源码分析/">
-      CyclicBarrier:源码分析
+    <a href="/2019/01/24/algorithm/数据结构与算法之美/06-07链表/">
+      06-07链表
     </a>
   </h2>
 
@@ -370,7 +370,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2018-01-09</p>
+    <p>2019-01-24</p>
   </a>
 </div>
 
@@ -380,9 +380,9 @@
             
   
   <div class='new-meta-item category'>
-    <a href='/categories/thread/' rel="nofollow">
+    <a href='/categories/algorithm/' rel="nofollow">
       <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>thread</p>
+      <p>algorithm</p>
     </a>
   </div>
 
@@ -404,11 +404,10 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h1 id="代码版本"><a href="#代码版本" class="headerlink" title="代码版本"></a>代码版本</h1><p>1.8.0_131</p>
-<h1 id="域"><a href="#域" class="headerlink" title="域"></a>域</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> ReentrantLock lock = <span class="keyword">new</span> ReentrantLock();<span class="comment">//所有方法都通过这个锁来同步。 </span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> Condition trip = lock.newCondition();<span class="comment">//通过lock得到的一个状态变量</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> parties;<span class="comment">//通过构造器传入的参数，表示总的等待线程的数量。</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> count;<span class="comment">//初始化和parties一致，parties不参与运算，count参与运算</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> Runnable barrierCommand;<span class="comment">//当屏障正常打开后运行的程序，通过最后一个调用await的线程来执行。</span></span><br><span class="line"><span class="keyword">private</span> Generation generation = <span class="keyword">new</span> Generation();当前的Generation。每当屏障失效或者开闸之后都会自动替换掉。从而实现重置的功能。</span><br></pre></td></tr></table></figure>
+      <h1 id="理解指针或引用的含义"><a href="#理解指针或引用的含义" class="headerlink" title="理解指针或引用的含义"></a>理解指针或引用的含义</h1><p>不管是“指针”还是“引用”，实际上，它们的意思都是一样的，都是存储所指对象的内存地址。</p>
       
         <div class="readmore">
-          <a href="/2018/01/09/javase/thread/CyclicBarrier-源码分析/" class="flat-box">
+          <a href="/2019/01/24/algorithm/数据结构与算法之美/06-07链表/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -418,9 +417,9 @@
     
       <div class="full-width auto-padding tags">
         
-          <a href="/tags/源码分析/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> 源码分析</a>
+          <a href="/tags/javase/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> javase</a>
         
-          <a href="/tags/thread/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> thread</a>
+          <a href="/tags/algorithm/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> algorithm</a>
         
       </div>
     
@@ -443,8 +442,8 @@
       
         
   <h2 class="title">
-    <a href="/2017/12/28/db/oracle/Oracle-awrrpt/">
-      Oracle:awrrpt
+    <a href="/2019/01/24/algorithm/数据结构与算法之美/03-04复杂度分析（上）：如何分析、统计算法的执行效率和资源消耗/">
+      03-04如何分析、统计算法的执行效率和资源消耗
     </a>
   </h2>
 
@@ -474,7 +473,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2017-12-28</p>
+    <p>2019-01-24</p>
   </a>
 </div>
 
@@ -484,9 +483,9 @@
             
   
   <div class='new-meta-item category'>
-    <a href='/categories/db/' rel="nofollow">
+    <a href='/categories/algorithm/' rel="nofollow">
       <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>db</p>
+      <p>algorithm</p>
     </a>
   </div>
 
@@ -508,219 +507,14 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <p>把目录切换到生成报告的地址</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sqlplus / as sysdba;</span><br><span class="line">@?/rdbms/admin/awrrpt.sql</span><br></pre></td></tr></table></figure>
-      
-        <div class="readmore">
-          <a href="/2017/12/28/db/oracle/Oracle-awrrpt/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/oracle/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> oracle</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2017/12/28/tool/常用工具/">
-      小软件
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://liyong.ac.cn" rel="nofollow">
-        
-          <img src="https://liyong.ac.cn/img/me.png">
-        
-        <p>李永</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2017-12-28</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/tool/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>tool</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h1 id="Postman"><a href="#Postman" class="headerlink" title="Postman"></a>Postman</h1><ul>
-<li>模拟请求，前后端联调利器</li>
-<li>有APP版和chrome浏览器插件版</li>
-<li>
-      
-        <div class="readmore">
-          <a href="/2017/12/28/tool/常用工具/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/tool/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> tool</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2017/12/28/db/oracle/Oracle-性能分析及优化/">
-      Oracle:性能分析及优化
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://liyong.ac.cn" rel="nofollow">
-        
-          <img src="https://liyong.ac.cn/img/me.png">
-        
-        <p>李永</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2017-12-28</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/db/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>db</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h1 id="书写"><a href="#书写" class="headerlink" title="书写"></a>书写</h1><ul>
-<li>SQL语句转换成大写，可缩短些SQL的解析时间。通过统一成大写，可提高SQL的再利用率，缩短SQL解析时间。</li>
+      <h1 id="时间复杂度分析"><a href="#时间复杂度分析" class="headerlink" title="时间复杂度分析"></a>时间复杂度分析</h1><ul>
+<li>只关注循环执行次数最多的一段代码</li>
+<li>加法法则：总复杂度等于量级最大的那段代码的复杂度</li>
+<li>乘法法则：嵌套代码的复杂度等于嵌套内外代码复杂度的乘积</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--高效的写法</span></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> A_TABLE</span><br><span class="line"><span class="comment">--低效的写法</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> a_table</span><br></pre></td></tr></table></figure>
       
         <div class="readmore">
-          <a href="/2017/12/28/db/oracle/Oracle-性能分析及优化/" class="flat-box">
+          <a href="/2019/01/24/algorithm/数据结构与算法之美/03-04复杂度分析（上）：如何分析、统计算法的执行效率和资源消耗/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -730,7 +524,9 @@
     
       <div class="full-width auto-padding tags">
         
-          <a href="/tags/oracle/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> oracle</a>
+          <a href="/tags/javase/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> javase</a>
+        
+          <a href="/tags/algorithm/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> algorithm</a>
         
       </div>
     
@@ -753,8 +549,8 @@
       
         
   <h2 class="title">
-    <a href="/2017/12/28/db/oracle/Oracle-index/">
-      Oracle:index
+    <a href="/2019/01/24/algorithm/数据结构与算法之美/02如何抓住重点，系统高效地学习数据结构与算法/">
+      02如何抓住重点，系统高效地学习数据结构与算法
     </a>
   </h2>
 
@@ -784,7 +580,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2017-12-28</p>
+    <p>2019-01-24</p>
   </a>
 </div>
 
@@ -794,9 +590,9 @@
             
   
   <div class='new-meta-item category'>
-    <a href='/categories/db/' rel="nofollow">
+    <a href='/categories/algorithm/' rel="nofollow">
       <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>db</p>
+      <p>algorithm</p>
     </a>
   </div>
 
@@ -818,11 +614,10 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <p>索引建立在排序的基础上<br> 若没有索引，搜索某个记录时（例如查找name=’wish’）需要搜索所有的记录，因为不能保证只有一个wish，必须全部搜索一遍</p>
-<p>一个表能建多少个索引<br>一张表推荐多少个字段，如果多了，会有什么问题</p>
+      <h1 id="学习的重点在什么地方？"><a href="#学习的重点在什么地方？" class="headerlink" title="学习的重点在什么地方？"></a>学习的重点在什么地方？</h1><p><img src="http://liyong.ac.cn/pic/913e0ababe43a2d57267df5c5f0832a7.jpg" alt></p>
       
         <div class="readmore">
-          <a href="/2017/12/28/db/oracle/Oracle-index/" class="flat-box">
+          <a href="/2019/01/24/algorithm/数据结构与算法之美/02如何抓住重点，系统高效地学习数据结构与算法/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -832,7 +627,9 @@
     
       <div class="full-width auto-padding tags">
         
-          <a href="/tags/oracle/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> oracle</a>
+          <a href="/tags/javase/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> javase</a>
+        
+          <a href="/tags/algorithm/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> algorithm</a>
         
       </div>
     
@@ -855,8 +652,8 @@
       
         
   <h2 class="title">
-    <a href="/2017/12/24/framework/spring/spring-mvc/">
-      spring:mvc
+    <a href="/2019/01/24/algorithm/数据结构与算法之美/学习指导手册/">
+      学习指导手册
     </a>
   </h2>
 
@@ -886,7 +683,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2017-12-24</p>
+    <p>2019-01-24</p>
   </a>
 </div>
 
@@ -896,9 +693,112 @@
             
   
   <div class='new-meta-item category'>
-    <a href='/categories/spring/' rel="nofollow">
+    <a href='/categories/algorithm/' rel="nofollow">
       <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>spring</p>
+      <p>algorithm</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h1 id="学习路线"><a href="#学习路线" class="headerlink" title="学习路线"></a>学习路线</h1><p><img src="http://liyong.ac.cn/pic/54163f16e152f71b8f91d3fba652cf48.jpg" alt="img"></p>
+      
+        <div class="readmore">
+          <a href="/2019/01/24/algorithm/数据结构与算法之美/学习指导手册/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/javase/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> javase</a>
+        
+          <a href="/tags/algorithm/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> algorithm</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2019/01/24/algorithm/数据结构与算法之美/40-41-42动态规划/">
+      40-41-42动态规划
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://liyong.ac.cn" rel="nofollow">
+        
+          <img src="https://liyong.ac.cn/img/me.png">
+        
+        <p>李永</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-01-24</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/algorithm/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>algorithm</p>
     </a>
   </div>
 
@@ -923,7 +823,7 @@
       
       
         <div class="readmore">
-          <a href="/2017/12/24/framework/spring/spring-mvc/" class="flat-box">
+          <a href="/2019/01/24/algorithm/数据结构与算法之美/40-41-42动态规划/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -933,7 +833,9 @@
     
       <div class="full-width auto-padding tags">
         
-          <a href="/tags/spring/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> spring</a>
+          <a href="/tags/javase/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> javase</a>
+        
+          <a href="/tags/algorithm/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> algorithm</a>
         
       </div>
     
@@ -956,8 +858,8 @@
       
         
   <h2 class="title">
-    <a href="/2017/12/24/framework/netty/Netty-入门/">
-      Netty:入门
+    <a href="/2019/01/24/algorithm/数据结构与算法之美/17跳表：为什么Redis一定要用跳表来实现有序集合/">
+      17跳表：为什么Redis一定要用跳表来实现有序集合
     </a>
   </h2>
 
@@ -987,7 +889,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2017-12-24</p>
+    <p>2019-01-24</p>
   </a>
 </div>
 
@@ -997,9 +899,9 @@
             
   
   <div class='new-meta-item category'>
-    <a href='/categories/netty/' rel="nofollow">
+    <a href='/categories/algorithm/' rel="nofollow">
       <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>netty</p>
+      <p>algorithm</p>
     </a>
   </div>
 
@@ -1021,10 +923,11 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <p>Netty是一个高性能、异步事件驱动的NIO框架，提供了对TCP、UDP和文件传输的支持，作为一个异步NIO框架，Netty的所有IO操作都是异步非阻塞的，通过Future-Listener机制，用户可以方便的主动获取或者通过通知机制获得IO操作结果。</p>
+      <h1 id="理解调表"><a href="#理解调表" class="headerlink" title="理解调表"></a>理解调表</h1><p><strong>种链表加多级索引的结构，就是跳表</strong></p>
+<p><img src="http://liyong.ac.cn/pic/e18303fcedc068e5a168de04df956f6d.jpg" alt></p>
       
         <div class="readmore">
-          <a href="/2017/12/24/framework/netty/Netty-入门/" class="flat-box">
+          <a href="/2019/01/24/algorithm/数据结构与算法之美/17跳表：为什么Redis一定要用跳表来实现有序集合/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -1034,7 +937,9 @@
     
       <div class="full-width auto-padding tags">
         
-          <a href="/tags/netty/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> netty</a>
+          <a href="/tags/javase/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> javase</a>
+        
+          <a href="/tags/algorithm/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> algorithm</a>
         
       </div>
     
@@ -1057,8 +962,8 @@
       
         
   <h2 class="title">
-    <a href="/2017/12/22/db/mysql/Mysql-index/">
-      Mysql:index
+    <a href="/2019/01/01/methodology/standard/git_standard/">
+      git规范
     </a>
   </h2>
 
@@ -1088,7 +993,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2017-12-22</p>
+    <p>2019-01-01</p>
   </a>
 </div>
 
@@ -1098,9 +1003,9 @@
             
   
   <div class='new-meta-item category'>
-    <a href='/categories/db/' rel="nofollow">
+    <a href='/categories/方法论/规范/' rel="nofollow">
       <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>db</p>
+      <p>方法论&nbsp;/&nbsp;规范</p>
     </a>
   </div>
 
@@ -1122,13 +1027,15 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h1 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h1><ol>
-<li>索引需要存储，也就需要空间，索引实际就是一张表，字段更行会有性能损耗</li>
-<li>btree</li>
-</ol>
+      <h1 id="规范"><a href="#规范" class="headerlink" title="规范"></a>规范</h1><ul>
+<li><p>学习gitflow思想，参考网址</p>
+<p><a href="https://www.git-tower.com/learn/git/ebook/cn/command-line/advanced-topics/git-flow" target="_blank" rel="noopener">https://www.git-tower.com/learn/git/ebook/cn/command-line/advanced-topics/git-flow</a></p>
+<p><a href="https://blog.csdn.net/xingbaozhen1210/article/details/81386269" target="_blank" rel="noopener">https://blog.csdn.net/xingbaozhen1210/article/details/81386269</a></p>
+</li>
+</ul>
       
         <div class="readmore">
-          <a href="/2017/12/22/db/mysql/Mysql-index/" class="flat-box">
+          <a href="/2019/01/01/methodology/standard/git_standard/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -1138,9 +1045,9 @@
     
       <div class="full-width auto-padding tags">
         
-          <a href="/tags/mysql/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> mysql</a>
+          <a href="/tags/方法论/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> 方法论</a>
         
-          <a href="/tags/db/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> db</a>
+          <a href="/tags/规范/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> 规范</a>
         
       </div>
     
@@ -1163,8 +1070,8 @@
       
         
   <h2 class="title">
-    <a href="/2017/12/12/methodology/design-pattern/生产者消费者/">
-      生产者消费者
+    <a href="/2019/01/01/methodology/设计/设计一个高并发系统/">
+      设计一个高并发系统
     </a>
   </h2>
 
@@ -1194,7 +1101,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2017-12-12</p>
+    <p>2019-01-01</p>
   </a>
 </div>
 
@@ -1228,10 +1135,18 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <p>生产者消费者的事例代码</p>
+      <ul>
+<li>系统拆分</li>
+<li>缓存</li>
+<li>MQ</li>
+<li>分库分表</li>
+<li>读写分离</li>
+<li>ElasticSearch</li>
+</ul>
+<p><img src="/pic/methodology/high-concurrency-system-design.png" alt></p>
       
         <div class="readmore">
-          <a href="/2017/12/12/methodology/design-pattern/生产者消费者/" class="flat-box">
+          <a href="/2019/01/01/methodology/设计/设计一个高并发系统/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -1266,8 +1181,8 @@
       
         
   <h2 class="title">
-    <a href="/2017/12/07/framework/spring/spring-annotation/">
-      spring:annotation
+    <a href="/2019/01/01/middleware/redis/redis数据类型/">
+      redis数据类型
     </a>
   </h2>
 
@@ -1297,7 +1212,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2017-12-07</p>
+    <p>2019-01-01</p>
   </a>
 </div>
 
@@ -1307,9 +1222,9 @@
             
   
   <div class='new-meta-item category'>
-    <a href='/categories/spring/' rel="nofollow">
+    <a href='/categories/中间件/redis/' rel="nofollow">
       <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>spring</p>
+      <p>中间件&nbsp;/&nbsp;redis</p>
     </a>
   </div>
 
@@ -1331,10 +1246,10 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h1 id="Autowired"><a href="#Autowired" class="headerlink" title="@Autowired"></a>@Autowired</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MovieRecommender</span> </span>&#123;</span><br><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> MovieCatalog[] movieCatalogs;</span><br><span class="line"><span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MovieRecommender</span> </span>&#123;</span><br><span class="line"><span class="keyword">private</span> Set&lt;MovieCatalog&gt; movieCatalogs;</span><br><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setMovieCatalogs</span><span class="params">(Set&lt;MovieCatalog&gt; movieCatalogs)</span> </span>&#123;</span><br><span class="line"><span class="keyword">this</span>.movieCatalogs = movieCatalogs;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MovieRecommender</span> </span>&#123;</span><br><span class="line"><span class="keyword">private</span> Map&lt;String, MovieCatalog&gt; movieCatalogs;</span><br><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setMovieCatalogs</span><span class="params">(Map&lt;String, MovieCatalog&gt; movieCatalogs)</span> </span>&#123;</span><br><span class="line"><span class="keyword">this</span>.movieCatalogs = movieCatalogs;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      <p>string、hash、list、set、sorted set</p>
       
         <div class="readmore">
-          <a href="/2017/12/07/framework/spring/spring-annotation/" class="flat-box">
+          <a href="/2019/01/01/middleware/redis/redis数据类型/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -1344,417 +1259,9 @@
     
       <div class="full-width auto-padding tags">
         
-          <a href="/tags/spring/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> spring</a>
+          <a href="/tags/中间件/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> 中间件</a>
         
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2017/12/07/framework/spring/Spring-lifecycle/">
-      Spring:lifecycle
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://liyong.ac.cn" rel="nofollow">
-        
-          <img src="https://liyong.ac.cn/img/me.png">
-        
-        <p>李永</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2017-12-07</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/spring/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>spring</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h1 id="Lifecycle"><a href="#Lifecycle" class="headerlink" title="Lifecycle"></a>Lifecycle</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Lifecycle</span> </span>&#123;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">start</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">stop</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">isRunning</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">LifecycleProcessor</span> <span class="keyword">extends</span> <span class="title">Lifecycle</span> </span>&#123;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">onRefresh</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">onClose</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-        <div class="readmore">
-          <a href="/2017/12/07/framework/spring/Spring-lifecycle/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/spring/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> spring</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2017/11/29/framework/mybatis/Mybatis-返回值/">
-      Mybatis:返回值
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://liyong.ac.cn" rel="nofollow">
-        
-          <img src="https://liyong.ac.cn/img/me.png">
-        
-        <p>李永</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2017-11-29</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <p>从源码分析mybatis怎么处理返回值</p>
-      
-        <div class="readmore">
-          <a href="/2017/11/29/framework/mybatis/Mybatis-返回值/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/mybatis/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> mybatis</a>
-        
-          <a href="/tags/return/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> return</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2017/11/29/framework/mybatis/Mybatis-Plugin/">
-      Mybatis:Plugin
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://liyong.ac.cn" rel="nofollow">
-        
-          <img src="https://liyong.ac.cn/img/me.png">
-        
-        <p>李永</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2017-11-29</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/mybatis/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>mybatis</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <ul>
-<li>从源码分析Mybatis的插件</li>
-<li>熟悉Java代理模式的应用场景</li>
-</ul>
-      
-        <div class="readmore">
-          <a href="/2017/11/29/framework/mybatis/Mybatis-Plugin/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/mybatis/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> mybatis</a>
-        
-          <a href="/tags/plugin/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> plugin</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2017/11/28/framework/mybatis/Mybatis-Select/">
-      Mybatis:Select
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://liyong.ac.cn" rel="nofollow">
-        
-          <img src="https://liyong.ac.cn/img/me.png">
-        
-        <p>李永</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2017-11-28</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/mybatis/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>mybatis</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <ul>
-<li>分析Mapper查询的执行过程</li>
-<li>有关Mapper的构建过程请参考<a href="http://liyong.ac.cn/2017/11/24/Mybatis-Builder/">Mybatis-Builder</a></li>
-</ul>
-      
-        <div class="readmore">
-          <a href="/2017/11/28/framework/mybatis/Mybatis-Select/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/mybatis/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> mybatis</a>
-        
-          <a href="/tags/select/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> select</a>
+          <a href="/tags/redis/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> redis</a>
         
       </div>
     
@@ -1779,7 +1286,7 @@
             </a>
           
           <p class="current">
-            10 / 14
+            10 / 21
           </p>
           
             <a class="next" rel="next" href="/page/11/">
