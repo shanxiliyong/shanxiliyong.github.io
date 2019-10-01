@@ -304,8 +304,8 @@
       
         
   <h2 class="title">
-    <a href="/2019/03/11/javase/深入拆解 Java 虚拟机/01Java代码是怎么运行的/">
-      01Java代码是怎么运行的
+    <a href="/2019/03/11/javase/深入拆解 Java 虚拟机/11-12垃圾回收/">
+      11-12垃圾回收
     </a>
   </h2>
 
@@ -369,12 +369,16 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h1 id="虚拟机"><a href="#虚拟机" class="headerlink" title="虚拟机"></a>虚拟机</h1><p>从虚拟机视角来看，执行 Java 代码首先需要将它编译而成的 class 文件加载到 Java 虚拟机中。加载后的 Java 类会被存放于方法区（Method Area）中。实际运行时，虚拟机会执行方法区内的代码。</p>
-<p>在运行过程中，每当调用进入一个 Java 方法，Java 虚拟机会在当前线程的 Java 方法栈中生成一个栈帧，用以存放局部变量以及字节码的操作数。这个栈帧的大小是提前计算好的，而且 Java 虚拟机不要求栈帧在内存空间里连续分布。</p>
-<h1 id="硬件"><a href="#硬件" class="headerlink" title="硬件"></a>硬件</h1><p>从硬件视角来看，Java 字节码无法直接执行。因此，Java 虚拟机需要将字节码翻译成机器码。</p>
+      <h1 id="引用计数法和可达性分析"><a href="#引用计数法和可达性分析" class="headerlink" title="引用计数法和可达性分析"></a>引用计数法和可达性分析</h1><h2 id="引用计数"><a href="#引用计数" class="headerlink" title="引用计数"></a>引用计数</h2><p>循环引用的问题</p>
+<h2 id="可达性分析"><a href="#可达性分析" class="headerlink" title="可达性分析"></a>可达性分析</h2><ul>
+<li>方法栈桢中的局部变量</li>
+<li>已加载类的静态变量</li>
+<li>JNI handles</li>
+<li>已启动未停止的java线程</li>
+</ul>
       
         <div class="readmore">
-          <a href="/2019/03/11/javase/深入拆解 Java 虚拟机/01Java代码是怎么运行的/" class="flat-box">
+          <a href="/2019/03/11/javase/深入拆解 Java 虚拟机/11-12垃圾回收/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -409,8 +413,8 @@
       
         
   <h2 class="title">
-    <a href="/2019/03/11/javase/深入拆解 Java 虚拟机/16-17即时编译/">
-      16-17即时编译
+    <a href="/2019/03/11/javase/深入拆解 Java 虚拟机/13Java内存模型/">
+      13Java内存模型
     </a>
   </h2>
 
@@ -474,16 +478,10 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h1 id="分层编译将-Java-虚拟机的执行状态分为了五个层次"><a href="#分层编译将-Java-虚拟机的执行状态分为了五个层次" class="headerlink" title="分层编译将 Java 虚拟机的执行状态分为了五个层次"></a>分层编译将 Java 虚拟机的执行状态分为了五个层次</h1><ol>
-<li>解释执行；</li>
-<li>执行不带 profiling 的 C1 代码；</li>
-<li>执行仅带方法调用次数以及循环回边执行次数 profiling 的 C1 代码；</li>
-<li>执行带所有 profiling 的 C1 代码；</li>
-<li>执行 C2 代码。</li>
-</ol>
+      <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a=<span class="number">0</span>, b=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> r2 = a;</span><br><span class="line">  b = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> r1 = b;</span><br><span class="line">  a = <span class="number">2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
         <div class="readmore">
-          <a href="/2019/03/11/javase/深入拆解 Java 虚拟机/16-17即时编译/" class="flat-box">
+          <a href="/2019/03/11/javase/深入拆解 Java 虚拟机/13Java内存模型/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -1553,17 +1551,17 @@
         
           <li><a class="flat-box child" title="/categories/db/mysql/" href="/categories/db/mysql/"><div class='name'>mysql</div><div class='badge'>(1)</div></a></li>
         
-          <li><a class="flat-box" title="/categories/javaee/" href="/categories/javaee/"><div class='name'>javaee</div><div class='badge'>(1)</div></a></li>
+          <li><a class="flat-box" title="/categories/javaee/" href="/categories/javaee/"><div class='name'>javaee</div><div class='badge'>(2)</div></a></li>
         
-          <li><a class="flat-box" title="/categories/javase/" href="/categories/javase/"><div class='name'>javase</div><div class='badge'>(68)</div></a></li>
+          <li><a class="flat-box" title="/categories/javase/" href="/categories/javase/"><div class='name'>javase</div><div class='badge'>(69)</div></a></li>
         
-          <li><a class="flat-box child" title="/categories/javase/thread/" href="/categories/javase/thread/"><div class='name'>thread</div><div class='badge'>(15)</div></a></li>
+          <li><a class="flat-box child" title="/categories/javase/thread/" href="/categories/javase/thread/"><div class='name'>thread</div><div class='badge'>(16)</div></a></li>
         
           <li><a class="flat-box" title="/categories/linux/" href="/categories/linux/"><div class='name'>linux</div><div class='badge'>(11)</div></a></li>
         
           <li><a class="flat-box" title="/categories/log/" href="/categories/log/"><div class='name'>log</div><div class='badge'>(2)</div></a></li>
         
-          <li><a class="flat-box" title="/categories/mybatis/" href="/categories/mybatis/"><div class='name'>mybatis</div><div class='badge'>(11)</div></a></li>
+          <li><a class="flat-box" title="/categories/mybatis/" href="/categories/mybatis/"><div class='name'>mybatis</div><div class='badge'>(13)</div></a></li>
         
           <li><a class="flat-box" title="/categories/netty/" href="/categories/netty/"><div class='name'>netty</div><div class='badge'>(6)</div></a></li>
         
@@ -1573,7 +1571,7 @@
         
           <li><a class="flat-box" title="/categories/storm/" href="/categories/storm/"><div class='name'>storm</div><div class='badge'>(1)</div></a></li>
         
-          <li><a class="flat-box" title="/categories/thread/" href="/categories/thread/"><div class='name'>thread</div><div class='badge'>(1)</div></a></li>
+          <li><a class="flat-box" title="/categories/thread/" href="/categories/thread/"><div class='name'>thread</div><div class='badge'>(0)</div></a></li>
         
           <li><a class="flat-box" title="/categories/tool/" href="/categories/tool/"><div class='name'>tool</div><div class='badge'>(7)</div></a></li>
         
@@ -1585,7 +1583,7 @@
         
           <li><a class="flat-box" title="/categories/vue/" href="/categories/vue/"><div class='name'>vue</div><div class='badge'>(1)</div></a></li>
         
-          <li><a class="flat-box" title="/categories/web/" href="/categories/web/"><div class='name'>web</div><div class='badge'>(1)</div></a></li>
+          <li><a class="flat-box" title="/categories/web/" href="/categories/web/"><div class='name'>web</div><div class='badge'>(0)</div></a></li>
         
           <li><a class="flat-box" title="/categories/中间件/" href="/categories/中间件/"><div class='name'>中间件</div><div class='badge'>(5)</div></a></li>
         
@@ -1645,7 +1643,7 @@
 </header>
 
     <div class='content pure'>
-      <a href="/tags/algorithm/" style="font-size: 23.38px; color: #595959">algorithm</a> <a href="/tags/builder/" style="font-size: 14px; color: #999">builder</a> <a href="/tags/cache/" style="font-size: 14px; color: #999">cache</a> <a href="/tags/concurrent/" style="font-size: 15.25px; color: #919191">concurrent</a> <a href="/tags/db/" style="font-size: 22.13px; color: #626262">db</a> <a href="/tags/gc/" style="font-size: 15.25px; color: #919191">gc</a> <a href="/tags/id/" style="font-size: 14px; color: #999">id</a> <a href="/tags/javaee/" style="font-size: 14px; color: #999">javaee</a> <a href="/tags/javase/" style="font-size: 24px; color: #555">javase</a> <a href="/tags/jdbc/" style="font-size: 14px; color: #999">jdbc</a> <a href="/tags/jmm/" style="font-size: 14px; color: #999">jmm</a> <a href="/tags/jvm/" style="font-size: 22.75px; color: #5e5e5e">jvm</a> <a href="/tags/lifecycle/" style="font-size: 14px; color: #999">lifecycle</a> <a href="/tags/linux/" style="font-size: 19px; color: #777">linux</a> <a href="/tags/lock/" style="font-size: 14.63px; color: #959595">lock</a> <a href="/tags/log/" style="font-size: 14px; color: #999">log</a> <a href="/tags/log4j2/" style="font-size: 14px; color: #999">log4j2</a> <a href="/tags/mapper/" style="font-size: 14px; color: #999">mapper</a> <a href="/tags/maven/" style="font-size: 15.25px; color: #919191">maven</a> <a href="/tags/memory/" style="font-size: 17.13px; color: #848484">memory</a> <a href="/tags/mvc/" style="font-size: 14px; color: #999">mvc</a> <a href="/tags/mybatis/" style="font-size: 19.63px; color: #737373">mybatis</a> <a href="/tags/mysql/" style="font-size: 21.5px; color: #666">mysql</a> <a href="/tags/netty/" style="font-size: 16.5px; color: #888">netty</a> <a href="/tags/nio/" style="font-size: 15.25px; color: #919191">nio</a> <a href="/tags/oracle/" style="font-size: 15.88px; color: #8c8c8c">oracle</a> <a href="/tags/other/" style="font-size: 14.63px; color: #959595">other</a> <a href="/tags/plugin/" style="font-size: 14.63px; color: #959595">plugin</a> <a href="/tags/plugins/" style="font-size: 14px; color: #999">plugins</a> <a href="/tags/redis/" style="font-size: 15.88px; color: #8c8c8c">redis</a> <a href="/tags/reflect/" style="font-size: 14.63px; color: #959595">reflect</a> <a href="/tags/return/" style="font-size: 14px; color: #999">return</a> <a href="/tags/select/" style="font-size: 14px; color: #999">select</a> <a href="/tags/servlet/" style="font-size: 14px; color: #999">servlet</a> <a href="/tags/source/" style="font-size: 14px; color: #999">source</a> <a href="/tags/spring/" style="font-size: 17.75px; color: #808080">spring</a> <a href="/tags/storm/" style="font-size: 14px; color: #999">storm</a> <a href="/tags/thread/" style="font-size: 20.88px; color: #6a6a6a">thread</a> <a href="/tags/tool/" style="font-size: 15.25px; color: #919191">tool</a> <a href="/tags/uml/" style="font-size: 14px; color: #999">uml</a> <a href="/tags/url/" style="font-size: 14px; color: #999">url</a> <a href="/tags/vue/" style="font-size: 14px; color: #999">vue</a> <a href="/tags/zk/" style="font-size: 14px; color: #999">zk</a> <a href="/tags/中间件/" style="font-size: 16.5px; color: #888">中间件</a> <a href="/tags/性能调优/" style="font-size: 14.63px; color: #959595">性能调优</a> <a href="/tags/指令/" style="font-size: 14px; color: #999">指令</a> <a href="/tags/方法论/" style="font-size: 20.25px; color: #6f6f6f">方法论</a> <a href="/tags/源码分析/" style="font-size: 17.75px; color: #808080">源码分析</a> <a href="/tags/编码/" style="font-size: 15.25px; color: #919191">编码</a> <a href="/tags/虚拟机/" style="font-size: 14px; color: #999">虚拟机</a> <a href="/tags/规范/" style="font-size: 14.63px; color: #959595">规范</a> <a href="/tags/设计/" style="font-size: 18.38px; color: #7b7b7b">设计</a>
+      <a href="/tags/algorithm/" style="font-size: 23.33px; color: #5a5a5a">algorithm</a> <a href="/tags/concurrent/" style="font-size: 15.33px; color: #909090">concurrent</a> <a href="/tags/db/" style="font-size: 22px; color: #636363">db</a> <a href="/tags/gc/" style="font-size: 15.33px; color: #909090">gc</a> <a href="/tags/javaee/" style="font-size: 14.67px; color: #949494">javaee</a> <a href="/tags/javase/" style="font-size: 24px; color: #555">javase</a> <a href="/tags/jmm/" style="font-size: 14px; color: #999">jmm</a> <a href="/tags/jvm/" style="font-size: 22.67px; color: #5e5e5e">jvm</a> <a href="/tags/lifecycle/" style="font-size: 14px; color: #999">lifecycle</a> <a href="/tags/linux/" style="font-size: 18.67px; color: #797979">linux</a> <a href="/tags/lock/" style="font-size: 14.67px; color: #949494">lock</a> <a href="/tags/log/" style="font-size: 14px; color: #999">log</a> <a href="/tags/log4j2/" style="font-size: 14px; color: #999">log4j2</a> <a href="/tags/mapper/" style="font-size: 14px; color: #999">mapper</a> <a href="/tags/maven/" style="font-size: 15.33px; color: #909090">maven</a> <a href="/tags/memory/" style="font-size: 17.33px; color: #828282">memory</a> <a href="/tags/mvc/" style="font-size: 14px; color: #999">mvc</a> <a href="/tags/mybatis/" style="font-size: 19.33px; color: #757575">mybatis</a> <a href="/tags/mysql/" style="font-size: 21.33px; color: #676767">mysql</a> <a href="/tags/netty/" style="font-size: 16.67px; color: #878787">netty</a> <a href="/tags/nio/" style="font-size: 15.33px; color: #909090">nio</a> <a href="/tags/oracle/" style="font-size: 16px; color: #8b8b8b">oracle</a> <a href="/tags/other/" style="font-size: 14.67px; color: #949494">other</a> <a href="/tags/plugin/" style="font-size: 14.67px; color: #949494">plugin</a> <a href="/tags/plugins/" style="font-size: 14px; color: #999">plugins</a> <a href="/tags/redis/" style="font-size: 16px; color: #8b8b8b">redis</a> <a href="/tags/reflect/" style="font-size: 14.67px; color: #949494">reflect</a> <a href="/tags/servlet/" style="font-size: 14px; color: #999">servlet</a> <a href="/tags/source/" style="font-size: 14px; color: #999">source</a> <a href="/tags/spring/" style="font-size: 17.33px; color: #828282">spring</a> <a href="/tags/storm/" style="font-size: 14px; color: #999">storm</a> <a href="/tags/thread/" style="font-size: 20.67px; color: #6c6c6c">thread</a> <a href="/tags/tool/" style="font-size: 15.33px; color: #909090">tool</a> <a href="/tags/uml/" style="font-size: 14px; color: #999">uml</a> <a href="/tags/url/" style="font-size: 14px; color: #999">url</a> <a href="/tags/vue/" style="font-size: 14px; color: #999">vue</a> <a href="/tags/zk/" style="font-size: 14px; color: #999">zk</a> <a href="/tags/中间件/" style="font-size: 16.67px; color: #878787">中间件</a> <a href="/tags/性能调优/" style="font-size: 14.67px; color: #949494">性能调优</a> <a href="/tags/指令/" style="font-size: 14px; color: #999">指令</a> <a href="/tags/方法论/" style="font-size: 20px; color: #707070">方法论</a> <a href="/tags/源码分析/" style="font-size: 17.33px; color: #828282">源码分析</a> <a href="/tags/编码/" style="font-size: 14.67px; color: #949494">编码</a> <a href="/tags/虚拟机/" style="font-size: 14px; color: #999">虚拟机</a> <a href="/tags/规范/" style="font-size: 14.67px; color: #949494">规范</a> <a href="/tags/设计/" style="font-size: 18px; color: #7e7e7e">设计</a>
     </div>
   </section>
 
