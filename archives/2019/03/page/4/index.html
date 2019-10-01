@@ -302,8 +302,8 @@
       
         
   <h2 class="title">
-    <a href="/2019/03/11/javase/深入拆解 Java 虚拟机/01Java代码是怎么运行的/">
-      01Java代码是怎么运行的
+    <a href="/2019/03/11/db/mysql/mysql实战/10MySQL为什么有时候会选错索引/">
+      10MySQL为什么有时候会选错索引
     </a>
   </h2>
 
@@ -343,9 +343,9 @@
             
   
   <div class='new-meta-item category'>
-    <a href='/categories/javase/' rel="nofollow">
+    <a href='/categories/db/' rel="nofollow">
       <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>javase</p>
+      <p>db</p>
     </a>
   </div>
 
@@ -367,12 +367,10 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h1 id="虚拟机"><a href="#虚拟机" class="headerlink" title="虚拟机"></a>虚拟机</h1><p>从虚拟机视角来看，执行 Java 代码首先需要将它编译而成的 class 文件加载到 Java 虚拟机中。加载后的 Java 类会被存放于方法区（Method Area）中。实际运行时，虚拟机会执行方法区内的代码。</p>
-<p>在运行过程中，每当调用进入一个 Java 方法，Java 虚拟机会在当前线程的 Java 方法栈中生成一个栈帧，用以存放局部变量以及字节码的操作数。这个栈帧的大小是提前计算好的，而且 Java 虚拟机不要求栈帧在内存空间里连续分布。</p>
-<h1 id="硬件"><a href="#硬件" class="headerlink" title="硬件"></a>硬件</h1><p>从硬件视角来看，Java 字节码无法直接执行。因此，Java 虚拟机需要将字节码翻译成机器码。</p>
+      
       
         <div class="readmore">
-          <a href="/2019/03/11/javase/深入拆解 Java 虚拟机/01Java代码是怎么运行的/" class="flat-box">
+          <a href="/2019/03/11/db/mysql/mysql实战/10MySQL为什么有时候会选错索引/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -382,9 +380,9 @@
     
       <div class="full-width auto-padding tags">
         
-          <a href="/tags/javase/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> javase</a>
+          <a href="/tags/mysql/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> mysql</a>
         
-          <a href="/tags/jvm/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> jvm</a>
+          <a href="/tags/db/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> db</a>
         
       </div>
     
@@ -510,8 +508,8 @@
       
         
   <h2 class="title">
-    <a href="/2019/03/11/javase/深入拆解 Java 虚拟机/【工具篇】常用工具/">
-      【工具篇】常用工具
+    <a href="/2019/03/11/db/mysql/mysql实战/13为什么表数据删掉一半,表文件大小不变/">
+      13为什么表数据删掉一半,表文件大小不变
     </a>
   </h2>
 
@@ -551,9 +549,9 @@
             
   
   <div class='new-meta-item category'>
-    <a href='/categories/javase/' rel="nofollow">
+    <a href='/categories/db/' rel="nofollow">
       <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>javase</p>
+      <p>db</p>
     </a>
   </div>
 
@@ -575,16 +573,13 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h1 id="javap"><a href="#javap" class="headerlink" title="javap"></a>javap</h1><p><a href="https://docs.oracle.com/javase/8/docs/technotes/tools/unix/javap.html" target="_blank" rel="noopener">https://docs.oracle.com/javase/8/docs/technotes/tools/unix/javap.html</a></p>
-<h2 id="v-选项"><a href="#v-选项" class="headerlink" title="-v 选项"></a>-v 选项</h2><ul>
-<li>基本信息，涵盖了class文件的相关信息。</li>
-<li>常量池，存放各种产量以及符号引用</li>
-<li>字段区域，用来列举该类中的各个字段。</li>
-<li>方法区域</li>
+      <h1 id="innodb-file-per-table"><a href="#innodb-file-per-table" class="headerlink" title="innodb_file_per_table"></a>innodb_file_per_table</h1><ul>
+<li>这个参数设置为 OFF 表示的是，表的数据放在系统共享表空间，也就是跟数据字典放在一起；</li>
+<li>这个参数设置为 ON 表示的是，每个 InnoDB 表数据存储在一个以 .ibd 为后缀的文件中。</li>
 </ul>
       
         <div class="readmore">
-          <a href="/2019/03/11/javase/深入拆解 Java 虚拟机/【工具篇】常用工具/" class="flat-box">
+          <a href="/2019/03/11/db/mysql/mysql实战/13为什么表数据删掉一半,表文件大小不变/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -594,9 +589,9 @@
     
       <div class="full-width auto-padding tags">
         
-          <a href="/tags/javase/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> javase</a>
+          <a href="/tags/mysql/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> mysql</a>
         
-          <a href="/tags/jvm/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> jvm</a>
+          <a href="/tags/db/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> db</a>
         
       </div>
     
@@ -619,8 +614,8 @@
       
         
   <h2 class="title">
-    <a href="/2019/03/11/javase/深入拆解 Java 虚拟机/jvm资源/">
-      jvm资源
+    <a href="/2019/03/11/db/mysql/mysql实战/11怎么给字符串字段加索引/">
+      11怎么给字符串字段加索引
     </a>
   </h2>
 
@@ -660,9 +655,9 @@
             
   
   <div class='new-meta-item category'>
-    <a href='/categories/javase/' rel="nofollow">
+    <a href='/categories/db/' rel="nofollow">
       <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>javase</p>
+      <p>db</p>
     </a>
   </div>
 
@@ -684,24 +679,116 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h3 id="虚拟机牛人"><a href="#虚拟机牛人" class="headerlink" title="虚拟机牛人"></a>虚拟机牛人</h3><ul>
-<li>RednaxelaFX  <a href="https://www.zhihu.com/people/rednaxelafx/activities" target="_blank" rel="noopener">https://www.zhihu.com/people/rednaxelafx/activities</a></li>
-<li>你假苯  <a href="http://xxfox.perfma.com/" target="_blank" rel="noopener">http://xxfox.perfma.com/</a></li>
-<li>江南白衣</li>
-<li>占小狼</li>
-<li>杨晓峰</li>
-<li><a href="https://medium.com/graalvm" target="_blank" rel="noopener">https://medium.com/graalvm</a></li>
-<li><a href="http://cliffc.org/blog/" target="_blank" rel="noopener">http://cliffc.org/blog/</a></li>
-<li><a href="https://shipilev.net/jvm/anatomy-quarks/" target="_blank" rel="noopener">https://shipilev.net/jvm/anatomy-quarks/</a></li>
-<li><a href="https://shipilev.net/" target="_blank" rel="noopener">https://shipilev.net/</a></li>
-<li><a href="http://psy-lob-saw.blogspot.com/" target="_blank" rel="noopener">http://psy-lob-saw.blogspot.com/</a></li>
-<li><a href="http://openjdk.java.net/projects/mlvm/jvmlangsummit/" target="_blank" rel="noopener">http://openjdk.java.net/projects/mlvm/jvmlangsummit/</a></li>
-<li><a href="https://www.oracle.com/code-one/" target="_blank" rel="noopener">https://www.oracle.com/code-one/</a></li>
-<li><a href="https://github.com/deephacks/awesome-jvm" target="_blank" rel="noopener">https://github.com/deephacks/awesome-jvm</a></li>
+      <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">create</span> <span class="keyword">table</span> SUser(</span><br><span class="line"><span class="keyword">ID</span> <span class="built_in">bigint</span> <span class="keyword">unsigned</span> primary <span class="keyword">key</span>,</span><br><span class="line">email <span class="built_in">varchar</span>(<span class="number">64</span>) </span><br><span class="line">) ;</span><br><span class="line"></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> SUser <span class="keyword">add</span> <span class="keyword">index</span> index1(email);</span><br><span class="line"></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> SUser <span class="keyword">add</span> <span class="keyword">index</span> index2(email(<span class="number">6</span>));</span><br></pre></td></tr></table></figure>
+      
+        <div class="readmore">
+          <a href="/2019/03/11/db/mysql/mysql实战/11怎么给字符串字段加索引/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/mysql/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> mysql</a>
+        
+          <a href="/tags/db/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> db</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2019/03/11/db/mysql/mysql实战/1一条SQL查询语句是如何执行的/">
+      1一条SQL查询语句是如何执行的
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://liyong.ac.cn" rel="nofollow">
+        
+          <img src="https://liyong.ac.cn/img/me.png">
+        
+        <p>李永</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-03-11</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/db/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>db</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h1 id="summarize"><a href="#summarize" class="headerlink" title="summarize"></a>summarize</h1><p><img src="http://liyong.ac.cn/pic/1546866826086.png" alt="1546866826086"></p>
+<ul>
+<li>server层包括连接器、查询缓存、分析器、优化器、执行器以及所有的内置函数（如日期、时间、数学函数）</li>
 </ul>
       
         <div class="readmore">
-          <a href="/2019/03/11/javase/深入拆解 Java 虚拟机/jvm资源/" class="flat-box">
+          <a href="/2019/03/11/db/mysql/mysql实战/1一条SQL查询语句是如何执行的/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -711,9 +798,9 @@
     
       <div class="full-width auto-padding tags">
         
-          <a href="/tags/javase/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> javase</a>
+          <a href="/tags/mysql/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> mysql</a>
         
-          <a href="/tags/jvm/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> jvm</a>
+          <a href="/tags/db/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> db</a>
         
       </div>
     
@@ -736,8 +823,8 @@
       
         
   <h2 class="title">
-    <a href="/2019/03/11/javase/深入拆解 Java 虚拟机/35SubstrateVM：AOT编译框架/">
-      35SubstrateVM：AOT编译框架
+    <a href="/2019/03/11/db/mysql/mysql实战/20幻读是什么，幻读有什么问题/">
+      20幻读是什么，幻读有什么问题
     </a>
   </h2>
 
@@ -777,9 +864,9 @@
             
   
   <div class='new-meta-item category'>
-    <a href='/categories/javase/' rel="nofollow">
+    <a href='/categories/db/' rel="nofollow">
       <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>javase</p>
+      <p>db</p>
     </a>
   </div>
 
@@ -801,11 +888,10 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <p>Substrate VM is a framework that allows ahead-of-time (AOT) compilation of Java applications under closed-world assumption into executable images or shared objects (ELF-64 or 64-bit Mach-O).</p>
-<p>所谓 AOT 编译，是与即时编译相对立的一个概念。我们知道，即时编译指的是在程序的运行过程中，将字节码转换为可在硬件上直接运行的机器码，并部署至托管环境中的过程。</p>
+      <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`t`</span> (</span><br><span class="line">  <span class="string">`id`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`c`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`d`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span> (<span class="string">`id`</span>),</span><br><span class="line">  <span class="keyword">KEY</span> <span class="string">`c`</span> (<span class="string">`c`</span>)</span><br><span class="line">) <span class="keyword">ENGINE</span>=<span class="keyword">InnoDB</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> t <span class="keyword">values</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>),(<span class="number">5</span>,<span class="number">5</span>,<span class="number">5</span>),</span><br><span class="line">(<span class="number">10</span>,<span class="number">10</span>,<span class="number">10</span>),(<span class="number">15</span>,<span class="number">15</span>,<span class="number">15</span>),(<span class="number">20</span>,<span class="number">20</span>,<span class="number">20</span>),(<span class="number">25</span>,<span class="number">25</span>,<span class="number">25</span>);</span><br></pre></td></tr></table></figure>
       
         <div class="readmore">
-          <a href="/2019/03/11/javase/深入拆解 Java 虚拟机/35SubstrateVM：AOT编译框架/" class="flat-box">
+          <a href="/2019/03/11/db/mysql/mysql实战/20幻读是什么，幻读有什么问题/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -815,9 +901,9 @@
     
       <div class="full-width auto-padding tags">
         
-          <a href="/tags/javase/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> javase</a>
+          <a href="/tags/mysql/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> mysql</a>
         
-          <a href="/tags/jvm/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> jvm</a>
+          <a href="/tags/db/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> db</a>
         
       </div>
     
@@ -840,8 +926,8 @@
       
         
   <h2 class="title">
-    <a href="/2019/03/11/javase/深入拆解 Java 虚拟机/30-31Java虚拟机的监控及诊断工具/">
-      30Java虚拟机的监控及诊断工具
+    <a href="/2019/03/11/db/mysql/mysql-explain/">
+      mysql-explain
     </a>
   </h2>
 
@@ -881,9 +967,9 @@
             
   
   <div class='new-meta-item category'>
-    <a href='/categories/javase/' rel="nofollow">
+    <a href='/categories/db/' rel="nofollow">
       <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>javase</p>
+      <p>db</p>
     </a>
   </div>
 
@@ -905,10 +991,33 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h1 id="jps"><a href="#jps" class="headerlink" title="jps"></a>jps</h1><p><a href="https://docs.oracle.com/javase/8/docs/technotes/tools/unix/jps.html#CHDCGECD" target="_blank" rel="noopener">https://docs.oracle.com/javase/8/docs/technotes/tools/unix/jps.html#CHDCGECD</a></p>
+      <h1 id="select-type"><a href="#select-type" class="headerlink" title="select_type"></a>select_type</h1><h2 id="SIMPLE"><a href="#SIMPLE" class="headerlink" title="SIMPLE"></a>SIMPLE</h2><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SIMPLE</td>
+<td>简单表，不使用表连接或子查询</td>
+</tr>
+<tr>
+<td>PRIMARY</td>
+<td>主查询，即外层的查询</td>
+</tr>
+<tr>
+<td>UNION</td>
+<td></td>
+</tr>
+<tr>
+<td>SUBQUERY</td>
+<td></td>
+</tr>
+</tbody></table>
       
         <div class="readmore">
-          <a href="/2019/03/11/javase/深入拆解 Java 虚拟机/30-31Java虚拟机的监控及诊断工具/" class="flat-box">
+          <a href="/2019/03/11/db/mysql/mysql-explain/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -918,9 +1027,9 @@
     
       <div class="full-width auto-padding tags">
         
-          <a href="/tags/javase/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> javase</a>
+          <a href="/tags/mysql/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> mysql</a>
         
-          <a href="/tags/jvm/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> jvm</a>
+          <a href="/tags/db/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> db</a>
         
       </div>
     
@@ -943,8 +1052,8 @@
       
         
   <h2 class="title">
-    <a href="/2019/03/11/javase/深入拆解 Java 虚拟机/28-29基准测试框架JMH/">
-      28-29基准测试框架JMH
+    <a href="/2019/03/11/db/mysql/mysql实战/9普通索引和唯一索引，应该怎么选择/">
+      9普通索引和唯一索引，应该怎么选择
     </a>
   </h2>
 
@@ -984,9 +1093,9 @@
             
   
   <div class='new-meta-item category'>
-    <a href='/categories/javase/' rel="nofollow">
+    <a href='/categories/db/' rel="nofollow">
       <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>javase</p>
+      <p>db</p>
     </a>
   </div>
 
@@ -1008,226 +1117,20 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      
-      
-        <div class="readmore">
-          <a href="/2019/03/11/javase/深入拆解 Java 虚拟机/28-29基准测试框架JMH/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/javase/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> javase</a>
-        
-          <a href="/tags/jvm/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> jvm</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2019/03/11/javase/深入拆解 Java 虚拟机/27注解处理器/">
-      27注解处理器
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://liyong.ac.cn" rel="nofollow">
-        
-          <img src="https://liyong.ac.cn/img/me.png">
-        
-        <p>李永</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-03-11</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/javase/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>javase</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h1 id="注解处理器的原理"><a href="#注解处理器的原理" class="headerlink" title="注解处理器的原理"></a>注解处理器的原理</h1><h2 id="Java-编译器的工作流程"><a href="#Java-编译器的工作流程" class="headerlink" title="Java 编译器的工作流程"></a>Java 编译器的工作流程</h2><p><img src="http://liyong.ac.cn/pic/5C1553688920602.png" alt="1553688920602"></p>
-<ol>
-将源文件解析为抽象语法树；
-调用已注册的注解处理器；
-生成字节码。
-</ol>
-      
-        <div class="readmore">
-          <a href="/2019/03/11/javase/深入拆解 Java 虚拟机/27注解处理器/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/javase/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> javase</a>
-        
-          <a href="/tags/jvm/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> jvm</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2019/03/11/javase/深入拆解 Java 虚拟机/22HotSpot虚拟机的intrinsic/">
-      22HotSpot虚拟机的intrinsic
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://liyong.ac.cn" rel="nofollow">
-        
-          <img src="https://liyong.ac.cn/img/me.png">
-        
-        <p>李永</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-03-11</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/javase/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>javase</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <p>换句话说，HotSpot 虚拟机将为标注了@HotSpotIntrinsicCandidate注解的方法额外维护一套高效实现。如果 Java 核心类库的开发者更改了原本的实现，那么虚拟机中的高效实现也需要进行相应的修改，以保证程序语义一致。</p>
-<h1 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h1><ul>
-<li><a href="http://openjdk.java.net/jeps/254" target="_blank" rel="noopener">http://openjdk.java.net/jeps/254</a></li>
-<li><a href="http://hg.openjdk.java.net/jdk/hs/file/46dc568d6804/src/hotspot/share/classfile/vmSymbols.hpp#l727" target="_blank" rel="noopener">http://hg.openjdk.java.net/jdk/hs/file/46dc568d6804/src/hotspot/share/classfile/vmSymbols.hpp#l727</a></li>
-<li><a href="http://hg.openjdk.java.net/jdk8u/jdk8u/hotspot/file/2af8917ffbee/src/share/vm/classfile/vmSymbols.hpp#l647" target="_blank" rel="noopener">http://hg.openjdk.java.net/jdk8u/jdk8u/hotspot/file/2af8917ffbee/src/share/vm/classfile/vmSymbols.hpp#l647</a></li>
+      <h1 id="查询过程"><a href="#查询过程" class="headerlink" title="查询过程"></a>查询过程</h1><ul>
+<li><p>InnoDB 的数据是按数据页为单位来读写的</p>
+</li>
+<li><p>每个数据页的大小默认是 16KB</p>
+</li>
+</ul>
+<h1 id="更新过程"><a href="#更新过程" class="headerlink" title="更新过程"></a>更新过程</h1><ul>
+<li>如果数据页在内存中就直接更新</li>
+<li>如果这个数据页还没有在内存中的话，在不影响数据一致性的前提下，InooDB 会将这些更新操作缓存在 change buffer 中，这样就不需要从磁盘中读入这个数据页了。在下次查询需要访问这个数据页的时候，将数据页读入内存，然后执行 change buffer 中与这个页有关的操作</li>
+<li>唯一索引的更新就不能使用 change buffer，实际上也只有普通索引可以使用。</li>
 </ul>
       
         <div class="readmore">
-          <a href="/2019/03/11/javase/深入拆解 Java 虚拟机/22HotSpot虚拟机的intrinsic/" class="flat-box">
+          <a href="/2019/03/11/db/mysql/mysql实战/9普通索引和唯一索引，应该怎么选择/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -1237,9 +1140,9 @@
     
       <div class="full-width auto-padding tags">
         
-          <a href="/tags/javase/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> javase</a>
+          <a href="/tags/mysql/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> mysql</a>
         
-          <a href="/tags/jvm/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> jvm</a>
+          <a href="/tags/db/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> db</a>
         
       </div>
     
@@ -1262,8 +1165,8 @@
       
         
   <h2 class="title">
-    <a href="/2019/03/11/javase/深入拆解 Java 虚拟机/19Java字节码/">
-      19Java字节码
+    <a href="/2019/03/11/javase/深入拆解 Java 虚拟机/01Java代码是怎么运行的/">
+      01Java代码是怎么运行的
     </a>
   </h2>
 
@@ -1327,10 +1230,12 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h1 id="常用指令"><a href="#常用指令" class="headerlink" title="常用指令"></a>常用指令</h1><h2 id="dup"><a href="#dup" class="headerlink" title="dup"></a>dup</h2><p>通常用于复制 new 指令生成的未初始化的引用</p>
+      <h1 id="虚拟机"><a href="#虚拟机" class="headerlink" title="虚拟机"></a>虚拟机</h1><p>从虚拟机视角来看，执行 Java 代码首先需要将它编译而成的 class 文件加载到 Java 虚拟机中。加载后的 Java 类会被存放于方法区（Method Area）中。实际运行时，虚拟机会执行方法区内的代码。</p>
+<p>在运行过程中，每当调用进入一个 Java 方法，Java 虚拟机会在当前线程的 Java 方法栈中生成一个栈帧，用以存放局部变量以及字节码的操作数。这个栈帧的大小是提前计算好的，而且 Java 虚拟机不要求栈帧在内存空间里连续分布。</p>
+<h1 id="硬件"><a href="#硬件" class="headerlink" title="硬件"></a>硬件</h1><p>从硬件视角来看，Java 字节码无法直接执行。因此，Java 虚拟机需要将字节码翻译成机器码。</p>
       
         <div class="readmore">
-          <a href="/2019/03/11/javase/深入拆解 Java 虚拟机/19Java字节码/" class="flat-box">
+          <a href="/2019/03/11/javase/深入拆解 Java 虚拟机/01Java代码是怎么运行的/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -1343,6 +1248,109 @@
           <a href="/tags/javase/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> javase</a>
         
           <a href="/tags/jvm/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> jvm</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2019/03/11/db/mysql/mysql实战/12为什么我的MySQL会“抖”一下/">
+      12为什么我的MySQL会“抖”一下
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://liyong.ac.cn" rel="nofollow">
+        
+          <img src="https://liyong.ac.cn/img/me.png">
+        
+        <p>李永</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-03-11</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/db/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>db</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <p>当内存数据页跟磁盘数据页内容不一致的时候，我们称这个内存页为“脏页”。内存数据写入到磁盘后，内存和磁盘上的数据页的内容就一致了，称为“干净页”</p>
+      
+        <div class="readmore">
+          <a href="/2019/03/11/db/mysql/mysql实战/12为什么我的MySQL会“抖”一下/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/mysql/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> mysql</a>
+        
+          <a href="/tags/db/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> db</a>
         
       </div>
     
@@ -1595,8 +1603,6 @@
         
           <li><a class="flat-box" title="/categories/storm/" href="/categories/storm/"><div class='name'>storm</div><div class='badge'>(1)</div></a></li>
         
-          <li><a class="flat-box" title="/categories/thread/" href="/categories/thread/"><div class='name'>thread</div><div class='badge'>(0)</div></a></li>
-        
           <li><a class="flat-box" title="/categories/tool/" href="/categories/tool/"><div class='name'>tool</div><div class='badge'>(7)</div></a></li>
         
           <li><a class="flat-box child" title="/categories/tool/mat/" href="/categories/tool/mat/"><div class='name'>mat</div><div class='badge'>(1)</div></a></li>
@@ -1606,8 +1612,6 @@
           <li><a class="flat-box child" title="/categories/tool/uml/" href="/categories/tool/uml/"><div class='name'>uml</div><div class='badge'>(1)</div></a></li>
         
           <li><a class="flat-box" title="/categories/vue/" href="/categories/vue/"><div class='name'>vue</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box" title="/categories/web/" href="/categories/web/"><div class='name'>web</div><div class='badge'>(0)</div></a></li>
         
           <li><a class="flat-box" title="/categories/中间件/" href="/categories/中间件/"><div class='name'>中间件</div><div class='badge'>(5)</div></a></li>
         
@@ -1667,7 +1671,7 @@
 </header>
 
     <div class='content pure'>
-      <a href="/tags/algorithm/" style="font-size: 23.33px; color: #5a5a5a">algorithm</a> <a href="/tags/concurrent/" style="font-size: 15.33px; color: #909090">concurrent</a> <a href="/tags/db/" style="font-size: 22px; color: #636363">db</a> <a href="/tags/gc/" style="font-size: 15.33px; color: #909090">gc</a> <a href="/tags/javaee/" style="font-size: 14.67px; color: #949494">javaee</a> <a href="/tags/javase/" style="font-size: 24px; color: #555">javase</a> <a href="/tags/jmm/" style="font-size: 14px; color: #999">jmm</a> <a href="/tags/jvm/" style="font-size: 22.67px; color: #5e5e5e">jvm</a> <a href="/tags/lifecycle/" style="font-size: 14px; color: #999">lifecycle</a> <a href="/tags/linux/" style="font-size: 18.67px; color: #797979">linux</a> <a href="/tags/lock/" style="font-size: 14.67px; color: #949494">lock</a> <a href="/tags/log/" style="font-size: 14px; color: #999">log</a> <a href="/tags/log4j2/" style="font-size: 14px; color: #999">log4j2</a> <a href="/tags/mapper/" style="font-size: 14px; color: #999">mapper</a> <a href="/tags/maven/" style="font-size: 15.33px; color: #909090">maven</a> <a href="/tags/memory/" style="font-size: 17.33px; color: #828282">memory</a> <a href="/tags/mvc/" style="font-size: 14px; color: #999">mvc</a> <a href="/tags/mybatis/" style="font-size: 19.33px; color: #757575">mybatis</a> <a href="/tags/mysql/" style="font-size: 21.33px; color: #676767">mysql</a> <a href="/tags/netty/" style="font-size: 16.67px; color: #878787">netty</a> <a href="/tags/nio/" style="font-size: 15.33px; color: #909090">nio</a> <a href="/tags/oracle/" style="font-size: 16px; color: #8b8b8b">oracle</a> <a href="/tags/other/" style="font-size: 14.67px; color: #949494">other</a> <a href="/tags/plugin/" style="font-size: 14.67px; color: #949494">plugin</a> <a href="/tags/plugins/" style="font-size: 14px; color: #999">plugins</a> <a href="/tags/redis/" style="font-size: 16px; color: #8b8b8b">redis</a> <a href="/tags/reflect/" style="font-size: 14.67px; color: #949494">reflect</a> <a href="/tags/servlet/" style="font-size: 14px; color: #999">servlet</a> <a href="/tags/source/" style="font-size: 14px; color: #999">source</a> <a href="/tags/spring/" style="font-size: 17.33px; color: #828282">spring</a> <a href="/tags/storm/" style="font-size: 14px; color: #999">storm</a> <a href="/tags/thread/" style="font-size: 20.67px; color: #6c6c6c">thread</a> <a href="/tags/tool/" style="font-size: 15.33px; color: #909090">tool</a> <a href="/tags/uml/" style="font-size: 14px; color: #999">uml</a> <a href="/tags/url/" style="font-size: 14px; color: #999">url</a> <a href="/tags/vue/" style="font-size: 14px; color: #999">vue</a> <a href="/tags/zk/" style="font-size: 14px; color: #999">zk</a> <a href="/tags/中间件/" style="font-size: 16.67px; color: #878787">中间件</a> <a href="/tags/性能调优/" style="font-size: 14.67px; color: #949494">性能调优</a> <a href="/tags/指令/" style="font-size: 14px; color: #999">指令</a> <a href="/tags/方法论/" style="font-size: 20px; color: #707070">方法论</a> <a href="/tags/源码分析/" style="font-size: 17.33px; color: #828282">源码分析</a> <a href="/tags/编码/" style="font-size: 14.67px; color: #949494">编码</a> <a href="/tags/虚拟机/" style="font-size: 14px; color: #999">虚拟机</a> <a href="/tags/规范/" style="font-size: 14.67px; color: #949494">规范</a> <a href="/tags/设计/" style="font-size: 18px; color: #7e7e7e">设计</a>
+      <a href="/tags/algorithm/" style="font-size: 23.33px; color: #5a5a5a">algorithm</a> <a href="/tags/concurrent/" style="font-size: 15.33px; color: #909090">concurrent</a> <a href="/tags/db/" style="font-size: 22px; color: #636363">db</a> <a href="/tags/gc/" style="font-size: 15.33px; color: #909090">gc</a> <a href="/tags/javaee/" style="font-size: 14.67px; color: #949494">javaee</a> <a href="/tags/javase/" style="font-size: 24px; color: #555">javase</a> <a href="/tags/jmm/" style="font-size: 14px; color: #999">jmm</a> <a href="/tags/jvm/" style="font-size: 22.67px; color: #5e5e5e">jvm</a> <a href="/tags/lifecycle/" style="font-size: 14px; color: #999">lifecycle</a> <a href="/tags/linux/" style="font-size: 18.67px; color: #797979">linux</a> <a href="/tags/lock/" style="font-size: 14.67px; color: #949494">lock</a> <a href="/tags/log/" style="font-size: 14px; color: #999">log</a> <a href="/tags/log4j2/" style="font-size: 14px; color: #999">log4j2</a> <a href="/tags/mapper/" style="font-size: 14px; color: #999">mapper</a> <a href="/tags/maven/" style="font-size: 15.33px; color: #909090">maven</a> <a href="/tags/memory/" style="font-size: 17.33px; color: #828282">memory</a> <a href="/tags/mvc/" style="font-size: 14px; color: #999">mvc</a> <a href="/tags/mybatis/" style="font-size: 19.33px; color: #757575">mybatis</a> <a href="/tags/mysql/" style="font-size: 21.33px; color: #676767">mysql</a> <a href="/tags/netty/" style="font-size: 16.67px; color: #878787">netty</a> <a href="/tags/nio/" style="font-size: 15.33px; color: #909090">nio</a> <a href="/tags/oracle/" style="font-size: 16px; color: #8b8b8b">oracle</a> <a href="/tags/other/" style="font-size: 14.67px; color: #949494">other</a> <a href="/tags/plugin/" style="font-size: 14.67px; color: #949494">plugin</a> <a href="/tags/plugins/" style="font-size: 14px; color: #999">plugins</a> <a href="/tags/redis/" style="font-size: 16px; color: #8b8b8b">redis</a> <a href="/tags/reflect/" style="font-size: 14.67px; color: #949494">reflect</a> <a href="/tags/servlet/" style="font-size: 14px; color: #999">servlet</a> <a href="/tags/source/" style="font-size: 14px; color: #999">source</a> <a href="/tags/spring/" style="font-size: 17.33px; color: #828282">spring</a> <a href="/tags/storm/" style="font-size: 14px; color: #999">storm</a> <a href="/tags/thread/" style="font-size: 20.67px; color: #6c6c6c">thread</a> <a href="/tags/tool/" style="font-size: 15.33px; color: #909090">tool</a> <a href="/tags/uml/" style="font-size: 14px; color: #999">uml</a> <a href="/tags/url/" style="font-size: 14px; color: #999">url</a> <a href="/tags/vue/" style="font-size: 14px; color: #999">vue</a> <a href="/tags/zk/" style="font-size: 14px; color: #999">zk</a> <a href="/tags/中间件/" style="font-size: 16.67px; color: #878787">中间件</a> <a href="/tags/性能调优/" style="font-size: 14.67px; color: #949494">性能调优</a> <a href="/tags/方法论/" style="font-size: 20px; color: #707070">方法论</a> <a href="/tags/源码分析/" style="font-size: 17.33px; color: #828282">源码分析</a> <a href="/tags/编码/" style="font-size: 14.67px; color: #949494">编码</a> <a href="/tags/规范/" style="font-size: 14.67px; color: #949494">规范</a> <a href="/tags/设计/" style="font-size: 18px; color: #7e7e7e">设计</a>
     </div>
   </section>
 
