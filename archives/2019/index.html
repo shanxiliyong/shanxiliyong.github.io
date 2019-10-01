@@ -431,8 +431,111 @@
       
         
   <h2 class="title">
-    <a href="/2019/05/12/javase/jvm/堆外内存排查/">
-      堆外内存排查
+    <a href="/2019/05/12/javaee/servlet/servlet_加载顺序/">
+      servlet.xml 加载顺序
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://liyong.ac.cn" rel="nofollow">
+        
+          <img src="https://liyong.ac.cn/img/me.png">
+        
+        <p>李永</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-05-12</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/javaee/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>javaee</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <p>context-param -&gt; listener -&gt; filter -&gt; servlet</p>
+      
+        <div class="readmore">
+          <a href="/2019/05/12/javaee/servlet/servlet_加载顺序/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/javaee/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> javaee</a>
+        
+          <a href="/tags/servlet/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> servlet</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2019/05/12/javase/异常追踪/">
+      异常追踪
     </a>
   </h2>
 
@@ -496,13 +599,216 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h1 id="现象"><a href="#现象" class="headerlink" title="现象"></a>现象</h1><p>有人反应线上服务端有一个进程的占用内存特别高，具体如下。</p>
-<p>top命令如下：</p>
-<p>PID USER PR NI VIRT <strong>RES</strong> SHR S %CPU %MEM TIME+ COMMAND<br>33801 admin 20 0 <strong>41.4g</strong> <strong>14g</strong> 10m S 5.0 5.8 4015:27 java</p>
-<p>可以看到这个java进程占用的资源特别高。</p>
+      <h1 id="java-虚拟机工具接口（JVMTI）"><a href="#java-虚拟机工具接口（JVMTI）" class="headerlink" title="java 虚拟机工具接口（JVMTI）"></a>java 虚拟机工具接口（JVMTI）</h1><p>JVMTI（Java Virtual Machine Tool Interface） 即指 Java 虚拟机工具接口， 它是一套由虚拟机直接提供的 native 接口， 它处于整<br>个 JPDA 体系的最底层， 所有调试功能本质上都需要通过 JVMTI 来提供。 通过这些接口， 开发人员不仅调试在该虚拟机上运行的<br>Java 程序， 还能查看它们运行的状态， 设置回调函数， 控制某些环境变量， 从而优化程序性能。</p>
       
         <div class="readmore">
-          <a href="/2019/05/12/javase/jvm/堆外内存排查/" class="flat-box">
+          <a href="/2019/05/12/javase/异常追踪/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/javase/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> javase</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2019/05/12/tool/mat/">
+      mat
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://liyong.ac.cn" rel="nofollow">
+        
+          <img src="https://liyong.ac.cn/img/me.png">
+        
+        <p>李永</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-05-12</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/tool/mat/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>tool&nbsp;/&nbsp;mat</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <p><a href="https://www.cnblogs.com/trust-freedom/p/6744948.html" target="_blank" rel="noopener">https://www.cnblogs.com/trust-freedom/p/6744948.html</a></p>
+<p>with outGoing references  当前对象，引用了外部对象</p>
+<p>with incoming references  当前查看的对象，被外部应用</p>
+      
+        <div class="readmore">
+          <a href="/2019/05/12/tool/mat/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/javase/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> javase</a>
+        
+          <a href="/tags/tool/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> tool</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2019/05/12/javase/Java问题排查工具单/">
+      Java问题排查工具单
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://liyong.ac.cn" rel="nofollow">
+        
+          <img src="https://liyong.ac.cn/img/me.png">
+        
+        <p>李永</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-05-12</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/javase/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>javase</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h1 id="Linux命令类"><a href="#Linux命令类" class="headerlink" title="Linux命令类"></a>Linux命令类</h1><h2 id="tail"><a href="#tail" class="headerlink" title="tail"></a>tail</h2><p>tail -300f shopbase.log</p>
+      
+        <div class="readmore">
+          <a href="/2019/05/12/javase/Java问题排查工具单/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -639,113 +945,8 @@
       
         
   <h2 class="title">
-    <a href="/2019/05/12/tool/mat/">
-      mat
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://liyong.ac.cn" rel="nofollow">
-        
-          <img src="https://liyong.ac.cn/img/me.png">
-        
-        <p>李永</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-05-12</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/tool/mat/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>tool&nbsp;/&nbsp;mat</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <p><a href="https://www.cnblogs.com/trust-freedom/p/6744948.html" target="_blank" rel="noopener">https://www.cnblogs.com/trust-freedom/p/6744948.html</a></p>
-<p>with outGoing references  当前对象，引用了外部对象</p>
-<p>with incoming references  当前查看的对象，被外部应用</p>
-      
-        <div class="readmore">
-          <a href="/2019/05/12/tool/mat/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/javase/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> javase</a>
-        
-          <a href="/tags/tool/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> tool</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2019/05/12/javase/jvm/JVM常用命令整理/">
-      JVM常用命令整理
+    <a href="/2019/05/12/javase/jvm/堆外内存排查/">
+      堆外内存排查
     </a>
   </h2>
 
@@ -809,10 +1010,13 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h4 id="看对象数量"><a href="#看对象数量" class="headerlink" title="看对象数量"></a>看对象数量</h4><p>jmap -histo [pid]&gt;jmaphisto.log<br>jmap -F -histo [pid]&gt;jmaphisto.log    服务已死加 -F<br>jmap -histo:live [pid]&gt;jmaphisto.log    只看存活（会触发fullgc再导出）</p>
+      <h1 id="现象"><a href="#现象" class="headerlink" title="现象"></a>现象</h1><p>有人反应线上服务端有一个进程的占用内存特别高，具体如下。</p>
+<p>top命令如下：</p>
+<p>PID USER PR NI VIRT <strong>RES</strong> SHR S %CPU %MEM TIME+ COMMAND<br>33801 admin 20 0 <strong>41.4g</strong> <strong>14g</strong> 10m S 5.0 5.8 4015:27 java</p>
+<p>可以看到这个java进程占用的资源特别高。</p>
       
         <div class="readmore">
-          <a href="/2019/05/12/javase/jvm/JVM常用命令整理/" class="flat-box">
+          <a href="/2019/05/12/javase/jvm/堆外内存排查/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -845,8 +1049,8 @@
       
         
   <h2 class="title">
-    <a href="/2019/05/12/javase/异常追踪/">
-      异常追踪
+    <a href="/2019/05/12/javase/se8/">
+      Java8新特性
     </a>
   </h2>
 
@@ -910,10 +1114,10 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h1 id="java-虚拟机工具接口（JVMTI）"><a href="#java-虚拟机工具接口（JVMTI）" class="headerlink" title="java 虚拟机工具接口（JVMTI）"></a>java 虚拟机工具接口（JVMTI）</h1><p>JVMTI（Java Virtual Machine Tool Interface） 即指 Java 虚拟机工具接口， 它是一套由虚拟机直接提供的 native 接口， 它处于整<br>个 JPDA 体系的最底层， 所有调试功能本质上都需要通过 JVMTI 来提供。 通过这些接口， 开发人员不仅调试在该虚拟机上运行的<br>Java 程序， 还能查看它们运行的状态， 设置回调函数， 控制某些环境变量， 从而优化程序性能。</p>
+      <h1 id="Optional"><a href="#Optional" class="headerlink" title="Optional"></a>Optional</h1><p>java1.8引入的新类，用来判断是否小于1.8</p>
       
         <div class="readmore">
-          <a href="/2019/05/12/javase/异常追踪/" class="flat-box">
+          <a href="/2019/05/12/javase/se8/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -1126,210 +1330,6 @@
       <div class="full-width auto-padding tags">
         
           <a href="/tags/javase/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> javase</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2019/05/12/javase/se8/">
-      Java8新特性
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://liyong.ac.cn" rel="nofollow">
-        
-          <img src="https://liyong.ac.cn/img/me.png">
-        
-        <p>李永</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-05-12</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/javase/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>javase</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h1 id="Optional"><a href="#Optional" class="headerlink" title="Optional"></a>Optional</h1><p>java1.8引入的新类，用来判断是否小于1.8</p>
-      
-        <div class="readmore">
-          <a href="/2019/05/12/javase/se8/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/javase/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> javase</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2019/05/12/javaee/servlet/servlet_加载顺序/">
-      servlet.xml 加载顺序
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://liyong.ac.cn" rel="nofollow">
-        
-          <img src="https://liyong.ac.cn/img/me.png">
-        
-        <p>李永</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-05-12</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/javaee/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>javaee</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <p>context-param -&gt; listener -&gt; filter -&gt; servlet</p>
-      
-        <div class="readmore">
-          <a href="/2019/05/12/javaee/servlet/servlet_加载顺序/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/javaee/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> javaee</a>
-        
-          <a href="/tags/servlet/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> servlet</a>
         
       </div>
     

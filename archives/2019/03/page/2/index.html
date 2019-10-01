@@ -302,119 +302,6 @@
       
         
   <h2 class="title">
-    <a href="/2019/03/11/db/mysql/mysql实战/9普通索引和唯一索引，应该怎么选择/">
-      9普通索引和唯一索引，应该怎么选择
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://liyong.ac.cn" rel="nofollow">
-        
-          <img src="https://liyong.ac.cn/img/me.png">
-        
-        <p>李永</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-03-11</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/db/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>db</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h1 id="查询过程"><a href="#查询过程" class="headerlink" title="查询过程"></a>查询过程</h1><ul>
-<li><p>InnoDB 的数据是按数据页为单位来读写的</p>
-</li>
-<li><p>每个数据页的大小默认是 16KB</p>
-</li>
-</ul>
-<h1 id="更新过程"><a href="#更新过程" class="headerlink" title="更新过程"></a>更新过程</h1><ul>
-<li>如果数据页在内存中就直接更新</li>
-<li>如果这个数据页还没有在内存中的话，在不影响数据一致性的前提下，InooDB 会将这些更新操作缓存在 change buffer 中，这样就不需要从磁盘中读入这个数据页了。在下次查询需要访问这个数据页的时候，将数据页读入内存，然后执行 change buffer 中与这个页有关的操作</li>
-<li>唯一索引的更新就不能使用 change buffer，实际上也只有普通索引可以使用。</li>
-</ul>
-      
-        <div class="readmore">
-          <a href="/2019/03/11/db/mysql/mysql实战/9普通索引和唯一索引，应该怎么选择/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/mysql/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> mysql</a>
-        
-          <a href="/tags/db/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> db</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
     <a href="/2019/03/11/javase/深入拆解 Java 虚拟机/06JVM是如何处理异常的/">
       06JVM是如何处理异常的
     </a>
@@ -496,6 +383,124 @@
           <a href="/tags/javase/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> javase</a>
         
           <a href="/tags/jvm/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> jvm</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2019/03/11/db/mysql/mysql实战/3为什么你改了我还看不见/">
+      3为什么你改了我还看不见
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://liyong.ac.cn" rel="nofollow">
+        
+          <img src="https://liyong.ac.cn/img/me.png">
+        
+        <p>李永</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-03-11</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/db/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>db</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h1 id="隔离性与隔离级别"><a href="#隔离性与隔离级别" class="headerlink" title="隔离性与隔离级别"></a>隔离性与隔离级别</h1><ul>
+<li><p>Atomicity、Consistency、Isolation、Durability</p>
+</li>
+<li><p>脏读（dirty read）、不可重复读(non-repeatable read)、幻读(phantom read)</p>
+</li>
+<li><p>读未提交（read uncommitted）,一个事务还没有提交，就能被其它事务看到</p>
+</li>
+<li><p>读提交（read committed），一个事务提交才能被其它事务看到</p>
+</li>
+<li><p>可重复读（repeatable read），一个事务执行过程中看到的数据和启动时看到的数据一致</p>
+</li>
+<li><p>串行化（serializable ），对于同一行记录，写会加写锁，读会加读锁，当出现读写锁冲突的时候，必须等待前一个事务结束，才能继续</p>
+</li>
+<li><p>查看隔离级别  show variables like ‘transaction_isolation’;  SELECT @@tx_isolation</p>
+</li>
+</ul>
+      
+        <div class="readmore">
+          <a href="/2019/03/11/db/mysql/mysql实战/3为什么你改了我还看不见/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/mysql/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> mysql</a>
+        
+          <a href="/tags/db/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> db</a>
         
       </div>
     
@@ -956,109 +961,6 @@
       
         
   <h2 class="title">
-    <a href="/2019/03/11/javase/深入拆解 Java 虚拟机/13Java内存模型/">
-      13Java内存模型
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://liyong.ac.cn" rel="nofollow">
-        
-          <img src="https://liyong.ac.cn/img/me.png">
-        
-        <p>李永</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-03-11</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/javase/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>javase</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a=<span class="number">0</span>, b=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> r2 = a;</span><br><span class="line">  b = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> r1 = b;</span><br><span class="line">  a = <span class="number">2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-        <div class="readmore">
-          <a href="/2019/03/11/javase/深入拆解 Java 虚拟机/13Java内存模型/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/javase/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> javase</a>
-        
-          <a href="/tags/jvm/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> jvm</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
     <a href="/2019/03/11/javase/深入拆解 Java 虚拟机/14Java虚拟机是如何实现Synchronzide/">
       14Java虚拟机是如何实现Synchronzide
     </a>
@@ -1132,6 +1034,109 @@
       
         <div class="readmore">
           <a href="/2019/03/11/javase/深入拆解 Java 虚拟机/14Java虚拟机是如何实现Synchronzide/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/javase/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> javase</a>
+        
+          <a href="/tags/jvm/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> jvm</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2019/03/11/javase/深入拆解 Java 虚拟机/13Java内存模型/">
+      13Java内存模型
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://liyong.ac.cn" rel="nofollow">
+        
+          <img src="https://liyong.ac.cn/img/me.png">
+        
+        <p>李永</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-03-11</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/javase/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>javase</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a=<span class="number">0</span>, b=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> r2 = a;</span><br><span class="line">  b = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> r1 = b;</span><br><span class="line">  a = <span class="number">2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+        <div class="readmore">
+          <a href="/2019/03/11/javase/深入拆解 Java 虚拟机/13Java内存模型/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>

@@ -302,8 +302,8 @@
       
         
   <h2 class="title">
-    <a href="/2019/05/12/javase/Java问题排查工具单/">
-      Java问题排查工具单
+    <a href="/2019/05/12/javase/jvm/JVM常用命令整理/">
+      JVM常用命令整理
     </a>
   </h2>
 
@@ -367,10 +367,10 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h1 id="Linux命令类"><a href="#Linux命令类" class="headerlink" title="Linux命令类"></a>Linux命令类</h1><h2 id="tail"><a href="#tail" class="headerlink" title="tail"></a>tail</h2><p>tail -300f shopbase.log</p>
+      <h4 id="看对象数量"><a href="#看对象数量" class="headerlink" title="看对象数量"></a>看对象数量</h4><p>jmap -histo [pid]&gt;jmaphisto.log<br>jmap -F -histo [pid]&gt;jmaphisto.log    服务已死加 -F<br>jmap -histo:live [pid]&gt;jmaphisto.log    只看存活（会触发fullgc再导出）</p>
       
         <div class="readmore">
-          <a href="/2019/05/12/javase/Java问题排查工具单/" class="flat-box">
+          <a href="/2019/05/12/javase/jvm/JVM常用命令整理/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -381,6 +381,110 @@
       <div class="full-width auto-padding tags">
         
           <a href="/tags/javase/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> javase</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2019/04/12/linux/Linux性能优化实战/16基础篇：怎么理解内存中的Buffer和Cache/">
+      16基础篇：怎么理解内存中的Buffer和Cache
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://liyong.ac.cn" rel="nofollow">
+        
+          <img src="https://liyong.ac.cn/img/me.png">
+        
+        <p>李永</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-04-12</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/linux/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>linux</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <ul>
+<li>Buffers 是内核缓冲区用到的内存，对应的是  /proc/meminfo 中的 Buffers 值。</li>
+<li>Cache 是内核页缓存和 Slab 用到的内存，对应的是  /proc/meminfo 中的 Cached 与 SReclaimable 之和。</li>
+</ul>
+      
+        <div class="readmore">
+          <a href="/2019/04/12/linux/Linux性能优化实战/16基础篇：怎么理解内存中的Buffer和Cache/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/linux/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> linux</a>
         
       </div>
     
@@ -472,209 +576,6 @@
       
         <div class="readmore">
           <a href="/2019/04/12/linux/Linux性能优化实战/33-34关于 Linux 网络，你必须知道这些/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/linux/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> linux</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2019/04/12/linux/Linux性能优化实战/01如何学习Linux性能优化/">
-      01如何学习Linux性能优化
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://liyong.ac.cn" rel="nofollow">
-        
-          <img src="https://liyong.ac.cn/img/me.png">
-        
-        <p>李永</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-04-12</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/linux/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>linux</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h1 id="学习方法论"><a href="#学习方法论" class="headerlink" title="学习方法论"></a>学习方法论</h1><p>只要理解了应用程序和系统的少数几个基本原理，再进行大量的实战练习，建立起整体性能的全局观，大多数性能问题的优化就会水到渠成。</p>
-      
-        <div class="readmore">
-          <a href="/2019/04/12/linux/Linux性能优化实战/01如何学习Linux性能优化/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/linux/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> linux</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2019/04/12/linux/Linux性能优化实战/开篇词_别再让Linux性能问题成为你的绊脚石/">
-      开篇词_别再让Linux性能问题成为你的绊脚石
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://liyong.ac.cn" rel="nofollow">
-        
-          <img src="https://liyong.ac.cn/img/me.png">
-        
-        <p>李永</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-04-12</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/linux/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>linux</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <p>最好的学习方式一定是带着问题学习</p>
-<p>具体来看，我会分为 5 个模块。前 4 个模块我会从资源使用的视角出发，带你分析各种 Linux 资源可能会碰到的性能问题，包括 CPU 性能、磁盘 I/O 性能、内存性能、网络性能</p>
-      
-        <div class="readmore">
-          <a href="/2019/04/12/linux/Linux性能优化实战/开篇词_别再让Linux性能问题成为你的绊脚石/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -811,6 +712,108 @@
       
         
   <h2 class="title">
+    <a href="/2019/04/12/linux/Linux性能优化实战/开篇词_别再让Linux性能问题成为你的绊脚石/">
+      开篇词_别再让Linux性能问题成为你的绊脚石
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://liyong.ac.cn" rel="nofollow">
+        
+          <img src="https://liyong.ac.cn/img/me.png">
+        
+        <p>李永</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-04-12</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/linux/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>linux</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <p>最好的学习方式一定是带着问题学习</p>
+<p>具体来看，我会分为 5 个模块。前 4 个模块我会从资源使用的视角出发，带你分析各种 Linux 资源可能会碰到的性能问题，包括 CPU 性能、磁盘 I/O 性能、内存性能、网络性能</p>
+      
+        <div class="readmore">
+          <a href="/2019/04/12/linux/Linux性能优化实战/开篇词_别再让Linux性能问题成为你的绊脚石/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/linux/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> linux</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
     <a href="/2019/04/12/linux/Linux性能优化实战/23基础篇：Linux 文件系统是怎么工作的/">
       23基础篇：Linux 文件系统是怎么工作的
     </a>
@@ -880,110 +883,6 @@
       
         <div class="readmore">
           <a href="/2019/04/12/linux/Linux性能优化实战/23基础篇：Linux 文件系统是怎么工作的/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/linux/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> linux</a>
-        
-      </div>
-    
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2019/04/12/linux/Linux性能优化实战/16基础篇：怎么理解内存中的Buffer和Cache/">
-      16基础篇：怎么理解内存中的Buffer和Cache
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-  <div class='new-meta-item author'>
-    
-      <a href="https://liyong.ac.cn" rel="nofollow">
-        
-          <img src="https://liyong.ac.cn/img/me.png">
-        
-        <p>李永</p>
-      </a>
-    
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-04-12</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/linux/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>linux</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <ul>
-<li>Buffers 是内核缓冲区用到的内存，对应的是  /proc/meminfo 中的 Buffers 值。</li>
-<li>Cache 是内核页缓存和 Slab 用到的内存，对应的是  /proc/meminfo 中的 Cached 与 SReclaimable 之和。</li>
-</ul>
-      
-        <div class="readmore">
-          <a href="/2019/04/12/linux/Linux性能优化实战/16基础篇：怎么理解内存中的Buffer和Cache/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -1301,6 +1200,108 @@
       
         <div class="readmore">
           <a href="/2019/04/12/linux/Linux性能优化实战/05基础篇：某个应用的CPU使用率居然达到100%，我该怎么办/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/linux/" rel="nofollow"><i class="fas fa-tag fa-fw"></i> linux</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2019/04/12/linux/Linux性能优化实战/03-04基础篇：经常说的 CPU 上下文切换是什么意思/">
+      03-04基础篇：经常说的 CPU 上下文切换是什么意思
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    
+      <a href="https://liyong.ac.cn" rel="nofollow">
+        
+          <img src="https://liyong.ac.cn/img/me.png">
+        
+        <p>李永</p>
+      </a>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-04-12</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/linux/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>linux</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <p>CPU 寄存器，是 CPU 内置的容量小、但速度极快的内存。而程序计数器，则是用来存储 CPU 正在执行的指令位置、或者即将执行的下一条指令位置。它们都是 CPU 在运行任何任务前，必须的依赖环境，因此也被叫做 cpu上下文</p>
+<p><img src="http://liyong.ac.cn/pic/98ac9df2593a193d6a7f1767cd68eb5f.png" alt="1"></p>
+      
+        <div class="readmore">
+          <a href="/2019/04/12/linux/Linux性能优化实战/03-04基础篇：经常说的 CPU 上下文切换是什么意思/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
